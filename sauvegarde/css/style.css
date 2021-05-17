@@ -1,0 +1,231 @@
+#bloc_page header{
+    
+	height: 100px;
+}
+#bloc_page .logo{
+	background-color: white;
+	border-right: 2px solid black;
+}
+#im_logo_spmabg{
+	width: 150px;
+        height: 100px;
+}
+#definition{
+	border-right: 2px solid black;
+}
+#definition .defh3{
+	margin-left:100px;
+        font-size: 26px;
+}
+
+.sadina{
+        margin-left: 400px;
+	color:red;
+}
+#im_logo{
+        width: 150px;
+        height: 100px; 
+}
+.trait{
+	border-bottom: 4px solid black;
+}
+#bodyconnexion{
+	margin:0;
+	padding: 0;
+	background: url(../images/logo.jpg);
+	background-size: cover;
+	background-position: center;
+	font-family: sans-serif;
+}
+.connexion{
+	width: 520px;
+	height: 420px;
+	background: #000;
+	color:#fff;
+	top:50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+.avatar{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	top: -50px;
+	left: calc(50% - 50px);
+}
+#bodyconnexion h1{
+	margin:0
+	padding : 0 0 20px;
+	text-align: center;
+	font-size: 22px;
+}
+.connexion p {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+.connexion input[type="text"], input[type="password"]{
+	border:none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	width:100%;
+	margin-bottom:20px;
+}
+/*.connexion input[type="submit"]{
+	border:none;
+	outline: none;
+	height: 40px;
+	background: #fb2525;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 20px;
+}*/
+/*.connexion input[type="submit"]:hover{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+	margin-bottom:20px;
+}*/
+.connexion a{
+	text-decoration: none;
+	font-size: 12px;
+	line-height: 20px;
+	color:darkgrey;
+}
+.connexion a:hover{
+	color:#ffc107;
+}
+.titreform{
+	margin: 0px;
+	padding-top: 0px;
+	color: #A7AFB8;
+	font-weight: normal;
+}
+.titrebarform{
+	background: red;
+	margin-top:2px;
+	height:20px
+}
+.infoform{
+	margin-top:10px;
+        margin-left:300px;
+}
+.infoform h5{
+	margin: 0px; 
+	padding-top: 0px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+.ligneform{
+	border:1px solid #D1DCF5;
+	margin:2px 0 0 0;
+	padding:10px;
+}
+.ligneform2{
+	margin-top:2px;
+        margin-left:100px;
+}
+.libform{
+	font-weight: bold;
+}
+.divbutton{
+	margin-top: 10px;
+}
+.divbutton2{
+	margin-bottom: 5px;
+}
+.buttonform{
+	border: 1px solid #FFFFFF; 
+	background-color: #54B944; 
+	border-radius: 0px;
+}
+.tabdiv{
+	margin-top:20px
+}
+.tabdiv2 h5{
+	margin: 0px; 
+	padding-top: 0px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+.tabdiv3{
+	border:1px solid #D1DCF5;
+	margin:2px 0 0 0;
+	padding:10px;
+}
+.tabdiv3tr{
+	background-color:#54B944
+}
+.tabdiv3tr img{
+	cursor:pointer;
+}
+.listetitreform{
+    margin-left:300px;
+    margin-top:-10px;
+}
+.listetitreformgrand{
+    margin-left:10px;
+    margin-top:-10px;
+}
+.titreform{
+	margin: 0px;
+	padding-top: 0px;
+	color: #A7AFB8;
+	font-weight: normal;
+}
+.titrebarform{
+	background: #003399;
+	margin-top:2px;
+	height:5px
+}
+.buttonajouter{ 
+    margin: 10px; 
+    padding: 10px;
+}
+.butmodifier{
+    border: 0px;
+}
+.butsup{
+    border: 0px;
+}
+.ligneform{
+	border:1px solid #D1DCF5;
+	margin:0 auto;
+	padding:10px;
+        border-radius: 5px;
+}
+.ligneform2{
+        background-color:#54B944;
+        color: #FFFFFF;
+	margin-top:2px;
+}
+.divbutajoutgrand{
+    margin-left:10px;
+}
+.divbutajout{
+    margin-left:300px;
+}
+.divtab{
+    margin-left:300px; 
+}
+.divtabgrand{
+    margin-left:10px; 
+}
+.butenre{
+    margin-left: 85px;
+    margin-top:10px;
+}
+.butanul{
+    margin-left:10px;
+}
+.libspan{
+    font-weight: bold;
+}

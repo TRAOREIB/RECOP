@@ -1,0 +1,136 @@
+#bodyconnexion{
+	margin:0;
+	padding: 0;
+	background: url(../images/logo.jpg);
+	background-size: cover;
+	background-position: center;
+	font-family: sans-serif;
+}
+.connexion{
+	width: 520px;
+	height: 420px;
+	background: #000;
+	color:#fff;
+	top:50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+.avatar{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	top: -50px;
+	left: calc(50% - 50px);
+}
+#bodyconnexion h1{
+	margin:0
+	padding : 0 0 20px;
+	text-align: center;
+	font-size: 22px;
+}
+.connexion p {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+.connexion input[type="text"], input[type="password"]{
+	border:none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	width:100%;
+	margin-bottom:20px;
+}
+/*.connexion input[type="submit"]{
+	border:none;
+	outline: none;
+	height: 40px;
+	background: #fb2525;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 20px;
+}*/
+/*.connexion input[type="submit"]:hover{
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+	margin-bottom:20px;
+}*/
+.connexion a{
+	text-decoration: none;
+	font-size: 12px;
+	line-height: 20px;
+	color:darkgrey;
+}
+.connexion a:hover{
+	color:#ffc107;
+}
+.titreform{
+	margin: 0px;
+	padding-top: 0px;
+	color: #A7AFB8;
+	font-weight: normal;
+}
+.titrebarform{
+	background: #002a80;
+	margin-top:2px;
+	height:40px
+}
+.infoform{
+	margin-top:10px;
+}
+.infoform h5{
+	margin: 0px; 
+	padding-top: 0px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+.ligneform{
+	border:1px solid #D1DCF5;
+	margin:2px 0 0 0;
+	padding:10px;
+}
+.ligneform2{
+	margin-top:2px;
+}
+.libform{
+	font-weight: bold;
+}
+.divbutton{
+	margin-top: 10px;
+}
+.divbutton2{
+	margin-bottom: 5px;
+}
+.buttonform{
+	border: 1px solid #FFFFFF; 
+	background-color: #54B944; 
+	border-radius: 0px;
+}
+.tabdiv{
+	margin-top:20px
+}
+.tabdiv2 h5{
+	margin: 0px; 
+	padding-top: 0px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+.tabdiv3{
+	border:1px solid #D1DCF5;
+	margin:2px 0 0 0;
+	padding:10px;
+}
+.tabdiv3tr{
+	background-color:#54B944
+}
+.tabdiv3tr img{
+	cursor:pointer;
+}

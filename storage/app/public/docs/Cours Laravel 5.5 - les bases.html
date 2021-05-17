@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<!-- saved from url=(0122)https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers -->
+<html lang="fr" xmlns:og="http://ogp.me/ns#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>Cours Laravel 5.5 - les bases</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="generator" content="developpez-com">
+	<meta name="description" content="Ce cours est la première partie d&#39;une série de cours qui se propose de vous apprendre à utiliser la version 5.5 du framework Laravel">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Cours Laravel 5.5 - les bases">
+	<meta property="og:image" content="https://www.developpez.com/template/images/logo.png">
+	<meta property="og:url" content="http://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/">
+	<meta property="og:locale" content="fr_FR">
+	<meta property="og:site_name" content="Developpez.com">
+	<meta property="twitter:card" content="summary">
+	<meta property="twitter:url" content="http://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/">
+	<meta property="twitter:description" content="Ce cours est la première partie d&#39;une série de cours qui se propose de vous apprendre à utiliser la version 5.5 du framework Laravel">
+	<meta property="twitter:title" content="Cours Laravel 5.5 - les bases">
+	<meta property="twitter:image" content="https://www.developpez.com/template/images/logo.png">
+	<script type="text/javascript" async="" src="./Cours Laravel 5.5 - les bases_files/ga.js.téléchargement"></script><script type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/jquery-1.7.2.js.téléchargement"></script>
+	<script async="" type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/saved_resource"></script>
+	<script async="async" src="./Cours Laravel 5.5 - les bases_files/gpt.js.téléchargement"></script>
+	<script>
+		var googletag = googletag || {};
+		googletag.cmd = googletag.cmd || [];
+	</script>
+	<script async="" src="./Cours Laravel 5.5 - les bases_files/f.txt"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="https://maurice-chavelli.developpez.com/template/favicon.ico">
+	<link rel="image_src" href="https://www.developpez.com/facebook-icon.png">
+	<link rel="stylesheet" type="text/css" href="./Cours Laravel 5.5 - les bases_files/gabarit.css">
+	<link rel="stylesheet" type="text/css" media="print" href="./Cours Laravel 5.5 - les bases_files/printer.css">
+	<link rel="stylesheet" type="text/css" href="./Cours Laravel 5.5 - les bases_files/gabarit-mobile.css">
+	<script type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/gabarit-mobile.js.téléchargement"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="./Cours Laravel 5.5 - les bases_files/developpez-kit-generation.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="./Cours Laravel 5.5 - les bases_files/code.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="./Cours Laravel 5.5 - les bases_files/lightbox.2.51.css">
+	<script type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/developpez-kit-generation.js.téléchargement"></script>
+	<script type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/lightbox.2.51.js.téléchargement"></script>
+	<script type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/fonctions-kit.js.téléchargement"></script>
+	<meta name="author" content="Laravel">
+	<!--[if lt IE 7]>
+	<script src="/template/ie7/IE7.js" type="text/javascript"></script>
+	<![endif]-->
+
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="/template/gabarit-ie6.css" />
+	<![endif]-->
+
+	<!--[if IE 7]>
+	<link rel="stylesheet" type="text/css" href="/template/gabarit-ie7.css" />
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="/template/kit/html5_ie.js"></script>
+	<![endif]-->
+	<!--[if IE 9]><link rel="stylesheet" type="text/css" href="/template/kit/ie9.css" /><![endif]-->
+	<!--[if IE 8]><link rel="stylesheet" type="text/css" href="/template/kit/ie8.css" /><![endif]-->
+	<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="/template/kit/ie.css" /><![endif]-->
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/template/kit/ie7.css" /><![endif]-->
+	<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="/template/kit/ie6.css" /><![endif]-->
+	<!--[if lt IE 9]><script type="text/javascript" src="/template/kit/html5_ie.js"></script><![endif]-->
+
+<style type="text/css">.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q{display:block!important;border:1px solid #cdcfd2!important;background-color:#fff!important;color:#373a3d!important;width:100vw!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-24GeGuJgk9LrMLp7qVvlyz{background:#6a7e89!important;color:#fff!important;padding:10px!important;font-size:18px!important;font-family:sans-serif!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-KVjdulkCFfUZps29EbgAC{background:#f3f6f8!important;border-bottom:1px solid #cdcfd2!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-KVjdulkCFfUZps29EbgAC>*{margin-right:10px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1OeZ2PQ98oAp6Vc5mMc6V5{list-style:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-vCwYmWF_l83ScZBrGnRoi,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1OeZ2PQ98oAp6Vc5mMc6V5{margin:0!important;padding:0!important;width:100%!important;display:block!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-vCwYmWF_l83ScZBrGnRoi:not(:last-child){border-bottom:1px solid #cdcfd2!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1XQZkb-FlHWABUp4_uShaZ{color:inherit!important;cursor:pointer!important;width:100%!important;display:inline-block!important;margin:10px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1XTzMvb2XKitWz0mFLlyyp{margin:5px!important;display:block!important;width:auto!important;white-space:pre!important;overflow-x:scroll!important;background:inherit!important;color:inherit!important;font-family:monospace}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1XTzMvb2XKitWz0mFLlyyp:not(.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-39QUvFFn5B7GMcqMQkOXZ3){display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-295DY3nO0DbJWMsOqmjCli{background:#f5f5f5!important;color:#5a5a5a!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1aQZwu6CUzAf2zUcI7tg0Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-295DY3nO0DbJWMsOqmjCli{display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-38EPFyKXMtoP12rPlmrHxs{background:#e6f7ff!important;color:#006097!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3W4ZnQjhoGfT1gTNcqRXdi .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-38EPFyKXMtoP12rPlmrHxs{display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-HGYnfzlmgOZ-l7eANhQe_{background:#fff3ea!important;color:#993a00!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-24e52A11B1UIErbKHtBmqc .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-HGYnfzlmgOZ-l7eANhQe_{display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-jji74ZzulHScD0OAD_G7h{background:#fef2f1!important;color:#b10823!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3npS60y-EvfF7G_lioSx2Q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-28jAOA7cDee-95LvwGsOP- .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-jji74ZzulHScD0OAD_G7h{display:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu{background-color:#0073b1!important;border:0!important;border-radius:2px!important;box-sizing:border-box!important;color:#fff!important;cursor:pointer!important;display:inline-block!important;font-family:-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif!important;font-weight:600!important;overflow:hidden!important;outline-width:2px!important;position:relative!important;text-align:center!important;text-decoration:none!important;vertical-align:middle!important;white-space:nowrap!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu:disabled{cursor:not-allowed!important;opacity:.7!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu:not(:disabled):not(.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy):hover{background-color:#006097!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu:not(:disabled):not(.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy):active{background-color:#004b7c!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy{background-color:#fff!important;color:#0073b1!important;box-shadow:inset 0 0 0 1px rgba(0,0,0,.3)!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy:not(:disabled):hover{color:#006097!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1zhzkayakwEXovVYUbq5Gy:not(:disabled):active{color:#004b7c!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon{display:inline-block!important;height:100%!important;vertical-align:top!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon>svg{pointer-events:none!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-7inSbaAsvG5bf7w6lJTEr{font-size:10px!important;height:16px!important;line-height:16px!important;padding:0 6px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-7inSbaAsvG5bf7w6lJTEr>xdoor-icon{margin-left:-6px!important;margin-right:3px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-7inSbaAsvG5bf7w6lJTEr>xdoor-icon>svg{height:16px!important;width:16px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-7inSbaAsvG5bf7w6lJTEr.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-6px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3uCBSbQNVNf2QjqHe1rfb6{font-size:11px!important;height:20px!important;line-height:20px!important;padding:0 7px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3uCBSbQNVNf2QjqHe1rfb6>xdoor-icon,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon{margin-left:-7px!important;margin-right:3.5px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3uCBSbQNVNf2QjqHe1rfb6>xdoor-icon>svg,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon>svg{height:20px!important;width:20px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-3uCBSbQNVNf2QjqHe1rfb6.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon,.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-7px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-21Smv9YG-5V6M6KP-5v2WG{font-size:14px!important;height:24px!important;line-height:24px!important;padding:0 12px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-21Smv9YG-5V6M6KP-5v2WG>xdoor-icon{margin-left:-12px!important;margin-right:6px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-21Smv9YG-5V6M6KP-5v2WG>xdoor-icon>svg{height:24px!important;width:24px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-21Smv9YG-5V6M6KP-5v2WG.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-12px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1TGdQUTLZdNG4R87OfAB-q{font-size:16px!important;height:32px!important;line-height:32px!important;padding:0 16px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1TGdQUTLZdNG4R87OfAB-q>xdoor-icon{margin-left:-16px!important;margin-right:8px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1TGdQUTLZdNG4R87OfAB-q>xdoor-icon>svg{height:32px!important;width:32px!important}.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1TGdQUTLZdNG4R87OfAB-q.IN-2bc0215c-7188-4274-b598-1969e06d4d7c-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-16px!important}</style><link rel="preload" href="./Cours Laravel 5.5 - les bases_files/f(1).txt" as="script"><script type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/f(1).txt"></script><link rel="preload" href="./Cours Laravel 5.5 - les bases_files/f(2).txt" as="script"><script type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/f(2).txt"></script><script src="./Cours Laravel 5.5 - les bases_files/pubads_impl_2019102101.js.téléchargement" async=""></script></head>
+<body>
+<header>
+
+<div id="gabarit_b1">
+	<div id="gabarit-barreRecherche" style="display:none;"><form action="https://www.google.fr/" target="_blank">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-8110924381468607:6449306375">
+    <input type="hidden" name="ie" value="UTF-8">
+    <input type="text" name="q" size="12">
+    <input type="submit" name="sa" value="Rechercher">
+  </div>
+</form></div>
+<div id="gabarit-new-logo" role="gabarit-accueil">
+	<a href="https://www.developpez.com/"><img src="./Cours Laravel 5.5 - les bases_files/logo-dvp-h55.png" width="48" height="55"></a>
+	<a href="https://www.developpez.com/"><span class="dvp"></span></a>
+	<span class="triangle"></span>
+</div>
+<div id="gabarit_recherche"><!--<div class="gabarit-btn-menu profil" role="gabarit-profil"></div>-->
+	<div class="gabarit-btn-menu contacts" role="gabarit-contacts"></div><div class="gabarit-btn-menu recherche" role="gabarit-recherche"></div>
+</div>
+
+<div id="gabarit_superieur">
+	<nav>
+	<ul>
+		<li><a href="https://www.developpez.net/forums/" title="">Forums</a></li>
+		<li><a href="https://general.developpez.com/cours/" title="">Tutoriels</a></li>
+		<li><a href="https://magazine.developpez.com/" title="">Magazine</a></li>
+		<li><a href="https://general.developpez.com/faq/" title="">FAQ</a></li>
+		<li><a href="https://www.developpez.net/forums/blogs/" title="">Blogs</a></li>
+		<li><a href="https://chat.developpez.com/" title="">Chat</a></li>
+		<li><a href="https://www.developpez.com/newsletter/">Newsletter</a></li>
+		<li><a href="https://etudes.developpez.com/">Études</a></li>
+		<li><a href="https://emploi.developpez.com/" title="">Emploi</a></li>
+		<li><a href="https://club.developpez.com/">Club</a></li>
+	</ul>
+	</nav>
+</div></div>
+
+<nav>
+
+<!-- CONNEXION -->
+<div id="gabarit_mobile_connexion">Se connecter</div>
+<div id="connexionMobile">
+	<form>
+		<div id="connexionMobile_contenu" style="max-height: none; top: calc(50% - 0px);">
+		
+			<i id="fermerConnexionMobile" class="glyphicon glyphicon-remove"></i>
+			<p class="alert alert-info headerBox">Identification</p>
+			<div class="englobeForm connexion" style="display: block;">
+			
+				<p>Vous devez avoir un compte Developpez.com et être connecté pour pouvoir participer aux discussions.</p>
+				
+				<div class="row">
+					<div id="identificationConnexionMobile" class="col-sm-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Identifiez-vous</h5>
+								
+								<div id="loginBoxConnexionMobile" class="card-text">
+									<div class="groupbox">
+										<div class="cat_content">
+											<table width="100%">
+												<tbody><tr class="formIdentite">
+													<td nowrap="nowrap" class="form_label">Identifiant</td>
+													<td><input type="text" class="form_input form-control" id="formloginConnexionMobile"></td>
+												</tr>
+												<tr class="formIdentite">
+													<td nowrap="nowrap" class="form_label">Mot de passe</td>
+													<td><input type="password" class="form_input form-control" id="formpassConnexionMobile"></td>
+												</tr>
+												<tr><td colspan="2"><div id="formmsgConnexionMobile" style="display: none;"></div></td></tr>
+												<tr><td colspan="2" align="right" class="form_label"><a href="http://www.developpez.net/forums/login.php?do=lostpw">Mot de passe oublié ?</a></td></tr>
+											</tbody></table>
+										</div>
+									</div>
+								</div>
+								
+								<div id="btnValidationConnexion">
+									<input type="button" value="Je me connecte !" id="formbuttonConnexionMobile" class="btn btn-primary">
+									<div id="loadingConnexionMobile"><i class="glyphicon glyphicon-repeat gly-spin"></i></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="inscriptionConnexionMobile" class="col-sm-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Créer un compte</h5>
+								<p class="card-text">Vous n'avez pas encore de compte Developpez.com ? L'inscription est gratuite et ne vous prendra que quelques instants !</p>
+								<a href="https://www.developpez.net/forums/inscription/" class="btn btn-primary">Je m'inscris !</a>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			<div class="englobeForm actions" style="display: none;"></div>
+		</div>
+	</form>
+</div>
+<!-- FIN CONNEXION -->
+
+<div id="gabarit_mobile" class="longMenu" style="">
+	<div><a href="https://www.developpez.com/"><img src="./Cours Laravel 5.5 - les bases_files/logo-mobile.png" alt="" height="60"></a></div>
+	<div>
+		<p>Developpez.com</p>
+		<p>Laravel</p>
+	</div>
+
+	<div class="nav nav-pills nav-justified" style="white-space: nowrap; width: calc(100% - 40px);">
+					<a href="https://laravel.developpez.com/" class="nav-item nav-link"> &nbsp;Rubrique Laravel&nbsp; </a>
+			<a href="https://www.developpez.net/forums/f2105/php/bibliotheques-frameworks/laravel/" class="nav-item nav-link"> &nbsp;Forum Laravel&nbsp; </a>
+			
+	</div>
+	
+	<div class="nav nav-pills nav-justified" style="width: calc(100% - 40px); margin: 0 auto 6px;">
+		<a href="https://www.developpez.com/" class="nav-item nav-link"><i class="glyphicon glyphicon-home" style="top:0;"></i>&nbsp; Accueil</a>
+		<a href="https://www.developpez.net/forums/" class="nav-item nav-link"><i class="glyphicon glyphicon-comment" style="top:1px;"></i>&nbsp; Forums</a>
+			
+		<span class="nav-item nav-link" style="white-space:nowrap;" data-toggle="collapse" href="#gabarit_menu_mobile" role="button" aria-expanded="false"><i class="glyphicon glyphicon-th" style="top:0;"></i>&nbsp; Rubriques</span>
+	</div>
+</div>
+<div id="gabarit_mobile_fin"></div>
+
+<div class="collapse multi-collapse" id="gabarit_menu_mobile">
+	<p>Choisissez la catégorie, puis la rubrique :</p>
+	<ul>
+					<li>
+				<a href="https://www.developpez.com/" data-idrub="1" data-niv="1">Accueil</a>
+							</li>
+					<li>
+				<a href="https://alm.developpez.com/" data-idrub="42" data-niv="1">ALM</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://alm.developpez.com/" data-idrub="42" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;ALM
+							</a>
+						</li>
+													<li>
+								<a href="https://merise.developpez.com/" data-idrub="43" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Merise
+								</a>
+							</li>
+													<li>
+								<a href="https://uml.developpez.com/" data-idrub="12" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;UML
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://java.developpez.com/" data-idrub="4" data-niv="1">Java</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://java.developpez.com/" data-idrub="4" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Java
+							</a>
+						</li>
+													<li>
+								<a href="https://javaweb.developpez.com/" data-idrub="97" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Java Web
+								</a>
+							</li>
+													<li>
+								<a href="https://spring.developpez.com/" data-idrub="87" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Spring
+								</a>
+							</li>
+													<li>
+								<a href="https://android.developpez.com/" data-idrub="95" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Android
+								</a>
+							</li>
+													<li>
+								<a href="https://eclipse.developpez.com/" data-idrub="55" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Eclipse
+								</a>
+							</li>
+													<li>
+								<a href="https://netbeans.developpez.com/" data-idrub="66" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;NetBeans
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://dotnet.developpez.com/" data-idrub="20" data-niv="1">.NET</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://dotnet.developpez.com/" data-idrub="20" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Microsoft DotNET
+							</a>
+						</li>
+													<li>
+								<a href="https://visualstudio.developpez.com/" data-idrub="84" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Visual Studio
+								</a>
+							</li>
+													<li>
+								<a href="https://dotnet.developpez.com/aspnet/" data-idrub="83" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;ASP.NET
+								</a>
+							</li>
+													<li>
+								<a href="https://dotnet.developpez.com/csharp/" data-idrub="81" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;C#
+								</a>
+							</li>
+													<li>
+								<a href="https://dotnet.developpez.com/vbnet/" data-idrub="82" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;VB.NET
+								</a>
+							</li>
+													<li>
+								<a href="https://windowsphone.developpez.com/" data-idrub="105" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Windows Phone
+								</a>
+							</li>
+													<li>
+								<a href="https://windows-azure.developpez.com/" data-idrub="107" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Microsoft Azure
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://web.developpez.com/" data-idrub="8" data-niv="1">Dév. Web</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://web.developpez.com/" data-idrub="8" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Développement Web
+							</a>
+						</li>
+													<li>
+								<a href="https://ajax.developpez.com/" data-idrub="85" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;AJAX
+								</a>
+							</li>
+													<li>
+								<a href="https://apache.developpez.com/" data-idrub="71" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Apache
+								</a>
+							</li>
+													<li>
+								<a href="https://asp.developpez.com/" data-idrub="10" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;ASP
+								</a>
+							</li>
+													<li>
+								<a href="https://css.developpez.com/" data-idrub="51" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;CSS
+								</a>
+							</li>
+													<li>
+								<a href="https://dart.developpez.com/" data-idrub="125" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Dart
+								</a>
+							</li>
+													<li>
+								<a href="https://flash.developpez.com/" data-idrub="41" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Flash / Flex
+								</a>
+							</li>
+													<li>
+								<a href="https://javascript.developpez.com/" data-idrub="45" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;JavaScript
+								</a>
+							</li>
+													<li>
+								<a href="https://nodejs.developpez.com/" data-idrub="141" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;NodeJS
+								</a>
+							</li>
+													<li>
+								<a href="https://php.developpez.com/" data-idrub="9" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;PHP
+								</a>
+							</li>
+													<li>
+								<a href="https://ruby.developpez.com/" data-idrub="53" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Ruby &amp; Rails
+								</a>
+							</li>
+													<li>
+								<a href="https://typescript.developpez.com/" data-idrub="127" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;TypeScript
+								</a>
+							</li>
+													<li>
+								<a href="https://web-semantique.developpez.com/" data-idrub="111" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Web sémantique
+								</a>
+							</li>
+													<li>
+								<a href="https://webmarketing.developpez.com/" data-idrub="80" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Webmarketing
+								</a>
+							</li>
+													<li>
+								<a href="https://xhtml.developpez.com/" data-idrub="50" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;(X)HTML
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://edi.developpez.com/" data-idrub="90" data-niv="1">EDI</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://edi.developpez.com/" data-idrub="90" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;EDI
+							</a>
+						</li>
+													<li>
+								<a href="https://4d.developpez.com/" data-idrub="39" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;4D
+								</a>
+							</li>
+													<li>
+								<a href="https://delphi.developpez.com/" data-idrub="2" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Delphi
+								</a>
+							</li>
+													<li>
+								<a href="https://eclipse.developpez.com/" data-idrub="55" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Eclipse
+								</a>
+							</li>
+													<li>
+								<a href="https://jetbrains.developpez.com/" data-idrub="144" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;JetBrains
+								</a>
+							</li>
+													<li>
+								<a href="https://labview.developpez.com/" data-idrub="72" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;LabVIEW
+								</a>
+							</li>
+													<li>
+								<a href="https://netbeans.developpez.com/" data-idrub="66" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;NetBeans
+								</a>
+							</li>
+													<li>
+								<a href="https://matlab.developpez.com/" data-idrub="58" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;MATLAB
+								</a>
+							</li>
+													<li>
+								<a href="https://scilab.developpez.com/" data-idrub="120" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Scilab
+								</a>
+							</li>
+													<li>
+								<a href="https://visualstudio.developpez.com/" data-idrub="84" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Visual Studio
+								</a>
+							</li>
+													<li>
+								<a href="https://wind.developpez.com/" data-idrub="74" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;WinDev
+								</a>
+							</li>
+													<li>
+								<a href="https://vb.developpez.com/" data-idrub="5" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Visual Basic 6
+								</a>
+							</li>
+													<li>
+								<a href="https://lazarus.developpez.com/" data-idrub="96" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Lazarus
+								</a>
+							</li>
+													<li>
+								<a href="https://qt-creator.developpez.com/" data-idrub="109" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Qt Creator
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://programmation.developpez.com/" data-idrub="119" data-niv="1">Programmation</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://programmation.developpez.com/" data-idrub="119" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Programmation
+							</a>
+						</li>
+													<li>
+								<a href="https://algo.developpez.com/" data-idrub="47" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Débuter - Algorithmique
+								</a>
+							</li>
+													<li>
+								<a href="https://jeux.developpez.com/" data-idrub="38" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;2D - 3D - Jeux
+								</a>
+							</li>
+													<li>
+								<a href="https://asm.developpez.com/" data-idrub="16" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Assembleur
+								</a>
+							</li>
+													<li>
+								<a href="https://c.developpez.com/" data-idrub="3" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;C
+								</a>
+							</li>
+													<li>
+								<a href="https://cpp.developpez.com/" data-idrub="59" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;C++
+								</a>
+							</li>
+													<li>
+								<a href="https://d.developpez.com/" data-idrub="123" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;D
+								</a>
+							</li>
+													<li>
+								<a href="https://go.developpez.com/" data-idrub="124" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Go
+								</a>
+							</li>
+													<li>
+								<a href="https://kotlin.developpez.com/" data-idrub="145" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Kotlin
+								</a>
+							</li>
+													<li>
+								<a href="https://objective-c.developpez.com/" data-idrub="117" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Objective C
+								</a>
+							</li>
+													<li>
+								<a href="https://pascal.developpez.com/" data-idrub="7" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Pascal
+								</a>
+							</li>
+													<li>
+								<a href="https://perl.developpez.com/" data-idrub="29" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Perl
+								</a>
+							</li>
+													<li>
+								<a href="https://python.developpez.com/" data-idrub="27" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Python
+								</a>
+							</li>
+													<li>
+								<a href="https://rust.developpez.com/" data-idrub="137" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Rust
+								</a>
+							</li>
+													<li>
+								<a href="https://swift.developpez.com/" data-idrub="128" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Swift
+								</a>
+							</li>
+													<li>
+								<a href="https://qt.developpez.com/" data-idrub="65" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Qt
+								</a>
+							</li>
+													<li>
+								<a href="https://xml.developpez.com/" data-idrub="11" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;XML
+								</a>
+							</li>
+													<li>
+								<a href="https://general.developpez.com/cours/" data-idrub="21" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Autres
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://sgbd.developpez.com/" data-idrub="13" data-niv="1">SGBD</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://sgbd.developpez.com/" data-idrub="13" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;SGBD &amp; SQL
+							</a>
+						</li>
+													<li>
+								<a href="https://4d.developpez.com/" data-idrub="39" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;4D
+								</a>
+							</li>
+													<li>
+								<a href="https://access.developpez.com/" data-idrub="19" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Access
+								</a>
+							</li>
+													<li>
+								<a href="https://big-data.developpez.com/" data-idrub="126" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Big Data
+								</a>
+							</li>
+													<li>
+								<a href="https://db2.developpez.com/" data-idrub="36" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;DB2
+								</a>
+							</li>
+													<li>
+								<a href="https://firebird.developpez.com/" data-idrub="73" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Firebird
+								</a>
+							</li>
+													<li>
+								<a href="https://interbase.developpez.com/" data-idrub="32" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;InterBase
+								</a>
+							</li>
+													<li>
+								<a href="https://mysql.developpez.com/" data-idrub="31" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;MySQL
+								</a>
+							</li>
+													<li>
+								<a href="https://nosql.developpez.com/" data-idrub="114" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;NoSQL
+								</a>
+							</li>
+													<li>
+								<a href="https://postgresql.developpez.com/" data-idrub="33" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;PostgreSQL
+								</a>
+							</li>
+													<li>
+								<a href="https://oracle.developpez.com/" data-idrub="25" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Oracle
+								</a>
+							</li>
+													<li>
+								<a href="https://sybase.developpez.com/" data-idrub="37" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Sybase
+								</a>
+							</li>
+													<li>
+								<a href="https://sqlserver.developpez.com/" data-idrub="34" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;SQL-Server
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://office.developpez.com/" data-idrub="54" data-niv="1">Office</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://office.developpez.com/" data-idrub="54" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Microsoft Office
+							</a>
+						</li>
+													<li>
+								<a href="https://access.developpez.com/" data-idrub="19" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Access
+								</a>
+							</li>
+													<li>
+								<a href="https://excel.developpez.com/" data-idrub="75" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Excel
+								</a>
+							</li>
+													<li>
+								<a href="https://word.developpez.com/" data-idrub="76" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Word
+								</a>
+							</li>
+													<li>
+								<a href="https://outlook.developpez.com/" data-idrub="77" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Outlook
+								</a>
+							</li>
+													<li>
+								<a href="https://powerpoint.developpez.com/" data-idrub="78" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;PowerPoint
+								</a>
+							</li>
+													<li>
+								<a href="https://sharepoint.developpez.com/" data-idrub="79" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;SharePoint
+								</a>
+							</li>
+													<li>
+								<a href="https://project.developpez.com/" data-idrub="99" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Microsoft Project
+								</a>
+							</li>
+													<li>
+								<a href="https://openoffice-libreoffice.developpez.com/" data-idrub="116" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;OpenOffice &amp; LibreOffice
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://solutions-entreprise.developpez.com/" data-idrub="86" data-niv="1">Solutions d'entreprise</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://solutions-entreprise.developpez.com/" data-idrub="86" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Solutions d'entreprise
+							</a>
+						</li>
+													<li>
+								<a href="https://big-data.developpez.com/" data-idrub="126" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Big Data
+								</a>
+							</li>
+													<li>
+								<a href="https://bpm.developpez.com/" data-idrub="134" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;BPM
+								</a>
+							</li>
+													<li>
+								<a href="https://business-intelligence.developpez.com/" data-idrub="61" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Business Intelligence
+								</a>
+							</li>
+													<li>
+								<a href="https://solutions-entreprise.developpez.com/erp-pgi/presentation-erp-pgi/" data-idrub="91" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;ERP / PGI
+								</a>
+							</li>
+													<li>
+								<a href="https://crm.developpez.com/" data-idrub="92" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;CRM
+								</a>
+							</li>
+													<li>
+								<a href="https://sas.developpez.com/" data-idrub="93" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;SAS
+								</a>
+							</li>
+													<li>
+								<a href="https://cloud-computing.developpez.com/" data-idrub="103" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Cloud Computing
+								</a>
+							</li>
+													<li>
+								<a href="https://sap.developpez.com/" data-idrub="106" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;SAP
+								</a>
+							</li>
+													<li>
+								<a href="https://www.developpez.net/forums/f1664/systemes/windows/windows-serveur/biztalk-server/" data-idrub="115" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Microsoft BizTalk Server
+								</a>
+							</li>
+													<li>
+								<a href="https://talend.developpez.com/" data-idrub="118" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Talend
+								</a>
+							</li>
+													<li>
+								<a href="https://ibmcloud.developpez.com/" data-idrub="135" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;IBM Cloud
+								</a>
+							</li>
+													<li>
+								<a href="https://intelligence-artificielle.developpez.com/" data-idrub="143" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Intelligence artificielle
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://applications.developpez.com/" data-idrub="88" data-niv="1">Applications</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://applications.developpez.com/" data-idrub="88" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Applications
+							</a>
+						</li>
+													<li>
+								<a href="https://open-source.developpez.com/" data-idrub="121" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Libres &amp; Open Source
+								</a>
+							</li>
+													<li>
+								<a href="https://openoffice-libreoffice.developpez.com/" data-idrub="116" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;OpenOffice &amp; LibreOffice
+								</a>
+							</li>
+													<li>
+								<a href="https://portail-projets.developpez.com/" data-idrub="98" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Projets
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://mobiles.developpez.com/" data-idrub="94" data-niv="1">Mobiles</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://mobiles.developpez.com/" data-idrub="94" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Mobiles
+							</a>
+						</li>
+													<li>
+								<a href="https://android.developpez.com/" data-idrub="95" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Android
+								</a>
+							</li>
+													<li>
+								<a href="https://ios.developpez.com/" data-idrub="101" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;iOS
+								</a>
+							</li>
+													<li>
+								<a href="https://windowsphone.developpez.com/" data-idrub="105" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Windows Phone
+								</a>
+							</li>
+											</ul>
+							</li>
+					<li>
+				<a href="https://systeme.developpez.com/" data-idrub="30" data-niv="1">Systèmes</a>
+									<ul class="gabarit_sousmenu">
+						<li>
+							<a href="https://systeme.developpez.com/" data-idrub="30" data-niv="2">
+								<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Systèmes
+							</a>
+						</li>
+													<li>
+								<a href="https://windows.developpez.com/" data-idrub="17" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Windows
+								</a>
+							</li>
+													<li>
+								<a href="https://linux.developpez.com/" data-idrub="18" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Linux
+								</a>
+							</li>
+													<li>
+								<a href="https://arduino.developpez.com/" data-idrub="142" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Arduino
+								</a>
+							</li>
+													<li>
+								<a href="https://securite.developpez.com/" data-idrub="40" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Sécurité
+								</a>
+							</li>
+													<li>
+								<a href="https://hardware.developpez.com/" data-idrub="64" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Hardware
+								</a>
+							</li>
+													<li>
+								<a href="https://hpc.developpez.com/" data-idrub="139" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;HPC
+								</a>
+							</li>
+													<li>
+								<a href="https://mac.developpez.com/" data-idrub="57" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Mac
+								</a>
+							</li>
+													<li>
+								<a href="https://raspberry-pi.developpez.com/" data-idrub="131" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Raspberry Pi
+								</a>
+							</li>
+													<li>
+								<a href="https://reseau.developpez.com/" data-idrub="70" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Réseau
+								</a>
+							</li>
+													<li>
+								<a href="https://green-it.developpez.com/" data-idrub="104" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Green IT
+								</a>
+							</li>
+													<li>
+								<a href="https://embarque.developpez.com/" data-idrub="110" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Systèmes embarqués
+								</a>
+							</li>
+													<li>
+								<a href="https://virtualisation.developpez.com/" data-idrub="108" data-niv="2">
+									<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Virtualisation
+								</a>
+							</li>
+											</ul>
+							</li>
+			</ul>
+</div>
+
+<ul id="gabarit_menu" style="padding-left:56px;">
+	<li><a href="https://www.developpez.com/" data-idrub="1" data-niv="1" style="padding:0;"><div id="gabarit_home"></div></a>
+			</li>
+	<li><a href="https://alm.developpez.com/" data-idrub="42" data-niv="1">ALM<!--<span class="gabarit_tooltip">Cycle de vie du logiciel</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://alm.developpez.com/" data-idrub="42" data-niv="2">ALM</a></li>
+				<li><a href="https://merise.developpez.com/" data-idrub="43" data-niv="2">Merise</a></li>
+				<li><a href="https://uml.developpez.com/" data-idrub="12" data-niv="2">UML</a></li>
+			</ul></li>
+	<li><a href="https://java.developpez.com/" data-idrub="4" data-niv="1">Java<!--<span class="gabarit_tooltip">Plateforme et langage Java</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://java.developpez.com/" data-idrub="4" data-niv="2">Java</a></li>
+				<li><a href="https://javaweb.developpez.com/" data-idrub="97" data-niv="2">Java Web</a></li>
+				<li><a href="https://spring.developpez.com/" data-idrub="87" data-niv="2">Spring</a></li>
+				<li><a href="https://android.developpez.com/" data-idrub="95" data-niv="2">Android</a></li>
+				<li><a href="https://eclipse.developpez.com/" data-idrub="55" data-niv="2">Eclipse</a></li>
+				<li><a href="https://netbeans.developpez.com/" data-idrub="66" data-niv="2">NetBeans</a></li>
+			</ul></li>
+	<li><a href="https://dotnet.developpez.com/" data-idrub="20" data-niv="1">.NET<!--<span class="gabarit_tooltip">Microsoft Framework .NET</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://dotnet.developpez.com/" data-idrub="20" data-niv="2">Microsoft DotNET</a></li>
+				<li><a href="https://visualstudio.developpez.com/" data-idrub="84" data-niv="2">Visual Studio</a></li>
+				<li><a href="https://dotnet.developpez.com/aspnet/" data-idrub="83" data-niv="2">ASP.NET</a></li>
+				<li><a href="https://dotnet.developpez.com/csharp/" data-idrub="81" data-niv="2">C#</a></li>
+				<li><a href="https://dotnet.developpez.com/vbnet/" data-idrub="82" data-niv="2">VB.NET</a></li>
+				<li><a href="https://windowsphone.developpez.com/" data-idrub="105" data-niv="2">Windows Phone</a></li>
+				<li><a href="https://windows-azure.developpez.com/" data-idrub="107" data-niv="2">Microsoft Azure</a></li>
+			</ul></li>
+	<li><a href="https://web.developpez.com/" data-idrub="8" data-niv="1">Dév. Web<!--<span class="gabarit_tooltip">Développement Web et Webmarketing</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://web.developpez.com/" data-idrub="8" data-niv="2">Développement Web</a></li>
+				<li><a href="https://ajax.developpez.com/" data-idrub="85" data-niv="2">AJAX</a></li>
+				<li><a href="https://apache.developpez.com/" data-idrub="71" data-niv="2">Apache</a></li>
+				<li><a href="https://asp.developpez.com/" data-idrub="10" data-niv="2">ASP</a></li>
+				<li><a href="https://css.developpez.com/" data-idrub="51" data-niv="2">CSS</a></li>
+				<li><a href="https://dart.developpez.com/" data-idrub="125" data-niv="2">Dart</a></li>
+				<li><a href="https://flash.developpez.com/" data-idrub="41" data-niv="2">Flash / Flex</a></li>
+				<li><a href="https://javascript.developpez.com/" data-idrub="45" data-niv="2">JavaScript</a></li>
+				<li><a href="https://nodejs.developpez.com/" data-idrub="141" data-niv="2">NodeJS</a></li>
+				<li><a href="https://php.developpez.com/" data-idrub="9" data-niv="2">PHP</a></li>
+				<li><a href="https://ruby.developpez.com/" data-idrub="53" data-niv="2">Ruby &amp; Rails</a></li>
+				<li><a href="https://typescript.developpez.com/" data-idrub="127" data-niv="2">TypeScript</a></li>
+				<li><a href="https://web-semantique.developpez.com/" data-idrub="111" data-niv="2">Web sémantique</a></li>
+				<li><a href="https://webmarketing.developpez.com/" data-idrub="80" data-niv="2">Webmarketing</a></li>
+				<li><a href="https://xhtml.developpez.com/" data-idrub="50" data-niv="2">(X)HTML</a></li>
+			</ul></li>
+	<li><a href="https://edi.developpez.com/" data-idrub="90" data-niv="1">EDI<!--<span class="gabarit_tooltip">Environnements de Développement Intégré</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://edi.developpez.com/" data-idrub="90" data-niv="2">EDI</a></li>
+				<li><a href="https://4d.developpez.com/" data-idrub="39" data-niv="2">4D</a></li>
+				<li><a href="https://delphi.developpez.com/" data-idrub="2" data-niv="2">Delphi</a></li>
+				<li><a href="https://eclipse.developpez.com/" data-idrub="55" data-niv="2">Eclipse</a></li>
+				<li><a href="https://jetbrains.developpez.com/" data-idrub="144" data-niv="2">JetBrains</a></li>
+				<li><a href="https://labview.developpez.com/" data-idrub="72" data-niv="2">LabVIEW</a></li>
+				<li><a href="https://netbeans.developpez.com/" data-idrub="66" data-niv="2">NetBeans</a></li>
+				<li><a href="https://matlab.developpez.com/" data-idrub="58" data-niv="2">MATLAB</a></li>
+				<li><a href="https://scilab.developpez.com/" data-idrub="120" data-niv="2">Scilab</a></li>
+				<li><a href="https://visualstudio.developpez.com/" data-idrub="84" data-niv="2">Visual Studio</a></li>
+				<li><a href="https://wind.developpez.com/" data-idrub="74" data-niv="2">WinDev</a></li>
+				<li><a href="https://vb.developpez.com/" data-idrub="5" data-niv="2">Visual Basic 6</a></li>
+				<li><a href="https://lazarus.developpez.com/" data-idrub="96" data-niv="2">Lazarus</a></li>
+				<li><a href="https://qt-creator.developpez.com/" data-idrub="109" data-niv="2">Qt Creator</a></li>
+			</ul></li>
+	<li><a href="https://programmation.developpez.com/" data-idrub="119" data-niv="1">Programmation<!--<span class="gabarit_tooltip">Programmation et langages de programmation applicatifs</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://programmation.developpez.com/" data-idrub="119" data-niv="2">Programmation</a></li>
+				<li><a href="https://algo.developpez.com/" data-idrub="47" data-niv="2">Débuter - Algorithmique</a></li>
+				<li><a href="https://jeux.developpez.com/" data-idrub="38" data-niv="2">2D - 3D - Jeux</a></li>
+				<li><a href="https://asm.developpez.com/" data-idrub="16" data-niv="2">Assembleur</a></li>
+				<li><a href="https://c.developpez.com/" data-idrub="3" data-niv="2">C</a></li>
+				<li><a href="https://cpp.developpez.com/" data-idrub="59" data-niv="2">C++</a></li>
+				<li><a href="https://d.developpez.com/" data-idrub="123" data-niv="2">D</a></li>
+				<li><a href="https://go.developpez.com/" data-idrub="124" data-niv="2">Go</a></li>
+				<li><a href="https://kotlin.developpez.com/" data-idrub="145" data-niv="2">Kotlin</a></li>
+				<li><a href="https://objective-c.developpez.com/" data-idrub="117" data-niv="2">Objective C</a></li>
+				<li><a href="https://pascal.developpez.com/" data-idrub="7" data-niv="2">Pascal</a></li>
+				<li><a href="https://perl.developpez.com/" data-idrub="29" data-niv="2">Perl</a></li>
+				<li><a href="https://python.developpez.com/" data-idrub="27" data-niv="2">Python</a></li>
+				<li><a href="https://rust.developpez.com/" data-idrub="137" data-niv="2">Rust</a></li>
+				<li><a href="https://swift.developpez.com/" data-idrub="128" data-niv="2">Swift</a></li>
+				<li><a href="https://qt.developpez.com/" data-idrub="65" data-niv="2">Qt</a></li>
+				<li><a href="https://xml.developpez.com/" data-idrub="11" data-niv="2">XML</a></li>
+				<li><a href="https://general.developpez.com/cours/" data-idrub="21" data-niv="2">Autres</a></li>
+			</ul></li>
+	<li><a href="https://sgbd.developpez.com/" data-idrub="13" data-niv="1">SGBD<!--<span class="gabarit_tooltip">Systèmes de Gestion de Bases de Données</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://sgbd.developpez.com/" data-idrub="13" data-niv="2">SGBD &amp; SQL</a></li>
+				<li><a href="https://4d.developpez.com/" data-idrub="39" data-niv="2">4D</a></li>
+				<li><a href="https://access.developpez.com/" data-idrub="19" data-niv="2">Access</a></li>
+				<li><a href="https://big-data.developpez.com/" data-idrub="126" data-niv="2">Big Data</a></li>
+				<li><a href="https://db2.developpez.com/" data-idrub="36" data-niv="2">DB2</a></li>
+				<li><a href="https://firebird.developpez.com/" data-idrub="73" data-niv="2">Firebird</a></li>
+				<li><a href="https://interbase.developpez.com/" data-idrub="32" data-niv="2">InterBase</a></li>
+				<li><a href="https://mysql.developpez.com/" data-idrub="31" data-niv="2">MySQL</a></li>
+				<li><a href="https://nosql.developpez.com/" data-idrub="114" data-niv="2">NoSQL</a></li>
+				<li><a href="https://postgresql.developpez.com/" data-idrub="33" data-niv="2">PostgreSQL</a></li>
+				<li><a href="https://oracle.developpez.com/" data-idrub="25" data-niv="2">Oracle</a></li>
+				<li><a href="https://sybase.developpez.com/" data-idrub="37" data-niv="2">Sybase</a></li>
+				<li><a href="https://sqlserver.developpez.com/" data-idrub="34" data-niv="2">SQL-Server</a></li>
+			</ul></li>
+	<li><a href="https://office.developpez.com/" data-idrub="54" data-niv="1">Office<!--<span class="gabarit_tooltip">Bureautique pour l'entreprise</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://office.developpez.com/" data-idrub="54" data-niv="2">Microsoft Office</a></li>
+				<li><a href="https://access.developpez.com/" data-idrub="19" data-niv="2">Access</a></li>
+				<li><a href="https://excel.developpez.com/" data-idrub="75" data-niv="2">Excel</a></li>
+				<li><a href="https://word.developpez.com/" data-idrub="76" data-niv="2">Word</a></li>
+				<li><a href="https://outlook.developpez.com/" data-idrub="77" data-niv="2">Outlook</a></li>
+				<li><a href="https://powerpoint.developpez.com/" data-idrub="78" data-niv="2">PowerPoint</a></li>
+				<li><a href="https://sharepoint.developpez.com/" data-idrub="79" data-niv="2">SharePoint</a></li>
+				<li><a href="https://project.developpez.com/" data-idrub="99" data-niv="2">Microsoft Project</a></li>
+				<li><a href="https://openoffice-libreoffice.developpez.com/" data-idrub="116" data-niv="2">OpenOffice &amp; LibreOffice</a></li>
+			</ul></li>
+	<li><a href="https://solutions-entreprise.developpez.com/" data-idrub="86" data-niv="1">Solutions d'entreprise<!--<span class="gabarit_tooltip">Autres logiciels pour l'entreprise</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://solutions-entreprise.developpez.com/" data-idrub="86" data-niv="2">Solutions d'entreprise</a></li>
+				<li><a href="https://big-data.developpez.com/" data-idrub="126" data-niv="2">Big Data</a></li>
+				<li><a href="https://bpm.developpez.com/" data-idrub="134" data-niv="2">BPM</a></li>
+				<li><a href="https://business-intelligence.developpez.com/" data-idrub="61" data-niv="2">Business Intelligence</a></li>
+				<li><a href="https://solutions-entreprise.developpez.com/erp-pgi/presentation-erp-pgi/" data-idrub="91" data-niv="2">ERP / PGI</a></li>
+				<li><a href="https://crm.developpez.com/" data-idrub="92" data-niv="2">CRM</a></li>
+				<li><a href="https://sas.developpez.com/" data-idrub="93" data-niv="2">SAS</a></li>
+				<li><a href="https://cloud-computing.developpez.com/" data-idrub="103" data-niv="2">Cloud Computing</a></li>
+				<li><a href="https://sap.developpez.com/" data-idrub="106" data-niv="2">SAP</a></li>
+				<li><a href="https://www.developpez.net/forums/f1664/systemes/windows/windows-serveur/biztalk-server/" data-idrub="115" data-niv="2">Microsoft BizTalk Server</a></li>
+				<li><a href="https://talend.developpez.com/" data-idrub="118" data-niv="2">Talend</a></li>
+				<li><a href="https://ibmcloud.developpez.com/" data-idrub="135" data-niv="2">IBM Cloud</a></li>
+				<li><a href="https://intelligence-artificielle.developpez.com/" data-idrub="143" data-niv="2">Intelligence artificielle</a></li>
+			</ul></li>
+	<li><a href="https://applications.developpez.com/" data-idrub="88" data-niv="1">Applications<!--<span class="gabarit_tooltip">Applications logicielles</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://applications.developpez.com/" data-idrub="88" data-niv="2">Applications</a></li>
+				<li><a href="https://open-source.developpez.com/" data-idrub="121" data-niv="2">Libres &amp; Open Source</a></li>
+				<li><a href="https://openoffice-libreoffice.developpez.com/" data-idrub="116" data-niv="2">OpenOffice &amp; LibreOffice</a></li>
+				<li><a href="https://portail-projets.developpez.com/" data-idrub="98" data-niv="2">Projets</a></li>
+			</ul></li>
+	<li><a href="https://mobiles.developpez.com/" data-idrub="94" data-niv="1">Mobiles<!--<span class="gabarit_tooltip">Logiciels et matériels mobiles</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://mobiles.developpez.com/" data-idrub="94" data-niv="2">Mobiles</a></li>
+				<li><a href="https://android.developpez.com/" data-idrub="95" data-niv="2">Android</a></li>
+				<li><a href="https://ios.developpez.com/" data-idrub="101" data-niv="2">iOS</a></li>
+				<li><a href="https://windowsphone.developpez.com/" data-idrub="105" data-niv="2">Windows Phone</a></li>
+			</ul></li>
+	<li><a href="https://systeme.developpez.com/" data-idrub="30" data-niv="1">Systèmes<!--<span class="gabarit_tooltip">Logiciels et matériels systèmes</span>--></a>
+			<ul class="gabarit_sousmenu">
+				<li><a href="https://systeme.developpez.com/" data-idrub="30" data-niv="2">Systèmes</a></li>
+				<li><a href="https://windows.developpez.com/" data-idrub="17" data-niv="2">Windows</a></li>
+				<li><a href="https://linux.developpez.com/" data-idrub="18" data-niv="2">Linux</a></li>
+				<li><a href="https://arduino.developpez.com/" data-idrub="142" data-niv="2">Arduino</a></li>
+				<li><a href="https://securite.developpez.com/" data-idrub="40" data-niv="2">Sécurité</a></li>
+				<li><a href="https://hardware.developpez.com/" data-idrub="64" data-niv="2">Hardware</a></li>
+				<li><a href="https://hpc.developpez.com/" data-idrub="139" data-niv="2">HPC</a></li>
+				<li><a href="https://mac.developpez.com/" data-idrub="57" data-niv="2">Mac</a></li>
+				<li><a href="https://raspberry-pi.developpez.com/" data-idrub="131" data-niv="2">Raspberry Pi</a></li>
+				<li><a href="https://reseau.developpez.com/" data-idrub="70" data-niv="2">Réseau</a></li>
+				<li><a href="https://green-it.developpez.com/" data-idrub="104" data-niv="2">Green IT</a></li>
+				<li><a href="https://embarque.developpez.com/" data-idrub="110" data-niv="2">Systèmes embarqués</a></li>
+				<li><a href="https://virtualisation.developpez.com/" data-idrub="108" data-niv="2">Virtualisation</a></li>
+			</ul></li>
+</ul>
+
+<ul id="gabarit_barre1">
+<li><a href="http://www.developpez.net/forums/f443/php/">Forum PHP</a></li><li><a href="http://php.developpez.com/faq/">FAQ PHP</a></li><li><a href="http://php.developpez.com/cours/">Cours PHP</a></li><li><a href="http://php.developpez.com/telecharger/index/categorie/18/Sources-PHP">Sources PHP</a></li><li><a href="http://php.developpez.com/livres/">Livres PHP</a></li><li><a href="http://php.developpez.com/scripts/">Scripts PHP</a></li><li><a href="http://php.developpez.com/telecharger/index/categorie/210/Outils-pour-PHP">Outils PHP</a></li><li class="gabarit_selection"><a href="http://laravel.developpez.com/">Laravel</a></li><li><a href="http://symfony.developpez.com/">Symfony</a></li><li><a href="http://zend-framework.developpez.com/">Zend Framework</a></li></ul>
+
+<div id="gabarit_barre2">
+	<a class="gabarit_social gabarit_rss" href="http://laravel.developpez.com/index/rss" target="_blank" title="Flux RSS"></a>
+	<ul>
+<li><a href="https://laravel.developpez.com/">Actualités Laravel</a></li><li><a href="https://www.developpez.net/forums/f2105/php/bibliotheques-frameworks/laravel/">Forum Laravel</a></li><li><a href="https://laravel.developpez.com/cours-tutoriels/">Cours et Tutoriels Laravel</a></li>	</ul>
+</div>
+
+</nav>
+</header>
+<section>
+
+<div id="gabarit_pubBB">
+<div id="gabarit_pub0"></div><div id="lk140lt0f" class="dvpb0" style="display: inline-block; width: 728px; height: 90px"><style type="text/css">html, body { margin: 0; padding: 0; }</style><iframe src="./Cours Laravel 5.5 - les bases_files/show_i.html" width="728" height="90" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe><style type="text/css"> #gabarit_pub0 { display: inline-block; }</style></div>
+</div>
+
+<div class="contenuPage">		<article class="ArticleComplet" itemscope="" itemtype="http://schema.org/Article" style="margin: 0px 20px;">
+<meta itemprop="genre" content="informatique">
+<meta itemprop="inLanguage" content="fr-FR">
+		
+<header class="EnteteTitres">
+<h1 class="titre-article" itemprop="name">Cours pour apprendre à utiliser le framework Laravel 5.5</h1>
+<h2 class="soustitre-article">
+    <b>Les bases</b>
+  </h2>
+</header><nav class="nav-sommaire ArticleHorsLigne fixed2" style="width: 314px;"><header><h1 class="TitreHeader StopArrondi ToggleGecko">Table des matières<img class="ToggleImgPlier" title="Plier" alt="Plier" src="./Cours Laravel 5.5 - les bases_files/fleche-haut-bleue.png"><img class="ToggleImgDeplier" title="Déplier" alt="Déplier" style="display:none;" src="./Cours Laravel 5.5 - les bases_files/fleche-bas-bleue.png"></h1></header><ul id="nav_sommaire_ul_principal" class="nav-sommaire-ul" style="overflow-y: auto;">
+  
+	
+  
+  
+  
+  
+  
+  
+  <li><a class="summaryIndent0" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#LX">X. Configuration, session et gestion de fichiers</a><ul class="nav-sommaire-ul IndentationX">
+      
+      
+      <li><a class="summaryIndent1" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#LX-A">X-A. La configuration</a></li>
+      <li><a class="summaryIndent1" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#LX-B">X-B. Les sessions</a></li>
+      <li><a class="summaryIndent1" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#LX-C">X-C. La gestion des fichiers</a></li>
+      <li><a class="summaryIndent1" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#LX-D">X-D. La requête de formulaire</a></li>
+      <li><a class="summaryIndent1" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#LX-E">X-E. Les routes et le contrôleur</a></li>
+      <li><a class="summaryIndent1" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#LX-F">X-F. Les vues</a></li>
+      <li><a class="summaryIndent1" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#LX-G">X-G.  En résumé</a></li>
+    </ul></li>
+  
+</ul></nav><section class="ArticleHorsLigne"><section class="articleBody" itemprop="articleBody" style="margin-left: 339px; margin-top: 0px; clear: none;"><div class="cachee"><div class="barreNavigation" style="margin-top: -25px;"><hr class="hr-separation"><a class="lientelechargement" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=envoyer-un-email"><img title="Page précédente" alt="précédent" src="./Cours Laravel 5.5 - les bases_files/kitprecedent.png"></a><a class="lientelechargement" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/"><img title="Revenir au sommaire" alt="sommaire" src="./Cours Laravel 5.5 - les bases_files/kitsommaire.png"></a><a class="lientelechargement" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=injection-de-dependance-conteneur-et-facades"><img alt="suivant" title="Page suivante" src="./Cours Laravel 5.5 - les bases_files/kitsuivant.png"></a><hr class="hr-separation"></div></div>
+  
+	
+  
+  
+  
+  
+  
+  
+  
+		<h1 class="TitreSection0" id="LX">X. Configuration, session et gestion de fichiers<a class="HautPage" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#" title="Haut de page">▲</a></h1><div class="BlocSection0">
+      
+      <p>Dans ce chapitre nous verrons la configuration, la gestion des sessions et des fichiers avec un exemple simple d'envoi et d'enregistrement de fichiers images dans un dossier à partir d'un formulaire.</p>
+      
+		<h2 class="TitreSection1" id="LX-A">X-A. La configuration<a class="HautPage" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#" title="Haut de page">▲</a></h2><div class="BlocSection1">
+        
+        <p>Tout ce qui concerne la configuration de Laravel se trouve dans le dossier <b>config&nbsp;</b>:</p>
+        <div class="div-figure"><figure class="figure-center"><img class="figure-img-caption" src="./Cours Laravel 5.5 - les bases_files/image-82.png" alt="Image non disponible" width="159" height="267"></figure></div>
+        <p>De nombreuses valeurs de configuration sont définies dans le fichier <b>.env</b>.</p>
+        <p>Les fichiers de configuration contiennent en fait juste un tableau avec des clés et des valeurs. Par exemple pour les vues (<b>view.php</b>)&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e13653">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e13653" onclick="selectionCode(&#39;contenuCoded0e13653&#39;, &#39;IdTitreCode-d0e13653&#39;);">Sélectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br>2.<br>3.<br>4.<br>5.<br>6.<br>7.<br>8.<br>9.<br>10.<br>11.<br></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e13653"><code class="php_label">&lt;?php</code>
+
+<code class="php_mixte_keyword1">return</code> <code class="php_mixte_operator">[</code>
+
+    <code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">paths</code><code class="php_mixte_literal1">'</code> <code class="php_mixte_operator">=</code><code class="php_mixte_operator">&gt;</code> <code class="php_mixte_operator">[</code>
+        resource_path(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">views</code><code class="php_mixte_literal1">'</code>)<code class="php_mixte_operator">,</code>
+    <code class="php_mixte_operator">]</code><code class="php_mixte_operator">,</code>
+
+    <code class="php_mixte_operator">.</code><code class="php_mixte_operator">.</code><code class="php_mixte_operator">.</code>
+
+<code class="php_mixte_operator">]</code><code class="php_mixte_operator">;</code>
+</code></pre></div></div>
+        <p>On a la clé <b>paths</b> et la valeur&nbsp;: un tableau des clés et des valeurs. Pour récupérer une valeur il suffit d'utiliser sa clé avec l'helper <b>config</b>&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e13733">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e13733" onclick="selectionCode(&#39;contenuCoded0e13733&#39;, &#39;IdTitreCode-d0e13733&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e13733" class="contenuCode">config(<code class="php_literal1">'</code><code class="php_mixte_literal1">view</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">paths</code><code class="php_literal1">'</code>)<code class="php_operator">;</code></code></pre></div>
+        <p>On utilise le nom du fichier (<b>view</b>) et le nom de la clé (<b>paths</b>) séparés par un point.</p>
+        <p>On peut aussi changer une valeur&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e13761">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e13761" onclick="selectionCode(&#39;contenuCoded0e13761&#39;, &#39;IdTitreCode-d0e13761&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e13761" class="contenuCode">config(<code class="php_operator">[</code><code class="php_literal1">'</code><code class="php_mixte_literal1">view</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">paths</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> resource_path()<code class="php_operator">.</code><code class="php_literal1">'</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">mes_vues</code><code class="php_literal1">'</code><code class="php_operator">]</code>)<code class="php_operator">;</code></code></pre></div>
+        <p>Si je fais effectivement cela, mes vues, au lieu d'être cherchées dans le dossier <b>resources/views</b> seront cherchées dans le dossier <b>resources/mes_vues</b>.</p>
+        <div class="TextAlign-center"><table class="tableau" style="border-width:0px;">
+          <tbody><tr>
+            <td class="colonne" style="text-align:center;">
+              <p><span class="italique">Lorsqu'on change ainsi une valeur de configuration ce n'est valable que pour la requête en cours.</span> </p>
+            </td>
+          </tr>
+        </tbody></table></div>
+        <p>Vous pouvez évidemment créer vos propres fichiers de configuration. Pour l'exemple de ce chapitre on va avoir besoin justement d'utiliser une configuration. Comme notre application doit enregistrer des fichiers d'images dans un dossier il faut définir l'emplacement et le nom de ce dossier de destination. On va donc créer un fichier <b>images.php</b>&nbsp;:</p>
+        <div class="div-figure"><figure class="figure-center"><img class="figure-img-caption" src="./Cours Laravel 5.5 - les bases_files/image-83.png" alt="Image non disponible" width="153" height="251"></figure></div>
+        <p>Dans ce fichier on va définir le nom du dossier&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e13831">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e13831" onclick="selectionCode(&#39;contenuCoded0e13831&#39;, &#39;IdTitreCode-d0e13831&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e13831" class="contenuCode"><a class="php_keyword1 lien_documentation_code" target="_blank" href="http://www.php.net/manual-lookup.php?pattern=return&amp;lang=fr&amp;scope=quickref"><span>return</span></a> <code class="php_operator">[</code><code class="php_literal1">'</code><code class="php_mixte_literal1">path</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">uploads</code><code class="php_literal1">'</code><code class="php_operator">]</code><code class="php_operator">;</code></code></pre></div>
+        <p><span class="italique">En production pour gagner en performance il est conseillé de mettre toute la configuration en cache dans un seul fichier avec la commande <b>php artisan config:cache</b>.</span> </p>
+      </div>
+      
+		<h2 class="TitreSection1" id="LX-B">X-B. Les sessions<a class="HautPage" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#" title="Haut de page">▲</a></h2><div class="BlocSection1">
+        
+        <p>Étant donné que les requêtes HTTP sont fugitives et ne laissent aucune trace, il est important de disposer d'un système qui permet de mémoriser des informations entre deux requêtes. C'est justement l'objet des sessions.</p>
+        <p>La configuration des sessions se trouve dans le fichier de configuration <b>session.php</b>. On trouve dans le fichier<b> .env</b> la définition du driver&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e13886">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e13886" onclick="selectionCode(&#39;contenuCoded0e13886&#39;, &#39;IdTitreCode-d0e13886&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e13886" class="contenuCode">SESSION_DRIVER=file</code></pre></div>
+        <p>Par défaut c'est un fichier (dans <b>storage/framework/sessions</b>) qui mémorise les informations des sessions mais on peut aussi utiliser&nbsp;: les cookies, la base de données, <a class="lienArticle https" href="https://php.net/manual/fr/book.apc.php">apc</a>, <a class="lienArticle https" href="https://memcached.org/">memcached</a>, <a class="lienArticle simple" href="http://redis.io/">redis</a>…</p>
+        <p>Quel que soit le driver utilisé l'helper <b>session </b>de Laravel permet une gestion simplifiée des sessions. Vous pouvez ainsi créer une variable de session&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e13910">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e13910" onclick="selectionCode(&#39;contenuCoded0e13910&#39;, &#39;IdTitreCode-d0e13910&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e13910" class="contenuCode">session(<code class="php_operator">[</code><code class="php_literal1">'</code><code class="php_mixte_literal1">clé</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">valeur</code><code class="php_literal1">'</code><code class="php_operator">]</code>)<code class="php_operator">;</code></code></pre></div>
+        <p>Vous pouvez aussi récupérer une valeur à partir de sa clé&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e13941">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e13941" onclick="selectionCode(&#39;contenuCoded0e13941&#39;, &#39;IdTitreCode-d0e13941&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e13941" class="contenuCode"><code class="php_keyword3">$valeur</code> <code class="php_operator">=</code> session(<code class="php_literal1">'</code><code class="php_mixte_literal1">clef</code><code class="php_literal1">'</code>)<code class="php_operator">;</code></code></pre></div>
+        <p>Vous pouvez prévoir une valeur par défaut&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e13961">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e13961" onclick="selectionCode(&#39;contenuCoded0e13961&#39;, &#39;IdTitreCode-d0e13961&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e13961" class="contenuCode"><code class="php_keyword3">$valeur</code> <code class="php_operator">=</code> session(<code class="php_literal1">'</code><code class="php_mixte_literal1">clef</code><code class="php_literal1">'</code><code class="php_operator">,</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">valeur</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">par</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">défaut</code><code class="php_literal1">'</code>)<code class="php_operator">;</code></code></pre></div>
+        <p>Il est souvent utile (ce sera le cas pour notre exemple) de savoir si une certaine clé est présente en session&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e13998">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e13998" onclick="selectionCode(&#39;contenuCoded0e13998&#39;, &#39;IdTitreCode-d0e13998&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e13998" class="contenuCode"><a class="php_keyword1 lien_documentation_code" target="_blank" href="http://www.php.net/manual-lookup.php?pattern=if&amp;lang=fr&amp;scope=quickref"><span>if</span></a> (session()<code class="php_operator">-</code><code class="php_operator">&gt;</code>has(<code class="php_literal1">'</code><code class="php_mixte_literal1">error</code><code class="php_literal1">'</code>)) <code class="php_operator">.</code><code class="php_operator">.</code><code class="php_operator">.</code></code></pre></div>
+        <p>Ces informations demeurent pour le même client à travers ses requêtes. Laravel s'occupe de ces informations, on se contente de lui indiquer un couple clé-valeur et il s'occupe de tout.</p>
+        <p><span class="italique">Ce ne sont là que les méthodes de base pour les sessions, vous trouverez tous les renseignements complémentaires </span><a class="lienArticle https" href="https://laravel.com/docs/5.5/session">dans la documentation</a><span class="italique">.</span> </p>
+      </div>
+      
+		<h2 class="TitreSection1" id="LX-C">X-C. La gestion des fichiers<a class="HautPage" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#" title="Haut de page">▲</a></h2><div class="BlocSection1">
+        
+        <p>Laravel utilise <a class="lienArticle https" href="https://github.com/thephpleague/flysystem">Flysystem</a> comme composant de gestion de fichiers. Il en propose une API bien pensée et facile à utiliser. On peut ainsi manipuler fichiers et dossiers de la même manière en local ou à distance, que ce soit en FTP ou sur le cloud.</p>
+        <p>La configuration du système se trouve dans le fichier <b>config/filesystem.php</b>. Par défaut on est en local&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e14051">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e14051" onclick="selectionCode(&#39;contenuCoded0e14051&#39;, &#39;IdTitreCode-d0e14051&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e14051" class="contenuCode"><code class="php_literal1">'</code><code class="php_mixte_literal1">default</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> env(<code class="php_literal1">'</code><code class="php_mixte_literal1">FILESYSTEM_DRIVER</code><code class="php_literal1">'</code><code class="php_operator">,</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">local</code><code class="php_literal1">'</code>)<code class="php_operator">,</code></code></pre></div>
+        <p>Mais on peut aussi choisir ftp, <a class="lienArticle https" href="https://aws.amazon.com/fr/s3/">s3</a> ou <a class="lienArticle https" href="https://www.rackspace.com/">rackspace</a> (pour ces deux derniers il faut installer les composants correspondants). On peut aussi mettre en place un accès à d'autres possibilités et il existe des composants à ajouter, comme par exemple <a class="lienArticle simple" href="http://packalyst.com/packages/package/graham-campbell/dropbox">celui-ci pour Dropbox</a>.</p>
+        <p>On peut définir des «&nbsp;disques&nbsp;» (<b>disks</b>) qui sont des cibles combinant un driver, un dossier racine et différents éléments de configuration&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e14101">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e14101" onclick="selectionCode(&#39;contenuCoded0e14101&#39;, &#39;IdTitreCode-d0e14101&#39;);">Sélectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br>2.<br>3.<br>4.<br>5.<br>6.<br>7.<br>8.<br>9.<br>10.<br>11.<br>12.<br>13.<br>14.<br>15.<br>16.<br>17.<br>18.<br>19.<br>20.<br>21.<br>22.<br>23.<br></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e14101"><code class="php_literal1">'</code><code class="php_mixte_literal1">disks</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_operator">[</code>
+
+    <code class="php_literal1">'</code><code class="php_mixte_literal1">local</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_operator">[</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">driver</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">local</code><code class="php_literal1">'</code><code class="php_operator">,</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">root</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> storage_path(<code class="php_literal1">'</code><code class="php_mixte_literal1">app</code><code class="php_literal1">'</code>)<code class="php_operator">,</code>
+    <code class="php_operator">]</code><code class="php_operator">,</code>
+
+    <code class="php_literal1">'</code><code class="php_mixte_literal1">public</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_operator">[</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">driver</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">local</code><code class="php_literal1">'</code><code class="php_operator">,</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">root</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> storage_path(<code class="php_literal1">'</code><code class="php_mixte_literal1">app</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">public</code><code class="php_literal1">'</code>)<code class="php_operator">,</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">url</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> env(<code class="php_literal1">'</code><code class="php_mixte_literal1">APP_URL</code><code class="php_literal1">'</code>)<code class="php_operator">.</code><code class="php_literal1">'</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">storage</code><code class="php_literal1">'</code><code class="php_operator">,</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">visibility</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">public</code><code class="php_literal1">'</code><code class="php_operator">,</code>
+    <code class="php_operator">]</code><code class="php_operator">,</code>
+
+    <code class="php_literal1">'</code><code class="php_mixte_literal1">s3</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_operator">[</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">driver</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">s3</code><code class="php_literal1">'</code><code class="php_operator">,</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">key</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> env(<code class="php_literal1">'</code><code class="php_mixte_literal1">AWS_KEY</code><code class="php_literal1">'</code>)<code class="php_operator">,</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">secret</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> env(<code class="php_literal1">'</code><code class="php_mixte_literal1">AWS_SECRET</code><code class="php_literal1">'</code>)<code class="php_operator">,</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">region</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> env(<code class="php_literal1">'</code><code class="php_mixte_literal1">AWS_REGION</code><code class="php_literal1">'</code>)<code class="php_operator">,</code>
+        <code class="php_literal1">'</code><code class="php_mixte_literal1">bucket</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> env(<code class="php_literal1">'</code><code class="php_mixte_literal1">AWS_BUCKET</code><code class="php_literal1">'</code>)<code class="php_operator">,</code>
+    <code class="php_operator">]</code><code class="php_operator">,</code>
+
+<code class="php_operator">]</code><code class="php_operator">,</code>
+</code></pre></div></div>
+        <p>Donc par défaut c'est le disque local qui est actif et le dossier racine est <b>storage/app</b>.</p>
+        <p>Autrement dit si j'utilise ce code&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e14487">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e14487" onclick="selectionCode(&#39;contenuCoded0e14487&#39;, &#39;IdTitreCode-d0e14487&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e14487" class="contenuCode">Storage<code class="php_operator">:</code><code class="php_operator">:</code>disk(<code class="php_literal1">'</code><code class="php_mixte_literal1">local</code><code class="php_literal1">'</code>)<code class="php_operator">-</code><code class="php_operator">&gt;</code>put(<code class="php_literal1">'</code><code class="php_mixte_literal1">recettes</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">txt</code><code class="php_literal1">'</code><code class="php_operator">,</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">Contenu</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">du</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">fichier</code><code class="php_literal1">'</code>)<code class="php_operator">;</code></code></pre></div>
+        <p>Je vais envoyer le fichier <b>recettes.txt</b> dans le dossier <b>storage/app</b>.</p>
+        <p>Et si j'utilise ce code&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e14549">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e14549" onclick="selectionCode(&#39;contenuCoded0e14549&#39;, &#39;IdTitreCode-d0e14549&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e14549" class="contenuCode">Storage<code class="php_operator">:</code><code class="php_operator">:</code>disk(<code class="php_literal1">'</code><code class="php_mixte_literal1">public</code><code class="php_literal1">'</code>)<code class="php_operator">-</code><code class="php_operator">&gt;</code>put(<code class="php_literal1">'</code><code class="php_mixte_literal1">recettes</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">txt</code><code class="php_literal1">'</code><code class="php_operator">,</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">Contenu</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">du</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">fichier</code><code class="php_literal1">'</code>)<code class="php_operator">;</code></code></pre></div>
+        <p>Cette fois j'envoie le fichier dans le dossier <b>storage/app/public</b>. Par convention ce dossier doit être accessible depuis le web.</p>
+        <p>Mais je vous ai dit précédemment que seul le dossier <b>public</b> à la racine doit être accessible. Alors&nbsp;?</p>
+        <p>Alors pour que ce soit possible il faut créer un lien symbolique <b>public/storage</b> qui pointe sur <b>storage/app/public</b>. Il y a d'ailleurs une commande d'Artisan pour ça&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e14620">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e14620" onclick="selectionCode(&#39;contenuCoded0e14620&#39;, &#39;IdTitreCode-d0e14620&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e14620" class="contenuCode">php artisan storage:link</code></pre></div>
+        <p>Mais franchement je préfère créer directement un dossier dans <b>public</b>. Les motivations avancées (ne pas perdre de fichiers au déploiement) me paraissent trop minces.</p>
+        <p>Donc rien n'empêche de changer la configuration&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e14632">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e14632" onclick="selectionCode(&#39;contenuCoded0e14632&#39;, &#39;IdTitreCode-d0e14632&#39;);">Sélectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br>2.<br>3.<br>4.<br>5.<br></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e14632"><code class="php_literal1">'</code><code class="php_mixte_literal1">public</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_operator">[</code>
+    <code class="php_literal1">'</code><code class="php_mixte_literal1">driver</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">local</code><code class="php_literal1">'</code><code class="php_operator">,</code>
+    <code class="php_literal1">'</code><code class="php_mixte_literal1">root</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> public_path()<code class="php_operator">,</code>
+    <code class="php_literal1">'</code><code class="php_mixte_literal1">visibility</code><code class="php_literal1">'</code> <code class="php_operator">=</code><code class="php_operator">&gt;</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">public</code><code class="php_literal1">'</code><code class="php_operator">,</code>
+<code class="php_operator">]</code><code class="php_operator">,</code>
+</code></pre></div></div>
+        <p>Ainsi le disque «&nbsp;public&nbsp;» pointe sur le dossier <b>public</b>. C'est d'ailleurs ce qu'on va faire pour l'exemple de ce chapitre.</p>
+        <p>Il y a de nombreuses méthodes pour manipuler dossiers et fichiers, je ne vais pas développer tout ça pour le moment, vous avez le détail dans la documentation. On va surtout utiliser les possibilités de téléchargement des fichiers dans ce chapitre.</p>
+      </div>
+      
+		<h2 class="TitreSection1" id="LX-D">X-D. La requête de formulaire<a class="HautPage" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#" title="Haut de page">▲</a></h2><div class="BlocSection1">
+        
+        <p>Nous allons encore avoir besoin d'une requête de formulaire pour la validation. Comme nous l'avons déjà vu nous utilisons la commande d'Artisan pour la créer&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e14736">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e14736" onclick="selectionCode(&#39;contenuCoded0e14736&#39;, &#39;IdTitreCode-d0e14736&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e14736" class="contenuCode">php artisan make:request ImagesRequest</code></pre></div>
+        <p>Vous devez trouver le fichier ici&nbsp;:</p>
+        <div class="div-figure"><figure class="figure-center"><img class="figure-img-caption" src="./Cours Laravel 5.5 - les bases_files/image-84.png" alt="Image non disponible" width="192" height="171"></figure></div>
+        <p>Changez le code pour celui-ci&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e14747">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e14747" onclick="selectionCode(&#39;contenuCoded0e14747&#39;, &#39;IdTitreCode-d0e14747&#39;);">Sélectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br>2.<br>3.<br>4.<br>5.<br>6.<br>7.<br>8.<br>9.<br>10.<br>11.<br>12.<br>13.<br>14.<br>15.<br>16.<br>17.<br>18.<br>19.<br>20.<br>21.<br>22.<br>23.<br>24.<br>25.<br>26.<br>27.<br>28.<br></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e14747"><code class="php_label">&lt;?php</code>
+ 
+<code class="php_mixte_keyword1">namespace</code> App\Http\Requests<code class="php_mixte_operator">;</code>
+ 
+<code class="php_mixte_keyword1">use</code> Illuminate\Foundation\Http\FormRequest<code class="php_mixte_operator">;</code>
+ 
+<code class="php_mixte_keyword1">class</code><code class="php_mixte_keyword1"> </code>ImagesRequest <code class="php_mixte_keyword1">extends</code> FormRequest
+<code class="php_mixte_operator">{</code>
+    <code class="php_mixte_comment3">/**</code>
+<code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">*</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">Determine</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">if</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">the</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">user</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">is</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">authorized</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">to</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">make</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">this</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">request</code><code class="php_mixte_comment3">.</code>
+<code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">*</code>
+<code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">*</code><code class="php_mixte_comment3"> </code><code class="php_mixte_label">@return</code><code class="php_mixte_comment3"> </code><code class="php_mixte_operator">bool</code>
+<code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">*/</code>
+    <code class="php_mixte_keyword1">public</code> <code class="php_mixte_keyword1">function</code> authorize()
+    <code class="php_mixte_operator">{</code>
+        <code class="php_mixte_keyword1">return</code> <code class="php_mixte_keyword1">true</code><code class="php_mixte_operator">;</code>
+    <code class="php_mixte_operator">}</code>
+ 
+    <code class="php_mixte_comment3">/**</code>
+<code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">*</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">Get</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">the</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">validation</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">rules</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">that</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">apply</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">to</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">the</code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">request</code><code class="php_mixte_comment3">.</code>
+<code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">*</code>
+<code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">*</code><code class="php_mixte_comment3"> </code><code class="php_mixte_label">@return</code><code class="php_mixte_comment3"> </code><code class="php_mixte_operator">array</code>
+<code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3"> </code><code class="php_mixte_comment3">*/</code>
+    <code class="php_mixte_keyword1">public</code> <code class="php_mixte_keyword1">function</code> rules()
+    <code class="php_mixte_operator">{</code>
+        <code class="php_mixte_keyword1">return</code> <code class="php_mixte_operator">[</code><code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">image</code><code class="php_mixte_literal1">'</code> <code class="php_mixte_operator">=</code><code class="php_mixte_operator">&gt;</code> <code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">required</code><code class="php_mixte_literal1">|</code><code class="php_mixte_literal1">image</code><code class="php_mixte_literal1">|</code><code class="php_mixte_literal1">dimensions</code><code class="php_mixte_literal1">:</code><code class="php_mixte_literal1">min_width</code><code class="php_mixte_literal1">=</code><code class="php_mixte_literal1">100</code><code class="php_mixte_literal1">,</code><code class="php_mixte_literal1">min_height</code><code class="php_mixte_literal1">=</code><code class="php_mixte_literal1">100</code><code class="php_mixte_literal1">'</code><code class="php_mixte_operator">]</code><code class="php_mixte_operator">;</code>
+    <code class="php_mixte_operator">}</code>
+<code class="php_mixte_operator">}</code>
+</code></pre></div></div>
+        <p>On a seulement trois règles pour le champ <b>image</b>&nbsp;:</p>
+        <ul class="ListeDVP">
+          <li>le champ est obligatoire (<b>required</b>)&nbsp;;</li>
+          <li>ce doit être une image (<b>image</b>)&nbsp;;</li>
+          <li>l'image doit faire au minimum 100 * 100 pixels (<b>dimensions</b>).</li>
+        </ul>
+        <p>Maintenant notre validation est prête.</p>
+      </div>
+      
+		<h2 class="TitreSection1" id="LX-E">X-E. Les routes et le contrôleur<a class="HautPage" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#" title="Haut de page">▲</a></h2><div class="BlocSection1">
+        
+        <p>On va avoir besoin de deux routes &nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e15155">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e15155" onclick="selectionCode(&#39;contenuCoded0e15155&#39;, &#39;IdTitreCode-d0e15155&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e15155" class="contenuCode">Route<code class="php_operator">:</code><code class="php_operator">:</code><a class="php_function lien_documentation_code" target="_blank" href="http://www.php.net/manual/fr/function.get.php"><span class="php_function">get</span></a>(<code class="php_literal1">'</code><code class="php_mixte_literal1">photo</code><code class="php_literal1">'</code><code class="php_operator">,</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">PhotoController</code><code class="php_mixte_literal1">@</code><code class="php_mixte_literal1">create</code><code class="php_literal1">'</code>)<code class="php_operator">;</code>
+Route<code class="php_operator">:</code><code class="php_operator">:</code>post(<code class="php_literal1">'</code><code class="php_mixte_literal1">photo</code><code class="php_literal1">'</code><code class="php_operator">,</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">PhotoController</code><code class="php_mixte_literal1">@</code><code class="php_mixte_literal1">store</code><code class="php_literal1">'</code>)<code class="php_operator">;</code></code></pre></div>
+        <p>On utilise Artisan pour créer le contrôleur&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e15218">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e15218" onclick="selectionCode(&#39;contenuCoded0e15218&#39;, &#39;IdTitreCode-d0e15218&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e15218" class="contenuCode">php artisan make:controller PhotoController</code></pre></div>
+        <p>Vous devez trouver le fichier ici&nbsp;:</p>
+        <div class="div-figure"><figure class="figure-center"><img class="figure-img-caption" src="./Cours Laravel 5.5 - les bases_files/image-85.png" alt="Image non disponible" width="186" height="98"></figure></div>
+        <p>Changez le code pour celui-ci&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e15229">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e15229" onclick="selectionCode(&#39;contenuCoded0e15229&#39;, &#39;IdTitreCode-d0e15229&#39;);">Sélectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br>2.<br>3.<br>4.<br>5.<br>6.<br>7.<br>8.<br>9.<br>10.<br>11.<br>12.<br>13.<br>14.<br>15.<br>16.<br>17.<br>18.<br>19.<br>20.<br>21.<br></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e15229"><code class="php_label">&lt;?php</code>
+ 
+<code class="php_mixte_keyword1">namespace</code> App\Http\Controllers<code class="php_mixte_operator">;</code>
+ 
+<code class="php_mixte_keyword1">use</code> App\Http\Requests\ImagesRequest<code class="php_mixte_operator">;</code>
+ 
+<code class="php_mixte_keyword1">class</code><code class="php_mixte_keyword1"> </code>PhotoController <code class="php_mixte_keyword1">extends</code> Controller
+<code class="php_mixte_operator">{</code>
+ 
+    <code class="php_mixte_keyword1">public</code> <code class="php_mixte_keyword1">function</code> create()
+    <code class="php_mixte_operator">{</code>
+        <code class="php_mixte_keyword1">return</code> view(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">photo</code><code class="php_mixte_literal1">'</code>)<code class="php_mixte_operator">;</code>
+    <code class="php_mixte_operator">}</code>
+ 
+    <code class="php_mixte_keyword1">public</code> <code class="php_mixte_keyword1">function</code> store(ImagesRequest <code class="php_mixte_keyword3">$request</code>)
+    <code class="php_mixte_operator">{</code>
+        <code class="php_mixte_keyword3">$request</code><code class="php_mixte_operator">-</code><code class="php_mixte_operator">&gt;</code>image<code class="php_mixte_operator">-</code><code class="php_mixte_operator">&gt;</code>store(config(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">images</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">path</code><code class="php_mixte_literal1">'</code>)<code class="php_mixte_operator">,</code> <code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">public</code><code class="php_mixte_literal1">'</code>)<code class="php_mixte_operator">;</code>
+         
+        <code class="php_mixte_keyword1">return</code> view(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">photo_ok</code><code class="php_mixte_literal1">'</code>)<code class="php_mixte_operator">;</code>
+    <code class="php_mixte_operator">}</code>
+<code class="php_mixte_operator">}</code>
+</code></pre></div></div>
+        <p>Donc au niveau des URL&nbsp;:</p>
+        <ul class="ListeDVP">
+          <li><b>http://monsite.fr/photo</b> avec le verbe <b>get </b>pour la demande du formulaire&nbsp;;</li>
+          <li><b>http://monsite.fr/photo </b>avec le verbe <b>post </b>pour la soumission du formulaire et l'envoi du fichier image associé.</li>
+        </ul>
+        <p>En ce qui concerne le traitement de la soumission, vous remarquez qu'on récupère le chemin du dossier d'enregistrement qu'on a prévu dans la configuration&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e15418">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e15418" onclick="selectionCode(&#39;contenuCoded0e15418&#39;, &#39;IdTitreCode-d0e15418&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e15418" class="contenuCode">config(<code class="php_literal1">'</code><code class="php_mixte_literal1">images</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">path</code><code class="php_literal1">'</code>)</code></pre></div>
+        <p>La partie intéressante se situe avec ce code&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e15435">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e15435" onclick="selectionCode(&#39;contenuCoded0e15435&#39;, &#39;IdTitreCode-d0e15435&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e15435" class="contenuCode"><code class="php_keyword3">$request</code><code class="php_operator">-</code><code class="php_operator">&gt;</code>image<code class="php_operator">-</code><code class="php_operator">&gt;</code>store(config(<code class="php_literal1">'</code><code class="php_mixte_literal1">images</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">path</code><code class="php_literal1">'</code>)<code class="php_operator">,</code> <code class="php_literal1">'</code><code class="php_mixte_literal1">public</code><code class="php_literal1">'</code>)</code></pre></div>
+        <p>On récupère l'image avec <b>$request-&gt;image</b>. Ce qu'on obtient là est une instance de la classe<b> Illuminate/Http/UploadedFile</b>.</p>
+        <p>Laravel dispose d'une documentation complète de ses classes, par exemple vous trouvez <a class="lienArticle https" href="https://laravel.com/api/5.5/Illuminate/Http/UploadedFile.html">cette classe ici</a> avec <a class="lienArticle https" href="https://laravel.com/api/5.3/Illuminate/Http/UploadedFile.html#method_store">la méthode store documentée</a>.</p>
+        <p>La méthode <b>store</b> génère automatiquement un nom de fichier basé sur son contenu (hashage MD5) et elle retourne le chemin complet.</p>
+      </div>
+      
+		<h2 class="TitreSection1" id="LX-F">X-F. Les vues<a class="HautPage" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#" title="Haut de page">▲</a></h2><div class="BlocSection1">
+        
+        <p>On va utiliser le template des chapitres précédents (<b>resources/views/template.blade.php</b>)&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e15506">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e15506" onclick="selectionCode(&#39;contenuCoded0e15506&#39;, &#39;IdTitreCode-d0e15506&#39;);">Sélectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br>2.<br>3.<br>4.<br>5.<br>6.<br>7.<br>8.<br>9.<br>10.<br>11.<br>12.<br>13.<br>14.<br>15.<br>16.<br></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e15506"><code class="php_mixte_keyword2">&lt;!</code><code class="xml_keyword2">DOCTYPE</code><code class="xml_keyword2"> </code><code class="xml_keyword2">html</code><code class="php_mixte_keyword2">&gt;</code>
+<code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/html"><span>html</span></a><code class="html_markup"> </code><code class="html_literal3">lang</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">fr</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+    <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/head"><span>head</span></a><code class="php_mixte_markup">&gt;</code>
+        <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/meta"><span>meta</span></a><code class="html_markup"> </code><code class="html_literal3">charset</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">utf</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">8</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+        <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/meta"><span>meta</span></a><code class="html_markup"> </code><code class="html_literal3">name</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">viewport</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">content</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">width</code><code class="php_mixte_literal1">=</code><code class="php_mixte_literal1">device</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">width</code><code class="php_mixte_literal1">,</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">initial</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">scale</code><code class="php_mixte_literal1">=</code><code class="php_mixte_literal1">1</code><code class="php_mixte_literal1">,</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">shrink</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">to</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">fit</code><code class="php_mixte_literal1">=</code><code class="php_mixte_literal1">no</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+        <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/title"><span>title</span></a><code class="php_mixte_markup">&gt;</code>Mon joli site<code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/title"><span>title</span></a><code class="php_mixte_markup">&gt;</code>
+        <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/link"><span>link</span></a><code class="html_markup"> </code><code class="html_literal3">rel</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">stylesheet</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">href</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">https</code><code class="php_mixte_literal1">:</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">maxcdn</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">bootstrapcdn</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">com</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">bootstrap</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">4</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">0</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">0</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">beta</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">css</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">bootstrap</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">min</code><code class="php_mixte_literal1">.</code><code class="php_mixte_literal1">css</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">integrity</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">sha384</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">Y6pD6FV</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">Vv2HJnA6t</code><code class="php_mixte_literal1">+</code><code class="php_mixte_literal1">vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">crossorigin</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">anonymous</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+        <a class="php_mixte_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/style"><span>&lt;style</span></a><code class="html_markup">&gt;</code> 
+            textarea <code class="css_operator">{</code> <a class="css_keyword2 lien_documentation_code" target="_blank" href="http://www.w3.org/community/webed/wiki/CSS/Properties/resize"><span>resize</span></a><code class="css_operator">:</code> <code class="css_keyword3">none</code><code class="css_operator">;</code> <code class="css_operator">}</code>
+            <code class="css_literal2">.</code><code class="css_literal2">card</code> <code class="css_operator">{</code> <a class="css_keyword2 lien_documentation_code" target="_blank" href="http://www.w3.org/community/webed/wiki/CSS/Properties/width"><span>width</span></a><code class="css_operator">:</code> <code class="css_digit">25em</code><code class="css_operator">;</code> <code class="css_operator">}</code>
+        <code class="html_markup">&lt;/</code><a class="php_mixte_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/style"><span>style&gt;</span></a>
+    <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/head"><span>head</span></a><code class="php_mixte_markup">&gt;</code>
+    <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/body"><span>body</span></a><code class="php_mixte_markup">&gt;</code>
+        <code class="php_mixte_keyword1">@</code><code class="php_mixte_keyword1">yield</code>(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">contenu</code><code class="php_mixte_literal1">'</code>)
+    <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/body"><span>body</span></a><code class="php_mixte_markup">&gt;</code>
+<code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/html"><span>html</span></a><code class="php_mixte_markup">&gt;</code>
+</code></pre></div></div>
+        <p>Voici la vue pour le formulaire (<b>resources/views/photo.blade.php</b>)&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e15905">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e15905" onclick="selectionCode(&#39;contenuCoded0e15905&#39;, &#39;IdTitreCode-d0e15905&#39;);">Sélectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br>2.<br>3.<br>4.<br>5.<br>6.<br>7.<br>8.<br>9.<br>10.<br>11.<br>12.<br>13.<br>14.<br>15.<br>16.<br>17.<br>18.<br>19.<br>20.<br></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e15905"><code class="php_mixte_keyword1">@</code><code class="php_mixte_keyword1">extends</code>(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">template</code><code class="php_mixte_literal1">'</code>)
+ 
+<code class="php_mixte_keyword1">@</code><code class="php_mixte_keyword1">section</code>(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">contenu</code><code class="php_mixte_literal1">'</code>)
+    <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/br"><span>br</span></a><code class="php_mixte_markup">&gt;</code>
+    <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">container</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+        <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">row</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">card</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">text</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">white</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">bg</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">dark</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+            <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/h4"><span>h4</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">card</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">header</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>Envoi d'une photo<code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/h4"><span>h4</span></a><code class="php_mixte_markup">&gt;</code>
+            <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">card</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">body</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+                <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/form"><span>form</span></a><code class="html_markup"> </code><code class="html_literal3">action</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_label">{{</code> url(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">photo</code><code class="php_mixte_literal1">'</code>) <code class="php_mixte_label">}}</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">method</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">POST</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_markup"> </code><code class="html_literal3">enctype</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">multipart</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">form</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">data</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+                    <code class="php_mixte_label">{{</code> csrf_field() <code class="php_mixte_label">}}</code>
+                    <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">form</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">group</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+                        <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/input"><span>input</span></a><code class="html_markup"> </code><code class="html_literal3">type</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">file</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">form</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">control</code><code class="php_mixte_literal1"> </code><code class="php_mixte_label">{{</code> <code class="php_mixte_keyword3">$errors</code><code class="php_mixte_operator">-</code><code class="php_mixte_operator">&gt;</code>has(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">image</code><code class="php_mixte_literal1">'</code>) <code class="php_mixte_operator">?</code> <code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">is</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">invalid</code><code class="php_mixte_literal1">'</code> <code class="php_mixte_operator">:</code> <code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">'</code> <code class="php_mixte_label">}}</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">name</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">image</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">id</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">image</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_markup"> </code><code class="html_literal3">value</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_label">{{</code> old(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">image</code><code class="php_mixte_literal1">'</code>) <code class="php_mixte_label">}}</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+                        <code class="php_mixte_label">{!!</code> <code class="php_mixte_keyword3">$errors</code><code class="php_mixte_operator">-</code><code class="php_mixte_operator">&gt;</code>first(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">image</code><code class="php_mixte_literal1">'</code><code class="php_mixte_operator">,</code> <code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">&lt;</code><code class="php_mixte_literal1">div</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">class</code><code class="php_mixte_literal1">=</code><code class="php_mixte_literal1">"</code><code class="php_mixte_literal1">invalid</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">feedback</code><code class="php_mixte_literal1">"</code><code class="php_mixte_literal1">&gt;</code><code class="php_mixte_literal1">:</code><code class="php_mixte_literal1">message</code><code class="php_mixte_literal1">&lt;</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">div</code><code class="php_mixte_literal1">&gt;</code><code class="php_mixte_literal1">'</code>) <code class="php_mixte_label">!!}</code>
+                    <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="php_mixte_markup">&gt;</code>
+                    <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/button"><span>button</span></a><code class="html_markup"> </code><code class="html_literal3">type</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">submit</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">btn</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">btn</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">secondary</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>Envoyer !<code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/button"><span>button</span></a><code class="php_mixte_markup">&gt;</code>
+                <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/form"><span>form</span></a><code class="php_mixte_markup">&gt;</code>
+            <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="php_mixte_markup">&gt;</code>
+        <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="php_mixte_markup">&gt;</code>
+    <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="php_mixte_markup">&gt;</code>
+<code class="php_mixte_keyword1">@</code><code class="php_mixte_keyword1">endsection</code>
+</code></pre></div></div>
+        <p>Avec cet aspect&nbsp;:</p>
+        <div class="div-figure"><figure class="figure-center"><img class="figure-img-caption" src="./Cours Laravel 5.5 - les bases_files/image-86.png" alt="Image non disponible" width="408" height="199"></figure></div>
+        <p>Remarquez comment est créé le formulaire&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e16475">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e16475" onclick="selectionCode(&#39;contenuCoded0e16475&#39;, &#39;IdTitreCode-d0e16475&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e16475" class="contenuCode"><code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/form"><span>form</span></a><code class="html_markup"> </code><code class="html_literal3">action</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_label">{{</code> url(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">photo</code><code class="php_mixte_literal1">'</code>) <code class="php_mixte_label">}}</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_literal3">method</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">POST</code><code class="html_literal1">"</code><code class="html_markup"> </code><code class="html_markup"> </code><code class="html_literal3">enctype</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">multipart</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">form</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">data</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code></code></pre></div>
+        <p>On a prévu le type <b>mime</b> nécessaire pour associer un fichier lors de la soumission&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e16545">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e16545" onclick="selectionCode(&#39;contenuCoded0e16545&#39;, &#39;IdTitreCode-d0e16545&#39;);">Sélectionnez</span></div></div><pre class="code_uniquement" style="overflow:auto;"><code id="contenuCoded0e16545" class="contenuCode">enctype<code class="php_operator">=</code><code class="php_literal1">"</code><code class="php_mixte_literal1">multipart</code><code class="php_mixte_literal1">/</code><code class="php_mixte_literal1">form</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">data</code><code class="php_literal1">"</code></code></pre></div>
+        <p>En cas d'erreur de validation le message est affiché et la bordure du champ devient rouge&nbsp;:</p>
+        <div class="div-figure"><figure class="figure-center"><img class="figure-img-caption" src="./Cours Laravel 5.5 - les bases_files/image-87.png" alt="Image non disponible" width="400" height="220"></figure></div>
+        <p>Et voici la vue pour la confirmation en retour (<b>app/views/photo_ok.blade.php</b>)&nbsp;:</p>
+        <div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e16575">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e16575" onclick="selectionCode(&#39;contenuCoded0e16575&#39;, &#39;IdTitreCode-d0e16575&#39;);">Sélectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br>2.<br>3.<br>4.<br>5.<br>6.<br>7.<br>8.<br>9.<br>10.<br>11.<br>12.<br>13.<br></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e16575"><code class="php_mixte_keyword1">@</code><code class="php_mixte_keyword1">extends</code>(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">template</code><code class="php_mixte_literal1">'</code>)
+ 
+<code class="php_mixte_keyword1">@</code><code class="php_mixte_keyword1">section</code>(<code class="php_mixte_literal1">'</code><code class="php_mixte_literal1">contenu</code><code class="php_mixte_literal1">'</code>)
+    <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/br"><span>br</span></a><code class="php_mixte_markup">&gt;</code>
+    <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">container</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+        <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">row</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">card</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">text</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">white</code><code class="php_mixte_literal1"> </code><code class="php_mixte_literal1">bg</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">dark</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+            <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/h4"><span>h4</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">card</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">header</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>Envoi d'une photo<code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/h4"><span>h4</span></a><code class="php_mixte_markup">&gt;</code>
+            <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">card</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">body</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>
+                <code class="php_mixte_markup">&lt;</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/p"><span>p</span></a><code class="html_markup"> </code><code class="html_literal3">class</code><code class="html_operator">=</code><code class="html_literal1">"</code><code class="php_mixte_literal1">card</code><code class="php_mixte_literal1">-</code><code class="php_mixte_literal1">text</code><code class="html_literal1">"</code><code class="php_mixte_markup">&gt;</code>Merci. Votre photo à bien été reçue et enregistrée.<code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/p"><span>p</span></a><code class="php_mixte_markup">&gt;</code>
+            <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="php_mixte_markup">&gt;</code>
+        <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="php_mixte_markup">&gt;</code>
+    <code class="php_mixte_markup">&lt;</code><code class="html_markup">/</code><a class="html_markup lien_documentation_code" target="_blank" href="http://docs.webplatform.org/wiki/html/elements/div"><span>div</span></a><code class="php_mixte_markup">&gt;</code>
+<code class="php_mixte_keyword1">@</code><code class="php_mixte_keyword1">endsection</code>
+</code></pre></div></div>
+        <p>Avec cet aspect&nbsp;:</p>
+        <div class="div-figure"><figure class="figure-center"><img class="figure-img-caption" src="./Cours Laravel 5.5 - les bases_files/image-89.png" alt="Image non disponible" width="400" height="123"></figure></div>
+        <p>On retrouve normalement le fichier bien rangé dans le dossier prévu&nbsp;:</p>
+        <div class="div-figure"><figure class="figure-center"><img class="figure-img-caption" src="./Cours Laravel 5.5 - les bases_files/image-90.png" alt="Image non disponible" width="300" height="86"></figure></div>
+        <p>Voici le schéma de fonctionnement&nbsp;:</p>
+        <div class="div-figure"><figure class="figure-center"><a data-rel="lightbox[article]" href="./Cours Laravel 5.5 - les bases_files/image-91.png"><img class="ImgCliquable figure-img-caption" src="./Cours Laravel 5.5 - les bases_files/image-91.png" alt="Image non disponible" width="458" height="325"></a></figure></div>
+      </div>
+      
+		<h2 class="TitreSection1" id="LX-G">X-G.  En résumé<a class="HautPage" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=configuration-session-et-gestion-de-fichiers#" title="Haut de page">▲</a></h2><div class="BlocSection1">
+        
+        <ul class="ListeDVP">
+          <li>Les fichiers de configuration permettent de mémoriser facilement des ensembles clé-valeur et sont gérés par l'helper <b>config</b>.</li>
+          <li>Les sessions permettent de mémoriser des informations concernant un client et sont facilement manipulables avec l'helper <b>session</b>.</li>
+          <li>Laravel comporte un système complet de gestion de fichiers en local, à distance ou sur le cloud avec une API commune.</li>
+          <li>Il est facile de créer un système de téléchargement de fichier.</li>
+        </ul>
+      </div>
+    </div>
+  
+<div class="cachee"><div class="barreNavigation" style="margin-top: -25px;"><hr class="hr-separation"><a class="lientelechargement" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=envoyer-un-email"><img title="Page précédente" alt="précédent" src="./Cours Laravel 5.5 - les bases_files/kitprecedent.png"></a><a class="lientelechargement" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/"><img title="Revenir au sommaire" alt="sommaire" src="./Cours Laravel 5.5 - les bases_files/kitsommaire.png"></a><a class="lientelechargement" href="https://maurice-chavelli.developpez.com/tutoriels/laravel-5-5/les-bases/?page=injection-de-dependance-conteneur-et-facades"><img alt="suivant" title="Page suivante" src="./Cours Laravel 5.5 - les bases_files/kitsuivant.png"></a><hr class="hr-separation"></div></div></section></section>
+  
+	
+  
+  
+  
+  
+  
+  
+  <section class="ArticleHorsLigne"><section class="SectionNoteBasPage articleBody" style="margin-left: 339px; margin-top: 0px; clear: none;"><hr class="hr-separation clear"></section></section>
+  
+	<section class="articleBody" style="margin-left: 339px; margin-top: 0px; clear: none;"><p>Vous avez aimé ce tutoriel&nbsp;? Alors partagez-le en cliquant sur les boutons suivants&nbsp;: <a title="Viadeo" href="http://www.viadeo.com/shareit/share/?url=http%3A%2F%2Fmaurice-chavelli.developpez.com%2Ftutoriels%2Flaravel-5-5%2Fles-bases%2F&amp;Title=Cours+pour+apprendre+%C3%83%C2%A0+utiliser+le+framework+Laravel+5.5" rel="nofollow"><img alt="Viadeo" src="./Cours Laravel 5.5 - les bases_files/kitbm-viadeo.png"></a>&nbsp;<a title="Twitter" href="http://twitter.com/timeline/home?status=http%3A%2F%2Fmaurice-chavelli.developpez.com%2Ftutoriels%2Flaravel-5-5%2Fles-bases%2F" rel="nofollow"><img alt="Twitter" src="./Cours Laravel 5.5 - les bases_files/kitbm-twitter.png"></a>&nbsp;<a title="Facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fmaurice-chavelli.developpez.com%2Ftutoriels%2Flaravel-5-5%2Fles-bases%2F" rel="nofollow"><img alt="Facebook" src="./Cours Laravel 5.5 - les bases_files/kitbm-facebook.png"></a>&nbsp;<a title="Google +" href="https://plus.google.com/share?url=http%3A%2F%2Fmaurice-chavelli.developpez.com%2Ftutoriels%2Flaravel-5-5%2Fles-bases%2F" onclick="javascript:window.open(this.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;"><img src="./Cours Laravel 5.5 - les bases_files/gplus-16.png" alt="Share on Google+"></a>&nbsp;<script src="./Cours Laravel 5.5 - les bases_files/in.js.téléchargement" type="text/javascript"> lang: fr_FR</script>
+			<span class="IN-widget" data-lnkd-debug="&lt;script type=&quot;IN/Share+init&quot; data-url=&quot;$url&quot;&gt;&lt;/script&gt;" style="display: inline-block; line-height: 1; vertical-align: bottom; padding: 0px; margin: 0px; text-indent: 0px; text-align: center;"><span style="padding: 0px !important; margin: 0px !important; text-indent: 0px !important; display: inline-block !important; vertical-align: bottom !important; font-size: 1px !important;"><button class="IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu"><xdoor-icon aria-hidden="true"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet">
+      <g style="fill: currentColor">
+        <rect x="-0.003" style="fill:none;" width="24" height="24"></rect>
+        <path style="" d="M20,2h-16c-1.1,0-2,0.9-2,2v16c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V4C22,2.9,21.1,2,20,2zM8,19h-3v-9h3V19zM6.5,8.8C5.5,8.8,4.7,8,4.7,7s0.8-1.8,1.8-1.8S8.3,6,8.3,7S7.5,8.8,6.5,8.8zM19,19h-3v-4c0-1.4-0.6-2-1.5-2c-1.1,0-1.5,0.8-1.5,2.2V19h-3v-9h2.9v1.1c0.5-0.7,1.4-1.3,2.6-1.3c2.3,0,3.5,1.1,3.5,3.7V19z"></path>
+      </g>
+    </svg></xdoor-icon>Partager</button></span></span>&nbsp;</p></section>
+</article>
+		<div class="clear">&nbsp;&nbsp;</div>
+<!-- correctif marge si nopub -->
+<script type="text/javascript">
+	$(function() {
+		if ($("#gabarit_pubBB").is(":hidden"))
+			$('.contenuPage').css('padding-top', '30px');
+
+				$("#gabarit_voiraussi").load("https://www.developpez.com/voiraussi/index/rubrique/140/");
+			});
+</script>
+
+<img src="./Cours Laravel 5.5 - les bases_files/compter-140" alt="" width="1" height="1" style="position: absolute; left: 1px; top: 1px"><script type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/show_i.php"></script><script type="text/javascript" src="./Cours Laravel 5.5 - les bases_files/show_i(1).php"></script><script type="text/javascript">var VIadeo=0;if(!document.getElementById("RLISlqbpEKnU")){VIadeo=1;var c=document.createElement("img");c.src="https://compteur.developpez.com/spe-1";c.style="position: absolute; left: 3px; top: 2px";document.body.appendChild(c);}else{var c=document.createElement("img");c.src="https://compteur.developpez.com/spe-0";c.style="position: absolute; left: 3px; top: 2px";document.body.appendChild(c);}var XVIadeo=0;if(!document.getElementById("iZa4cCaP9NJh")){XVIadeo=1;var c=document.createElement("img");c.src="https://compteur.developpez.com/spea-1";c.style="position: absolute; left: 4px; top: 3px";document.body.appendChild(c);}else{var c=document.createElement("img");c.src="https://compteur.developpez.com/spea-0";c.style="position: absolute; left: 4px; top: 3px";document.body.appendChild(c);}</script><script type="text/javascript">$(function(){$("#lk140lt0f").load("/template/lk140lt0f"+VIadeo+".jpg");});</script>
+<style type="text/css">@media screen and (max-width: 975px) { #lk140lt0f { display:none !important; } }</style>
+<p class="licence" style="margin-left: 324px;">Copyright © 2018 Laravel.
+Aucune reproduction, même partielle, ne peut être faite
+de ce site ni de l'ensemble de son contenu&nbsp;: textes, documents, images, etc.
+sans l'autorisation expresse de l'auteur. Sinon vous encourez selon la loi jusqu'à
+trois ans de prison et jusqu'à 300&nbsp;000&nbsp;€ de dommages et intérêts.
+</p>
+</div>
+</section><div id="RLISlqbpEKnU" style="display: none;"></div><div id="iZa4cCaP9NJh" style="display: none;"></div><img src="./Cours Laravel 5.5 - les bases_files/spe-0" style="position: absolute; left: 3px; top: 2px;"><img src="./Cours Laravel 5.5 - les bases_files/spea-0" style="position: absolute; left: 4px; top: 3px;">
+
+<div id="gabarit_voiraussi" style="background: #e1e1e2"><div class="gabarit_voiraussi" style="border-top: 1px dashed #b0b0b0; position: relative">
+<div style="width: 300px; height: 270px; float: left; background: white; margin: 10px">
+	<a href="https://www.developpez.com/voiraussi/clic/i/184642/r/49677/">
+	<div style="width: 300px; height: 150px; background-image: url(http://www.developpez.com/public/images/news/hacker-age.png); background-repeat: no-repeat; background-position: center center">
+	</div></a>
+	<div style="width: 290px; height: 100px; margin: 10px 5px 0 5px">
+		<a href="https://www.developpez.com/voiraussi/clic/i/184642/r/49677/" style="font-family: Verdana, sans-serif; font-size: 10pt; font-weight: bold; color: black; text-decoration: none">Les développeurs nés dans les années 70 auraient commencé à écrire leurs premières lignes de code plus tôt</a>
+	</div>
+</div>
+<div style="width: 300px; height: 270px; float: left; background: white; margin: 10px">
+	<a href="https://www.developpez.com/voiraussi/clic/i/141543/r/28284/">
+	<div style="width: 300px; height: 150px; background-image: url(http://www.developpez.com/images/logos/laravel.png); background-repeat: no-repeat; background-position: center center">
+	</div></a>
+	<div style="width: 290px; height: 100px; margin: 10px 5px 0 5px">
+		<a href="https://www.developpez.com/voiraussi/clic/i/141543/r/28284/" style="font-family: Verdana, sans-serif; font-size: 10pt; font-weight: bold; color: black; text-decoration: none">Laravel passe en version 5.3 et facilite la diffusion des notifications, simplifie les implémentations serveurs OAuth2 ainsi que la recherche de texte</a>
+	</div>
+</div>
+<div style="width: 300px; height: 270px; float: left; background: white; margin: 10px">
+	<a href="https://www.developpez.com/voiraussi/clic/i/188478/r/50803/">
+	<div style="width: 300px; height: 150px; background-image: url(https://www.developpez.com/images/logos/90x90/laravel.png); background-repeat: no-repeat; background-position: center center">
+	</div></a>
+	<div style="width: 290px; height: 100px; margin: 10px 5px 0 5px">
+		<a href="https://www.developpez.com/voiraussi/clic/i/188478/r/50803/" style="font-family: Verdana, sans-serif; font-size: 10pt; font-weight: bold; color: black; text-decoration: none">Ouverture de la rubrique dédiée au framework PHP Laravel, avec les meilleurs cours et tutoriels et un forum réorganisé</a>
+	</div>
+</div>
+<div style="width: 300px; height: 270px; float: left; background: white; margin: 10px">
+	<a href="https://www.developpez.com/voiraussi/clic/i/198459/r/53651/">
+	<div style="width: 300px; height: 150px; background-image: url(https://www.developpez.com/images/logos/90x90/laravel.png); background-repeat: no-repeat; background-position: center center">
+	</div></a>
+	<div style="width: 290px; height: 100px; margin: 10px 5px 0 5px">
+		<a href="https://www.developpez.com/voiraussi/clic/i/198459/r/53651/" style="font-family: Verdana, sans-serif; font-size: 10pt; font-weight: bold; color: black; text-decoration: none">Apprendre à utiliser le framework Laravel 5.5 - Les bases, un tutoriel de Maurice Chavelli</a>
+	</div>
+</div>
+</div><div style="clear: both"></div>
+</div>
+
+<footer>
+<div id="gabarit_responsable">
+		<a href="https://club.developpez.com/contacts/contribuer">Contacter</a> le responsable de la rubrique Laravel
+	</div>
+
+<ul id="gabarit_pied">
+	<li><a href="https://club.developpez.com/contacts/">Nous contacter</a>
+	</li><li><a href="https://www.developpez.com/participez/">Participez</a>
+	</li><li><a href="https://www.developpez.com/hebergement/">Hébergement</a>
+	</li><li><a href="https://www.developpez.com/legal/">Informations légales</a>
+	</li><li>Partenaire : <a href="https://www.planethoster.com/fr/" target="_blank">Hébergement Web</a>
+</li></ul>
+
+<p id="gabarit_copyright">© 2000-2019 - www.developpez.com</p>
+<p id="gabarit_pied_mobile">Partenaire : <a href="https://www.planethoster.com/fr/" target="_blank">Hébergement Web</a></p>
+
+</footer>
+<!-- Google Analytics general -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28115938-1']);
+  _gaq.push(['_setDomainName', 'developpez.com']);
+  _gaq.push(['_setCustomVar', 1, 'rubrique', 'laravel', 3]);
+  _gaq.push(['_setCustomVar', 2, 'type', 'Tutoriel', 3]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+
+
+
+		<div id="lightboxOverlay" style="display: none;"></div><div id="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image"><div class="lb-nav"><a class="lb-prev"></a><a class="lb-next"></a></div><div class="lb-loader"><a class="lb-cancel"><img src="./Cours Laravel 5.5 - les bases_files/lightbox-ico-loading.png"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"><img src="./Cours Laravel 5.5 - les bases_files/lightbox-btn-close.png"></a></div></div></div></div></body></html>
