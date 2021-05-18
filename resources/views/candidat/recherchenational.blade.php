@@ -10,7 +10,7 @@
 {{-- @endsection --}}
 <div class="row listetitreformgrand" style="">
       <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-2"> CORRESPONDANTS NATIONAUX </h3>
+        <h3 class=" offset-sm-2"> CORRESPONDANTS MEDIAS NATIONAUX </h3>
       </div>
 </div> <br>
 
