@@ -43,7 +43,7 @@
                         <th>PRENOM(S)</th>
                         <th>TELEPHONE</th>
                         <th>MAIL</th>
-                        <th>PRESSE</th>
+                        <th>MEDIA</th>
                         <th>LIEU DE RESIDENCE</th>
                        
                     </tr>
