@@ -14,5 +14,5 @@ interface RepositoryVueInterface {
 
     public function showvue($vue, $id);
 
-    public function 
+    public function research($vue);
 }

@@ -15,8 +15,11 @@ Route::get('/', function () {
    // return view('candidat.recherchenational');
     //return view('candidat.rechercheinternational');
   //return view('candidat.listecorrespondant');
-  return view('candidat.listecorrespondantadmin');
+  //return view('candidat.listecorrespondantadmin');
+  return view('candidat.form_ajouter');
 });
+
+Route::resource('vehicule', 'VehiculeController');
 
 // Route::get('documents', function () {
 //     return view('documents.form_documents');
