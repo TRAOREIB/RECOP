@@ -11,16 +11,16 @@
       </div>
 </div> <br>
 
-<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('vehicule') }}" enctype="multipart/form-data" >
+<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('vehicule.store') }}" enctype="multipart/form-data" >
     {{ method_field('POST')}}
     {{ csrf_field() }}
 <div class=" row form-group"> 
                 <label for="type" class="control-label col-sm-3">Type <b><i style="color: red">*</i></b></label> 
                 <div class="col-sm-7"> 
-                    <input type="text" class="form-control" name="type" id="type"  value="{{old('type')}}" required="required">
+                    <input type="text" class="form-control" name="type"  value="{{old('type')}}" required="required">
                     <small class="text-danger">{{ $errors->first('type',':message') }}</small> 
                 </div> 
-                <input type="hidden" value="type" name="type">
+        
             </div>
 
             <div class=" row form-group">
@@ -38,4 +38,6 @@
             <input type="button"  value="Annuler" onclick="location.href = ''" class="btn btn-primary" style="border: 1px solid #FFFFFF;  border-radius: 1px; margin-top:0px;margin-left:0px">
         </div>
     </div> 
- </form>   
+ </form> 
+ 
+   

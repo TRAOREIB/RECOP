@@ -11,7 +11,7 @@
       </div>
 </div> <br>
 
-<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('vehicule')); ?>" enctype="multipart/form-data" >
+<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('vehicule.store')); ?>" enctype="multipart/form-data" >
     <?php echo e(method_field('POST')); ?>
 
     <?php echo e(csrf_field()); ?>
@@ -19,10 +19,10 @@
 <div class=" row form-group"> 
                 <label for="type" class="control-label col-sm-3">Type <b><i style="color: red">*</i></b></label> 
                 <div class="col-sm-7"> 
-                    <input type="text" class="form-control" name="type" id="type"  value="<?php echo e(old('type')); ?>" required="required">
+                    <input type="text" class="form-control" name="type"  value="<?php echo e(old('type')); ?>" required="required">
                     <small class="text-danger"><?php echo e($errors->first('type',':message')); ?></small> 
                 </div> 
-                <input type="hidden" value="type" name="type">
+        
             </div>
 
             <div class=" row form-group">

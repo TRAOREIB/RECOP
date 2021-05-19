@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Repositories\Repository;
-use App\Htpp\Models\Vehicule;
+use App\Repositories\Repository;
+use App\Models\Vehicule;
 
 
 class VehiculeController extends Controller
@@ -47,7 +47,8 @@ class VehiculeController extends Controller
     public function store(Request $request)
     {
         //
-      $this->vehicule->create($request); 
+      $this->vehicule->create($request->only($this->vehicule->getModel()->fillable)); 
+      return view('candidat.form_ajouter');
     }
 
     /**
