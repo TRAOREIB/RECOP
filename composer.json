@@ -11,6 +11,7 @@
         "php": "^7.3",
         "barryvdh/laravel-snappy": "^0.4.8",
         "czim/laravel-dataobject": "^2.0",
+        "doctrine/dbal": "2.*",
         "fideloper/proxy": "^4.0",
         "knplabs/knp-snappy": "^1.2",
         "koolreport/core": "^5.0",
