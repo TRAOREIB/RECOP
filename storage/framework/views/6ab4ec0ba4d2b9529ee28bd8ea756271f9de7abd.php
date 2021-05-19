@@ -1,18 +1,35 @@
-{{-- @extends('template')
-@section('contenu')
-@section('script') --}}
 
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
-{{-- @endsection --}}
+
+<script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datatables.min.js')); ?>"></script>
+<link rel="stylesheet" href="<?php echo e(asset('css/datatables.min.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.css')); ?>"> 
+
 <div class="row listetitreformgrand" style="">
       <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-3"> LISTE DES CORRESPONDANTS </h3>
+        <h3 class=" offset-sm-2"> CORRESPONDANTS MEDIAS INTERNATIONAUX </h3>
       </div>
 </div> <br>
+
+<div class="row  offset-sm-2">
+   
+       <label for="region" class="">REGION </label> 
+        <div class="col-sm-2  col-md-2 col-xs-6"> 
+            <select class="form-control" name="region" required> 
+                <option selected></option>                                    
+                <option value=""></option>                                    
+                <small class="text-danger"><?php echo e($errors->first('region',':message')); ?></small> 
+            </select> 
+        </div>
+
+    <div class="ln_solid "></div>
+       <div class="item form-group">
+           <div style="margin: auto">  
+               <input type="submit"  value="VALIDER" class="btn btn-primary" style="border: 1px solid #FFFFFF;  border-radius: 1px;margin-top: 0px"> 
+           </div>
+    </div>
+</div>
 
 <div class="row divtabgrand  offset-sm-1" style="">
     <div class="col-xs-12" >
@@ -22,14 +39,10 @@
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
                         <th>NOM</th>
                         <th>PRENOM(S)</th>
-                        <th>CNIB</th>
-                        <th>PASSPORT</th>
                         <th>TELEPHONE</th>
                         <th>MAIL</th>
                         <th>MEDIA</th>
                         <th>LIEU DE RESIDENCE</th>
-                        <th>REGION</th>
-                        <th>ACTION</th>
                        
                     </tr>
                 </thead>
@@ -43,18 +56,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td title="RETIRER">
-                            <form method="POST" action="">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <a ></a>
-                                <i class="fa fa-trash"></i>
-                            </form>                    
-                        </td>
-
+              
                     </tr>
                     
 
@@ -84,4 +86,4 @@
         $('#table').DataTable();
     });
 </script>
-{{-- @endsection --}}
+<?php /**PATH C:\xampp\htdocs\RECOP\RECOP\resources\views/candidat/rechercheinternational.blade.php ENDPATH**/ ?>

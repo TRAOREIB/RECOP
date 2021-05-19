@@ -22,6 +22,7 @@
                         <th>NOM</th>
                         <th>PRENOM(S)</th>
                         <th>MEDIA</th>
+                        <th>REGION</th>
                        
                     </tr>
                 </thead>
@@ -29,6 +30,7 @@
 
                     
                     <tr>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>

@@ -25,6 +25,7 @@
                         <th>PRENOM(S)</th>
                         <th>MEDIA</th>
                        
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                       
                     </tr>
                     
 

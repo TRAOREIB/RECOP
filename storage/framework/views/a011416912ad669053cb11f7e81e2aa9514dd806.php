@@ -26,6 +26,7 @@
                         <th>MAIL</th>
                         <th>MEDIA</th>
                         <th>LIEU DE RESIDENCE</th>
+                        <th>REGION</th>
                         <th>ACTION</th>
                        
                     </tr>
@@ -42,7 +43,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        
+                        <td></td>
                         <td title="RETIRER">
                             <form method="POST" action="">
                                 <?php echo e(method_field('DELETE')); ?>
@@ -50,7 +51,7 @@
                                 <?php echo e(csrf_field()); ?>
 
                                 <a ></a>
-                                <i class="fas fa-trash"></i>
+                                <i class="fa fa-trash"></i>
                             </form>                    
                         </td>
 
