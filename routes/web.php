@@ -13,9 +13,9 @@
 
 Route::get('/', function () {
    // return view('candidat.recherchenational');
-    return view('candidat.rechercheinternational');
+    //return view('candidat.rechercheinternational');
   //return view('candidat.listecorrespondant');
-  //return view('candidat.listecorrespondantadmin');
+  return view('candidat.listecorrespondantadmin');
 });
 
 // Route::get('documents', function () {
