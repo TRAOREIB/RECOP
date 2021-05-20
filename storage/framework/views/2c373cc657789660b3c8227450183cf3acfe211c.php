@@ -12,13 +12,31 @@
       </div>
 </div> <br>
 
+
+<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('region')); ?>" enctype="multipart/form-data" >
+    <?php echo e(method_field('GET')); ?>
+
+    <?php echo e(csrf_field()); ?>
+
 <div class="row  offset-sm-2">
    
        <label for="region" class="">REGION </label> 
         <div class="col-sm-2  col-md-2 col-xs-6"> 
             <select class="form-control" name="region" required> 
-                <option selected></option>                                    
-                <option value=""></option>                                    
+                <option selected>choisir la region</option>                                    
+                <option value="centre">Centre</option> 
+                <option value="centre-est">Centre-Est</option> 
+                <option value="centre-nord">Centre-Nord</option> 
+                <option value="centre-ouest">Centre-Ouest</option>  
+                <option value="centre-sud">Centre-Sud</option>
+                <option value="nord">Nord</option>                                    
+                <option value="sahel">Sahel</option> 
+                <option value="est">Est</option>
+                <option value="cascades">Cascades</option>
+                 <option value="plateau-central">Plateau Central</option> 
+                <option value="sud-ouest">Sud-Ouest</option> 
+                <option value="hauts-bassins">Hauts-Bassins</option>  
+                <option value="boucle-mouhoun">Boucle du Mouhoun</option>                                   
                 <small class="text-danger"><?php echo e($errors->first('region',':message')); ?></small> 
             </select> 
         </div>
@@ -30,6 +48,14 @@
            </div>
     </div>
 </div>
+ </form>
+
+
+<div class="row listetitreformgrand" style="">
+      <div class="col-sm-12" style="">
+        <h5 class=" offset-sm-1"> Liste des correspondants de la region: </h5>
+      </div>
+</div> <br>
 
 <div class="row divtabgrand  offset-sm-1" style="">
     <div class="col-xs-12" >
@@ -48,19 +74,20 @@
                 </thead>
                 <tbody>
 
-                    
+                    <?php $__currentLoopData = $allcorrespondant; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $corresp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo e($corresp->nomcorrespondant); ?></td>
+                        <td><?php echo e($corresp->prenomcorrespondant); ?></td>
+                        <td><?php echo e($corresp->telephonecorrespondant); ?></td>
+                        <td><?php echo e($corresp->mailcorrespondant); ?></td>
+                        <td><?php echo e($corresp->media); ?></td>
+                        <td><?php echo e($corresp->lieuresidence); ?></td>
               
                     </tr>
-                    
+                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </tbody>
+                
             </table>
 
         </div>

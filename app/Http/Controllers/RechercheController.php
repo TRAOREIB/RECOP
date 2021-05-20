@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Repositories\RepositoryVue;
 
 class RechercheController extends Controller
 {
@@ -13,17 +14,32 @@ class RechercheController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    protected $Recherche;
+    protected $vuerecherche;
+    protected $vue="vuecorrespondant";
 
-    public function __construct(Recherche $recher) {
-        $this->Recherche = new Repository($recher);
+    public function __construct() {
+        $this->vuerecherche = new RepositoryVue();
     }
-
 
     public function index()
     {
         //
+        $allcorrespondant = $this->vuerecherche->allvue($this->vue);
+        //echo $allcorrespondant;
+        return view('candidat.recherchenational',compact('allcorrespondant'));
     }
+
+
+    public function rechercheregion(Request $request)
+    {
+        //
+        $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
+        //echo $allcorrespondant;
+        return view('candidat.recherchenational',compact('allcorrespondant'));
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

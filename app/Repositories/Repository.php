@@ -18,7 +18,7 @@ class Repository implements RepositoryInterface {
 
     // Get all instances of model
     public function all() {
-        return $this->model->all();
+        return $this->model->all()->where('actif',true);
     }
 
     // create a new record in the database

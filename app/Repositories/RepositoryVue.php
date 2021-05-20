@@ -14,11 +14,15 @@ class RepositoryVue implements RepositoryVueInterface {
     }
 
     public function allvue($vue) {
-         return DB::table("$vue")->where("actif","=","true")->get();
+         return DB::table("$vue")->where("actif","=",true)->get();
     }
 
     public function showvue($vue, $id) {
-         return DB::table("$vue")->where("id","=",$id)->where("actif","=","true")->get();
+         return DB::table("$vue")->where("id","=",$id)->where("actif","=",true)->get();
+    }
+
+    public function rechercheregion($vue, $region){
+     return DB::table("$vue")->where("region","=",$region)->where("actif","=",true)->get();
     }
 
 }

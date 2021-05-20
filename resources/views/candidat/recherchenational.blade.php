@@ -14,13 +14,29 @@
       </div>
 </div> <br>
 
+
+<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('region') }}" enctype="multipart/form-data" >
+    {{ method_field('GET')}}
+    {{ csrf_field() }}
 <div class="row  offset-sm-2">
    
        <label for="region" class="">REGION </label> 
         <div class="col-sm-2  col-md-2 col-xs-6"> 
             <select class="form-control" name="region" required> 
-                <option selected></option>                                    
-                <option value=""></option>                                    
+                <option selected>choisir la region</option>                                    
+                <option value="centre">Centre</option> 
+                <option value="centre-est">Centre-Est</option> 
+                <option value="centre-nord">Centre-Nord</option> 
+                <option value="centre-ouest">Centre-Ouest</option>  
+                <option value="centre-sud">Centre-Sud</option>
+                <option value="nord">Nord</option>                                    
+                <option value="sahel">Sahel</option> 
+                <option value="est">Est</option>
+                <option value="cascades">Cascades</option>
+                 <option value="plateau-central">Plateau Central</option> 
+                <option value="sud-ouest">Sud-Ouest</option> 
+                <option value="hauts-bassins">Hauts-Bassins</option>  
+                <option value="boucle-mouhoun">Boucle du Mouhoun</option>                                   
                 <small class="text-danger">{{ $errors->first('region',':message') }}</small> 
             </select> 
         </div>
@@ -32,6 +48,14 @@
            </div>
     </div>
 </div>
+ </form>
+
+
+<div class="row listetitreformgrand" style="">
+      <div class="col-sm-12" style="">
+        <h5 class=" offset-sm-1"> Liste des correspondants de la region: </h5>
+      </div>
+</div> <br>
 
 <div class="row divtabgrand  offset-sm-1" style="">
     <div class="col-xs-12" >
@@ -50,19 +74,20 @@
                 </thead>
                 <tbody>
 
-                    
+                    @foreach( $allcorrespondant as $corresp)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$corresp->nomcorrespondant }}</td>
+                        <td>{{$corresp->prenomcorrespondant }}</td>
+                        <td>{{$corresp->telephonecorrespondant }}</td>
+                        <td>{{$corresp->mailcorrespondant }}</td>
+                        <td>{{$corresp->media }}</td>
+                        <td>{{$corresp->lieuresidence }}</td>
               
                     </tr>
-                    
+                     @endforeach
 
                 </tbody>
+                
             </table>
 
         </div>

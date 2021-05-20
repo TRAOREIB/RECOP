@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $type
  * @property string $marques
+ * @property boolean $actif
  */
 class Vehicule extends Model
 {
@@ -21,6 +22,6 @@ class Vehicule extends Model
     /**
      * @var array
      */
-    protected $fillable = ['type', 'marques'];
+    protected $fillable = ['type', 'marques','actif'];
 
 }

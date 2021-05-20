@@ -25,7 +25,8 @@ class VehiculeController extends Controller
     public function index()
     {
         //
-        return view('candidat.form_ajouter');
+        $allvehicule = $this->vehicule->all();
+        return view('candidat.form_ajouter',compact('allvehicule'));
     }
 
     /**
@@ -48,7 +49,8 @@ class VehiculeController extends Controller
     {
         //
       $this->vehicule->create($request->only($this->vehicule->getModel()->fillable)); 
-      return view('candidat.form_ajouter');
+     // return view('candidat.form_ajouter');
+        return $this->index();
     }
 
     /**
@@ -71,6 +73,9 @@ class VehiculeController extends Controller
     public function edit($id)
     {
         //
+        $editvehicule = $this->vehicule->show($id);
+        return view('candidat.form_modif_vehicule',compact('editvehicule'));
+
     }
 
     /**
@@ -83,6 +88,9 @@ class VehiculeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
+        $this->vehicule->update($request->only($this->vehicule->getModel()->fillable),$id);
+        return $this->index();
     }
 
     /**
@@ -94,5 +102,8 @@ class VehiculeController extends Controller
     public function destroy($id)
     {
         //
+        //echo $id;
+        $this->vehicule->delete($id);
+        return $this->index();
     }
 }
