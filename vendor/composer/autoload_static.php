@@ -500,11 +500,10 @@ class ComposerStaticInita24118b9f0ced9fa2ccc8824d40f1d54
         'App\\Http\\Controllers\\RecepisseController' => __DIR__ . '/../..' . '/app/Http/Controllers/RecepisseController.php',
         'App\\Http\\Controllers\\RepertoireController' => __DIR__ . '/../..' . '/app/Http/Controllers/RepertoireController.php',
         'App\\Http\\Controllers\\SnappyController' => __DIR__ . '/../..' . '/app/Http/Controllers/SnappyController.php',
-<<<<<<< HEAD
+
         'App\\Http\\Controllers\\VueinformationcorrespondantmediaController' => __DIR__ . '/../..' . '/app/Http/Controllers/VueinformationcorrespondantmediaController.php',
         'App\\Http\\Controllers\\vuecontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/vuecontroller.php',
-=======
->>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
+
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -514,10 +513,9 @@ class ComposerStaticInita24118b9f0ced9fa2ccc8824d40f1d54
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\objetRequest' => __DIR__ . '/../..' . '/app/Http/Requests/objetRequest.php',
-<<<<<<< HEAD
+
         'App\\Informationcorrespondantmedia' => __DIR__ . '/../..' . '/app/Informationcorrespondantmedia.php',
-=======
->>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
+
         'App\\Models\\Eloquent\\CompositeKeyQueryBuilder' => __DIR__ . '/../..' . '/app/Models/Eloquent/CompositeKeyQueryBuilder.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
