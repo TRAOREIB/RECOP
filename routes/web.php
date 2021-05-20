@@ -11,25 +11,29 @@
 |
 */
 
+<<<<<<< HEAD
 /*Route::get('/', function () {
     return view('candidat.home');
 });  */
 /*Route::get('/', function () {
     return view('template');
 });*/
+=======
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
 
-Route::get('documents', function () {
-    return view('documents.form_documents');
-});
+ //Route::get('/', function () {
+   // return view('candidat.recherchenational');
+    //return view('candidat.rechercheinternational');
+  //return view('candidat.listecorrespondant');
+  //return view('candidat.listecorrespondantadmin');
+// return view('candidat.form_ajouter');
+ //});
 
-Route::post('annuler', function () {
-    return back()->withInput();
-});
+//Route::resource('vehicule', 'VehiculeController');
 
-Route::get('home', function () {
-    return view('candidat.home');
-})->name("home");
+Route::resource('recherche', 'RechercheController');
 
+<<<<<<< HEAD
 Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
 //    return view('candidat.form_presseecrite');
@@ -100,3 +104,6 @@ Route::resource('vehicule', 'VehiculeController');
 Route::get('ajout', function () {
     return view('candidat.form_ajouter');
 });
+=======
+Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095

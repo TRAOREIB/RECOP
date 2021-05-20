@@ -18,8 +18,11 @@ return array(
     'App\\Http\\Controllers\\RecepisseController' => $baseDir . '/app/Http/Controllers/RecepisseController.php',
     'App\\Http\\Controllers\\RepertoireController' => $baseDir . '/app/Http/Controllers/RepertoireController.php',
     'App\\Http\\Controllers\\SnappyController' => $baseDir . '/app/Http/Controllers/SnappyController.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\VueinformationcorrespondantmediaController' => $baseDir . '/app/Http/Controllers/VueinformationcorrespondantmediaController.php',
     'App\\Http\\Controllers\\vuecontroller' => $baseDir . '/app/Http/Controllers/vuecontroller.php',
+=======
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -29,7 +32,10 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\objetRequest' => $baseDir . '/app/Http/Requests/objetRequest.php',
+<<<<<<< HEAD
     'App\\Informationcorrespondantmedia' => $baseDir . '/app/Informationcorrespondantmedia.php',
+=======
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
     'App\\Models\\Eloquent\\CompositeKeyQueryBuilder' => $baseDir . '/app/Models/Eloquent/CompositeKeyQueryBuilder.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
