@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 
 //use App\Vehicule;
-use Illuminate\Http\Request;
-use App\Models\Vehicule;
-use App\Http\Controllers\Controller;
-use App\Repositories\Repository ;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
