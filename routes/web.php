@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('candidat.home');
-});
+});  */
+/*Route::get('/', function () {
+    return view('template');
+});*/
 
 Route::get('documents', function () {
     return view('documents.form_documents');
@@ -63,3 +66,37 @@ Route::resource('album', 'AlbumController');
 Route::resource('phototheque', 'PhotothequeController');
 Route::resource('document', 'DocumentController');
 Route::resource('repertoire','RepertoireController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/', function () {
+    return view('form_ajout_information');
+});
+
+
+//   Route::get('/vue', 'PaginationControlller@paginationvueinformationcorrespondantmedia') ;
+
+
+/*  Route::get('/', function () {
+    return view('form_ajout_information');
+});  */
+Route::get('vue','vuecontroller@paginationvueinformation');
+
+
+
+
+Route::resource('vehicule', 'VehiculeController');
+
+Route::get('ajout', function () {
+    return view('candidat.form_ajouter');
+});
