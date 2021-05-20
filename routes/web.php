@@ -11,15 +11,14 @@
 |
 */
 
-<<<<<<< HEAD
+
 /*Route::get('/', function () {
     return view('candidat.home');
 });  */
 /*Route::get('/', function () {
     return view('template');
 });*/
-=======
->>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
+
 
  //Route::get('/', function () {
    // return view('candidat.recherchenational');
@@ -33,7 +32,7 @@
 
 Route::resource('recherche', 'RechercheController');
 
-<<<<<<< HEAD
+
 Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
 //    return view('candidat.form_presseecrite');
@@ -104,6 +103,6 @@ Route::resource('vehicule', 'VehiculeController');
 Route::get('ajout', function () {
     return view('candidat.form_ajouter');
 });
-=======
+
 Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
->>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
+
