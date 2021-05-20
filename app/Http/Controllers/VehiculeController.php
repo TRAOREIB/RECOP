@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
+//use App\Vehicule;
+use Illuminate\Http\Request;
+use App\Models\Vehicule;
+use App\Http\Controllers\Controller;
+use App\Repositories\Repository ;
+=======
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Vehicule;
 
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
 
 class VehiculeController extends Controller
 {
@@ -16,6 +24,18 @@ class VehiculeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+<<<<<<< HEAD
+
+     protected $vehicule ;
+     public function __construct(Vehicule $vehi) {
+
+        $this->vehicule = new Repository($vehi) ;
+     }
+    public function index()
+    {
+        //
+        return view('candidat.form_ajouter') ;
+=======
      protected $vehicule;
      public function __construct(Vehicule $vehi) {
         $this->vehicule = new Repository($vehi);
@@ -27,6 +47,7 @@ class VehiculeController extends Controller
         //
         $allvehicule = $this->vehicule->all();
         return view('candidat.form_ajouter',compact('allvehicule'));
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
     }
 
     /**
@@ -48,9 +69,14 @@ class VehiculeController extends Controller
     public function store(Request $request)
     {
         //
+<<<<<<< HEAD
+        $this->vehicule->create($request->only($this->vehicule->getModel()->fillable)) ;
+        return view('candidat.form_ajouter') ;
+=======
       $this->vehicule->create($request->only($this->vehicule->getModel()->fillable)); 
      // return view('candidat.form_ajouter');
         return $this->index();
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
     }
 
     /**
@@ -73,9 +99,12 @@ class VehiculeController extends Controller
     public function edit($id)
     {
         //
+<<<<<<< HEAD
+=======
         $editvehicule = $this->vehicule->show($id);
         return view('candidat.form_modif_vehicule',compact('editvehicule'));
 
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
     }
 
     /**
@@ -88,9 +117,12 @@ class VehiculeController extends Controller
     public function update(Request $request, $id)
     {
         //
+<<<<<<< HEAD
+=======
         
         $this->vehicule->update($request->only($this->vehicule->getModel()->fillable),$id);
         return $this->index();
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
     }
 
     /**
@@ -102,8 +134,11 @@ class VehiculeController extends Controller
     public function destroy($id)
     {
         //
+<<<<<<< HEAD
+=======
         //echo $id;
         $this->vehicule->delete($id);
         return $this->index();
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
     }
 }

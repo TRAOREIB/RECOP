@@ -17,6 +17,18 @@
     <?php echo e(csrf_field()); ?>
 
 <div class=" row form-group"> 
+<<<<<<< HEAD
+                <label for="type" class="control-label col-sm-3">Type  <b><i style="color: red">*</i></b></label> 
+                <div class="col-sm-7"> 
+                    <input type="text" class="form-control" name="type"   value="<?php echo e(old('type')); ?>" required="required">
+                    <small class="text-danger"><?php echo e($errors->first('type',':message')); ?></small> 
+                </div> 
+   <!--             <input type="hidden" value="type" name="type">  -->
+            </div>
+
+            <div class=" row form-group">
+                <label for="marques" class="control-label col-sm-3">Marques <b><i style="color: red">*</i></b></label> 
+=======
                 <label for="type" class="control-label col-sm-3">Type <b><i style="color: red">*</i></b></label> 
                 <div class="col-sm-7"> 
                     <input type="text" class="form-control" name="type"  value="<?php echo e(old('type')); ?>" required="required">
@@ -27,6 +39,7 @@
 
             <div class=" row form-group">
                 <label for="prenom" class="control-label col-sm-3">Marques <b><i style="color: red">*</i></b></label> 
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
                 <div class="col-sm-7" style=""> 
                     <input type="text" class="form-control" name="marques"  value="<?php echo e(old('marques')); ?>" required="required">
                     <small class="text-danger"><?php echo e($errors->first('marques',':message')); ?></small> 
@@ -40,6 +53,9 @@
             <input type="button"  value="Annuler" onclick="location.href = ''" class="btn btn-primary" style="border: 1px solid #FFFFFF;  border-radius: 1px; margin-top:0px;margin-left:0px">
         </div>
     </div> 
+<<<<<<< HEAD
+ </form>   <?php /**PATH C:\xampp\htdocs\RECOP\RECOP\resources\views/candidat/form_ajouter.blade.php ENDPATH**/ ?>
+=======
  </form> 
  
  <br><br>
@@ -121,3 +137,4 @@
         $('#table').DataTable();
     });
 </script><?php /**PATH C:\xampp\htdocs\RECOP\RECOP\resources\views/candidat/form_ajouter.blade.php ENDPATH**/ ?>
+>>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
