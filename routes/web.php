@@ -33,7 +33,7 @@
 Route::resource('recherche', 'RechercheController');
 
 
-Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
+//Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
 //    return view('candidat.form_presseecrite');
 //});
