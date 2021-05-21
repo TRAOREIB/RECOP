@@ -12,9 +12,9 @@
 */
 
 
-/*Route::get('/', function () {
-    return view('candidat.home');
-});  */
+Route::get('/', function () {
+    return view('accueil.accueil');
+});  
 /*Route::get('/', function () {
     return view('template');
 });*/
@@ -82,9 +82,9 @@ Route::resource('recherche', 'RechercheController');
 
 
 
-Route::get('/', function () {
-    return view('form_ajout_information');
-});
+//Route::get('/', function () {
+//    return view('form_ajout_information');
+//});
 
 
 //   Route::get('/vue', 'PaginationControlller@paginationvueinformationcorrespondantmedia') ;
