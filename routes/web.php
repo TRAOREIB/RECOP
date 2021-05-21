@@ -20,17 +20,15 @@
 });*/
 
 
- //Route::get('/', function () {
-   // return view('candidat.recherchenational');
-    //return view('candidat.rechercheinternational');
-  //return view('candidat.listecorrespondant');
-  //return view('candidat.listecorrespondantadmin');
-// return view('candidat.form_ajouter');
- //});
+//  Route::get('/', function () {
+//   return view('candidat.listecorrespondant');
+//   //return view('candidat.listecorrespondantadmin');
+// // return view('candidat.form_ajouter');
+//  });
 
 //Route::resource('vehicule', 'VehiculeController');
 
-Route::resource('recherche', 'RechercheController');
+//Route::resource('recherche', 'RechercheController');
 
 
 //Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
@@ -69,22 +67,10 @@ Route::resource('recherche', 'RechercheController');
 //Route::resource('phototheque', 'PhotothequeController');
 //Route::resource('document', 'DocumentController');
 //Route::resource('repertoire','RepertoireController');
-//
 
-
-
-
-
-
-
-
-
-
-
-
-Route::get('/', function () {
-    return view('form_ajout_information');
-});
+// Route::get('/', function () {
+//     return view('form_ajout_information');
+// });
 
 
 //   Route::get('/vue', 'PaginationControlller@paginationvueinformationcorrespondantmedia') ;
@@ -93,16 +79,23 @@ Route::get('/', function () {
 /*  Route::get('/', function () {
     return view('form_ajout_information');
 });  */
-Route::get('vue','vuecontroller@paginationvueinformation');
+//Route::get('vue','vuecontroller@paginationvueinformation');
 
 
 
 
-Route::resource('vehicule', 'VehiculeController');
+//Route::resource('vehicule', 'VehiculeController');
 
-Route::get('ajout', function () {
-    return view('candidat.form_ajouter');
-});
+// Route::get('ajout', function () {
+//     return view('candidat.form_ajouter');
+// });
 
-Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
+//Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
 
+//Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('region');
+
+//Route::get('listevisiteur', 'RechercheController@listevisiteur');
+
+Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
+
+Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');

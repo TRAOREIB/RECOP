@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $pjcartepresse
  * @property string $pjpasseport
  * @property string $pjcnib
+ * @property string $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
  * @property Information[] $informations
@@ -49,7 +50,7 @@ class Correspondant extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'prenom', 'cnib', 'passeport', 'fonction', 'telephone1', 'telephone2', 'mail1', 'lieuresidence', 'numcartepresse', 'photo', 'cv', 'visamedia', 'refjournal', 'parcourspro', 'region', 'pjcartepresse', 'pjpasseport', 'pjcnib', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['nom', 'prenom', 'cnib', 'passeport', 'fonction', 'telephone1', 'telephone2', 'mail1', 'lieuresidence', 'numcartepresse', 'photo', 'cv', 'visamedia', 'refjournal', 'parcourspro', 'region', 'pjcartepresse', 'pjpasseport', 'pjcnib', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -25,4 +25,8 @@ class RepositoryVue implements RepositoryVueInterface {
      return DB::table("$vue")->where("region","=",$region)->where("actif","=",true)->get();
     }
 
+    public function rechercheregioninter($vue, $region){
+     return DB::table("$vue")->where("region","=",$region)->where("actif","=",true)->get();
+    }
+
 }
