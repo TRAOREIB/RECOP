@@ -65,7 +65,7 @@
                         <label><i>scannage de la carte de Presse (Recto et Verso)</i></label>
                     </div>
                 </div>	
-                <input type="text" value="<?php echo e($maxid); ?>" name="idcorrespondant">
+                <input type="hidden" value="<?php echo e($maxid); ?>" name="idcorrespondant">
             </div>
         </div>
     </div>
@@ -139,9 +139,9 @@ unset($__errorArgs, $__bag); ?>
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                 </div>
             </div>
-            <input type="text" value="<?php echo e($request->nom); ?> <?php echo e($request->prenom); ?>" name="name">
-            <input type="text" value="<?php echo e($request->mail1); ?>"  name="email">
-            <input type="text" value="Correspondant"  name="role">
+            <input type="hidden" value="<?php echo e($request->nom); ?> <?php echo e($request->prenom); ?>" name="name">
+            <input type="hidden" value="<?php echo e($request->mail1); ?>"  name="email">
+            <input type="hidden" value="Correspondant"  name="role">
              
         </div>
     </div>

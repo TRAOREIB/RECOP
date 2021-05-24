@@ -64,7 +64,7 @@
                         <label><i>scannage de la carte de Presse (Recto et Verso)</i></label>
                     </div>
                 </div>	
-                <input type="text" value="{{$maxid}}" name="idcorrespondant">
+                <input type="hidden" value="{{$maxid}}" name="idcorrespondant">
             </div>
         </div>
     </div>
@@ -110,9 +110,9 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                 </div>
             </div>
-            <input type="text" value="{{$request->nom}} {{$request->prenom}}" name="name">
-            <input type="text" value="{{$request->mail1}}"  name="email">
-            <input type="text" value="Correspondant"  name="role">
+            <input type="hidden" value="{{$request->nom}} {{$request->prenom}}" name="name">
+            <input type="hidden" value="{{$request->mail1}}"  name="email">
+            <input type="hidden" value="Correspondant"  name="role">
              
         </div>
     </div>
