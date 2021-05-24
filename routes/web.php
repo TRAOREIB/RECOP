@@ -13,7 +13,7 @@
 
 
 Route::get('/', function () {
-    return view('accueil.accueil');
+    return view('correspondant.ajout_correspondant');
 });  
 /*Route::get('/', function () {
     return view('template');
@@ -28,8 +28,9 @@ Route::get('/', function () {
 
 //Route::resource('vehicule', 'VehiculeController');
 
-//Route::resource('recherche', 'RechercheController');
-
+Route::resource('recherche', 'RechercheController');
+Route::resource('correspondant', 'CorrespondantController');
+Route::resource('piecesjointes', 'PiecesJointesController');
 
 //Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
@@ -68,17 +69,27 @@ Route::get('/', function () {
 //Route::resource('document', 'DocumentController');
 //Route::resource('repertoire','RepertoireController');
 
+<<<<<<< HEAD
 
 // Route::get('/', function () {
 //     return view('form_ajout_information');
 // });
 
+=======
+// Route::get('/', function () {
+//     return view('form_ajout_information');
+// });
+>>>>>>> d4462b19c31814e2f79fefe22a864b99eeb0d0a9
 
 
 
 //Route::get('/', function () {
 //    return view('form_ajout_information');
 //});
+<<<<<<< HEAD
+=======
+
+>>>>>>> d4462b19c31814e2f79fefe22a864b99eeb0d0a9
 
 
 //   Route::get('/vue', 'PaginationControlller@paginationvueinformationcorrespondantmedia') ;
@@ -107,3 +118,5 @@ Route::get('/', function () {
 Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
+
+Auth::routes();

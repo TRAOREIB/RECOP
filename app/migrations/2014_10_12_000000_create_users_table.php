@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('valid')->default(True);
-            $table->enum('role', ['Agent', 'Responsable', 'Admin'])->default('Agent');
+            $table->enum('role', ['Correspondant', 'Administrateur', 'Verificateur','Validateur'])->default('Correspondant');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -8,14 +8,17 @@
         <meta name="author" content="">
         <title>RECOP</title>
 
-        <link rel="stylesheet" href="{{asset('css/bootstrap4.css')}}">
-        <link href="{{asset('css/style.css')}}" rel="stylesheet">
+       
         <!-- Custom styles for this template -->
         <script src="{{asset('/js/jquery.min.js')}}"></script>
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
-
+        <script src="{{asset('js/datatables.min.js')}}"></script>
         <script src="{{asset('/js/popper.js')}}"></script>
 
+         <link rel="stylesheet" href="{{asset('css/bootstrap4.css')}}">
+        <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
+        <link href="{{asset('css/style.css')}}" rel="stylesheet">
+        
     </head>
     <body>
 
