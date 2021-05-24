@@ -15,7 +15,6 @@
     {{ method_field('POST')}}
     {{ csrf_field() }}
 <div class=" row form-group"> 
-<<<<<<< HEAD
                 <label for="type" class="control-label col-sm-3">Type  <b><i style="color: red">*</i></b></label> 
                 <div class="col-sm-7"> 
                     <input type="text" class="form-control" name="type"   value="{{old('type')}}" required="required">
@@ -26,7 +25,6 @@
 
             <div class=" row form-group">
                 <label for="marques" class="control-label col-sm-3">Marques <b><i style="color: red">*</i></b></label> 
-=======
                 <label for="type" class="control-label col-sm-3">Type <b><i style="color: red">*</i></b></label> 
                 <div class="col-sm-7"> 
                     <input type="text" class="form-control" name="type"  value="{{old('type')}}" required="required">
@@ -49,11 +47,9 @@
         </div>
         <div class="offset-1">  
             <input type="button"  value="Annuler" onclick="location.href = ''" class="btn btn-primary" style="border: 1px solid #FFFFFF;  border-radius: 1px; margin-top:0px;margin-left:0px">
-<<<<<<< HEAD
         </div>
     </div> 
  </form>   
-=======
         </div>
     </div> 
  </form> 
@@ -132,5 +128,4 @@
     $(document).ready(function () {
         $('#table').DataTable();
     });
-</script>
->>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
+
