@@ -1,35 +1,28 @@
-{{-- @extends('template')
-@section('contenu')
-@section('script') --}}
 
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
-{{-- @endsection --}}
+
+<script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datatables.min.js')); ?>"></script>
+<link rel="stylesheet" href="<?php echo e(asset('css/datatables.min.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.css')); ?>"> 
+
 <div class="row listetitreformgrand" style="">
       <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-3"> LISTE DES CORRESPONDANTS </h3>
+        <h3 class=" offset-sm-3"> LISTE DES CORRESPONDANTS</h3>
       </div>
 </div> <br>
 
-<div class="row divtabgrand  offset-sm-1" style="">
-    <div class="col-xs-12" >
+
+<div class="row divtabgrand offset-sm-1" style="">
+    <div class="col-sm-7" >
         <div class="col-xs-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
                         <th>NOM</th>
                         <th>PRENOM(S)</th>
-                        <th>CNIB</th>
-                        <th>PASSPORT</th>
-                        <th>TELEPHONE</th>
-                        <th>MAIL</th>
                         <th>MEDIA</th>
-                        <th>LIEU DE RESIDENCE</th>
-                        <th>ACTION</th>
-                       
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -39,21 +32,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                        
-                        <td title="RETIRER">
-                            <form method="POST" action="">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <a ></a>
-                                <i class="fa fa-trash"></i>
-                            </form>                    
-                        </td>
-
                     </tr>
                     
 
@@ -83,4 +62,4 @@
         $('#table').DataTable();
     });
 </script>
-{{-- @endsection --}}
+<?php /**PATH C:\xampp\htdocs\Laravel\RECOP_ancien\resources\views/candidat/listecorrespondant.blade.php ENDPATH**/ ?>

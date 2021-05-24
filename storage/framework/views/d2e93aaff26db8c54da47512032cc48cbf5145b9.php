@@ -1,13 +1,11 @@
-{{-- @extends('template')
-@section('contenu')
-@section('script') --}}
 
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
-{{-- @endsection --}}
+
+<script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datatables.min.js')); ?>"></script>
+<link rel="stylesheet" href="<?php echo e(asset('css/datatables.min.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.css')); ?>"> 
+
 <div class="row listetitreformgrand" style="">
       <div class="col-sm-12" style="">
         <h3 class=" offset-sm-3"> LISTE DES CORRESPONDANTS</h3>
@@ -29,14 +27,14 @@
                 </thead>
                 <tbody>
 
-                    
+                <?php $__currentLoopData = $allcorrespondant; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $corresp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo e($corresp->nomcorrespondant); ?></td>
+                        <td><?php echo e($corresp->prenomcorrespondant); ?></td>
+                        <td><?php echo e($corresp->media); ?></td>
                        
                     </tr>
-                    
+                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </tbody>
             </table>
@@ -64,4 +62,4 @@
         $('#table').DataTable();
     });
 </script>
-{{-- @endsection --}}
+<?php /**PATH C:\xampp\htdocs\Laravel\RECOP_ancien\resources\views/liste_correspondant/listevisiteur.blade.php ENDPATH**/ ?>

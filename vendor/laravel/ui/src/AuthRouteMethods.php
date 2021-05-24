@@ -15,7 +15,7 @@ class AuthRouteMethods
         return function ($options = []) {
             // Login Routes...
             if ($options['login'] ?? true) {
-                $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+                $this->get('conuserrecop', 'Auth\LoginController@showLoginForm')->name('conuserrecop');
                 $this->post('login', 'Auth\LoginController@login');
             }
             
@@ -26,7 +26,7 @@ class AuthRouteMethods
 
             // Registration Routes...
             if ($options['register'] ?? true) {
-                $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+                $this->get('administrateuserrecop', 'Auth\RegisterController@showRegistrationForm')->name('administrateuserrecop');
                 $this->post('register', 'Auth\RegisterController@register');
             }
 
