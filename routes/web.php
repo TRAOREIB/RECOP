@@ -68,18 +68,17 @@ Route::get('/', function () {
 //Route::resource('document', 'DocumentController');
 //Route::resource('repertoire','RepertoireController');
 
-<<<<<<< HEAD
+
 // Route::get('/', function () {
 //     return view('form_ajout_information');
 // });
-=======
+
 
 
 
 //Route::get('/', function () {
 //    return view('form_ajout_information');
 //});
->>>>>>> e9dba9bb8f12c62f7e889642c3d937b63ff1292b
 
 
 //   Route::get('/vue', 'PaginationControlller@paginationvueinformationcorrespondantmedia') ;

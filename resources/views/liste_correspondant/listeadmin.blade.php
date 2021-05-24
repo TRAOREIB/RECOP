@@ -1,13 +1,14 @@
-{{-- @extends('template')
+@extends('tprecop.template')
 @section('contenu')
-@section('script') --}}
+@section('script')
 
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/datatables.min.js')}}"></script>
 <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
-{{-- @endsection --}}
+@endsection
+<br>
 <div class="row listetitreformgrand" style="">
       <div class="col-sm-12" style="">
         <h3 class=" offset-sm-3"> LISTE DES CORRESPONDANTS </h3>
@@ -83,4 +84,4 @@
         $('#table').DataTable();
     });
 </script>
-{{-- @endsection --}}
+@endsection
