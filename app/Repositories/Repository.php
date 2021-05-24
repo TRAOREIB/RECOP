@@ -58,4 +58,8 @@ class Repository implements RepositoryInterface {
         return $this->model->with($relations);
     }
 
+    public function max($nomcolonne) {
+        return $this->model::max($nomcolonne);
+    }
+
 }

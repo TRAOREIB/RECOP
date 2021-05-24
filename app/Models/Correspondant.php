@@ -1,34 +1,32 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $idcorrespondant
+ * @property integer $iduser
  * @property string $nom
  * @property string $prenom
  * @property string $cnib
  * @property string $passeport
  * @property string $fonction
- * @property int $telephone1
- * @property int $telephone2
+ * @property string $telephone1
+ * @property string $telephone2
  * @property string $mail1
  * @property string $lieuresidence
  * @property int $numcartepresse
- * @property string $photo
- * @property string $cv
- * @property string $visamedia
  * @property string $refjournal
  * @property string $parcourspro
  * @property string $region
- * @property string $pjcartepresse
- * @property string $pjpasseport
- * @property string $pjcnib
+ * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
+ * @property User $user
  * @property Information[] $informations
  * @property Mediacorrespondant[] $mediacorrespondants
+ * @property Piecesjointe[] $piecesjointes
  */
 class Correspondant extends Model
 {
@@ -49,7 +47,15 @@ class Correspondant extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'prenom', 'cnib', 'passeport', 'fonction', 'telephone1', 'telephone2', 'mail1', 'lieuresidence', 'numcartepresse', 'photo', 'cv', 'visamedia', 'refjournal', 'parcourspro', 'region', 'pjcartepresse', 'pjpasseport', 'pjcnib', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser', 'nom', 'prenom', 'cnib', 'passeport', 'fonction', 'telephone1', 'telephone2', 'mail1', 'lieuresidence', 'numcartepresse', 'refjournal', 'parcourspro', 'region', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'iduser');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -65,5 +71,13 @@ class Correspondant extends Model
     public function mediacorrespondants()
     {
         return $this->hasMany('App\Mediacorrespondant', 'idcorrespondant', 'idcorrespondant');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function piecesjointes()
+    {
+        return $this->hasMany('App\Piecesjointe', 'idcorrespondant', 'idcorrespondant');
     }
 }

@@ -16,5 +16,11 @@ interface RepositoryInterface {
 
     public function delete($id);
 
+<<<<<<< HEAD
     public function show($idinfo);
+=======
+    public function show($id);
+    
+    public function max($nomcolonne);
+>>>>>>> d4462b19c31814e2f79fefe22a864b99eeb0d0a9
 }

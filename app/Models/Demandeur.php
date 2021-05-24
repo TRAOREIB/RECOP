@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,19 +20,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $telephone
  * @property string $personneprevenir
  * @property string $lieuresidence
- * @property string $immatriculationvehicule
  * @property string $organe
  * @property int $telorgane
  * @property string $adressestruct
- * @property string $pjcnib
- * @property string $pjpasseport
- * @property string $pjcinibperprev
- * @property string $pjpasseportperprev
- * @property string $pjcartepresse
- * @property string $membresequipe
+ * @property string $numcnib
+ * @property int $telephonepersp
+ * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
  * @property Accreditation[] $accreditations
+ * @property Piecesjointe[] $piecesjointes
  */
 class Demandeur extends Model
 {
@@ -53,7 +50,7 @@ class Demandeur extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'immatriculationvehicule', 'organe', 'telorgane', 'adressestruct', 'pjcnib', 'pjpasseport', 'pjcinibperprev', 'pjpasseportperprev', 'pjcartepresse', 'membresequipe', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct', 'numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -61,5 +58,13 @@ class Demandeur extends Model
     public function accreditations()
     {
         return $this->hasMany('App\Accreditation', 'iddemandeur', 'iddemandeur');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function piecesjointes()
+    {
+        return $this->hasMany('App\Piecesjointe', 'iddemandeur', 'iddemandeur');
     }
 }
