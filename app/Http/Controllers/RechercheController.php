@@ -26,7 +26,15 @@ class RechercheController extends Controller
         //
         $allcorrespondant = $this->vuerecherche->allvue($this->vue);
         //echo $allcorrespondant;
-        return view('candidat.recherchenational',compact('allcorrespondant'));
+        return view('recherche.recherchenational',compact('allcorrespondant'));
+    }
+
+    public function indexinternational()
+    {
+        //
+        $allcorrespondant = $this->vuerecherche->allvue($this->vue);
+        //echo $allcorrespondant;
+        return view('recherche.rechercheinternational',compact('allcorrespondant'));
     }
 
 
@@ -35,7 +43,15 @@ class RechercheController extends Controller
         //
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
-        return view('candidat.recherchenational',compact('allcorrespondant'));
+        return view('recherche.recherchenational',compact('allcorrespondant'));
+    }
+
+    public function rechercheregioninter(Request $request)
+    {
+        //
+        $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
+        //echo $allcorrespondant;
+        return view('recherche.recherchenational',compact('allcorrespondant'));
     }
 
 
