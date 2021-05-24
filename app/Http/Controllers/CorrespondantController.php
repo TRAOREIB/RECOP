@@ -25,7 +25,7 @@ class CorrespondantController extends Controller
     {
         //
         $allcorrespondant = $this->correspondant->all();
-        return view('candidat.ajouter_correspondant',compact('allcorrespondant'));
+        return view('correspondant.ajout_correspondant_suite',compact('allcorrespondant'));
 
     }
 
@@ -49,10 +49,9 @@ class CorrespondantController extends Controller
     {
         //
         $this->correspondant->create($request->only($this->correspondant->getModel()->fillable)) ;
-        return view('candidat.ajouter_correspondant') ;
+        $maxid= $this->correspondant->max("idcorrespondant");
+        return view('correspondant.ajout_correspondant_suite', compact("maxid","request")) ;
 
-      $this->vehicule->create($request->only($this->correspondant->getModel()->fillable)); 
-        return $this->index();
 
     }
 

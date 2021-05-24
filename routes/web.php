@@ -13,7 +13,7 @@
 
 
 Route::get('/', function () {
-    return view('accueil.accueil');
+    return view('correspondant.ajout_correspondant');
 });  
 /*Route::get('/', function () {
     return view('template');
@@ -29,7 +29,8 @@ Route::get('/', function () {
 //Route::resource('vehicule', 'VehiculeController');
 
 Route::resource('recherche', 'RechercheController');
-
+Route::resource('correspondant', 'CorrespondantController');
+Route::resource('piecesjointes', 'PiecesJointesController');
 
 //Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
@@ -106,3 +107,5 @@ Route::resource('recherche', 'RechercheController');
 Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
+
+Auth::routes();
