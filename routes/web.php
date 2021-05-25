@@ -115,6 +115,6 @@ Auth::routes();
 //Route::get('connect', 'ConnexionController@connexion')->name('connect');
 
 //Route::post('login', 'ConnexionController@login')->name('login');
-Auth::routes();
+//Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');
