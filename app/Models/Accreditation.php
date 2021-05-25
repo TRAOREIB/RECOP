@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $moyentransport
  * @property string $immatriculation
  * @property string $listemateriel
+ * @property string $membresequipe
+ * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
  * @property Demandeur $demandeur
@@ -37,7 +39,7 @@ class Accreditation extends Model
     /**
      * @var array
      */
-    protected $fillable = ['iddemandeur', 'titreevenement', 'lieuevenement', 'datedebut', 'datefin', 'moyentransport', 'immatriculation', 'listemateriel', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iddemandeur', 'titreevenement', 'lieuevenement', 'datedebut', 'datefin', 'moyentransport', 'immatriculation', 'listemateriel', 'membresequipe', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

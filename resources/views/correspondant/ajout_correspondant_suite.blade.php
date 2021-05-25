@@ -1,6 +1,6 @@
 @extends('tprecop.template')
 @section('contenu')
-<br> 
+<br>  
 <div class="text-center">
     <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label>
 </div>

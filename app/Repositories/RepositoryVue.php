@@ -12,6 +12,7 @@ class RepositoryVue implements RepositoryVueInterface {
     public function __construct() {
         
     }
+	
 
     public function allvue($vue) {
          return DB::table("$vue")->where("actif","=",true)->get();
