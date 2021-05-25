@@ -23,6 +23,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $organe
  * @property int $telorgane
  * @property string $adressestruct
+ * @property string $pjcnib
+ * @property string $pjpasseport
+ * @property string $pjcinibperprev
+ * @property string $pjpasseportperprev
+ * @property string $pjcartepresse
  * @property string $numcnib
  * @property int $telephonepersp
  * @property boolean $actif
@@ -50,7 +55,7 @@ class Demandeur extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct', 'numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct', 'pjcnib', 'pjpasseport', 'pjcinibperprev', 'pjpasseportperprev', 'pjcartepresse', 'numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

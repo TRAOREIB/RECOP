@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $pjcnib
  * @property string $pjcartepresse
  * @property string $pjcnibperprev
+ * @property string $pjcarteconsulaire
  * @property string $pjpasseportperprev
  * @property string $visamedia
  * @property Correspondant $correspondant
@@ -31,7 +32,7 @@ class PiecesJointes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idcorrespondant', 'iddemandeur', 'photo', 'cv', 'pjpasseport', 'pjcnib', 'pjcartepresse', 'pjcnibperprev', 'pjpasseportperprev', 'visamedia'];
+    protected $fillable = ['idcorrespondant', 'iddemandeur', 'photo', 'cv', 'pjpasseport', 'pjcnib', 'pjcartepresse', 'pjcnibperprev','pjcarteconsulaire', 'pjpasseportperprev', 'visamedia'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

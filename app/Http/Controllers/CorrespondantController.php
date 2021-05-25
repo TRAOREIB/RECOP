@@ -50,6 +50,7 @@ class CorrespondantController extends Controller
         //
         $this->correspondant->create($request->only($this->correspondant->getModel()->fillable)) ;
         $maxid= $this->correspondant->max("idcorrespondant");
+       // echo $maxid;
         return view('correspondant.ajout_correspondant_suite', compact("maxid","request")) ;
 
 

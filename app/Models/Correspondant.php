@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $refjournal
  * @property string $parcourspro
  * @property string $region
+ * @property string $organe
+ * @property string $typepresse
  * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
@@ -47,7 +49,7 @@ class Correspondant extends Model
     /**
      * @var array
      */
-    protected $fillable = ['iduser', 'nom', 'prenom', 'cnib', 'passeport', 'fonction', 'telephone1', 'telephone2', 'mail1', 'lieuresidence', 'numcartepresse', 'refjournal', 'parcourspro', 'region', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser', 'nom', 'prenom', 'cnib', 'passeport', 'fonction', 'telephone1', 'telephone2', 'mail1', 'lieuresidence', 'numcartepresse', 'refjournal', 'parcourspro', 'region','typepresse','organe', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
