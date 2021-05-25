@@ -62,7 +62,7 @@
                             <li class="nav-item"> 
                             </li>
                             <li class="nav-item"> 
-                                <a class="nav-link text-light" href="#">ACCUEIL</a> 
+                                <a class="nav-link text-light" href="">ACCUEIL</a> 
                             </li>
                             <li class="nav-item dropdown"> 
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
@@ -79,7 +79,7 @@
                                 <a class="nav-link text-white" href="#">INFORMATIONS</a> 
                             </li>
                         </ul>
-                        <a class="nav-link" href="#"><b><i>CONNEXION</i></b></a>
+                        <a class="nav-link" href="{{ url('conuserrecop') }}"><b><i>CONNEXION</i></b></a>
                         <a class="nav-link" href="#"><span class="sr-only">COO(current)</span></a> 
                     </div>                 
                 </nav>
