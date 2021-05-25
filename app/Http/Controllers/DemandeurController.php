@@ -25,6 +25,7 @@ class DemandeurController extends Controller
 		$alldemandeur= $this->demandeur->all();
         return view('demandeur.ajout_demandeur',compact('alldemandeur'));
             //
+
     }
 
     /**
@@ -45,10 +46,14 @@ class DemandeurController extends Controller
      */
     public function store(Request $request)
     {
-		$this->demandeur->create($request->only($this->demandeur->getModel()->fillable)); 
+		 //$this->demandeur->create($request->only($this->demandeur->getModel()->fillable)); 
      // return view('candidat.form_ajouter');
-        return $this->index();
+        // return $this->index();
         //
+		 $this->demandeur->create($request->only($this->demandeur->getModel()->fillable)) ;
+        $maxid= $this->demandeur->max("iddemandeur");
+       return view('demandeur.ajout_demandeur_suite', compact("maxid","request")) ;
+	 
     }
 
     /**

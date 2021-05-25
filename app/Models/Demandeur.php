@@ -23,14 +23,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $organe
  * @property int $telorgane
  * @property string $adressestruct
-<<<<<<< HEAD
  * @property string $pjcnib
  * @property string $pjpasseport
  * @property string $pjcinibperprev
  * @property string $pjpasseportperprev
  * @property string $pjcartepresse
-=======
->>>>>>> master
  * @property string $numcnib
  * @property int $telephonepersp
  * @property boolean $actif
@@ -58,11 +55,7 @@ class Demandeur extends Model
     /**
      * @var array
      */
-<<<<<<< HEAD
     protected $fillable = ['nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct', 'pjcnib', 'pjpasseport', 'pjcinibperprev', 'pjpasseportperprev', 'pjcartepresse', 'numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
-=======
-    protected $fillable = ['nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct', 'numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
->>>>>>> master
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

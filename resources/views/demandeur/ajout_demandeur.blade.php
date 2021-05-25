@@ -2,19 +2,17 @@
 @section('contenu')
 <br> 
 	<div class="text-center">
-  		<h2> NOUVEAU DEMANDEUR </h2>
+  		<label style="font-family: fantasy;color: blue"> NOUVEAU DEMANDEUR </label>
  	</div>
 <div class="ligne_separe_titre"></div>
 <br>	
 	
-	<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('demandeur.store') }}" enctype="multipart/form-data">
+	<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('demandeur.store') }}" enctype="multipart/form-data">
 				{{ method_field('POST')}}
 				{{ csrf_field() }}	
-
-		<div class="row">
-			<div class="col-sm-6">  <!-- Bloc 1-->
+			<div class="col-sm-12">  <!-- Bloc 1-->
 				<div class="card"> 
-					<div class=" card text-center card-header">IDENTITE</div>
+					<div class=" card text-center card-header">IDENTITE DU DEMANDEUR</div>
 					<div class="card-body">
                         <div class="form-group row">
 							<label class="col-sm-3 col-form-label" for="nom">NOM:</label>
@@ -31,7 +29,7 @@
                          <div class="form-group row">
                              <label class="col-sm-3 col-form-label" for="profession">PROFESSSION:</label>
                              <div class="col-sm-8">
-								<input type="text" class="form-control" id="profession" placeholder="Entrer " name="profession">
+								<input type="text" class="form-control" id="profession" placeholder="Entrer la profession " name="profession">
                              </div>
                          </div>
                          <div class="form-group row">
@@ -44,20 +42,21 @@
                             </div>
                          </div>
                          <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="datenaissance">DATE DE NAISSANCE</label>
-                                <div class="col-sm-7">
+                                <label class="col-sm-3 col-form-label" for="datenaissance">DATE DE NAISSANCE</label>
+                                <div class="col-sm-4">
                                     <input type="date" class="form-control" id="datenaissance" placeholder="Entrer " name="datenaissance">
                                 </div>
                          </div>
                          <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="lieunaissance">LIEU DE NAISSANCE:</label>
+                                <label class="col-sm-3 col-form-label" for="lieunaissance">LIEU DE NAISSANCE:</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="lieunaissance" placeholder="Entrer " name="lieunaissance">
+									
                                 </div>
                         </div>
                         <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="nationalite">NATIONALITE:</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                     <input type="text" class="form-control" id="nationalite" placeholder=" " name="nationalite">
 								</div>
                         </div>
@@ -68,46 +67,52 @@
                                 </div>
 						</div> 
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="lieuresidence">LIEU DE RESIDENCE:</label>
+                                <label class="col-sm-3 col-form-label" for="lieuresidence">LIEU DE RESIDENCE:</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="lieuresidence" placeholder=" " name="lieuresidence">
-                               </div>
+									<label><i>La ville, le secteur, le quartier</i></label>
+							   </div>
                         </div>
 						<div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="numcnib">N° CNIB:</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-7">
                                     <input type="text" class="form-control" id="numcnib" placeholder=" " name="numcnib">
+									<label><i>Numero de la Carte Nationale d'Identité Burkinabè</i></label>
                                 </div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="datedelivcnib">DATE DE DELIVRANCE</label>
-                                <div class="col-sm-7">
+                                <label class="col-sm-3 col-form-label" for="datedelivcnib">DATE DE DELIVRANCE</label>
+                                <div class="col-sm-4">
                                     <input type="date" class="form-control" id="datedelivcnib" placeholder=" " name="datedelivcnib">
+									<label><i>Date de delivrance de la CNIB</i></label>
                                 </div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="dateexpircnib">DATE D'EXPIRATION</label>
-                                <div class="col-sm-7">
+                                <label class="col-sm-3 col-form-label" for="dateexpircnib">DATE D'EXPIRATION</label>
+                                <div class="col-sm-4">
                                     <input type="date" class="form-control" id="dateexpircnib" placeholder=" " name="dateexpircnib">
+									<label><i>Date d'expiration de la CNIB</i></label>
                                 </div>
                         </div> 
                         <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSPORT:</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                     <input type="text" class="form-control" id="numPasseport" placeholder=" " name="numPasseport">
-                                </div>
+									<label><i>Le numéro du passport</i></label>
+								</div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="carteconsulaire">N° CARTE CONSULAIRE:</label>
-                                <div class="col-sm-7">
+                                <label class="col-sm-3 col-form-label" for="carteconsulaire">N° CARTE CONSULAIRE:</label>
+                                <div class="col-sm-5">
                                     <input type="text" class="form-control" id="carteconsulaire" placeholder=" " name="carteconsulaire">
                                 </div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="personneprevenir">PERSONNE A PREVENIR:</label>
+                                <label class="col-sm-3 col-form-label" for="personneprevenir">PERSONNE A PREVENIR:</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="personneprevenir" placeholder=" " name="personneprevenir">
-                                </div>
+									<label><i>Nom et Prenom(s) de la personne à prevenir</i></label>
+								</div>
                         </div>
                         <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE:</label>
@@ -117,9 +122,10 @@
                         </div> 
 					</div>
 				</div>				
-			</div>
-			<div class="col-sm-6">  <!-- Bloc 2-->
-                <div class="card"> <div class=" card text-center card-header">INFOS ORGANE</div>
+			</div>		
+			
+			<div class="col-sm-12">  <!-- Bloc 2-->
+                <div class="card"> <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
                     <div class="card-body">
 							<div class="form-group row">
                                 <label for="organe" class="col-sm-4 col-form-label">NOM ORGANE</label>
@@ -140,96 +146,13 @@
                                 </div>
                             </div>
                     </div> 
-                </div>   
-				<div class="card"> <div class=" card text-center card-header">PIECES JOINTES</div>
-					<div class="card-body">
-					        <div class="form-group row">
-                                <label for="pjcnib" class="col-sm-4 col-form-label">CNIB</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjcnib" type="file" name="pjcnib" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="pjpasseport" class="col-sm-4 col-form-label">PASSPORT</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjpasseport" type="file" name="pjpasseport"/>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="pjcarteconsulaire" class="col-sm-4 col-form-label">CARTE CONSULAIRE</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjcarteconsulaire" type="file" name="pjcarteconsulaire" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="pjcinibperprev" class="col-sm-4 col-form-label">CNIB PERSONNE A PREVENIR</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjcinibperprev" type="file" name="pjcinibperprev"/>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="pjcartepresse" class="col-sm-4 col-form-label">CARTE PRESSE</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjcartepresse" type="file" name="pjcartepresse" />
-                                </div>
-                            </div>			
-					</div>
-				</div>
+                </div>
 			</div>
-		</div>
-		<div class="text-center">
-      		<button class="btn btn-primary" type="reset">ANNULER</button>
-            <button class="btn btn-primary" type="submit">AJOUTER</button>
+		
+		<div class="text-center">	
+            <button class="btn btn-primary" type="submit">CONTINUER</button>
+			<button class="btn btn-primary" type="reset">ANNULER</button>
       	</div>
 	</form>
-
-<!--Affichage de la liste des demandeurs*-->
-
-    <div class="row listetitreformgrand" style="">
-      <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-2"> Liste des demandeurs</h3>
-      </div>
-    </div> 
-    <div class="col-sm-7" >
-        <div class="col-xs-12 ligneform " style="background-color: #EEE">
-            <table class="table table-striped table-condensed" id="table">
-                <thead>
-                    <tr style="background-color:#2a6496;color: #FFFFFF;">
-                        <th>NOM</th>
-                        <th>PRENOM</th>
-                        <th>MODIFIER</th>
-                        <th>SUPPRIMER</th>   
-                    </tr>
-                </thead>
-                <tbody>
-
-                     @foreach($alldemandeur as $demandeur)
-                    <tr>
-                        <td>{{ $demandeur->nom}}</td>
-                        <td>{{ $demandeur->prenom}}</td>
-                        <td title="Modifier">
-                            <form method="GET" action="{{ route('demandeur.edit',[$demandeur->iddemandeur]) }}">
-                                {{method_field('EDITER') }}
-                                {{ csrf_field() }}
-                                <input type="submit" value="Modifier" style="border: 0px;background-color:">
-                            </form>
-                        </td>
-                       
-                       <td title="Supprimer">
-                            <form method="POST" action="{{ route('demandeur.destroy',[$demandeur->iddemandeur]) }}">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <a ></a>
-                                <input type="submit" value="Supprimer" style="border: 0px;background-color:">
-                            </form>                    
-                        </td>
-
-                    </tr>
-                    @endforeach      
-                </tbody>
-            </table>
-       
-        </div>
-    </div>
-
+	
 @endsection

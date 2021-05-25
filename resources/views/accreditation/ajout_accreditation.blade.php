@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
-<body>
+@extends('tprecop.template')
+@section('contenu')
+<br> 
 	<div class="text-center">
-  		<h2> NOUVEAU EVENEMENT </h2>
+  		<h2> NOUVEL EVENEMENT </h2>
  	</div>
-	<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('accreditation.store') }}" enctype="multipart/form-data" >
+     <div class="ligne_separe_titre"></div>
+    <br>
+	<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('accreditation.store') }}" enctype="multipart/form-data" >
 			{{ method_field('POST')}}
 			{{ csrf_field() }}	
-		<div class="row">
-			<div class="col-sm-6">  <!-- Bloc 1-->
+			<div class="col-sm-12">  <!-- Debut du Bloc -->
 				<div class="card"> 
 					<div class=" card text-center card-header">EVENEMENT</div>
 					<div class="card-body">
@@ -47,34 +39,35 @@
                          </div>                       
 					</div>
 				</div>
-				<div class="card"> <div class=" card text-center card-header">TRANSPORT</div>
-                    <div class="card-body">
-							<div class="form-group row">
-                                <label for="moyentransport" class="col-sm-4 col-form-label">MOYEN DE TRANPORT</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="moyentransport" type="text" name="moyentransport"/>
+                <p></p>
+				<div class="card"> 
+                    <div class=" card text-center card-header">TRANSPORT</div>
+                        <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="moyentransport" class="col-sm-4 col-form-label">MOYEN DE TRANPORT</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" id="moyentransport" type="text" name="moyentransport"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="immatriculation" class="col-sm-4 col-form-label">IMMATRICULATION</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="immatriculation" type="text" name="immatriculation"/>
-                            </div>
-                    </div>                    
-				</div>
-		</div>
-			</div>
-			<div class="col-sm-6">  <!-- Bloc 2-->
+                                <div class="form-group row">
+                                    <label for="immatriculation" class="col-sm-4 col-form-label">IMMATRICULATION</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" id="immatriculation" type="text" name="immatriculation"/>
+                                </div>
+                        </div>                    
+                    </div>
+                </div>
+                <p></p>
                 <div class="card"> 
 					<div class=" card text-center card-header">MEMBRES DE L'EQUIPE</div>
                     <div class="card-body">
-							
                                 <div class="col-sm-14">
-                                <textarea class="form-control" id="membresequipe" rows="8"></textarea>
-                                </div>
+                                <textarea class="form-control" name="membresequipe" rows="8"></textarea>
+                     </div>
                             
                     </div> 
-                </div> 
+                </div>
+                <p></p> 
 				<div class="card"> 
 					<div class=" card text-center card-header">LISTE DU MATERIEL</div>
                     <div class="card-body">
@@ -82,12 +75,11 @@
                                 <textarea class="form-control" id="listemateriel" name="listemateriel" rows="3"></textarea>
                                 </div>
                     </div> 
-                </div>				
+                </div>
+            <input type="hidden" value="{{$maxid}}" name="iddemandeur">    				
 			</div>
-            </div>
 		<div class="text-center">
 	  		<button class="btn btn-primary" type="submit">AJOUTER</button>
       	</div>
 	</form>
-</body>
-</html>
+@endsection

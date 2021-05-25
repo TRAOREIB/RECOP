@@ -15,6 +15,10 @@
 Route::get('/', function () {
     return view('correspondant.ajout_correspondant');
 });  
+
+// Route::get('/', function () {
+//     return view('demandeur.ajout_correspondant');
+// }); 
 /*Route::get('/', function () {
     return view('template');
 });*/
@@ -35,3 +39,5 @@ Route::resource('accreditation', 'AccreditationController');
 Route::resource('recherche', 'RechercheController');
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
+//Route::resource('piecesjointesaccreditation', 'PiecesJointesAccreditationController');
+Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->name('pjaccreditation');

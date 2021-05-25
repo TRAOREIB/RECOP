@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
-<body>
+
+<?php $__env->startSection('contenu'); ?>
+<br> 
 	<div class="text-center">
-  		<h2> NOUVEAU DEMANDEUR </h2>
+  		<label style="font-family: fantasy;color: blue"> NOUVEAU DEMANDEUR </label>
  	</div>
-	<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('demandeur.store')); ?>" enctype="multipart/form-data" >
-			<?php echo e(method_field('POST')); ?>
+<div class="ligne_separe_titre"></div>
+<br>	
+	
+	<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="<?php echo e(route('demandeur.store')); ?>" enctype="multipart/form-data">
+				<?php echo e(method_field('POST')); ?>
 
-			<?php echo e(csrf_field()); ?>
-
-		<div class="row">
-			<div class="col-sm-6">  <!-- Bloc 1-->
+				<?php echo e(csrf_field()); ?>	
+			<div class="col-sm-12">  <!-- Bloc 1-->
 				<div class="card"> 
-					<div class=" card text-center card-header">IDENTITE</div>
+					<div class=" card text-center card-header">IDENTITE DU DEMANDEUR</div>
 					<div class="card-body">
                         <div class="form-group row">
 							<label class="col-sm-3 col-form-label" for="nom">NOM:</label>
@@ -38,7 +30,7 @@
                          <div class="form-group row">
                              <label class="col-sm-3 col-form-label" for="profession">PROFESSSION:</label>
                              <div class="col-sm-8">
-								<input type="text" class="form-control" id="profession" placeholder="Entrer " name="profession">
+								<input type="text" class="form-control" id="profession" placeholder="Entrer la profession " name="profession">
                              </div>
                          </div>
                          <div class="form-group row">
@@ -51,20 +43,21 @@
                             </div>
                          </div>
                          <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="datenaissance">DATE DE NAISSANCE</label>
-                                <div class="col-sm-7">
+                                <label class="col-sm-3 col-form-label" for="datenaissance">DATE DE NAISSANCE</label>
+                                <div class="col-sm-4">
                                     <input type="date" class="form-control" id="datenaissance" placeholder="Entrer " name="datenaissance">
                                 </div>
                          </div>
                          <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="lieunaissance">LIEU DE NAISSANCE:</label>
+                                <label class="col-sm-3 col-form-label" for="lieunaissance">LIEU DE NAISSANCE:</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="lieunaissance" placeholder="Entrer " name="lieunaissance">
+									
                                 </div>
                         </div>
                         <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="nationalite">NATIONALITE:</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                     <input type="text" class="form-control" id="nationalite" placeholder=" " name="nationalite">
 								</div>
                         </div>
@@ -75,46 +68,52 @@
                                 </div>
 						</div> 
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="lieuresidence">LIEU DE RESIDENCE:</label>
+                                <label class="col-sm-3 col-form-label" for="lieuresidence">LIEU DE RESIDENCE:</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="lieuresidence" placeholder=" " name="lieuresidence">
-                               </div>
+									<label><i>La ville, le secteur, le quartier</i></label>
+							   </div>
                         </div>
 						<div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="numcnib">N° CNIB:</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-7">
                                     <input type="text" class="form-control" id="numcnib" placeholder=" " name="numcnib">
+									<label><i>Numero de la Carte Nationale d'Identité Burkinabè</i></label>
                                 </div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="datedelivcnib">DATE DE DELIVRANCE</label>
-                                <div class="col-sm-7">
+                                <label class="col-sm-3 col-form-label" for="datedelivcnib">DATE DE DELIVRANCE</label>
+                                <div class="col-sm-4">
                                     <input type="date" class="form-control" id="datedelivcnib" placeholder=" " name="datedelivcnib">
+									<label><i>Date de delivrance de la CNIB</i></label>
                                 </div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="dateexpircnib">DATE D'EXPIRATION</label>
-                                <div class="col-sm-7">
+                                <label class="col-sm-3 col-form-label" for="dateexpircnib">DATE D'EXPIRATION</label>
+                                <div class="col-sm-4">
                                     <input type="date" class="form-control" id="dateexpircnib" placeholder=" " name="dateexpircnib">
+									<label><i>Date d'expiration de la CNIB</i></label>
                                 </div>
                         </div> 
                         <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSPORT:</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                     <input type="text" class="form-control" id="numPasseport" placeholder=" " name="numPasseport">
-                                </div>
+									<label><i>Le numéro du passport</i></label>
+								</div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="carteconsulaire">N° CARTE CONSULAIRE:</label>
-                                <div class="col-sm-7">
+                                <label class="col-sm-3 col-form-label" for="carteconsulaire">N° CARTE CONSULAIRE:</label>
+                                <div class="col-sm-5">
                                     <input type="text" class="form-control" id="carteconsulaire" placeholder=" " name="carteconsulaire">
                                 </div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="personneprevenir">PERSONNE A PREVENIR:</label>
+                                <label class="col-sm-3 col-form-label" for="personneprevenir">PERSONNE A PREVENIR:</label>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control" id="personneprevenir" placeholder=" " name="personneprevenir">
-                                </div>
+									<label><i>Nom et Prenom(s) de la personne à prevenir</i></label>
+								</div>
                         </div>
                         <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE:</label>
@@ -124,9 +123,10 @@
                         </div> 
 					</div>
 				</div>				
-			</div>
-			<div class="col-sm-6">  <!-- Bloc 2-->
-                <div class="card"> <div class=" card text-center card-header">INFOS ORGANE</div>
+			</div>		
+			
+			<div class="col-sm-12">  <!-- Bloc 2-->
+                <div class="card"> <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
                     <div class="card-body">
 							<div class="form-group row">
                                 <label for="organe" class="col-sm-4 col-form-label">NOM ORGANE</label>
@@ -147,106 +147,14 @@
                                 </div>
                             </div>
                     </div> 
-                </div>   
-				<div class="card"> <div class=" card text-center card-header">PIECES JOINTES</div>
-					<div class="card-body">
-					        <div class="form-group row">
-                                <label for="pjcnib" class="col-sm-4 col-form-label">CNIB</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjcnib" type="file" name="pjcnib" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="pjpasseport" class="col-sm-4 col-form-label">PASSPORT</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjpasseport" type="file" name="pjpasseport"/>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="pjcarteconsulaire" class="col-sm-4 col-form-label">CARTE CONSULAIRE</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjcarteconsulaire" type="file" name="pjcarteconsulaire" />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="pjcinibperprev" class="col-sm-4 col-form-label">CNIB PERSONNE A PREVENIR</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjcinibperprev" type="file" name="pjcinibperprev"/>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="pjcartepresse" class="col-sm-4 col-form-label">CARTE PRESSE</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" id="pjcartepresse" type="file" name="pjcartepresse" />
-                                </div>
-                            </div>			
-					</div>
-				</div>
+                </div>
 			</div>
-		</div>
-		<div class="text-center">
-      		<button class="btn btn-primary" type="reset">ANNULER</button>
-            <button class="btn btn-primary" type="submit">AJOUTER</button>
+		
+		<div class="text-center">	
+            <button class="btn btn-primary" type="submit">CONTINUER</button>
+			<button class="btn btn-primary" type="reset">ANNULER</button>
       	</div>
 	</form>
-<!--Affichage de la liste des demandeurs*-->
-
-    <div class="row listetitreformgrand" style="">
-      <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-2"> Liste des demandeurs</h3>
-      </div>
-    </div> 
-    <div class="col-sm-7" >
-        <div class="col-xs-12 ligneform " style="background-color: #EEE">
-            <table class="table table-striped table-condensed" id="table">
-                <thead>
-                    <tr style="background-color:#2a6496;color: #FFFFFF;">
-                        <th>NOM</th>
-                        <th>PRENOM</th>
-                        <th>MODIFIER</th>
-                        <th>SUPPRIMER</th>   
-                    </tr>
-                </thead>
-                <tbody>
-
-                     <?php $__currentLoopData = $alldemandeur; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $demandeur): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <tr>
-                        <td><?php echo e($demandeur->nom); ?></td>
-                        <td><?php echo e($demandeur->prenom); ?></td>
-                        <td title="Modifier">
-                            <form method="GET" action="<?php echo e(route('demandeur.edit',[$demandeur->iddemandeur])); ?>">
-                                <?php echo e(method_field('EDITER')); ?>
-
-                                <?php echo e(csrf_field()); ?>
-
-                                <input type="submit" value="Modifier" style="border: 0px;background-color:">
-                            </form>
-                        </td>
-                       
-                       <td title="Supprimer">
-                            <form method="POST" action="<?php echo e(route('demandeur.destroy',[$demandeur->iddemandeur])); ?>">
-                                <?php echo e(method_field('DELETE')); ?>
-
-                                <?php echo e(csrf_field()); ?>
-
-                                <a ></a>
-                                <input type="submit" value="Supprimer" style="border: 0px;background-color:">
-                            </form>                    
-                        </td>
-
-                    </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>      
-                </tbody>
-            </table>
-       
-        </div>
-    </div>
-
-    <script>
-    $(document).ready(function () {
-        $('#table').DataTable();
-    });
-
-
-</body>
-</html><?php /**PATH C:\xampp\htdocs\RECOP2\resources\views/demandeur/ajout_demandeur.blade.php ENDPATH**/ ?>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP2\resources\views/demandeur/ajout_demandeur.blade.php ENDPATH**/ ?>

@@ -27,7 +27,12 @@ class AccreditationController extends Controller
         //
         return view('accreditation.ajout_accreditation');
     }
-
+  public function indexpjaccreditation($maxid)
+    {
+        //
+        return view('accreditation.ajout_accreditation',compact('maxid'));
+    }
+	
     /**
      * Show the form for creating a new resource.
      *
@@ -46,9 +51,12 @@ class AccreditationController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $this->accreditation->create($request->only($this->accreditation->getModel()->fillable)); 
-           return $this->index();
+		       
+	   //
+			$this->accreditation->create($request->only($this->accreditation->getModel()->fillable)); 
+        //return $this->indexpjaccreditation($request->iddemandeur);
+		return view('accreditation.message_accreditation');
+		 
 
     }
 

@@ -188,7 +188,7 @@
             </div> 
         </div>   
     </div>
-    <p></p>
+   </p>
     <div class="text-center">
         <button class="btn btn-primary" type="submit">CONTINUER</button>
         <button class="btn btn-primary" type="reset">ANNULER</button>
