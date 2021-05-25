@@ -7,6 +7,9 @@ use App\Models\Correspondant;
 use Illuminate\Http\Request;
 use App\Repositories\RepositoryVue;
 
+
+
+
 class RechercheController extends Controller
 {
     /**
@@ -19,20 +22,29 @@ class RechercheController extends Controller
     protected $correspondant;
     protected $modelcorresp;
     protected $vue="vuecorrespondant";
+	
+	
+	
 
     public function __construct() {
         $this->vuerecherche = new RepositoryVue();
         $this->modelcorresp = new Correspondant();
         $this->correspondant = new CorrespondantController($this->modelcorresp);
+		
+		
+		
     }
 
-    public function indexnational()
+    public function index()
     {
+		
         //
         $allcorrespondant = $this->vuerecherche->allvue($this->vue);
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
     }
+	
+	
 
     public function indexinternational()
     {
@@ -49,7 +61,7 @@ class RechercheController extends Controller
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
-<<<<<<< HEAD
+
     }
 
     public function rechercheregioninter(Request $request)
@@ -58,17 +70,17 @@ class RechercheController extends Controller
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
-=======
->>>>>>> d4462b19c31814e2f79fefe22a864b99eeb0d0a9
+
     }
 
-    public function rechercheregioninter(Request $request)
+ 
+/* public function rechercheregioninter(Request $request)
     {
         //
         $allcorrespondant = $this->vuerecherche->rechercheregioninter($this->vue,$request->region);
         //echo $allcorrespondant;
         return view('recherche.rechercheinternational',compact('allcorrespondant'));
-    }
+    }    */
 
     public function listeadmin(Request $request)
     {

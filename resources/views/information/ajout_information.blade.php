@@ -1,20 +1,32 @@
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
+ @extends('tprecop.template')
+@section('contenu')
 
-
+	<!--	<script src="{{asset('js/bootstrap.min.js')}}"></script>
+		<script src="{{asset('js/jquery.min.js')}}"></script>
+		<script src="{{asset('js/datatables.min.js')}}"></script>
+		<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
+		<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
+		-->
+		<br><br>
 <div class="row listetitreformgrand" style="">
       <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-2"> Enregistrer une Information</h3>
+        <div class="card-header">
+             <h3 class=" offset-sm-2"> Enregistrer une Information</h3>
+         
+             
+        </div>
       </div>
 </div> <br>
 
-<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('informations.store') }}" enctype="multipart/form-data" >
+<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST"  enctype="multipart/form-data" >
     {{ method_field('POST')}}
     {{ csrf_field() }}
-<div class=" row form-group"> 
+
+    <div class="card text-center">
+      
+        <div class="card-body">
+<div class=" row form-group "> 
+    
                 <label for="titre" class="control-label col-sm-3">Titre  <b><i style="color: red">*</i></b></label> 
                 <div class="col-sm-7"> 
                     <input type="text" class="form-control" name="titre"   value="{{old('titre')}}" required="required">
@@ -34,6 +46,18 @@
                     <small class="text-danger">{{ $errors->first('contenu',':message') }}</small> 
                 </div> 
             </div>
+			
+			
+			
+			
+			<div class=" row form-group"> 
+                <label for="titre" class="control-label col-sm-3">  <b><i style="color: red"></i></b></label> 
+                <div class="col-sm-7"> 
+                    <input type="hidden" class="form-control" name="idcorrespondant"   value="1" required="required">
+                    <small class="text-danger">{{ $errors->first('idcorrespondant',':message') }}</small> 
+                </div> 
+   <!--             <input type="hidden" value="type" name="type">  -->
+            </div>
          <div class="row form-group">
         <div class="offset-3">  
             <input type="submit"  value="Valider" class="btn btn-primary offset-sm-7" style="border: 1px solid #FFFFFF;  border-radius: 1px;margin-top: 0px"> 
@@ -42,23 +66,23 @@
             <input type="button"  value="Annuler" onclick="location.href = ''" class="btn btn-primary" style="border: 1px solid #FFFFFF;  border-radius: 1px; margin-top:0px;margin-left:0px">
         </div>
     </div> 
+    </div>
+</div>
  </form>   
-        </div>
-    </div> 
- </form> 
+       
  
  <br><br>
    
 
 <div class="row listetitreformgrand" style="">
-      <div class="col-sm-12" style="">
+      <div class="col-sm-12  text-center" style="">
         <h3 class=" offset-sm-2"> Liste des Informations</h3>
       </div>
 </div> <br>
 
-   <div class="row divtabgrand offset-sm-2" style="">
-    <div class="col-sm-7" >
-        <div class="col-xs-12 ligneform " style="background-color: #EEE">
+   <div class="row divtabgrand offset-sm-1" style="">
+    <div class="col-sm-12" >
+        <div class="col-sm-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
@@ -72,11 +96,12 @@
                 </thead>
                 <tbody>
 
-                     @foreach($allinformations as $informations)
+                     @foreach($allinformation as $informations)
                     <tr>
                         <td>{{ $informations->titre }}</td>
                          <td>{{ $informations->contenu }}</td>
-						  <td>{{ $informations->created_at }}</td>
+						
+                         <td>{{ $informations->CREATED_AT }}</td>
                        
 					   
 					    <td title="Modifier">
@@ -125,4 +150,4 @@
     $(document).ready(function () {
         $('#table').DataTable();
     });
-
+ @endsection 

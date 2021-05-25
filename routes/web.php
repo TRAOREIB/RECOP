@@ -32,6 +32,12 @@ Route::resource('recherche', 'RechercheController');
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
 
+//Route::resource('information', 'RechercheController');
+
+Route::resource('informations', 'InformationController');
+Route::get('informationvue', 'InformationController@indexvue');
+Route::get('enrinf', 'InformationController@index')->name('enrinf');;
+//Route::get('rechercheinfo', 'InformationController@indexvue');
 //Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
 //    return view('candidat.form_presseecrite');
@@ -84,21 +90,21 @@ Route::resource('piecesjointes', 'PiecesJointesController');
 //   Route::get('/vue', 'PaginationControlller@paginationvueinformationcorrespondantmedia') ;
 
 
-<<<<<<< HEAD
+
 // Route::get('/', function () {
 //     return view('form_ajout_information');
 // });
-=======
+
 /*  Route::get('/', function () {
     return view('form_ajout_information');
 });  */
 //Route::get('vue','vuecontroller@paginationvueinformation');
->>>>>>> d4462b19c31814e2f79fefe22a864b99eeb0d0a9
 
 
 
 
-<<<<<<< HEAD
+
+
 /*  Route::get('/', function () {
     return view('form_ajout_information');
 });  */
@@ -109,17 +115,17 @@ Route::resource('piecesjointes', 'PiecesJointesController');
 
 //Route::resource('vehicule', 'VehiculeController');
 
-=======
+
 //Route::resource('vehicule', 'VehiculeController');
 
->>>>>>> d4462b19c31814e2f79fefe22a864b99eeb0d0a9
+
 // Route::get('ajout', function () {
 //     return view('candidat.form_ajouter');
 // });
 
 //Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
 
-<<<<<<< HEAD
+
 Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name('region');
 
 
@@ -131,8 +137,13 @@ Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name(
  
  
  
- Route::resource('informations', 'InformationController');
-=======
+ ////////////////Route::resource('informations', 'InformationController');
+ 
+ 
+ 
+ 
+ 
+
 //Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('region');
 
 //Route::get('listevisiteur', 'RechercheController@listevisiteur');
@@ -140,6 +151,6 @@ Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name(
 Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
->>>>>>> d4462b19c31814e2f79fefe22a864b99eeb0d0a9
+
 
 Auth::routes();
