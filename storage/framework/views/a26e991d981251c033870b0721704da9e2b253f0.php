@@ -1,13 +1,6 @@
-@extends('tprecop.template')
-@section('contenu')
-{{-- @section('script')
 
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
-@endsection --}}
+<?php $__env->startSection('contenu'); ?>
+
 <br>
 
 <div class="text-center">
@@ -30,7 +23,7 @@
                         <th>TELEPHONE</th>
                         <th>MAIL</th>
                         <th>MEDIA</th>
-                        {{-- <th>LIEU DE RESIDENCE</th> --}}
+                        
                         <th>ACTION</th>
                        
                     </tr>
@@ -38,23 +31,23 @@
                 <tbody>
                     
                     <?php $i = 0 ?>
-                     @foreach($allcorrespondant as $corresp)
+                     <?php $__currentLoopData = $allcorrespondant; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $corresp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php $i++ ?>
                     
                     <tr>
-                        <td>{{$corresp->nomcorrespondant }}</td>
-                        <td>{{$corresp->prenomcorrespondant }}</td>
-                        <td>{{$corresp->cnibcorrespondant }}</td>
-                        <td>{{$corresp->passportcorrespondant }}</td>
-                        <td>{{$corresp->telephonecorrespondant }}</td>
-                        <td>{{$corresp->mailcorrespondant }}</td>
-                        <td>{{$corresp->media }}</td>
-                        {{-- <td>{{$corresp->lieuresidence }}</td> --}}
+                        <td><?php echo e($corresp->nomcorrespondant); ?></td>
+                        <td><?php echo e($corresp->prenomcorrespondant); ?></td>
+                        <td><?php echo e($corresp->cnibcorrespondant); ?></td>
+                        <td><?php echo e($corresp->passportcorrespondant); ?></td>
+                        <td><?php echo e($corresp->telephonecorrespondant); ?></td>
+                        <td><?php echo e($corresp->mailcorrespondant); ?></td>
+                        <td><?php echo e($corresp->media); ?></td>
+                        
 
                         <td title="">
-                        <button data-toggle="modal" data-target='#recherche{{$i}}' value="DETAILS">DETAILS </button>              
+                        <button data-toggle="modal" data-target='#recherche<?php echo e($i); ?>' value="DETAILS">DETAILS </button>              
                                      
-                            <div class="modal fade" id='recherche{{$i}}'>
+                            <div class="modal fade" id='recherche<?php echo e($i); ?>'>
                                 <div class="modal-dialog modal-lg" style="">
                                     <div class="modal-content" style="background-color : whitesmoke">
                                         <div class="row listetitreformgrand" style="">
@@ -65,57 +58,57 @@
                                         <div class="modal-body">     
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">NOM</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->nomcorrespondant }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->nomcorrespondant); ?></label></div>
                                             </div>
 
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">PRENOM(S)</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->prenomcorrespondant }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->prenomcorrespondant); ?></label></div>
                                             </div>
 
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">CNIB</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->cnibcorrespondant }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->cnibcorrespondant); ?></label></div>
                                             </div>
 
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">PASSPORT</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->passportcorrespondant }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->passportcorrespondant); ?></label></div>
                                             </div>
 
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">TELEPHONE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->telephonecorrespondant }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->telephonecorrespondant); ?></label></div>
                                             </div>
                                             
                                            
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">MAIL</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->mailcorrespondant }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->mailcorrespondant); ?></label></div>
                                             </div>
                                             
                                             
                                             
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">MEDIA</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->media }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->media); ?></label></div>
                                             </div>
                                             
 
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label-info" style="margin-left:0px">LIEU DE RESIDENCE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->lieuresidence }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->lieuresidence); ?></label></div>
                                             </div>
 
 
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">REGION</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->region }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->region); ?></label></div>
                                             </div>
 
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">TYPE PRESSE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->typepresse }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->typepresse); ?></label></div>
 
                                             </div>
                                         </div>
@@ -123,16 +116,18 @@
                                 </div>
                              </div>
                             
-                            <form method="GET" action="{{ route('retirer',[$corresp->idcorrespondant]) }}">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
+                            <form method="GET" action="<?php echo e(route('retirer',[$corresp->idcorrespondant])); ?>">
+                                <?php echo e(method_field('DELETE')); ?>
+
+                                <?php echo e(csrf_field()); ?>
+
                                 
                                <button type="submit" onclick="return confirm('Vraiment Retirer?')">RETIRER</button>
                             </form>
                         
                         </td>
                     </tr>
-                     @endforeach
+                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </tbody>
             </table>
@@ -163,9 +158,10 @@
 
    
     $('#appui').click(function () {
-    $({{$i}}).modal();
+    $(<?php echo e($i); ?>).modal();
     });
 
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP2\resources\views/liste_correspondant/listeadmin.blade.php ENDPATH**/ ?>

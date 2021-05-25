@@ -39,7 +39,6 @@ Route::resource('accreditation', 'AccreditationController');
 Route::resource('recherche', 'RechercheController');
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
-<<<<<<< HEAD
 
 //Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
@@ -127,7 +126,5 @@ Auth::routes();
 //Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');
-=======
 //Route::resource('piecesjointesaccreditation', 'PiecesJointesAccreditationController');
 Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->name('pjaccreditation');
->>>>>>> a8f87b7f4abfccd10b2cae3a59232b5dbe935d9f
