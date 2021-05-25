@@ -5,12 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\PiecesJointes;
-<<<<<<< HEAD
 use App\Models\Accreditation;
 use App\Models\Demandeur;
-=======
-use App\Models\Correspondant;
->>>>>>> 8023ca5e265f114664269dc84e67cd4011c9a9ca
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AccreditationController; 
 
@@ -23,7 +19,6 @@ class PiecesJointesController extends Controller {
      */
     protected $piecesjointes;
     protected $enreguser;
-<<<<<<< HEAD
 	protected $accreditation;
 	protected $accredi;
 	protected $demandeur;
@@ -33,12 +28,6 @@ class PiecesJointesController extends Controller {
 		$this->demande = new Demandeur();
 		$this->demandeur= new Repository ($this->demande);
 		$this->accredi = new Accreditation();
-=======
-    protected $correspondant;
-
-    public function __construct(PiecesJointes $pj, Correspondant $cor) {
-        $this->correspondant=new Repository($cor);
->>>>>>> 8023ca5e265f114664269dc84e67cd4011c9a9ca
         $this->enreguser = new RegisterController();
         $this->piecesjointes = new Repository($pj);
 		$this->accreditation = new AccreditationController($this->accredi);
@@ -73,10 +62,7 @@ class PiecesJointesController extends Controller {
         echo $request->email;
         echo $request->password;
         echo $request->identifiant;
-<<<<<<< HEAD
 		  
-=======
->>>>>>> 8023ca5e265f114664269dc84e67cd4011c9a9ca
     }
 	
 	 public function storepjaccreditation(Request $request) {

@@ -8,17 +8,17 @@
         <meta name="author" content="">
         <title>RECOP</title>
 
-       
+
         <!-- Custom styles for this template -->
         <script src="<?php echo e(asset('/js/jquery.min.js')); ?>"></script>
         <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
         <script src="<?php echo e(asset('js/datatables.min.js')); ?>"></script>
         <script src="<?php echo e(asset('/js/popper.js')); ?>"></script>
 
-         <link rel="stylesheet" href="<?php echo e(asset('css/bootstrap4.css')); ?>">
+        <link rel="stylesheet" href="<?php echo e(asset('css/bootstrap4.css')); ?>">
         <link rel="stylesheet" href="<?php echo e(asset('css/datatables.min.css')); ?>">
         <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
-        
+
     </head>
     <body>
 
@@ -62,7 +62,7 @@
                             <li class="nav-item"> 
                             </li>
                             <li class="nav-item"> 
-                                <a class="nav-link text-light" href="#">ACCUEIL</a> 
+                                <a class="nav-link text-light" href="">ACCUEIL</a> 
                             </li>
                             <li class="nav-item dropdown"> 
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
@@ -79,7 +79,7 @@
                                 <a class="nav-link text-white" href="#">INFORMATIONS</a> 
                             </li>
                         </ul>
-                        <a class="nav-link" href="#"><b><i>CONNEXION</i></b></a>
+                        <a class="nav-link" href="<?php echo e(url('login')); ?>"><b><i>CONNEXION</i></b></a>
                         <a class="nav-link" href="#"><span class="sr-only">COO(current)</span></a> 
                     </div>                 
                 </nav>
@@ -87,29 +87,29 @@
             <?php echo $__env->yieldContent('contenu'); ?>
 
 
-        <div class="container d-flex flex-row">
-            <div class="card w-50"> 
-                <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
-                    <h4 class="card-title">Liens Utiles</h4> 
-                    <h6 class="card-subtitle mb-2 text-muted"></h6> 
-                    <p class="card-text">www.communication.gov.bf</p>
-                    <p class="card-text">www.rtb.bf</p>                      
-                </div>                 
+            <div class="container d-flex flex-row">
+                <div class="card w-50"> 
+                    <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+                        <h4 class="card-title">Liens Utiles</h4> 
+                        <h6 class="card-subtitle mb-2 text-muted"></h6> 
+                        <p class="card-text">www.communication.gov.bf</p>
+                        <p class="card-text">www.rtb.bf</p>                      
+                    </div>                 
+                </div>
+                <div class="card w-50"> 
+                    <div class="card-body w-100" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+                        <h4 class="card-title">Numeros Utiles</h4>                      
+                        <p>Sapeur Pompier : 18</p>
+                        <p>ONEA : 18</p>                      
+                    </div>                 
+                </div>
             </div>
-            <div class="card w-50"> 
-                <div class="card-body w-100" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
-                    <h4 class="card-title">Numeros Utiles</h4>                      
-                    <p>Sapeur Pompier : 18</p>
-                    <p>ONEA : 18</p>                      
-                </div>                 
+            <div class="container">
+                <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
         </div>
-        <div class="container">
-            <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
-        </div>
-    </div>
-       
 
-</body>
+
+    </body>
 </html>
 <?php /**PATH C:\xampp\htdocs\RECOP2\resources\views/tprecop/template.blade.php ENDPATH**/ ?>
