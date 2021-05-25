@@ -147,7 +147,7 @@ Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name(
  
  
  
- ////////////////Route::resource('informations', 'InformationController');
+ Route::resource('informations', 'InformationController');
  
  
  
@@ -162,10 +162,7 @@ Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
 
-<<<<<<< HEAD
 
-Auth::routes();
-=======
 Auth::routes();
 
 //Route::get('connect', 'ConnexionController@connexion')->name('connect');
@@ -176,8 +173,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::resource('piecesjointesaccreditation', 'PiecesJointesAccreditationController');
 Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->name('pjaccreditation');
-<<<<<<< HEAD
-=======
->>>>>>> a8f87b7f4abfccd10b2cae3a59232b5dbe935d9f
->>>>>>> 0e06204eb3a5144317e836de50c2ce2b6f41222b
->>>>>>> 2371a97e2391c91c46aa2c6a7da608e46493a168
+
