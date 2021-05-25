@@ -87,6 +87,16 @@
             @yield('contenu')
 
 
+<<<<<<< HEAD
+        <div class="container d-flex flex-row">
+     <div class="card w-50"> 
+               <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+                    <h4 class="card-title">Liens Utiles</h4> 
+                    <h6 class="card-subtitle mb-2 text-muted"></h6> 
+                    <p class="card-text">www.communication.gov.bf</p>
+                    <p class="card-text">www.rtb.bf</p>                      
+                </div>                 
+=======
             <div class="container d-flex flex-row">
                 <div class="card w-50"> 
                     <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
@@ -103,11 +113,21 @@
                         <p>ONEA : 18</p>                      
                     </div>                 
                 </div>
+>>>>>>> 0e06204eb3a5144317e836de50c2ce2b6f41222b
             </div>
             <div class="container">
                 <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
+<<<<<<< HEAD
+        </div>    
+        <div class="container">
+            <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
         </div>
+    </div>
+       
+=======
+        </div>
+>>>>>>> 0e06204eb3a5144317e836de50c2ce2b6f41222b
 
 
     </body>

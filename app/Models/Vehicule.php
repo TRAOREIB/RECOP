@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property boolean $actif
 
  */
+ 
+ 
 class Vehicule extends Model
 {
     /**

@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Repositories\RepositoryVue;
 use App\Repositories\Repository;
 
+
+
+
 class RechercheController extends Controller
 {
     /**
@@ -20,20 +23,33 @@ class RechercheController extends Controller
     protected $correspondant;
     protected $modelcorresp;
     protected $vue="vuecorrespondant";
+	
+	
+	
 
     public function __construct() {
         $this->vuerecherche = new RepositoryVue();
         $this->modelcorresp = new Correspondant();
+<<<<<<< HEAD
+        $this->correspondant = new CorrespondantController($this->modelcorresp);
+		
+		
+		
+=======
         $this->correspondant = new Repository($this->modelcorresp);
+>>>>>>> 0e06204eb3a5144317e836de50c2ce2b6f41222b
     }
 
-    public function indexnational()
+    public function index()
     {
+		
         //
         $allcorrespondant = $this->vuerecherche->allvue($this->vue);
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
     }
+	
+	
 
     public function indexinternational()
     {
@@ -50,15 +66,32 @@ class RechercheController extends Controller
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
+
     }
 
     public function rechercheregioninter(Request $request)
     {
         //
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
+<<<<<<< HEAD
+        //echo $allcorrespondant;
+        return view('recherche.recherchenational',compact('allcorrespondant'));
+
+    }
+
+ 
+/* public function rechercheregioninter(Request $request)
+    {
+        //
+        $allcorrespondant = $this->vuerecherche->rechercheregioninter($this->vue,$request->region);
+        //echo $allcorrespondant;
+        return view('recherche.rechercheinternational',compact('allcorrespondant'));
+    }    */
+=======
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
     }
+>>>>>>> 0e06204eb3a5144317e836de50c2ce2b6f41222b
 
     
 
