@@ -111,7 +111,13 @@ Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
 
 Auth::routes();
+<<<<<<< HEAD
 
 //Route::get('connect', 'ConnexionController@connexion')->name('connect');
 
 //Route::post('login', 'ConnexionController@login')->name('login');
+=======
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> f647d65aa4707057a5570add112e12848142ed24

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\PiecesJointes;
+use App\Models\Correspondant;
 use App\Http\Controllers\Auth\RegisterController;
 
 class PiecesJointesController extends Controller {
@@ -16,8 +17,10 @@ class PiecesJointesController extends Controller {
      */
     protected $piecesjointes;
     protected $enreguser;
+    protected $correspondant;
 
-    public function __construct(PiecesJointes $pj) {
+    public function __construct(PiecesJointes $pj, Correspondant $cor) {
+        $this->correspondant=new Repository($cor);
         $this->enreguser = new RegisterController();
         $this->piecesjointes = new Repository($pj);
     }
@@ -44,10 +47,13 @@ class PiecesJointesController extends Controller {
     public function store(Request $request) {
         $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
         $this->enreguser->register($request);
+        //mise a jour de la colonne actif à true pour le correspondant
+        $request->actif="true";
+        $this->correspondant->update($request->only($this->correspondant->getModel()->fillable), $request->idcorrespondant);
         echo $request->name;
         echo $request->email;
         echo $request->password;
-          echo $request->identifiant;
+        echo $request->identifiant;
     }
 
     /**
