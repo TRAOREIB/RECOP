@@ -79,11 +79,7 @@
                                 <a class="nav-link text-white" href="#">INFORMATIONS</a> 
                             </li>
                         </ul>
-<<<<<<< HEAD
-                        <a class="nav-link" href="{{ url('conuserrecop') }}"><b><i>CONNEXION</i></b></a>
-=======
                         <a class="nav-link" href="{{url('login')}}"><b><i>CONNEXION</i></b></a>
->>>>>>> f647d65aa4707057a5570add112e12848142ed24
                         <a class="nav-link" href="#"><span class="sr-only">COO(current)</span></a> 
                     </div>                 
                 </nav>
