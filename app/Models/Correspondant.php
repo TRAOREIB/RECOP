@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $idcorrespondant
- * @property integer $iduser
+ * @property int $iduser
  * @property string $nom
  * @property string $prenom
  * @property string $cnib

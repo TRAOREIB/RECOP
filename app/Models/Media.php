@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $idmedia
+ * @property int $iduser
  * @property string $typemedia
  * @property string $nommedia
  * @property string $telmedia
+ * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
  * @property Mediacorrespondant[] $mediacorrespondants
@@ -26,7 +28,7 @@ class Media extends Model
     /**
      * @var array
      */
-    protected $fillable = ['typemedia', 'nommedia', 'telmedia', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser', 'typemedia', 'nommedia', 'telmedia', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
