@@ -71,23 +71,11 @@ class RechercheController extends Controller
         //
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
-        return view('recherche.recherchenational',compact('allcorrespondant'));
+        return view('recherche.rechercheinternational',compact('allcorrespondant'));
 
     }
 
  
-/* public function rechercheregioninter(Request $request)
-    {
-        //
-        $allcorrespondant = $this->vuerecherche->rechercheregioninter($this->vue,$request->region);
-        //echo $allcorrespondant;
-        return view('recherche.rechercheinternational',compact('allcorrespondant'));
-    }    */
-        //echo $allcorrespondant;
-       // return view('recherche.recherchenational',compact('allcorrespondant'));
-    //}
-
-    
 
     public function listeadmin(Request $request)
     {

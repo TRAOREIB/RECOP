@@ -1,5 +1,5 @@
-@extends('tprecop.template')
-@section('contenu')
+
+<?php $__env->startSection('contenu'); ?>
  <br>
 <div class="text-center">
       <div class="col-sm-12" style="">
@@ -9,9 +9,11 @@
  <div class="ligne_separe_titre"></div>
     <br><br>
 
-<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('regioninter') }}" enctype="multipart/form-data" >
-    {{ method_field('GET')}}
-    {{ csrf_field() }}
+<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('regioninter')); ?>" enctype="multipart/form-data" >
+    <?php echo e(method_field('GET')); ?>
+
+    <?php echo e(csrf_field()); ?>
+
 
 <div class="row  offset-sm-2">
    
@@ -32,7 +34,7 @@
                 <option value="sud-ouest">Sud-Ouest</option> 
                 <option value="hauts-bassins">Hauts-Bassins</option>  
                 <option value="boucle-mouhoun">Boucle du Mouhoun</option>                                   
-                <small class="text-danger">{{ $errors->first('region',':message') }}</small> 
+                <small class="text-danger"><?php echo e($errors->first('region',':message')); ?></small> 
             </select> 
         </div>
 
@@ -61,17 +63,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                   @foreach( $allcorrespondant as $corresp)
+                   <?php $__currentLoopData = $allcorrespondant; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $corresp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td>{{$corresp->nomcorrespondant }}</td>
-                        <td>{{$corresp->prenomcorrespondant }}</td>
-                        <td>{{$corresp->telephonecorrespondant }}</td>
-                        <td>{{$corresp->mailcorrespondant }}</td>
-                        <td>{{$corresp->media }}</td>
-                        <td>{{$corresp->lieuresidence }}</td>
+                        <td><?php echo e($corresp->nomcorrespondant); ?></td>
+                        <td><?php echo e($corresp->prenomcorrespondant); ?></td>
+                        <td><?php echo e($corresp->telephonecorrespondant); ?></td>
+                        <td><?php echo e($corresp->mailcorrespondant); ?></td>
+                        <td><?php echo e($corresp->media); ?></td>
+                        <td><?php echo e($corresp->lieuresidence); ?></td>
               
                     </tr>
-                     @endforeach
+                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </tbody>
             </table>
@@ -99,4 +101,5 @@
         $('#table').DataTable();
     });
 </script>
-@endsection 
+<?php $__env->stopSection(); ?> 
+<?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Laravel\RECOP\resources\views/recherche/rechercheinternational.blade.php ENDPATH**/ ?>
