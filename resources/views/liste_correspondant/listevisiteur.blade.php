@@ -1,6 +1,5 @@
 @extends('tprecop.template')
 @section('contenu')
-
 <br>
 <div class="text-center">
       <div class="col-sm-12" style="">
@@ -8,7 +7,9 @@
       </div>
 </div> 
  <div class="ligne_separe_titre"></div>
-    <br><br>
+    <br><br> 
+<br>
+
 
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >

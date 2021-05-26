@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $idmedia
  * @property int $idtype
  * @property int $IDMEDIAPRESSE
+ * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
  * @property Medium $medium
@@ -32,7 +33,7 @@ class MediaPresse extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idmedia', 'idtype', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['idmedia', 'idtype', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -155,6 +155,7 @@ Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->
  
 
 
+
 Route::get('listevisiteur', 'RechercheController@listevisiteur');
 
 Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');

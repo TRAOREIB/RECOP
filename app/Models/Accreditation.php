@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $idaccreditation
  * @property int $iddemandeur
+ * @property int $iduser
  * @property string $titreevenement
  * @property string $lieuevenement
  * @property string $datedebut
@@ -39,7 +40,7 @@ class Accreditation extends Model
     /**
      * @var array
      */
-    protected $fillable = ['iddemandeur', 'titreevenement', 'lieuevenement', 'datedebut', 'datefin', 'moyentransport', 'immatriculation', 'listemateriel', 'membresequipe', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iddemandeur','iduser', 'titreevenement', 'lieuevenement', 'datedebut', 'datefin', 'moyentransport', 'immatriculation', 'listemateriel', 'membresequipe', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
