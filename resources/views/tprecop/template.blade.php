@@ -79,7 +79,6 @@
                                 <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
                             </li>
                         </ul>
-
                          <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
