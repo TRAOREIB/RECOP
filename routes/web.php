@@ -161,10 +161,6 @@ Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
 
-<<<<<<< HEAD
-//Auth::routes();
-Auth::routes();
-=======
 
 Auth::routes();
 
@@ -172,7 +168,7 @@ Auth::routes();
 
 //Route::post('login', 'ConnexionController@login')->name('login');
 //Auth::routes(); 
->>>>>>> c751eff8f96081336bd24db933fbdf485ad73620
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::resource('piecesjointesaccreditation', 'PiecesJointesAccreditationController');
