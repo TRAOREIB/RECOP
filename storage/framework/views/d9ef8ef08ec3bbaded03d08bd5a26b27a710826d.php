@@ -2,11 +2,13 @@
 <?php $__env->startSection('contenu'); ?>
 
 <br>
-<div class="row listetitreformgrand" style="">
+<div class="text-center">
       <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-2"> CORRESPONDANTS MEDIAS NATIONAUX </h3>
+	  <label style="font-family: fantasy;color: blue"> CORRESPONDANTS MEDIAS NATIONAUX </label>     
       </div>
-</div> <br>
+</div> 
+ <div class="ligne_separe_titre"></div>
+    <br><br>
 
 <form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('region')); ?>" enctype="multipart/form-data" >
     <?php echo e(method_field('GET')); ?>
@@ -16,7 +18,7 @@
 <div class="row  offset-sm-2">
    
        <label for="region" class="">REGION </label> 
-        <div class="col-sm-2  col-md-3"> 
+        <div class="col-sm-3  col-md-3"> 
             <select class="form-control" name="region" required> 
                 <option selected>choisir la region</option>                                    
                 <option value="centre">Centre</option> 
@@ -45,9 +47,9 @@
 </div>
  </form>
 
-<div class="row divtabgrand  offset-sm-1" style="">
-    <div class="col-xs-12" >
-        <div class="col-xs-12 ligneform " style="background-color: #EEE">
+<div class="row divtabgrand" style="">
+    <div class="col-sm-12" >
+        <div class="col-sm-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>
                     <tr style="background-color:#2a6496;color: #FFFFFF;">

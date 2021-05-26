@@ -133,10 +133,10 @@ Route::get('enrinf', 'InformationController@index')->name('enrinf');;
 //     return view('candidat.form_ajouter');
 // });
 
-//Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
+Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
 
 
-Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name('region');
+Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('regioninter');
 
 
 
@@ -154,9 +154,8 @@ Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name(
  
  
 
-//Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('region');
 
-//Route::get('listevisiteur', 'RechercheController@listevisiteur');
+Route::get('listevisiteur', 'RechercheController@listevisiteur');
 
 Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
@@ -178,7 +177,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::resource('piecesjointesaccreditation', 'PiecesJointesAccreditationController');
 Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->name('pjaccreditation');
-<<<<<<< HEAD
-=======
 
->>>>>>> 4fb6975a5c3675379d699f746bc9764027f0a4bb

@@ -1,19 +1,14 @@
 
 <?php $__env->startSection('contenu'); ?>
-<?php $__env->startSection('script'); ?>
-<script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
-<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
-<script src="<?php echo e(asset('js/datatables.min.js')); ?>"></script>
-<link rel="stylesheet" href="<?php echo e(asset('css/datatables.min.css')); ?>">
-<link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.css')); ?>"> 
-<?php $__env->stopSection(); ?>
-<br>
-<div class="row listetitreformgrand" style="">
-      <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-3"> LISTE DES CORRESPONDANTS</h3>
-      </div>
-</div> <br>
 
+<br>
+<div class="text-center">
+      <div class="col-sm-12" style="">
+	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
+      </div>
+</div> 
+ <div class="ligne_separe_titre"></div>
+    <br><br>
 
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
