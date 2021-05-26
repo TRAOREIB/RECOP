@@ -1,6 +1,6 @@
 
 <?php $__env->startSection('contenu'); ?>
-<br> 
+<br>  
 <div class="text-center">
     <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label>
 </div>

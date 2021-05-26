@@ -79,10 +79,7 @@
                                 <a class="nav-link text-white" href="#">INFORMATIONS</a> 
                             </li>
                         </ul>
-<<<<<<< HEAD
-                        <a class="nav-link" href="{{url('login')}}"><b><i>CONNEXION</i></b></a>
-<!--                        <a class="nav-link" href="#"><span class="sr-only">COO(current)</span></a> -->
-=======
+
                          <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -114,7 +111,6 @@
                             </li>
                         @endguest
                     </ul>
->>>>>>> 591511e20c0620586e5f4bb00c71ed503d1ca27a
                     </div>                 
                 </nav>
             </div>
