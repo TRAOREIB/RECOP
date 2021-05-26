@@ -80,7 +80,7 @@
                             </li>
                         </ul>
                         <a class="nav-link" href="{{url('login')}}"><b><i>CONNEXION</i></b></a>
-                        <a class="nav-link" href="#"><span class="sr-only">COO(current)</span></a> 
+<!--                        <a class="nav-link" href="#"><span class="sr-only">COO(current)</span></a> -->
                     </div>                 
                 </nav>
             </div>
