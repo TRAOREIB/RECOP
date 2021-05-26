@@ -1,7 +1,11 @@
 
 <?php $__env->startSection('contenu'); ?>
+<<<<<<< HEAD
 
 <br>
+=======
+ <br>
+>>>>>>> master
 <div class="text-center">
       <div class="col-sm-12" style="">
 	  <label style="font-family: fantasy;color: blue"> CORRESPONDANTS MEDIAS INTERNATIONAUX </label>     
