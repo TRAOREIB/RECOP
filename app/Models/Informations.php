@@ -1,7 +1,7 @@
 <?php
 
-namespace App;
-
+//namespace App;
+namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $titre
  * @property string $contenu
  * @property string $date
+ * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
  * @property Correspondant $correspondant
@@ -21,18 +22,27 @@ class Informations extends Model
      * 
      * @var string
      */
-    protected $primaryKey = 'idinfo';
+	 
+	 
+	 protected $table = 'informations';
+    //protected $primaryKey = 'idinfo';
 
     /**
      * @var array
      */
-    protected $fillable = ['idcorrespondant', 'titre', 'contenu', 'date', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['idcorrespondant', 'titre', 'contenu', 'date', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+	 
+	 
+	 
+	 /**
     public function correspondant()
     {
         return $this->belongsTo('App\Correspondant', 'idcorrespondant', 'idcorrespondant');
     }
+	
+	   */
 }

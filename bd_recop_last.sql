@@ -262,6 +262,7 @@ CREATE TABLE `piecesjointes` (
   `pjcnib` varchar(255) DEFAULT NULL,
   `pjcartepresse` varchar(255) DEFAULT NULL,
   `pjcnibperprev` varchar(255) DEFAULT NULL,
+  `pjcarteconsulaire` varchar(255) DEFAULT NULL,
   `pjpasseportperprev` varchar(255) DEFAULT NULL,
   `visamedia` varchar(255) DEFAULT NULL,
   `idcorrespondant` int(11) DEFAULT NULL,

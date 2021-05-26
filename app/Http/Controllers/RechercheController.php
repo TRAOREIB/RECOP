@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Correspondant;
 use Illuminate\Http\Request;
 use App\Repositories\RepositoryVue;
+use App\Repositories\Repository;
+
+
+
 
 class RechercheController extends Controller
 {
@@ -19,20 +23,30 @@ class RechercheController extends Controller
     protected $correspondant;
     protected $modelcorresp;
     protected $vue="vuecorrespondant";
+	
+	
+	
 
     public function __construct() {
         $this->vuerecherche = new RepositoryVue();
         $this->modelcorresp = new Correspondant();
         $this->correspondant = new CorrespondantController($this->modelcorresp);
+		
+		
+		
+        $this->correspondant = new Repository($this->modelcorresp);
     }
 
-    public function indexnational()
+    public function index()
     {
+		
         //
         $allcorrespondant = $this->vuerecherche->allvue($this->vue);
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
     }
+	
+	
 
     public function indexinternational()
     {
@@ -49,15 +63,31 @@ class RechercheController extends Controller
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
+
     }
 
     public function rechercheregioninter(Request $request)
     {
         //
+        $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
+        //echo $allcorrespondant;
+        return view('recherche.recherchenational',compact('allcorrespondant'));
+
+    }
+
+ 
+/* public function rechercheregioninter(Request $request)
+    {
+        //
         $allcorrespondant = $this->vuerecherche->rechercheregioninter($this->vue,$request->region);
         //echo $allcorrespondant;
         return view('recherche.rechercheinternational',compact('allcorrespondant'));
-    }
+    }    */
+        //echo $allcorrespondant;
+       // return view('recherche.recherchenational',compact('allcorrespondant'));
+    //}
+
+    
 
     public function listeadmin(Request $request)
     {
@@ -144,8 +174,11 @@ class RechercheController extends Controller
     public function destroy($id)
     {
         //
-        $this->correspondant->destroy($id);
-        return $this->index();
+        $this->correspondant->delete($id);
+        //return $this->index();
+        $allcorrespondant = $this->vuerecherche->allvue($this->vue);
+        //echo $allcorrespondant;
+        return view('liste_correspondant.listeadmin',compact('allcorrespondant'));
         //echo $id;
     }
 }

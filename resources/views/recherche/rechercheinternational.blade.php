@@ -1,13 +1,13 @@
-{{-- @extends('template')
+@extends('tprecop.template')
 @section('contenu')
-@section('script') --}}
+@section('script')
 
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
+{{-- <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/datatables.min.js')}}"></script>
 <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
-{{-- @endsection --}}
+@endsection --}}
 <div class="row listetitreformgrand" style="">
       <div class="col-sm-12" style="">
         <h3 class=" offset-sm-2"> CORRESPONDANTS MEDIAS INTERNATIONAUX </h3>
@@ -85,7 +85,7 @@
     </div>
 </div>
 <!--  fin de la liste-->
-
+<br>
 <div class="modal" id="confirmationta">
     <div class="modal-dialog modal-sm">
         <div class="modal-content" style="background-color : whitesmoke">
@@ -104,4 +104,4 @@
         $('#table').DataTable();
     });
 </script>
-{{-- @endsection --}}
+@endsection 
