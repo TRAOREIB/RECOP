@@ -40,6 +40,12 @@ Route::resource('recherche', 'RechercheController');
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
 
+//Route::resource('information', 'RechercheController');
+
+Route::resource('informations', 'InformationController');
+Route::get('informationvue', 'InformationController@indexvue');
+Route::get('enrinf', 'InformationController@index')->name('enrinf');;
+//Route::get('rechercheinfo', 'InformationController@indexvue');
 //Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
 //    return view('candidat.form_presseecrite');
@@ -94,6 +100,21 @@ Route::resource('piecesjointes', 'PiecesJointesController');
 //   Route::get('/vue', 'PaginationControlller@paginationvueinformationcorrespondantmedia') ;
 
 
+
+// Route::get('/', function () {
+//     return view('form_ajout_information');
+// });
+
+/*  Route::get('/', function () {
+    return view('form_ajout_information');
+});  */
+//Route::get('vue','vuecontroller@paginationvueinformation');
+
+
+
+
+
+
 /*  Route::get('/', function () {
     return view('form_ajout_information');
 });  */
@@ -104,11 +125,34 @@ Route::resource('piecesjointes', 'PiecesJointesController');
 
 //Route::resource('vehicule', 'VehiculeController');
 
+
+//Route::resource('vehicule', 'VehiculeController');
+
+
 // Route::get('ajout', function () {
 //     return view('candidat.form_ajouter');
 // });
 
 //Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
+
+
+Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name('region');
+
+
+
+ //Route::get('/', function () {
+   // return view('information.ajout_information');
+ //});
+ 
+ 
+ 
+ 
+ Route::resource('informations', 'InformationController');
+ 
+ 
+ 
+ 
+ 
 
 //Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('region');
 
@@ -117,6 +161,7 @@ Route::resource('piecesjointes', 'PiecesJointesController');
 Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
+
 
 Auth::routes();
 
@@ -128,3 +173,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::resource('piecesjointesaccreditation', 'PiecesJointesAccreditationController');
 Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->name('pjaccreditation');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4fb6975a5c3675379d699f746bc9764027f0a4bb

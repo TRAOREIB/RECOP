@@ -87,6 +87,8 @@
             @yield('contenu')
 
 
+        
+                    
             <div class="container d-flex flex-row">
                 <div class="card w-50"> 
                     <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
@@ -107,7 +109,7 @@
             <div class="container">
                 <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
-        </div>
+         
 
 
     </body>
