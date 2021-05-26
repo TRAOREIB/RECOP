@@ -108,7 +108,7 @@ Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
 
-Auth::routes();
+//Auth::routes();
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
