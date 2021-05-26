@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 .ligne_separe_titre{
     width: 1000px;
     height: 3px;
     background-color: black;
     margin-left: 50px;
 }
+=======
+hr{
+   
+    height: 2px;
+    background-color: red;
+   
+} 
+>>>>>>> 1bfba073d39f379540e339bb10f4deac192bbd90
 
 .ligne_separe_corps{
     width: 900px;

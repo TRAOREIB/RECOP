@@ -123,7 +123,7 @@
 					</div>
 				</div>				
 			</div>		
-			
+<br>
 			<div class="col-sm-12">  <!-- Bloc 2-->
                 <div class="card"> <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
                     <div class="card-body">
@@ -148,11 +148,11 @@
                     </div> 
                 </div>
 			</div>
-		
+<br>		
 		<div class="text-center">	
             <button class="btn btn-primary" type="submit">CONTINUER</button>
 			<button class="btn btn-primary" type="reset">ANNULER</button>
       	</div>
 	</form>
-	
+<br>	
 @endsection
