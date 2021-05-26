@@ -124,7 +124,7 @@
 					</div>
 				</div>				
 			</div>		
-			
+<br>
 			<div class="col-sm-12">  <!-- Bloc 2-->
                 <div class="card"> <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
                     <div class="card-body">
@@ -149,12 +149,12 @@
                     </div> 
                 </div>
 			</div>
-		
+<br>		
 		<div class="text-center">	
             <button class="btn btn-primary" type="submit">CONTINUER</button>
 			<button class="btn btn-primary" type="reset">ANNULER</button>
       	</div>
 	</form>
-	
+<br>	
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/demandeur/ajout_demandeur.blade.php ENDPATH**/ ?>

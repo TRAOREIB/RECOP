@@ -61,16 +61,16 @@
                             </li>
                             <li class="nav-item"> 
                             </li>
-                            <li class="nav-item"> 
+                            <li class="nav-item">
                                 <a class="nav-link text-light" href="{{ url('accueil') }}">ACCUEIL</a> 
                             </li>
                             <li class="nav-item dropdown"> 
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);"> 
-                                    <a class="dropdown-item text-white" href="{{ url('correspondant') }}">NOUVEAU CORRESPONDANT</a> 
+                                    <a class="dropdown-item text-white" href="{{ url('correspondant') }}">NOUVEAU CORRESPONDANT</a> @correspondant @endcorrespondant
                                     <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">INTERNATIONAL</a> 
                                     <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">NATIONAL</a> 
-                                </div>                             
+                                </div>                                
                             </li>
                             <li class="nav-item"> 
                                 <a class="nav-link text-light" href="{{ url('demandeur') }}">ACCREDITATION PRESSE</a> 

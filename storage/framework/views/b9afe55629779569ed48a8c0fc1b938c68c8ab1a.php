@@ -61,22 +61,22 @@
                             </li>
                             <li class="nav-item"> 
                             </li>
-                            <li class="nav-item"> 
-                                <a class="nav-link text-light" href="">ACCUEIL</a> 
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="<?php echo e(url('accueil')); ?>">ACCUEIL</a> 
                             </li>
                             <li class="nav-item dropdown"> 
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);"> 
-                                    <a class="dropdown-item text-white" href="#">NOUVEAU CORRESPONDANT</a> 
-                                    <a class="dropdown-item text-white" href="#">INTERNATIONAL</a> 
-                                    <a class="dropdown-item text-white" href="#">NATIONAL</a> 
-                                </div>                             
+                                    <a class="dropdown-item text-white" href="<?php echo e(url('correspondant')); ?>">NOUVEAU CORRESPONDANT</a> <?php if (\Illuminate\Support\Facades\Blade::check('correspondant')): ?> <?php endif; ?>
+                                    <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregioninter')); ?>">INTERNATIONAL</a> 
+                                    <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregion')); ?>">NATIONAL</a> 
+                                </div>                                
                             </li>
                             <li class="nav-item"> 
-                                <a class="nav-link text-light" href="#">ACCREDITATION PRESSE</a> 
+                                <a class="nav-link text-light" href="<?php echo e(url('demandeur')); ?>">ACCREDITATION PRESSE</a> 
                             </li>
                             <li class="nav-item"> 
-                                <a class="nav-link text-white" href="#">INFORMATIONS</a> 
+                                <a class="nav-link text-white" href="<?php echo e(url('informationvue')); ?>">INFORMATIONS</a> 
                             </li>
                         </ul>
 
@@ -98,7 +98,7 @@
                                     <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <?php echo e(__('Logout')); ?>
+                                        <?php echo e(__('Deconnexion')); ?>
 
                                     </a>
 
@@ -117,8 +117,8 @@
 
         
                     
-            <div class="container d-flex flex-row">
-                <div class="card w-50"> 
+            <div class="container row col-md-12 ">
+                <div class="card col-md-6 col-xs-12"> 
                     <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
                         <h4 class="card-title">Liens Utiles</h4> 
                         <h6 class="card-subtitle mb-2 text-muted"></h6> 
@@ -126,7 +126,7 @@
                         <p class="card-text">www.rtb.bf</p>                      
                     </div>                 
                 </div>
-                <div class="card w-50"> 
+                <div class="card col-md-6 col-xs-12"> 
                     <div class="card-body w-100" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
                         <h4 class="card-title">Numeros Utiles</h4>                      
                         <p>Sapeur Pompier : 18</p>

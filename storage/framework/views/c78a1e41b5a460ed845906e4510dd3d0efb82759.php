@@ -2,9 +2,11 @@
 <?php $__env->startSection('contenu'); ?>
 <br> 
 <div class="text-center">
-    <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label>
+    
+    <b><label style="" class="text-primary">NOUVEAU CORRESPONDANT</label></b>
 </div>
-<div class="ligne_separe_titre"></div>
+
+<hr>
 <br>
 <form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="<?php echo e(route('correspondant.store')); ?>" enctype="multipart/form-data">
     <?php echo e(method_field('POST')); ?>
@@ -199,7 +201,7 @@
                 <div class="form-group row">
                     <label for="telorgane" class="col-sm-3 col-form-label">TELEPHONE</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="telorgane" type="number" name="telorgane"/>
+                        <input class="form-control" id="telorgane" type="text" name="telorgane"/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -211,7 +213,7 @@
             </div> 
         </div>   
     </div>
-    <p></p>
+   </p>
     <div class="text-center">
         <button class="btn btn-primary" type="submit">CONTINUER</button>
         <button class="btn btn-primary" type="reset">ANNULER</button>
