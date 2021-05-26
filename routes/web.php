@@ -14,7 +14,11 @@
 
 Route::get('/', function () {
     return view('accueil.accueil');
-});  
+});
+
+Route::get('accueil', function () {
+    return view('accueil.accueil');
+});
 
 // Route::get('/', function () {
 //     return view('demandeur.ajout_correspondant');

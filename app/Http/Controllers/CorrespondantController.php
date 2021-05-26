@@ -25,7 +25,7 @@ class CorrespondantController extends Controller
     {
         //
         $allcorrespondant = $this->correspondant->all();
-        return view('correspondant.ajout_correspondant_suite',compact('allcorrespondant'));
+        return view('correspondant.ajout_correspondant',compact('allcorrespondant'));
 
     }
 

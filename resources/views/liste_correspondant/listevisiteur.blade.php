@@ -8,8 +8,6 @@
 </div> 
  <div class="ligne_separe_titre"></div>
     <br><br> 
-<br>
-
 
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
