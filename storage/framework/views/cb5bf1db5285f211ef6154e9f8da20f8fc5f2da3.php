@@ -4,20 +4,21 @@
 <br>
 <div class="text-center">
       <div class="col-sm-12" style="">
-	  <label style="font-family: fantasy;color: blue"> CORRESPONDANTS MEDIAS NATIONAUX </label>     
+	  <label style="font-family: fantasy;color: blue"> CORRESPONDANTS MEDIAS INTERNATIONAUX </label>     
       </div>
 </div> 
  <div class="ligne_separe_titre"></div>
     <br><br>
 
-<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('region')); ?>" enctype="multipart/form-data" >
+<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('regioninter')); ?>" enctype="multipart/form-data" >
     <?php echo e(method_field('GET')); ?>
 
     <?php echo e(csrf_field()); ?>
 
+
 <div class="row  offset-sm-2">
    
-       <label for="region" class="">REGION </label> 
+        <label for="region" class="">REGION </label> 
         <div class="col-sm-3  col-md-3"> 
             <select class="form-control" name="region" required> 
                 <option selected>choisir la region</option>                                    
@@ -45,7 +46,7 @@
            </div>
     </div>
 </div>
- </form>
+</form>
 
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
@@ -63,8 +64,7 @@
                     </tr>
                 </thead>
                 <tbody>
-
-                    <?php $__currentLoopData = $allcorrespondant; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $corresp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                   <?php $__currentLoopData = $allcorrespondant; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $corresp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td><?php echo e($corresp->nomcorrespondant); ?></td>
                         <td><?php echo e($corresp->prenomcorrespondant); ?></td>
@@ -77,7 +77,6 @@
                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </tbody>
-                
             </table>
 
         </div>
@@ -103,5 +102,5 @@
         $('#table').DataTable();
     });
 </script>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Laravel\RECOP\resources\views/recherche/recherchenational.blade.php ENDPATH**/ ?>
+<?php $__env->stopSection(); ?> 
+<?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Laravel\RECOP\resources\views/recherche/rechercheinternational.blade.php ENDPATH**/ ?>
