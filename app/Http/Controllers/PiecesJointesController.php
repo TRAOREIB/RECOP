@@ -67,8 +67,15 @@ class PiecesJointesController extends Controller {
 	
 	 public function storepjaccreditation(Request $request) {
 		$this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
-		return $this->accreditation->indexpjaccreditation($request->iddemandeur);
-		//echo $request->iddemandeur;
+        return $this->accreditation->indexpjaccreditation($request->iddemandeur);
+		// Création du compte d'utilisateur
+         //$this->enreguser->register($request);
+         //$request->actif="true";
+        // $this->demandeur->update($request->only($this->demandeur->getModel()->fillable), $request->iddemandeur);
+        // echo $request->name;
+        // echo $request->email;
+       //  echo $request->password;
+       //  echo $request->identifiant;
 		
 	 }	
 
