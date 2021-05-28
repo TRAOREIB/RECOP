@@ -8,7 +8,8 @@ use App\Models\PiecesJointes;
 use App\Models\Accreditation;
 use App\Models\Demandeur;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\AccreditationController; 
+use App\Http\Controllers\AccreditationController;
+use Illuminate\Support\Facades\Session; 
 
 class PiecesJointesController extends Controller {
 
@@ -31,7 +32,8 @@ class PiecesJointesController extends Controller {
         $this->enreguser = new RegisterController();
         $this->piecesjointes = new Repository($pj);
 		$this->accreditation = new AccreditationController($this->accredi);
-    }
+            
+	}
 
     public function index() {
         //
@@ -58,25 +60,29 @@ class PiecesJointesController extends Controller {
         //mise a jour de la colonne actif à true pour le correspondant
         $request->actif="true";
         $this->correspondant->update($request->only($this->correspondant->getModel()->fillable), $request->idcorrespondant);
-        echo $request->name;
+     /* echo $request->name;
         echo $request->email;
         echo $request->password;
-        echo $request->identifiant;
+        echo $request->identifiant;*/
 		  
     }
 	
 	 public function storepjaccreditation(Request $request) {
 		$this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
-        return $this->accreditation->indexpjaccreditation($request->iddemandeur);
-		// Création du compte d'utilisateur
-         //$this->enreguser->register($request);
-         //$request->actif="true";
-        // $this->demandeur->update($request->only($this->demandeur->getModel()->fillable), $request->iddemandeur);
-        // echo $request->name;
-        // echo $request->email;
-       //  echo $request->password;
-       //  echo $request->identifiant;
-		
+        		
+         // création variables sessions 28/05/2021
+	   
+	   Session::put("identifiant", $request->identifiant);
+
+		Session::put("pj","demandeur");
+	   
+	   // Création du compte d'utilisateur
+			$this->enreguser->register($request);
+         $request->actif="true";
+		 
+        $this->demandeur->update($request->only($this->demandeur->getModel()->fillable), $request->iddemandeur);
+		return $this->accreditation->indexpjaccreditation($request->iddemandeur);
+	
 	 }	
 
     /**

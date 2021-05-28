@@ -3,12 +3,13 @@
 
 <br>
 
-<div class="row listetitreformgrand" style="">
+<div class="text-center">
       <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-3"> LISTE DES CORRESPONDANTS </h3>
+	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
       </div>
-</div> <br>
-
+</div> 
+ <div class="ligne_separe_titre"></div>
+    <br><br>
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
         <div class="col-sm-12 ligneform " style="background-color: #EEE">

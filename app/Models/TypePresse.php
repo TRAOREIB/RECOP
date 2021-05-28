@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $idtype
+ * @property int $iduser
  * @property string $libelle
+ * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
  * @property Mediapresse[] $mediapresses
@@ -30,7 +32,7 @@ class TypePresse extends Model
     /**
      * @var array
      */
-    protected $fillable = ['libelle', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser', 'libelle', 'actif','CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

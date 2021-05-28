@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $idcorrespondant
  * @property int $idmedia
  * @property int $IDMEDIACORRES
+ * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
  * @property Correspondant $correspondant
@@ -32,7 +33,7 @@ class MediaCorrespondant extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idcorrespondant', 'idmedia', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['idcorrespondant', 'idmedia','actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -14,7 +14,11 @@
 
 Route::get('/', function () {
     return view('accueil.accueil');
-});  
+});
+
+Route::get('accueil', function () {
+    return view('accueil.accueil');
+});
 
 // Route::get('/', function () {
 //     return view('demandeur.ajout_correspondant');
@@ -30,7 +34,7 @@ Route::get('/', function () {
 // // return view('candidat.form_ajouter');
 //  });
 
-// Route::resource('vehicule', 'VehiculeController');
+ // Route::resource('vehicule', 'VehiculeController');
 
 Route::resource('demandeur', 'DemandeurController');
 
@@ -133,10 +137,10 @@ Route::get('enrinf', 'InformationController@index')->name('enrinf');;
 //     return view('candidat.form_ajouter');
 // });
 
-//Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
+Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
 
 
-Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name('region');
+Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('regioninter');
 
 
 
@@ -154,9 +158,9 @@ Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name(
  
  
 
-//Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('region');
 
-//Route::get('listevisiteur', 'RechercheController@listevisiteur');
+
+Route::get('listevisiteur', 'RechercheController@listevisiteur');
 
 Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 

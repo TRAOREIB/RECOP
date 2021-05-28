@@ -41,7 +41,7 @@ class InformationController extends Controller
 	protected $vuerecherche;
     protected $correspondant;
     protected $modelcorresp;
-    protected $vue="listeinformation";
+    protected $vue="vueinformation";
     // protected $vueinformation 
 						/*		 public function __construct() {
 

@@ -1,13 +1,6 @@
 @extends('tprecop.template')
 @section('contenu')
-{{-- @section('script')
 
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
-@endsection --}}
 <br>
 
 <div class="text-center">

@@ -2,9 +2,11 @@
 @section('contenu')
 <br> 
 <div class="text-center">
-    <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label>
+    {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
+    <b><label style="" class="text-primary">NOUVEAU CORRESPONDANT</label></b>
 </div>
-<div class="ligne_separe_titre"></div>
+{{-- <div class="ligne_separe_titre"></div> --}}
+<hr>
 <br>
 <form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{route('correspondant.store')}}" enctype="multipart/form-data">
     {{ method_field('POST')}}
@@ -198,7 +200,7 @@
                 <div class="form-group row">
                     <label for="telorgane" class="col-sm-3 col-form-label">TELEPHONE</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="telorgane" type="number" name="telorgane"/>
+                        <input class="form-control" id="telorgane" type="text" name="telorgane"/>
                     </div>
                 </div>
                 <div class="form-group row">

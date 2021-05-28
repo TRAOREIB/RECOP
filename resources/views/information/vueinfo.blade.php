@@ -1,32 +1,19 @@
- @extends('tprecop.template')
+@extends('tprecop.template')
 @section('contenu')
-  <!-- {{--@section('script') --}}
 
-		<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">  
-	
-{{-- @endsection --}}   -->
-<br><br>
+<br>
 <div><a href="{{ route('enrinf') }}" class="btn btn-info">Nouvelle Information </a>
  
 </div>
-
 <br>
-<div class="row listetitreformgrand" style="">
+<div class="text-center">
       <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-2   text-center" > Liste des informations </h3>
+	  <label style="font-family: fantasy;color: blue"> LISTE DES INFORMATIONS </label>     
       </div>
-</div> <br>
-
-
-
-
-
-<br>
-<div class="row divtabgrand  offset-sm-1" style="">
+</div> 
+ <div class="ligne_separe_titre"></div>
+    <br><br>
+<div class="row divtabgrand" style="">
     <div class="col-sm-12" >
         <div class="col-xs-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
@@ -84,4 +71,5 @@
         $('#table').DataTable();
     });
 </script>
+<br><br>
  @endsection 

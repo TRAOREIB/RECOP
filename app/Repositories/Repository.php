@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session; 
 
 class Repository implements RepositoryInterface {
 
@@ -14,6 +15,7 @@ class Repository implements RepositoryInterface {
     // Constructor to bind model to repo
     public function __construct(Model $model) {
         $this->model = $model;
+		Session::put("pj","");
     }
 
     // Get all instances of model
@@ -22,7 +24,15 @@ class Repository implements RepositoryInterface {
     }
 
     // create a new record in the database
-    public function create(array $data) {
+    public function create(array $data){
+		 // MAJ OK 28/05/2021
+		 
+		if(!empty(session("pj"))){
+			if(session("pj")=="demandeur"){
+				$data["iddemandeur"]=session("iddemandeur");
+			} 
+			
+		}
         return $this->model->create($data);
     }
  

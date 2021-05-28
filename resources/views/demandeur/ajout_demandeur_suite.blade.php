@@ -1,6 +1,7 @@
 @extends('tprecop.template')
 @section('contenu')
 <br> 
+
 <div class="text-center">
     <label style="font-family: fantasy;color: blue">NOUVEAU DEMANDEUR</label> 
 </div>
@@ -67,10 +68,10 @@
 
         <div class="card-body">
             <div class="form-group row">
-                <label for="identifiant" class="col-md-4 col-form-label text-md-right">{{ __("Nom d'utilisateur") }}</label>
+                <label for="identifiant" class="col-md-4 col-form-label text-md-right">{{ __("Identifiant") }}</label>
 
                 <div class="col-md-6">
-                    <input id="identifiant" type="text" class="form-control @error('identifiant') is-invalid @enderror" name="identifiant" value="{{ old('identifiant') }}" required autocomplete="identifiant">
+                    <input  type="text" class="form-control @error('identifiant') is-invalid @enderror" name="identifiant" value="{{ old('identifiant') }}" required>
 
                     @error('identifiant')
                     <span class="invalid-feedback" role="alert">
@@ -103,7 +104,7 @@
             </div>
             <input type="hidden" value="{{$request->nom}} {{$request->prenom}}" name="name">
             <input type="hidden" value="{{$request->mail1}}"  name="email">
-            <input type="hidden" value="Demandeur"  name="role">
+			<input type="hidden" value="Demandeur"  name="profil"> 
              
         </div>
     </div>

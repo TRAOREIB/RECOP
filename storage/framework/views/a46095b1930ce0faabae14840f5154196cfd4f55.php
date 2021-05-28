@@ -37,7 +37,6 @@
 
             <div class=" row form-group">
                 <label for="prenom" class="control-label col-sm-3">Marques <b><i style="color: red">*</i></b></label> 
->>>>>>> f1fd75a1d461c86005adca33e1f2af767025e095
                 <div class="col-sm-7" style=""> 
                     <input type="text" class="form-control" name="marques"  value="<?php echo e(old('marques')); ?>" required="required">
                     <small class="text-danger"><?php echo e($errors->first('marques',':message')); ?></small> 
@@ -104,6 +103,8 @@
                                 <input type="submit" value="Supprimer" style="border: 0px;background-color:">
                             </form>                    
                         </td>
+						
+						
 
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>      

@@ -1,19 +1,13 @@
 @extends('tprecop.template')
 @section('contenu')
-@section('script')
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
-@endsection
 <br>
-<div class="row listetitreformgrand" style="">
+<div class="text-center">
       <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-3"> LISTE DES CORRESPONDANTS</h3>
+	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
       </div>
-</div> <br>
-
+</div> 
+ <div class="ligne_separe_titre"></div>
+    <br><br> 
 
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
