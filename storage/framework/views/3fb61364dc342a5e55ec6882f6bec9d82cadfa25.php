@@ -8,7 +8,8 @@
 	  <label style="font-family: fantasy;color: blue"> CORRESPONDANTS MEDIAS INTERNATIONAUX </label>     
       </div>
 </div> 
- <div class="ligne_separe_titre"></div>
+ <!--<div class="ligne_separe_titre"></div>-->
+ <hr>
     <br><br>
 
 <form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('regioninter')); ?>" enctype="multipart/form-data" >

@@ -28,7 +28,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Blade::if('correspondant',function(){
-            return auth()->user()->profil;
+            return auth()->user()->profil==="Correspondant";
+        });
+        
+         Blade::if('administrateur',function(){
+            return auth()->user()->profil==="Administrateur";
         });
     }
 }

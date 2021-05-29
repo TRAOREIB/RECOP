@@ -1,14 +1,14 @@
 
 <?php $__env->startSection('contenu'); ?>
-
 <br>
 <div class="text-center">
       <div class="col-sm-12" style="">
 	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
       </div>
 </div> 
- <div class="ligne_separe_titre"></div>
-    <br><br>
+<!-- <div class="ligne_separe_titre"></div>-->
+<hr>
+    <br><br> 
 
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >

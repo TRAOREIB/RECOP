@@ -56,7 +56,8 @@
                                     <a class="dropdown-item" href="#">Something else here</a> 
                                     <a class="dropdown-item" href="#">Dropdown item</a>
                                 </div>                             
-                            </li>                         
+                            </li>  
+							                       
                             <li class="nav-item"> 
                             </li>
                             <li class="nav-item"> 
@@ -67,17 +68,42 @@
                             <li class="nav-item dropdown"> 
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);"> 
-                                    <a class="dropdown-item text-white" href="{{ url('correspondant') }}">NOUVEAU CORRESPONDANT</a> @correspondant @endcorrespondant
-                                    <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">INTERNATIONAL</a> 
-                                    <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">NATIONAL</a> 
+                                    <a class="dropdown-item text-white" href="{{ url('correspondant') }}">NOUVEAU CORRESPONDANT</a> 
+									@guest
+									   <a class="dropdown-item text-white" href="{{ url('listevisiteur') }}">LISTE DES CORRESPONDANTS</a> 
+									@endguest
+									
+									@if(Auth::check())
+									@administrateur
+									   <a class="dropdown-item text-white" href="{{ url('listeadmin') }}">LISTE DES CORRESPONDANTS</a> 
+									   <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a> 
+                                       <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a> 		
+									@endadministrateur
+									@endif
+				@if(Auth::check())
+			        	@correspondant
+                                    <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a> 
+                                    <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a> 									
+			               @endcorrespondant 
+					  @endif
                                 </div>                                
                             </li>
                             <li class="nav-item"> 
                                 <a class="nav-link text-light" href="{{ url('demandeur') }}">ACCREDITATION PRESSE</a> 
                             </li>
+							@if(Auth::check())
+									@correspondant
                             <li class="nav-item"> 
                                 <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
                             </li>
+							@endcorrespondant 
+							 
+							@administrateur
+							 <li class="nav-item"> 
+                                <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
+                            </li>
+							@endadministrateur
+									@endif
                         </ul>
                          <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -114,32 +140,35 @@
                 </nav>
             </div>
             @yield('contenu')
-
+         
 
         
                     
-            <div class="container row col-md-12 ">
-                <div class="card col-md-6 col-xs-12"> 
-                    <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+            
+              <div class="container  d-flex flex-row">               
+	       <div class="card col-sm-6 col-xs-12"> 
+                    <div class="card-body" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
                         <h4 class="card-title">Liens Utiles</h4> 
                         <h6 class="card-subtitle mb-2 text-muted"></h6> 
                         <p class="card-text">www.communication.gov.bf</p>
                         <p class="card-text">www.rtb.bf</p>                      
                     </div>                 
                 </div>
-                <div class="card col-md-6 col-xs-12"> 
-                    <div class="card-body w-100" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+                <div class="card col-sm-6  col-xs-12"> 
+                    <div class="card-body" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
                         <h4 class="card-title">Numeros Utiles</h4>                      
                         <p>Sapeur Pompier : 18</p>
                         <p>ONEA : 18</p>                      
                     </div>                 
                 </div>
             </div>
-            <div class="container">
+      <div class="container" > 
+            <div class="container" style="background-color:white;border-radius: 9px">
                 <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
+	  </div>		
          
-
+    </div>   
 
     </body>
 </html>

@@ -13,7 +13,7 @@
 
 
 Route::get('/', function () {
-    return view('accueil.accueil');
+    return view('correspondant.choix_correspondant');
 });
 
 Route::get('accueil', function () {

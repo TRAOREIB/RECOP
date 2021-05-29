@@ -4,24 +4,27 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Models/Media.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/resources/views/candidat/demande_inscrip.blade.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Repositories/Repository.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/PiecesJointesController.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/public/css/jquery.mCustomScrollbar.min.css</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Models/Informations.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Repositories/RepositoryInterface.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/vendor/laravel/ui/auth-backend/AuthenticatesUsers.php</file>
             <file>file:/C:/xampp/htdocs/RECOP/resources/views/correspondant/ajout_correspondant_suite.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/PiecesJointesController.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/auth/login.blade.php</file>
             <file>file:/C:/xampp/htdocs/RECOP/app/Models/Demandeur.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/resources/views/accueil/accueil.blade.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/vendor/laravel/ui/auth-backend/ThrottlesLogins.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/resources/views/template/template.blade.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/resources/views/template.blade.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/resources/views/correspondant/ajout_correspondant.blade.php</file>
             <file>file:/C:/xampp/htdocs/RECOP/app/Providers/RouteServiceProvider.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/template.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/candidat/demande_inscrip.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/User.php</file>
             <file>file:/C:/xampp/htdocs/RECOP/routes/web.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/vendor/laravel/ui/auth-backend/ConfirmsPasswords.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Models/Informations.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/template/template.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/correspondant/ajout_correspondant.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Kernel.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/public/css/jquery.mCustomScrollbar.min.css</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/accueil/accueil.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/tprecop/template.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Models/Media.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Providers/AppServiceProvider.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Repositories/RepositoryInterface.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/public/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Repositories/Repository.php</file>
         </group>
     </open-files>
 </project-private>

@@ -2,7 +2,7 @@
 <?php $__env->startSection('contenu'); ?>
 <br> 
 	<div class="text-center">
-  		<label style="font-family: fantasy;color: blue"> NOUVEAU DEMANDEUR </label>
+  		<label style="font-family: fantasy;color: blue"> NOUVELLE ACCREDITATION </label>
  	</div>
 <div class="ligne_separe_titre"></div>
 <br>	
@@ -116,7 +116,7 @@
 								</div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE:</label>
+                                <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE PERSONNE A PREVENIR:</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="telephonepersp" placeholder=" " name="telephonepersp">
                                 </div>

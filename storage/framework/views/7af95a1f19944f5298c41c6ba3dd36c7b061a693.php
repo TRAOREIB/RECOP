@@ -1,4 +1,7 @@
-<?php $__env->startSection('content'); ?>
+
+<?php $__env->startSection('contenu'); ?>
+<br>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -20,6 +23,7 @@
         </div>
     </div>
 </div>
+<br>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/home.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/home.blade.php ENDPATH**/ ?>

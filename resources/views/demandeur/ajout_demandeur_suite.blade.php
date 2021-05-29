@@ -16,6 +16,13 @@
         <div class="card"> <div class=" card text-center card-header">PIECES JOINTES</div>
             <div class="card-body">
                 <div class="form-group row">
+                    <label for="pjcarteconsulaire" class="col-sm-3 col-form-label">LETTRE DE RECOMMENDATION</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" id="pjcarteconsulaire" type="file" name="lettrerecommendation" />
+                        <label><i>joindre le fichier de la lettre de recommendation</i></label>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="pjcnib" class="col-sm-3 col-form-label">PHOTO D'IDENTITE</label>
                     <div class="col-sm-7">
                         <input class="form-control" id="photo" type="file" name="photo" />
@@ -35,18 +42,18 @@
                         <label><i>scannage de la première page du passeport</i></label>
                     </div>
                 </div>
-				<div class="form-group row">
+                <div class="form-group row">
                     <label for="pjcarteconsulaire" class="col-sm-3 col-form-label">CARTE CONSULAIRE</label>
                     <div class="col-sm-7">
-                     <input class="form-control" id="pjcarteconsulaire" type="file" name="pjcarteconsulaire" />
-					 <label><i>scannage de la carte consulaire (Recto et Verso)</i></label>
+                        <input class="form-control" id="pjcarteconsulaire" type="file" name="pjcarteconsulaire" />
+                        <label><i>scannage de la carte consulaire (Recto et Verso)</i></label>
                     </div>
                 </div>
-				<div class="form-group row">
+                <div class="form-group row">
                     <label for="pjcinibperprev" class="col-sm-3 col-form-label">CNIB PERSONNE A PREVENIR</label>
                     <div class="col-sm-7">
-                     <input class="form-control" id="pjcnibperprev" type="file" name="pjcnibperprev"/>
-					 <label><i>scannage de la CNIB (Recto et Verso) de la personne à prevenir </i></label>
+                        <input class="form-control" id="pjcnibperprev" type="file" name="pjcnibperprev"/>
+                        <label><i>scannage de la CNIB (Recto et Verso) de la personne à prevenir </i></label>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -60,7 +67,7 @@
             </div>
         </div>
     </div>
-  
+
     <p></p>
     <div class="text-center">
         <button class="btn btn-primary" type="submit">CONTINUER</button>
