@@ -34,7 +34,7 @@ Route::get('accueil', function () {
 // // return view('candidat.form_ajouter');
 //  });
 
-// Route::resource('vehicule', 'VehiculeController');
+ // Route::resource('vehicule', 'VehiculeController');
 
 Route::resource('demandeur', 'DemandeurController');
 

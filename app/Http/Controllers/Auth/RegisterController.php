@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -64,11 +65,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+		// MAJ 28/05 pour l'utilisation des sessions
+			$data['identifiant']=session("identifiant");
+			$data['email']=session("mail");
+			$data['name']=session("name");
+			$data['profil']=session("profil");
         return User::create([
+			'identifiant' => $data['identifiant'],
             'name' => $data['name'],
             'identifiant' => $data['identifiant'],
             'email' => $data['email'],
+			'profil' => $data['profil'],
             'password' => Hash::make($data['password']),
+			
         ]);
     }
 }

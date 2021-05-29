@@ -18,17 +18,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $carteconsulaire
  * @property string $datedelivcnib
  * @property string $dateexpircnib
- * @property int $telephone
+ * @property int 	$telephone
+ * @property string $mail1
  * @property string $personneprevenir
  * @property string $lieuresidence
  * @property string $organe
  * @property int $telorgane
  * @property string $adressestruct
- * @property string $pjcnib
- * @property string $pjpasseport
- * @property string $pjcinibperprev
- * @property string $pjpasseportperprev
- * @property string $pjcartepresse
  * @property string $numcnib
  * @property int $telephonepersp
  * @property boolean $actif
@@ -56,7 +52,8 @@ class Demandeur extends Model
     /**
      * @var array
      */
-    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct', 'pjcnib', 'pjpasseport', 'pjcinibperprev', 'pjpasseportperprev', 'pjcartepresse', 'numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+  
+    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

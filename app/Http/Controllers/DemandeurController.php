@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Demandeur;
+use Illuminate\Support\Facades\Session;
 
 class DemandeurController extends Controller
 {
@@ -18,13 +19,14 @@ class DemandeurController extends Controller
 	 protected $demandeur;
      public function __construct(Demandeur $dem) {
         $this->demandeur = new Repository($dem);
+		Session::put("pj","");
 													}
     public function index()
     {
 		// $allvehicule = $this->vehicule->all();
 		$alldemandeur= $this->demandeur->all();
         return view('demandeur.ajout_demandeur',compact('alldemandeur'));
-            //
+           
 
     }
 
@@ -46,14 +48,18 @@ class DemandeurController extends Controller
      */
     public function store(Request $request)
     {
-		 //$this->demandeur->create($request->only($this->demandeur->getModel()->fillable)); 
-     // return view('candidat.form_ajouter');
-        // return $this->index();
-        //
-		 $this->demandeur->create($request->only($this->demandeur->getModel()->fillable)) ;
+		$nom=$request->nom;
+	   $prenom=$request->prenom;
+	   $mail1=$request->mail1;
+	   Session::put("name", "$nom $prenom");
+	   Session::put("mail", $mail1);
+	   Session::put("profil", "Demandeur");
+		
+		$this->demandeur->create($request->only($this->demandeur->getModel()->fillable)) ;
         $maxid= $this->demandeur->max("iddemandeur");
-       return view('demandeur.ajout_demandeur_suite', compact("maxid","request")) ;
-	 
+		 Session::put("iddemandeur", $maxid);
+      return view('demandeur.ajout_demandeur_suite', compact("maxid","request")) ;
+	   
     }
 
     /**
