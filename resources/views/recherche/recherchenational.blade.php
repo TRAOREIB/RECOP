@@ -3,10 +3,18 @@
 
 <br>
 <div class="text-center">
+<<<<<<< HEAD
     {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
     <b><label style="" class="text-primary">CORRESPONDANT MEDIAS NATIONAUX</label></b>
 </div>
  {{-- <div class="ligne_separe_titre"></div> --}}
+=======
+      <div class="col-sm-12" style="">
+	  <label style="font-family: fantasy;color: blue"> CORRESPONDANTS MEDIAS NATIONAUX </label>     
+      </div>
+</div> 
+ <!--<div class="ligne_separe_titre"></div>-->
+>>>>>>> aa7591f8b64676a64976205d462754fb1eb26858
  <hr>
     <br><br>
 

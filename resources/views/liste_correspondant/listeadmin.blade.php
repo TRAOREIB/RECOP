@@ -4,12 +4,22 @@
 <br>
 
 <div class="text-center">
+<<<<<<< HEAD
     {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
     <b><label style="" class="text-primary">LISTE DES CORRESPONDANT</label></b>
 </div>
  {{-- <div class="ligne_separe_titre"></div> --}}
  <hr>
     <br><br>
+=======
+      <div class="col-sm-12" style="">
+	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
+      </div>
+</div> 
+ <!--<div class="ligne_separe_titre"></div>-->
+ <hr>
+    <br>
+>>>>>>> aa7591f8b64676a64976205d462754fb1eb26858
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
         <div class="col-sm-12 ligneform " style="background-color: #EEE">

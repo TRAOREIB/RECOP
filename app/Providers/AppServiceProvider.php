@@ -5,7 +5,10 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
+=======
+>>>>>>> aa7591f8b64676a64976205d462754fb1eb26858
 
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+<<<<<<< HEAD
 
         Blade::if('correspondant', function(){
             return auth::user()->profil === 'Correspondant';
@@ -47,6 +51,14 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::if('administrateur', function(){
             return auth()->user()->profil === 'Administrateur';
+=======
+        Blade::if('correspondant',function(){
+            return auth()->user()->profil==="Correspondant";
+        });
+        
+         Blade::if('administrateur',function(){
+            return auth()->user()->profil==="Administrateur";
+>>>>>>> aa7591f8b64676a64976205d462754fb1eb26858
         });
     }
 }

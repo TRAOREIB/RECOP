@@ -3,11 +3,13 @@
 <br>  
 <div class="text-center">
     <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label>
-</div>
+</div> 
 <div class="ligne_separe_titre"></div>
 <br>
-<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{route('piecesjointes.store')}}" enctype="multipart/form-data">
-    {{ method_field('POST')}}
+
+
+
+<form method="post" action="{{route('piecesjointes.store')}}" enctype="multipart/form-data">
     {{ csrf_field() }}	
 
     <div class="col-sm-12">  <!-- Bloc 2-->

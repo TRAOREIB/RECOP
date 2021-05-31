@@ -27,10 +27,10 @@ class AccreditationController extends Controller
         //
         return view('accreditation.ajout_accreditation');
     }
-  public function indexpjaccreditation($maxid)
+  public function indexpjaccreditation()
     {
         //
-        return view('accreditation.ajout_accreditation',compact('maxid'));
+        return view('accreditation.ajout_accreditation');
     }
 	
     /**
@@ -51,7 +51,7 @@ class AccreditationController extends Controller
      */
     public function store(Request $request)
     {
-		       
+		//  echo session('pj');     
 	   //
 			$this->accreditation->create($request->only($this->accreditation->getModel()->fillable)); 
         //return $this->indexpjaccreditation($request->iddemandeur);

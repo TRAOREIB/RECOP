@@ -13,7 +13,7 @@
 
 
 Route::get('/', function () {
-    return view('accueil.accueil');
+    return view('correspondant.choix_correspondant');
 });
 
 Route::get('accueil', function () {
@@ -34,7 +34,7 @@ Route::get('accueil', function () {
 // // return view('candidat.form_ajouter');
 //  });
 
-// Route::resource('vehicule', 'VehiculeController');
+ // Route::resource('vehicule', 'VehiculeController');
 
 Route::resource('demandeur', 'DemandeurController');
 
@@ -43,7 +43,7 @@ Route::resource('accreditation', 'AccreditationController');
 Route::resource('recherche', 'RechercheController');
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
-
+ 
 //Route::resource('information', 'RechercheController');
 
 Route::resource('informations', 'InformationController');
@@ -174,7 +174,8 @@ Auth::routes();
 //Route::post('login', 'ConnexionController@login')->name('login');
 //Auth::routes(); 
 
+
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::resource('piecesjointesaccreditation', 'PiecesJointesAccreditationController');
+
 Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->name('pjaccreditation');
 

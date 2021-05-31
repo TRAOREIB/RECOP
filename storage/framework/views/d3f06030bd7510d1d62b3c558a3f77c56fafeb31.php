@@ -66,7 +66,13 @@
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="telephone" placeholder=" " name="telephone">
                                 </div>
-						</div> 
+						</div>
+                                <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="telephone">EMAIL :</label>
+                                        <div class="col-sm-7">
+                                        <input type="email" class="form-control" name="mail1">
+                                </div>
+                        </div> 
                         <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="lieuresidence">LIEU DE RESIDENCE:</label>
                                 <div class="col-sm-7">
@@ -124,7 +130,7 @@
 					</div>
 				</div>				
 			</div>		
-			
+<br>
 			<div class="col-sm-12">  <!-- Bloc 2-->
                 <div class="card"> <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
                     <div class="card-body">
@@ -149,12 +155,12 @@
                     </div> 
                 </div>
 			</div>
-		
+<br>		
 		<div class="text-center">	
             <button class="btn btn-primary" type="submit">CONTINUER</button>
 			<button class="btn btn-primary" type="reset">ANNULER</button>
       	</div>
 	</form>
-	
+<br>	
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP2\resources\views/demandeur/ajout_demandeur.blade.php ENDPATH**/ ?>
