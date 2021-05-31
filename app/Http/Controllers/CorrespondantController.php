@@ -6,27 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Correspondant;
+use Illuminate\Support\Facades\Session;
 
-class CorrespondantController extends Controller
-{
+class CorrespondantController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    protected $correspondant;
 
-    protected $correspondant ;
     public function __construct(Correspondant $corresp) {
-       $this->correspondant = new Repository($corresp) ;
+        $this->correspondant = new Repository($corresp);
     }
 
-
-    public function index()
-    {
+    public function index() {
         //
         $allcorrespondant = $this->correspondant->all();
-        return view('correspondant.ajout_correspondant',compact('allcorrespondant'));
-
+        return view('correspondant.ajout_correspondant', compact('allcorrespondant'));
     }
 
     /**
@@ -34,8 +32,7 @@ class CorrespondantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -45,15 +42,19 @@ class CorrespondantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-        $this->correspondant->create($request->only($this->correspondant->getModel()->fillable)) ;
-        $maxid= $this->correspondant->max("idcorrespondant");
-       // echo $maxid;
-        return view('correspondant.ajout_correspondant_suite', compact("maxid","request")) ;
-
-
+    public function store(Request $request) {
+        $nom = $request->nom;
+        $prenom = $request->prenom;
+        $mail1 = $request->mail1;
+        Session::put("name", "$nom $prenom");
+        Session::put("mail", $mail1);
+        Session::put("profil", "Correspondant");
+        $this->correspondant->create($request->only($this->correspondant->getModel()->fillable));
+        $maxid = $this->correspondant->max("idcorrespondant");
+        //mettre l' id du correspondant dans une variable session
+        Session::put("idcorrespondant", $maxid);
+        // echo $maxid;
+        return view('correspondant.ajout_correspondant_suite', compact("maxid","request"));
     }
 
     /**
@@ -62,8 +63,7 @@ class CorrespondantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -73,13 +73,10 @@ class CorrespondantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
         $editcorrespondant = $this->correspondant->show($id);
-        return view('candidat.form_modif_correspondant',compact('editcorrespondant'));
-
-
+        return view('candidat.form_modif_correspondant', compact('editcorrespondant'));
     }
 
     /**
@@ -89,10 +86,9 @@ class CorrespondantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
-        $this->vehicule->update($request->only($this->correspondant->getModel()->fillable),$id);
+        $this->vehicule->update($request->only($this->correspondant->getModel()->fillable), $id);
         return $this->index();
     }
 
@@ -102,11 +98,10 @@ class CorrespondantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
         $this->correspondant->delete($id);
         return $this->index();
-
     }
+
 }

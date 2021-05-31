@@ -7,9 +7,11 @@ use App\Repositories\Repository;
 use App\Models\PiecesJointes;
 use App\Models\Accreditation;
 use App\Models\Demandeur;
+use App\Models\Correspondant;
+use App\User;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\AccreditationController;
-use Illuminate\Support\Facades\Session; 
+use Illuminate\Support\Facades\Session;
 
 class PiecesJointesController extends Controller {
 
@@ -20,20 +22,27 @@ class PiecesJointesController extends Controller {
      */
     protected $piecesjointes;
     protected $enreguser;
-	protected $accreditation;
-	protected $accredi;
-	protected $demandeur;
-	protected $demande;
+    protected $accreditation;
+    protected $accredi;
+    protected $demandeur;
+    protected $demande;
+    protected $correspond;
+    protected $correspondant;
+    protected $users;
+    protected $user;
 
     public function __construct(PiecesJointes $pj) {
-		$this->demande = new Demandeur();
-		$this->demandeur= new Repository ($this->demande);
-		$this->accredi = new Accreditation();
+        $this->demande = new Demandeur();
+        $this->demandeur = new Repository($this->demande);
+        $this->correspond = new Correspondant();
+        $this->correspondant = new Repository($this->correspond);
+        $this->users = new User();
+        $this->user = new Repository($this->users);
+        $this->accredi = new Accreditation();
         $this->enreguser = new RegisterController();
         $this->piecesjointes = new Repository($pj);
-		$this->accreditation = new AccreditationController($this->accredi);
-            
-	}
+        $this->accreditation = new AccreditationController($this->accredi);
+    }
 
     public function index() {
         //
@@ -55,35 +64,48 @@ class PiecesJointesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
-        $this->enreguser->register($request);
-        //mise a jour de la colonne actif à true pour le correspondant
-        $request->actif="true";
-        $this->correspondant->update($request->only($this->correspondant->getModel()->fillable), $request->idcorrespondant);
-     /* echo $request->name;
-        echo $request->email;
-        echo $request->password;
-        echo $request->identifiant;*/
-		  
-    }
-	
-	 public function storepjaccreditation(Request $request) {
-		$this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
-        		
-         // création variables sessions 28/05/2021
-	   
-	   Session::put("identifiant", $request->identifiant);
 
-		Session::put("pj","demandeur");
-	   
-	   // Création du compte d'utilisateur
-			$this->enreguser->register($request);
-         $request->actif="true";
-		 
+        Session::put("identifiant", $request->identifiant);
+        Session::put("pj", "correspondant");
+       //Recuperer l'id de du correspondant pour enregistrer dans piecesjointes
+        $maxidcorrespondant = $this->correspondant->max("idcorrespondant");
+        Session::put("idcorrespondant",$maxidcorrespondant);
+        $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
+        //enregistrer l'utilisateur dans les users
+        $this->enreguser->register($request);
+         //Recuperer l'id de l'utilisateur pour mettre à jour dans demandeur
+        $maxiduser = $this->user->max("id");
+        //declaration d'une session pour prendre en compte l'id de l'utilisateur
+        Session::put("iduser",$maxiduser);
+        //mise a jour de la colonne actif à true pour le correspondant
+         $request->actif = "true";
+         $this->correspondant->update($request->only($this->correspondant->getModel()->fillable), $request->idcorrespondant);
+   
+         //Faire retourner le message de confirmation de l'enregistrement du correspondant
+         
+    }
+
+    public function storepjaccreditation(Request $request) {
+        $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
+
+        // création variables sessions 28/05/2021
+
+        Session::put("identifiant", $request->identifiant);
+
+        Session::put("pj", "demandeur");
+
+        // Création du compte d'utilisateur
+        $this->enreguser->register($request);
+        //Recuperer l'id de l'utilisateur pour mettre à jour dans demandeur
+        $maxid = $this->user->max("id");
+        //declaration d'une session pour prendre en compte l'id de l'utilisateur
+        Session::put("iduser", $maxid);
+        //   $request->iduser=$maxid;
+        $request->actif = "true";
+
         $this->demandeur->update($request->only($this->demandeur->getModel()->fillable), $request->iddemandeur);
-		return $this->accreditation->indexpjaccreditation($request->iddemandeur);
-	
-	 }	
+        return $this->accreditation->indexpjaccreditation($request->iddemandeur);
+    }
 
     /**
      * Display the specified resource.

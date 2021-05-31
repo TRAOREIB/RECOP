@@ -66,7 +66,13 @@
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="telephone" placeholder=" " name="telephone">
                                 </div>
-						</div> 
+						</div>
+                                <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="telephone">EMAIL :</label>
+                                        <div class="col-sm-7">
+                                        <input type="email" class="form-control" name="mail1">
+                                </div>
+                        </div> 
                         <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="lieuresidence">LIEU DE RESIDENCE:</label>
                                 <div class="col-sm-7">

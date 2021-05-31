@@ -51,7 +51,7 @@ class AccreditationController extends Controller
      */
     public function store(Request $request)
     {
-		  echo session('pj');     
+		//  echo session('pj');     
 	   //
 			$this->accreditation->create($request->only($this->accreditation->getModel()->fillable)); 
         //return $this->indexpjaccreditation($request->iddemandeur);

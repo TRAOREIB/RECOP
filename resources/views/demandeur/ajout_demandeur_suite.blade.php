@@ -68,9 +68,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
 	
 	<!-- CREATION DU COMPTE USER-->
 	 <div class="card">
@@ -120,7 +117,6 @@
     </div>
 	
 	<!-- BOUTONS DE VALIDATION-->
->>>>>>> 528f7bd9a0da957e983f0bb5451f6038db8abe39
     <p></p>
     <div class="text-center">
         <button class="btn btn-primary" type="submit">CONTINUER</button>
@@ -129,3 +125,4 @@
     </div>
 </form>
 @endsection
+  

@@ -77,7 +77,7 @@
                                 </div>
                     </div> 
                 </div>
-            <input type="hidden" value="<?php echo e($maxid); ?>" name="iddemandeur">    				
+    				
 			</div>
 		<div class="text-center">
 	  		<button class="btn btn-primary" type="submit">AJOUTER</button>

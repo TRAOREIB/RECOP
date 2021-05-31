@@ -1,8 +1,9 @@
 
 <?php $__env->startSection('contenu'); ?>
 <br> 
+
 <div class="text-center">
-    <label style="font-family: fantasy;color: blue">NOUVEAU DEMANDEUR</label>
+    <label style="font-family: fantasy;color: blue">NOUVEAU DEMANDEUR</label> 
 </div>
 <div class="ligne_separe_titre"></div>
 <br>
@@ -68,7 +69,83 @@
             </div>
         </div>
     </div>
+	
+	<!-- CREATION DU COMPTE USER-->
+	 <div class="card">
+        <div class="card-header"><?php echo e(__("Enregistrement d'utilisateur")); ?></div>
 
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="identifiant" class="col-md-4 col-form-label text-md-right"><?php echo e(__("Identifiant")); ?></label>
+
+                <div class="col-md-6">
+                    <input  type="text" class="form-control <?php $__errorArgs = ['identifiant'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="identifiant" value="<?php echo e(old('identifiant')); ?>" required>
+
+                    <?php $__errorArgs = ['identifiant'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <span class="invalid-feedback" role="alert">
+                        <strong><?php echo e($message); ?></strong>
+                    </span>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Mot de passe')); ?></label>
+
+                <div class="col-md-6">
+                    <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="new-password">
+
+                    <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <span class="invalid-feedback" role="alert">
+                        <strong><?php echo e($message); ?></strong>
+                    </span>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="password-confirm" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Confirmer le mot de passe')); ?></label>
+
+                <div class="col-md-6">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                </div>
+            </div>
+            <input type="hidden" value="<?php echo e($request->nom); ?> <?php echo e($request->prenom); ?>" name="name">
+            <input type="hidden" value="<?php echo e($request->mail1); ?>"  name="email">
+			<input type="hidden" value="Demandeur"  name="profil"> 
+             
+        </div>
+    </div>
+	
+	<!-- BOUTONS DE VALIDATION-->
     <p></p>
     <div class="text-center">
         <button class="btn btn-primary" type="submit">CONTINUER</button>
@@ -77,5 +154,5 @@
     </div>
 </form>
 <?php $__env->stopSection(); ?>
-
+  
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/demandeur/ajout_demandeur_suite.blade.php ENDPATH**/ ?>

@@ -43,7 +43,7 @@ Route::resource('accreditation', 'AccreditationController');
 Route::resource('recherche', 'RechercheController');
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
-
+ 
 //Route::resource('information', 'RechercheController');
 
 Route::resource('informations', 'InformationController');
@@ -176,6 +176,6 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::resource('piecesjointesaccreditation', 'PiecesJointesAccreditationController');
+
 Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->name('pjaccreditation');
 
