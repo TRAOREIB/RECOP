@@ -42,6 +42,15 @@ class AccreditationController extends Controller
     {
         //
     }
+	
+	public function listeaccreditation()
+    {
+        //
+		$allaccreditation=$this->accreditation->all();
+		// $allaccreditation=$this->vuerecherche->allvue($this->vue);
+    return view('accreditation.liste_accreditation',compact('allaccreditation'));
+	}
+	
 
     /**
      * Store a newly created resource in storage.
