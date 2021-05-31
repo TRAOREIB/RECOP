@@ -3,11 +3,11 @@
 
 <br>
 <div class="text-center">
-      <div class="col-sm-12" style="">
-	  <label style="font-family: fantasy;color: blue"> CORRESPONDANTS MEDIAS NATIONAUX </label>     
-      </div>
-</div> 
- <div class="ligne_separe_titre"></div>
+    {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
+    <b><label style="" class="text-primary">CORRESPONDANT MEDIAS NATIONAUX</label></b>
+</div>
+ {{-- <div class="ligne_separe_titre"></div> --}}
+ <hr>
     <br><br>
 
 <form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('region') }}" enctype="multipart/form-data" >
@@ -82,7 +82,7 @@
     </div>
 </div>
 <!--  fin de la liste-->
-<br>
+<br><br>
 <div class="modal" id="confirmationta">
     <div class="modal-dialog modal-sm">
         <div class="modal-content" style="background-color : whitesmoke">

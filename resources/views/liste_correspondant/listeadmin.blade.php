@@ -4,11 +4,11 @@
 <br>
 
 <div class="text-center">
-      <div class="col-sm-12" style="">
-	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
-      </div>
-</div> 
- <div class="ligne_separe_titre"></div>
+    {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANT</label></b>
+</div>
+ {{-- <div class="ligne_separe_titre"></div> --}}
+ <hr>
     <br><br>
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
@@ -134,7 +134,7 @@
     </div>
 </div>
 <!--  fin de la liste-->
-<br>
+<br><br>
 
 <div class="modal" id="confirmationta">
     <div class="modal-dialog modal-sm">
@@ -158,7 +158,5 @@
     $('#appui').click(function () {
     $({{$i}}).modal();
     });
-
-
 </script>
 @endsection

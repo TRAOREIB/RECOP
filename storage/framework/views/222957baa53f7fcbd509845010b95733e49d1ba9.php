@@ -2,9 +2,11 @@
 <?php $__env->startSection('contenu'); ?>
 <br> 
 	<div class="text-center">
-  		<label style="font-family: fantasy;color: blue"> NOUVEAU DEMANDEUR </label>
- 	</div>
-<div class="ligne_separe_titre"></div>
+    
+    <b><label style="" class="text-primary">NOUVEAU DEMANDEUR</label></b>
+</div>
+
+<hr>
 <br>	
 	
 	<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="<?php echo e(route('demandeur.store')); ?>" enctype="multipart/form-data">
@@ -155,6 +157,6 @@
 			<button class="btn btn-primary" type="reset">ANNULER</button>
       	</div>
 	</form>
-<br>	
+<br><br>	
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Laravel\RECOP\resources\views/demandeur/ajout_demandeur.blade.php ENDPATH**/ ?>

@@ -2,9 +2,11 @@
 @section('contenu')
 <br> 
 	<div class="text-center">
-  		<label style="font-family: fantasy;color: blue"> NOUVEAU DEMANDEUR </label>
- 	</div>
-<div class="ligne_separe_titre"></div>
+    {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
+    <b><label style="" class="text-primary">NOUVEAU DEMANDEUR</label></b>
+</div>
+{{-- <div class="ligne_separe_titre"></div> --}}
+<hr>
 <br>	
 	
 	<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('demandeur.store') }}" enctype="multipart/form-data">
@@ -154,5 +156,5 @@
 			<button class="btn btn-primary" type="reset">ANNULER</button>
       	</div>
 	</form>
-<br>	
+<br><br>	
 @endsection

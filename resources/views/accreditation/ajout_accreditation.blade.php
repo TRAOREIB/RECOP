@@ -4,7 +4,8 @@
 	<div class="text-center">
   		<h2> NOUVEL EVENEMENT </h2>
  	</div>
-     <div class="ligne_separe_titre"></div>
+     {{-- <div class="ligne_separe_titre"></div> --}}
+     <hr>
     <br>
 	<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('accreditation.store') }}" enctype="multipart/form-data" >
 			{{ method_field('POST')}}

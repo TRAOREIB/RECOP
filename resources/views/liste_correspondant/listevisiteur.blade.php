@@ -2,11 +2,11 @@
 @section('contenu')
 <br>
 <div class="text-center">
-      <div class="col-sm-12" style="">
-	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
-      </div>
-</div> 
- <div class="ligne_separe_titre"></div>
+    {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANT</label></b>
+</div>
+ {{-- <div class="ligne_separe_titre"></div> --}}
+ <hr>
     <br><br> 
 
 <div class="row divtabgrand" style="">
@@ -41,7 +41,7 @@
     </div>
 </div>
 <!--  fin de la liste-->
- <br>
+ <br><br>
 
 <script>
     $(document).ready(function () {
