@@ -178,3 +178,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::resource('piecesjointesaccreditation', 'PiecesJointesAccreditationController');
 Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->name('pjaccreditation');
 
+
+Route::get('listeaccreditation', 'AccreditationController@listeaccreditation')->name('listeaccreditation');
