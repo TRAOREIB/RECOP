@@ -18,6 +18,49 @@
          <link rel="stylesheet" href="{{asset('css/bootstrap4.css')}}">
         <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
+		
+		
+		
+		
+		
+		
+		
+		<style>
+
+		.corpsinfo {
+			background-color:white	;
+			margin-buttom:5px ;
+			padding:20px;
+
+			}
+
+		.cadre {
+			background-color:#008080	;
+			border-radius : 10 px ;
+
+			}
+			
+			
+			
+			
+			
+			.tableau {
+			background-color:#C0C0C0;
+			
+			padding-left:20px;
+			padding-right:20px;
+			padding-buttom:5px;
+	
+			}
+			
+			.titrenouvelleinformation {
+			
+			padding-left : 20px ;
+
+			}
+			
+			
+		</style>
         
     </head>
     <body>
@@ -88,8 +131,8 @@
 
 
         <div class="container d-flex flex-row">
-            <div class="card w-50"> 
-                <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+ <!--    <div class="card w-50"> 
+               <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
                     <h4 class="card-title">Liens Utiles</h4> 
                     <h6 class="card-subtitle mb-2 text-muted"></h6> 
                     <p class="card-text">www.communication.gov.bf</p>
@@ -103,7 +146,7 @@
                     <p>ONEA : 18</p>                      
                 </div>                 
             </div>
-        </div>
+        </div>    -->
         <div class="container">
             <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
         </div>

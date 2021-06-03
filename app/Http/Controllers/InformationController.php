@@ -9,9 +9,16 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
+use App\Models\Correspondant;
 use App\Models\Informations;
 
 
+
+
+
+use App\Repositories\RepositoryVue;
+
+//use App\Models\Informations;
 
 
 class InformationController extends Controller
@@ -21,23 +28,114 @@ class InformationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+	    
+	//protected $vuerecherche;
+	
+			  /*  protected $informations;
+				protected $modelinfor;
+				protected $vue="vueinformation";
+				protected $vuerecherche ;     */
 
+	
+	
+	protected $vuerecherche;
+    protected $correspondant;
+    protected $modelcorresp;
+    protected $vue="listeinformation3";
+    // protected $vueinformation 
+						/*		 public function __construct() {
 
+								//    $this->informations = new Repository($info) ;
+									
+									
+									
+									$this->vueinformation = new RepositoryVue();
+								   // $this->modelinfor = new Informations();
+									
+									 $this->modelcorresp = new Correspondant();
+									$this->informations = new InformationController($this->modelcorresp);
+								 }
+	 
+												*/
+	 
+	 
+	 
+	  protected $informations ;
+	 public function __construct(Informations $info) {
+        $this->vuerecherche = new RepositoryVue();
+        $this->modelcorresp = new Correspondant();
+        //$this->correspondant = new CorrespondantController($this->modelcorresp);
+		$this->correspondant = new Repository($this->modelcorresp);
+		$this->informations = new Repository($info) ;
+		
+		
+		
+    }
+	
 
-     protected $vueinformation ;
-     public function __construct(vueinformation $info) {
-
-        $this->vueinformation = new Repository($info) ;
-     }
-    
-    
-    public function index()
+	
+		 public function index()
     {
-        //
-        $allvueinformation = $this->vueinformation->allvue();
-        return view('information.ajout_information',compact('allvueinformation'));
+        
+		//echo "good";
+		//
+       // $allvueinformation = $this->vueinformation->all();
+        // return view('information.ajout_information');
+	//	echo "good" ;
+		$allinformation = $this->informations->all();
+        return view('information.ajout_information',compact('allinformation'));
 
     }
+	
+    
+					/*		public function index()
+							{
+								//
+								// $allcorrespondant = $this->vuerecherche->allvue($this->vue);
+								$allinformation = $this->vuerecherche->allvue($this->vue);
+								//echo $allcorrespondant;
+								return view('information.rechercheinformation',compact('allinformation'));
+								
+								
+								$allcorrespondant = $this->vuerecherche->allvue($this->vue);
+								//echo $allcorrespondant;
+								return view('recherche.recherchenational',compact('allcorrespondant'));
+								
+							}
+							
+											*/
+											
+											
+		public function indexvue()
+				{
+													
+					//$allinformation = $this->informations->all();								
+					$allcorrespondant = $this->vuerecherche->allvue($this->vue);
+					//echo $allcorrespondant;
+                    
+                    
+					return view('information.vueinfo',compact('allcorrespondant'));
+
+                  //  return view('information.vueinfo',compact('allinformation'));
+												}	
+                                                
+         public function listeinfoperso()
+                {
+                                                    
+                                                    //echo "good";
+                                                    //
+                                                   // $allvueinformation = $this->vueinformation->all();
+                                                    // return view('information.ajout_information');
+                                                    
+                              $allinformation = $this->informations->all();
+                             return view('information.listeinfoperso',compact('allinformation'));
+                                            
+                }                                      
+
+
+                                                
+												
+	 
 
     /**
      * Show the form for creating a new resource.
@@ -62,9 +160,16 @@ class InformationController extends Controller
        // $this->information->create($request->only($this->information->getModel()->fillable)) ;
        // return view('information.ajoute_information') ;
 
-      $this->vueinformation->create($request->only($this->vueinformation->getModel()->fillable)); 
+							   /*   $this->vueinformation->create($request->only($this->vueinformation->getModel()->fillable)); 
+								 // return view('candidat.form_ajouter');
+									return $this->index();   */
+		
+		
+		
+		
+		 $this->informations->create($request->only($this->informations->getModel()->fillable)); 
      // return view('candidat.form_ajouter');
-        return $this->index();
+        return $this->indexvue();
 
     }
 
@@ -74,12 +179,12 @@ class InformationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-		$editinformation = $this->information->show($id);
-        return view('information.modif_info',compact('editinformation'));
-    }
+     public function show($idinfo)
+     {
+         
+	 	$editinformation = $this->informations->show($idinfo);
+         return view('information.modif_info2',compact('editinformation'));
+     }
 
     /**
      * Show the form for editing the specified resource.
@@ -87,12 +192,25 @@ class InformationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idinfo)
     {
-        //
-		//	echo $idinfo ;
-			$editinformation = $this->information->show($id);
-        return view('information.modif_info',compact('editinformation'));
+        
+		//	echo $idinfo  ;
+			$editinformation = $this->informations->show($idinfo);
+        return view('information.modif_info2',compact('editinformation'));
+        
+
+
+    
+	
+	}
+
+    public function editfv($idinfo)
+    {
+        
+		//	echo $idinfo  ;
+			$editinformation = $this->informations->show($idinfo);
+        return view('information.modif_info_from_vue',compact('editinformation'));
         
 
 
@@ -112,12 +230,38 @@ class InformationController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $indicateur = $request->control ;
+        if($indicateur=='tous'){
+        $this->informations->update($request->only($this->informations->getModel()->fillable),$id);
+       // return $this->index();
+       
+        return $this->indexvue() ;
+       }
 
-        
-        $this->information->update($request->only($this->information->getModel()->fillable),$id);
-        return $this->index();
+        else
+            {
+       $this->informations->update($request->only($this->informations->getModel()->fillable),$id);
+       return $this->listeinfoperso() ;
+            }
+
+
 
     }
+
+
+
+
+
+    public function updatefv(Request $request, $id)
+    {
+        //
+        
+       
+        $this->informations->update($request->only($this->informations->getModel()->fillable),$id);
+       // return $this->index();
+       
+        return $this->indexvue() ;
+       }
 
     /**
      * Remove the specified resource from storage.
@@ -130,8 +274,25 @@ class InformationController extends Controller
         //
 
         //echo $id;
-        $this->information->delete($id);
-        return $this->index();
+        $this->informations->delete($id);
+        //return $this->index();
+        return $this->listeinfoperso() ;
+
+    }
+
+
+
+
+
+
+    public function destroyfv($id)
+    {
+        //
+
+        //echo $id;
+        $this->informations->delete($id);
+        //return $this->index();
+        return $this->indexvue() ;
 
     }
 }

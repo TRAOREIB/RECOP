@@ -22,7 +22,12 @@ class Informations extends Model
      * 
      * @var string
      */
-    protected $primaryKey = 'idinfo';
+    
+    
+    protected $table = 'informations';
+     protected $primaryKey = 'idinfo';
+
+   
 
     /**
      * @var array
