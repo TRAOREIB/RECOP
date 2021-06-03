@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Repositories;
+
 use Illuminate\Http\Request;
+
 /**
  *
  * @author pc
@@ -16,11 +18,11 @@ interface RepositoryInterface {
 
     public function delete($id);
 
-
     public function show($idinfo);
 
- //   public function show($id);
-    
+    //   public function show($id);
+
     public function max($nomcolonne);
 
+   
 }
