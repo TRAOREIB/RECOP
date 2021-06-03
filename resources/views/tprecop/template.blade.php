@@ -8,16 +8,17 @@
         <meta name="author" content="">
         <title>RECOP</title>
 
-       
+
         <!-- Custom styles for this template -->
         <script src="{{asset('/js/jquery.min.js')}}"></script>
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/datatables.min.js')}}"></script>
         <script src="{{asset('/js/popper.js')}}"></script>
 
-         <link rel="stylesheet" href="{{asset('css/bootstrap4.css')}}">
+        <link rel="stylesheet" href="{{asset('css/bootstrap4.css')}}">
         <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
+<<<<<<< HEAD
 		
 		
 		
@@ -62,6 +63,9 @@
 			
 		</style>
         
+=======
+
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
     </head>
     <body>
 
@@ -99,36 +103,93 @@
                                     <a class="dropdown-item" href="#">Something else here</a> 
                                     <a class="dropdown-item" href="#">Dropdown item</a>
                                 </div>                             
-                            </li>                         
+                            </li>  
+							                       
                             <li class="nav-item"> 
                             </li>
                             <li class="nav-item"> 
                             </li>
-                            <li class="nav-item"> 
-                                <a class="nav-link text-light" href="#">ACCUEIL</a> 
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="{{ url('accueil') }}">ACCUEIL</a> 
                             </li>
                             <li class="nav-item dropdown"> 
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);"> 
-                                    <a class="dropdown-item text-white" href="#">NOUVEAU CORRESPONDANT</a> 
-                                    <a class="dropdown-item text-white" href="#">INTERNATIONAL</a> 
-                                    <a class="dropdown-item text-white" href="#">NATIONAL</a> 
-                                </div>                             
+                                    <a class="dropdown-item text-white" href="{{ url('correspondant') }}">NOUVEAU CORRESPONDANT</a> 
+									@guest
+									   <a class="dropdown-item text-white" href="{{ url('listevisiteur') }}">LISTE DES CORRESPONDANTS</a> 
+									@endguest
+									
+									@if(Auth::check())
+									@administrateur
+									   <a class="dropdown-item text-white" href="{{ url('listeadmin') }}">LISTE DES CORRESPONDANTS</a> 
+									   <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a> 
+                                       <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a> 		
+									@endadministrateur
+									@endif
+				@if(Auth::check())
+			        	@correspondant
+                                    <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a> 
+                                    <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a> 									
+			               @endcorrespondant 
+					  @endif
+                                </div>                                
                             </li>
                             <li class="nav-item"> 
-                                <a class="nav-link text-light" href="#">ACCREDITATION PRESSE</a> 
+                                <a class="nav-link text-light" href="{{ url('demandeur') }}">ACCREDITATION PRESSE</a> 
                             </li>
+							@if(Auth::check())
+									@correspondant
                             <li class="nav-item"> 
-                                <a class="nav-link text-white" href="#">INFORMATIONS</a> 
+                                <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
                             </li>
+							@endcorrespondant 
+							 
+							@administrateur
+							 <li class="nav-item"> 
+                                <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
+                            </li>
+							@endadministrateur
+									@endif
                         </ul>
-                        <a class="nav-link" href="#"><b><i>CONNEXION</i></b></a>
-                        <a class="nav-link" href="#"><span class="sr-only">COO(current)</span></a> 
+                         <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ url('login') }}"><b><i>{{ __('CONNEXION') }}</i></b></a>
+                            </li>
+                            {{-- @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif --}}
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Deconnexion') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                     </div>                 
                 </nav>
             </div>
             @yield('contenu')
+         
 
+<<<<<<< HEAD
 
         <div class="container d-flex flex-row">
  <!--    <div class="card w-50"> 
@@ -138,20 +199,44 @@
                     <p class="card-text">www.communication.gov.bf</p>
                     <p class="card-text">www.rtb.bf</p>                      
                 </div>                 
+=======
+        
+                    
+            
+              <div class="container  d-flex flex-row">               
+	       <div class="card col-sm-6 col-xs-12"> 
+                    <div class="card-body" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+                        <h4 class="card-title">Liens Utiles</h4> 
+                        <h6 class="card-subtitle mb-2 text-muted"></h6> 
+                        <p class="card-text">www.communication.gov.bf</p>
+                        <p class="card-text">www.rtb.bf</p>                      
+                    </div>                 
+                </div>
+                <div class="card col-sm-6  col-xs-12"> 
+                    <div class="card-body" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+                        <h4 class="card-title">Numeros Utiles</h4>                      
+                        <p>Sapeur Pompier : 18</p>
+                        <p>ONEA : 18</p>                      
+                    </div>                 
+                </div>
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
             </div>
-            <div class="card w-50"> 
-                <div class="card-body w-100" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
-                    <h4 class="card-title">Numeros Utiles</h4>                      
-                    <p>Sapeur Pompier : 18</p>
-                    <p>ONEA : 18</p>                      
-                </div>                 
+      <div class="container" > 
+            <div class="container" style="background-color:white;border-radius: 9px">
+                <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
+<<<<<<< HEAD
         </div>    -->
         <div class="container">
             <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
         </div>
     </div>
        
+=======
+	  </div>		
+         
+    </div>   
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
-</body>
+    </body>
 </html>

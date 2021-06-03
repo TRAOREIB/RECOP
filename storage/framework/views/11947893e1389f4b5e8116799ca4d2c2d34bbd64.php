@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  
 <?php $__env->startSection('contenu'); ?>
   <!-- 
@@ -27,6 +28,24 @@
 
 <br>
 <div class="row divtabgrand  offset-sm-1" style="">
+=======
+
+<?php $__env->startSection('contenu'); ?>
+
+<br>
+<div><a href="<?php echo e(route('enrinf')); ?>" class="btn btn-info">Nouvelle Information </a>
+ 
+</div>
+<br>
+<div class="text-center">
+      <div class="col-sm-12" style="">
+	  <label style="font-family: fantasy;color: blue"> LISTE DES INFORMATIONS </label>     
+      </div>
+</div> 
+ <div class="ligne_separe_titre"></div>
+    <br><br>
+<div class="row divtabgrand" style="">
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
     <div class="col-sm-12" >
         <div class="col-xs-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
@@ -84,5 +103,9 @@
         $('#table').DataTable();
     });
 </script>
+<<<<<<< HEAD
+=======
+<br><br>
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
  <?php $__env->stopSection(); ?> 
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/information/vueinfo.blade.php ENDPATH**/ ?>

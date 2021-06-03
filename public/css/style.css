@@ -1,9 +1,10 @@
-.ligne_separe_titre{
-    width: 1000px;
-    height: 3px;
+
+hr{
+   
+    height: 2px;
     background-color: red;
-    margin-left: 50px;
-}
+   
+} 
 
 .ligne_separe_corps{
     width: 900px;

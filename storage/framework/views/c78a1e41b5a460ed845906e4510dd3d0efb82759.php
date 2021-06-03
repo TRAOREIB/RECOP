@@ -2,9 +2,11 @@
 <?php $__env->startSection('contenu'); ?>
 <br> 
 <div class="text-center">
-    <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label>
+    
+    <b><label style="" class="text-primary">NOUVEAU CORRESPONDANT</label></b>
 </div>
-<div class="ligne_separe_titre"></div>
+
+<hr>
 <br>
 <form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="<?php echo e(route('correspondant.store')); ?>" enctype="multipart/form-data">
     <?php echo e(method_field('POST')); ?>
@@ -73,13 +75,13 @@
                         <label><i>Indiquer votre numero whatsapp</i></label>
                     </div>
                 </div>
-                 <div class="form-group row">
+                <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="telephone">EMAIL :</label>
                     <div class="col-sm-7">
                         <input type="email" class="form-control" id="mail1" placeholder=" " name="mail1">
                     </div>
                 </div>
-               
+
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="region">REGION:</label>
                     <div class="col-sm-5">
@@ -100,7 +102,7 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="numcnib">N° CNIB:</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" id="numcnib" placeholder=" " name="numcnib">
+                        <input type="text" class="form-control" id="numcnib" placeholder=" " name="cnib">
                         <label><i>Numero de la Carte Nationale d'Identité Burkinabè</i></label>
                     </div>
                 </div>
@@ -109,7 +111,7 @@
                     <div class="col-sm-4">
                         <input type="date" class="form-control" id="datedelivcnib" placeholder=" " name="datedelivcnib">
                         <div class="">
-                        <label><i>Date de delivrance de la CNIB</i></label>
+                            <label><i>Date de delivrance de la CNIB</i></label>
                         </div>
                     </div>
                 </div>
@@ -117,13 +119,13 @@
                     <label class="col-sm-3 col-form-label" for="dateexpircnib">DATE D'EXPIRATION</label>
                     <div class="col-sm-4">
                         <input type="date" class="form-control" id="dateexpircnib" placeholder=" " name="dateexpircnib">
-                       <label><i>Date d'expiration de la CNIB</i></label>
+                        <label><i>Date d'expiration de la CNIB</i></label>
                     </div>
                 </div> 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSPORT:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="numPasseport" placeholder=" " name="numPasseport">
+                        <input type="text" class="form-control" id="numPasseport" placeholder=" " name="passeport">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -133,20 +135,26 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="carteconsulaire">N° CARTE DE PRESSE:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="carteconsulaire" placeholder=" " name="numcartepresse">
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="personneprevenir">PERSONNE A PREVENIR:</label>
                     <div class="col-sm-7">
                         <input type="text" class="form-control" id="personneprevenir" placeholder=" " name="personneprevenir">
-                       <label><i>Nom et Prenom(s) de la personne à prevenir</i></label>
+                        <label><i>Nom et Prenom(s) de la personne à prevenir</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE:</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="telephonepersp" placeholder=" " name="telephonepersp">
-                     <label><i>Telephone de la personne à prevenir</i></label>
+                        <label><i>Telephone de la personne à prevenir</i></label>
                     </div>
                 </div> 
-                 <div class="form-group row">
+                <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="references">REFERENCES JOURNALISTIQUES :</label>
                     <div class="col-sm-7">
                         <textarea class="form-control" name="refjournal"></textarea>
@@ -158,25 +166,41 @@
                         <textarea class="form-control" name="parcourspro" rows="5"></textarea>
                     </div>
                 </div>
-                
+
 
             </div>
         </div>				
     </div>
     <p>
-   
+
     <div class="col-sm-12">  <!-- Bloc 2-->
         <div class="card"> <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
             <div class="card-body">
                 <div class="form-group row">
-                    <label for="organe" class="col-sm-3 col-form-label">NOM ORGANE</label>
-                    <div class="col-sm-7">
-                        <input class="form-control" id="organe" type="text" name="organe"/>
+                    <label for="organe" class="col-sm-3 col-form-label">NOM DE L'ORGANE</label>
+                    <div class="col-sm-8">
+                       <input class="form-control" id="telorgane" type="text" name="organe"/>          
                     </div>
+                    
                 </div>
                 <div class="form-group row">
+                    <label for="organe" class="col-sm-3 col-form-label">TYPE DE PRESSE</label>
+                    <div class="col-sm-5">
+                        <select class="form-control" name="typepresse">
+                        <option>Presse Ecrite</option>                       
+                        <option>Radio</option>
+                        <option>Tele</option>   
+                        <option>Presse En Ligne</option>
+                    </select>
+                 </div>
+                 
+                </div>
+                
+                <p></p>
+
+                <div class="form-group row">
                     <label for="telorgane" class="col-sm-3 col-form-label">TELEPHONE</label>
-                    <div class="col-sm-7">
+                    <div class="col-sm-4">
                         <input class="form-control" id="telorgane" type="text" name="telorgane"/>
                     </div>
                 </div>
@@ -189,11 +213,11 @@
             </div> 
         </div>   
     </div>
-    <p></p>
+   </p>
     <div class="text-center">
         <button class="btn btn-primary" type="submit">CONTINUER</button>
         <button class="btn btn-primary" type="reset">ANNULER</button>
-        
+
     </div>
     <p></p>
 </form>

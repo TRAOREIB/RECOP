@@ -13,8 +13,16 @@
 
 
 Route::get('/', function () {
-    return view('correspondant.ajout_correspondant');
-});  
+    return view('correspondant.choix_correspondant');
+});
+
+Route::get('accueil', function () {
+    return view('accueil.accueil');
+});
+
+// Route::get('/', function () {
+//     return view('demandeur.ajout_correspondant');
+// }); 
 /*Route::get('/', function () {
     return view('template');
 });*/
@@ -26,12 +34,19 @@ Route::get('/', function () {
 // // return view('candidat.form_ajouter');
 //  });
 
-//Route::resource('vehicule', 'VehiculeController');
+ // Route::resource('vehicule', 'VehiculeController');
+
+Route::resource('demandeur', 'DemandeurController');
+
+Route::resource('accreditation', 'AccreditationController');
 
 Route::resource('recherche', 'RechercheController');
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
+ 
+//Route::resource('information', 'RechercheController');
 
+<<<<<<< HEAD
 //Route::resource('information', 'RechercheController');
 
 Route::resource('informations', 'InformationController');
@@ -41,6 +56,11 @@ Route::get('listeinfoperso', 'InformationController@listeinfoperso');
 Route::get('editfv/{idinfo}', 'InformationController@editfv')->name('editfv');
 Route::put('updatefv/{idinfo}', 'InformationController@updatefv')->name('updatefv');
 Route::put('destroyfv/{idinfo}', 'InformationController@destroyfv')->name('destroyfv');
+=======
+Route::resource('informations', 'InformationController');
+Route::get('informationvue', 'InformationController@indexvue');
+Route::get('enrinf', 'InformationController@index')->name('enrinf');;
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 //Route::get('rechercheinfo', 'InformationController@indexvue');
 //Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
@@ -79,17 +99,19 @@ Route::put('destroyfv/{idinfo}', 'InformationController@destroyfv')->name('destr
 //Route::resource('document', 'DocumentController');
 //Route::resource('repertoire','RepertoireController');
 
+
+// Route::get('/', function () {
+//     return view('form_ajout_information');
+// });
+
 // Route::get('/', function () {
 //     return view('form_ajout_information');
 // });
 
 
-
 //Route::get('/', function () {
 //    return view('form_ajout_information');
 //});
-
-
 
 //   Route::get('/vue', 'PaginationControlller@paginationvueinformationcorrespondantmedia') ;
 
@@ -127,10 +149,15 @@ Route::put('destroyfv/{idinfo}', 'InformationController@destroyfv')->name('destr
 //     return view('candidat.form_ajouter');
 // });
 
-//Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
+Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
 
+
+<<<<<<< HEAD
 
 Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name('region');
+=======
+Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('regioninter');
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
 
 
@@ -141,20 +168,43 @@ Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name(
  
  
  
+<<<<<<< HEAD
  ////////////////Route::resource('informations', 'InformationController');
+=======
+ Route::resource('informations', 'InformationController');
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
  
  
  
  
  
 
+<<<<<<< HEAD
 //Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('region');
+=======
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
-//Route::get('listevisiteur', 'RechercheController@listevisiteur');
+
+Route::get('listevisiteur', 'RechercheController@listevisiteur');
 
 Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
+<<<<<<< HEAD
+
+=======
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
 
 Auth::routes();
+
+//Route::get('connect', 'ConnexionController@connexion')->name('connect');
+
+//Route::post('login', 'ConnexionController@login')->name('login');
+//Auth::routes(); 
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->name('pjaccreditation');
+

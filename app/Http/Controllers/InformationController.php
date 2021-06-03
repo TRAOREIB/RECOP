@@ -41,7 +41,11 @@ class InformationController extends Controller
 	protected $vuerecherche;
     protected $correspondant;
     protected $modelcorresp;
+<<<<<<< HEAD
     protected $vue="listeinformation3";
+=======
+    protected $vue="vueinformation";
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
     // protected $vueinformation 
 						/*		 public function __construct() {
 
@@ -72,7 +76,10 @@ class InformationController extends Controller
 		
     }
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 	
 		 public function index()
     {
@@ -81,7 +88,11 @@ class InformationController extends Controller
 		//
        // $allvueinformation = $this->vueinformation->all();
         // return view('information.ajout_information');
+<<<<<<< HEAD
 	//	echo "good" ;
+=======
+		
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 		$allinformation = $this->informations->all();
         return view('information.ajout_information',compact('allinformation'));
 
@@ -109,6 +120,7 @@ class InformationController extends Controller
 		public function indexvue()
 				{
 													
+<<<<<<< HEAD
 					//$allinformation = $this->informations->all();								
 					$allcorrespondant = $this->vuerecherche->allvue($this->vue);
 					//echo $allcorrespondant;
@@ -134,6 +146,13 @@ class InformationController extends Controller
 
 
                                                 
+=======
+													
+					$allcorrespondant = $this->vuerecherche->allvue($this->vue);
+					//echo $allcorrespondant;
+					return view('information.vueinfo',compact('allcorrespondant'));
+												}																	
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 												
 	 
 
@@ -179,12 +198,21 @@ class InformationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
      public function show($idinfo)
      {
          
 	 	$editinformation = $this->informations->show($idinfo);
          return view('information.modif_info2',compact('editinformation'));
      }
+=======
+    public function show($idinfo)
+    {
+        //
+		$editinformation = $this->informations->show($idinfo);
+        return view('information.modif_info',compact('editinformation'));
+    }
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
     /**
      * Show the form for editing the specified resource.
@@ -194,6 +222,7 @@ class InformationController extends Controller
      */
     public function edit($idinfo)
     {
+<<<<<<< HEAD
         
 		//	echo $idinfo  ;
 			$editinformation = $this->informations->show($idinfo);
@@ -211,6 +240,12 @@ class InformationController extends Controller
 		//	echo $idinfo  ;
 			$editinformation = $this->informations->show($idinfo);
         return view('information.modif_info_from_vue',compact('editinformation'));
+=======
+        //
+		//	echo $idinfo ;
+			$editinformation = $this->informations->show($idinfo);
+        return view('information.modif_info',compact('editinformation'));
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
         
 
 

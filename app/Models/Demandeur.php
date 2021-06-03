@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $iddemandeur
+ * @property int $iduser
  * @property string $nom
  * @property string $prenom
  * @property string $profession
@@ -17,7 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $carteconsulaire
  * @property string $datedelivcnib
  * @property string $dateexpircnib
- * @property int $telephone
+ * @property int 	$telephone
+ * @property string $mail1
  * @property string $personneprevenir
  * @property string $lieuresidence
  * @property string $organe
@@ -50,7 +52,8 @@ class Demandeur extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct', 'numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+  
+    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

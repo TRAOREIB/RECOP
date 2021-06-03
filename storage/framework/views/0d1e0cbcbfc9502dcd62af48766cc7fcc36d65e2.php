@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
@@ -12,6 +13,19 @@
       </div>
 </div> <br>
 
+=======
+<?php $__env->startSection('contenu'); ?>
+
+<br>
+<div class="text-center">
+      <div class="col-sm-12" style="">
+	  <label style="font-family: fantasy;color: blue"> CORRESPONDANTS MEDIAS NATIONAUX </label>     
+      </div>
+</div> 
+ <!--<div class="ligne_separe_titre"></div>-->
+ <hr>
+    <br><br>
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
 <form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="<?php echo e(route('region')); ?>" enctype="multipart/form-data" >
     <?php echo e(method_field('GET')); ?>
@@ -21,7 +35,11 @@
 <div class="row  offset-sm-2">
    
        <label for="region" class="">REGION </label> 
+<<<<<<< HEAD
         <div class="col-sm-2  col-md-2 col-xs-6"> 
+=======
+        <div class="col-sm-3  col-md-3"> 
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
             <select class="form-control" name="region" required> 
                 <option selected>choisir la region</option>                                    
                 <option value="centre">Centre</option> 
@@ -50,6 +68,7 @@
 </div>
  </form>
 
+<<<<<<< HEAD
 
 <div class="row listetitreformgrand" style="">
       <div class="col-sm-12" style="">
@@ -60,6 +79,11 @@
 <div class="row divtabgrand  offset-sm-1" style="">
     <div class="col-xs-12" >
         <div class="col-xs-12 ligneform " style="background-color: #EEE">
+=======
+<div class="row divtabgrand" style="">
+    <div class="col-sm-12" >
+        <div class="col-sm-12 ligneform " style="background-color: #EEE">
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
             <table class="table table-striped table-condensed" id="table">
                 <thead>
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
@@ -94,7 +118,11 @@
     </div>
 </div>
 <!--  fin de la liste-->
+<<<<<<< HEAD
 
+=======
+<br>
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 <div class="modal" id="confirmationta">
     <div class="modal-dialog modal-sm">
         <div class="modal-content" style="background-color : whitesmoke">
@@ -113,4 +141,9 @@
         $('#table').DataTable();
     });
 </script>
+<<<<<<< HEAD
 <?php /**PATH C:\xampp\htdocs\RECOP\resources\views/recherche/recherchenational.blade.php ENDPATH**/ ?>
+=======
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/recherche/recherchenational.blade.php ENDPATH**/ ?>
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb

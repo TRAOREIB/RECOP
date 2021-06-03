@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Correspondant;
 use Illuminate\Http\Request;
 use App\Repositories\RepositoryVue;
+use App\Repositories\Repository;
+
+
+
 
 
 
@@ -33,6 +37,10 @@ class RechercheController extends Controller
 		
 		
 		
+<<<<<<< HEAD
+=======
+        $this->correspondant = new Repository($this->modelcorresp);
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
     }
 
     public function index()
@@ -61,6 +69,7 @@ class RechercheController extends Controller
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
+<<<<<<< HEAD
 
     }
 
@@ -71,16 +80,26 @@ class RechercheController extends Controller
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
 
+=======
+
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
     }
 
  
 /* public function rechercheregioninter(Request $request)
     {
         //
-        $allcorrespondant = $this->vuerecherche->rechercheregioninter($this->vue,$request->region);
+        $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
         return view('recherche.rechercheinternational',compact('allcorrespondant'));
+<<<<<<< HEAD
     }    */
+=======
+
+    }
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
+
+ 
 
     public function listeadmin(Request $request)
     {
@@ -167,8 +186,11 @@ class RechercheController extends Controller
     public function destroy($id)
     {
         //
-        $this->correspondant->destroy($id);
-        return $this->index();
+        $this->correspondant->delete($id);
+        //return $this->index();
+        $allcorrespondant = $this->vuerecherche->allvue($this->vue);
+        //echo $allcorrespondant;
+        return view('liste_correspondant.listeadmin',compact('allcorrespondant'));
         //echo $id;
     }
 }

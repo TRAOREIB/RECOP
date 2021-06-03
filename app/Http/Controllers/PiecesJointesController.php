@@ -5,7 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\PiecesJointes;
+use App\Models\Accreditation;
+use App\Models\Demandeur;
+use App\Models\Correspondant;
+use App\User;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\AccreditationController;
+use Illuminate\Support\Facades\Session;
 
 class PiecesJointesController extends Controller {
 
@@ -16,10 +22,26 @@ class PiecesJointesController extends Controller {
      */
     protected $piecesjointes;
     protected $enreguser;
+    protected $accreditation;
+    protected $accredi;
+    protected $demandeur;
+    protected $demande;
+    protected $correspond;
+    protected $correspondant;
+    protected $users;
+    protected $user;
 
     public function __construct(PiecesJointes $pj) {
+        $this->demande = new Demandeur();
+        $this->demandeur = new Repository($this->demande);
+        $this->correspond = new Correspondant();
+        $this->correspondant = new Repository($this->correspond);
+        $this->users = new User();
+        $this->user = new Repository($this->users);
+        $this->accredi = new Accreditation();
         $this->enreguser = new RegisterController();
         $this->piecesjointes = new Repository($pj);
+        $this->accreditation = new AccreditationController($this->accredi);
     }
 
     public function index() {
@@ -42,12 +64,99 @@ class PiecesJointesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
+        Session::put("identifiant", $request->identifiant);
+        Session::put("pj", "correspondant");
+        //Recuperer l'id de du correspondant pour enregistrer dans piecesjointes
+        $maxidcorrespondant = $this->correspondant->max("idcorrespondant");
+        Session::put("idcorrespondant", $maxidcorrespondant);
+        // recuperation du nom reel des fichiers dans les colonnes de la table pieces jointes
+
         $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
+        //enregistrer l'utilisateur dans les users
         $this->enreguser->register($request);
-        echo $request->name;
-        echo $request->email;
-        echo $request->password;
-          echo $request->identifiant;
+        //Recuperer l'id de l'utilisateur pour mettre à jour dans demandeur
+        $maxiduser = $this->user->max("id");
+        //declaration d'une session pour prendre en compte l'id de l'utilisateur
+        Session::put("iduser", $maxiduser);
+        //mise a jour de la colonne actif à true pour le correspondant
+        $request->actif = "true";
+        $this->savepiecesjointes($request);
+        $this->correspondant->update($request->only($this->correspondant->getModel()->fillable), $request->idcorrespondant);
+        return view("correspondant.message_correspondant");
+//Sauvegarder les fichiers dans le serveur
+        //Faire retourner le message de confirmation de l'enregistrement du correspondant
+    }
+
+    public function uploadDocs($monfile, $name) {
+        $monfile->storeAs(config('documents.path'), $name, "public");
+    }
+
+    public function storepjaccreditation(Request $request) {
+        $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
+
+        // création variables sessions 28/05/2021
+
+        Session::put("identifiant", $request->identifiant);
+
+        Session::put("pj", "demandeur");
+
+        // Création du compte d'utilisateur
+        $this->enreguser->register($request);
+        //Recuperer l'id de l'utilisateur pour mettre à jour dans demandeur
+        $maxid = $this->user->max("id");
+        //declaration d'une session pour prendre en compte l'id de l'utilisateur
+        Session::put("iduser", $maxid);
+        //   $request->iduser=$maxid;
+        $request->actif = "true";
+
+        $this->demandeur->update($request->only($this->demandeur->getModel()->fillable), $request->iddemandeur);
+        return $this->accreditation->indexpjaccreditation($request->iddemandeur);
+    }
+
+    public function savepiecesjointes(Request $request) {
+
+
+        if (!empty($request->file('photo'))) {
+            $nom = $request->photo->getClientOriginalName();
+            $request->file('photo')->storeAs(config('documents.path'), $nom, "public");
+        }
+        if (!empty($request->file('cv'))) {
+            $nom = $request->cv->getClientOriginalName();
+            $request->file('cv')->storeAs(config('documents.path'), $nom, "public");
+        }
+        if (!empty($request->file('visamedia'))) {
+            $nom = $request->visamedia->getClientOriginalName();
+            $request->file('visamedia')->storeAs(config('documents.path'), $nom, "public");
+        }
+        if (!empty($request->file('pjcnib'))) {
+            $nom = $request->pjcnib->getClientOriginalName();
+            $request->file('pjcnib')->storeAs(config('documents.path'), $nom, "public");
+        }
+        if (!empty($request->file('pjpasseport'))) {
+            $nom = $request->pjpasseport->getClientOriginalName();
+            $request->file('pjpasseport')->storeAs(config('documents.path'), $nom, "public");
+        }
+        if (!empty($request->file('pjcarteconsulaire'))) {
+            $nom = $request->pjcarteconsulaire->getClientOriginalName();
+            $request->file('pjcarteconsulaire')->storeAs(config('documents.path'), $nom, "public");
+        }
+        if (!empty($request->file('pjpasseport'))) {
+            $nom = $request->pjpasseport->getClientOriginalName();
+            $request->file('pjpasseport')->storeAs(config('documents.path'), $nom, "public");
+        }
+        if (!empty($request->file('pjcartepresse'))) {
+            $nom = $request->pjcartepresse->getClientOriginalName();
+            $request->file('pjcartepresse')->storeAs(config('documents.path'), $nom, "public");
+        }
+        if (!empty($request->file('pjcnibperprev'))) {
+            $nom = $request->pjcartepresse->getClientOriginalName();
+            $request->file('pjcnibperprev')->storeAs(config('documents.path'), $nom, "public");
+        }
+        if (!empty($request->file('lettrerecommendation'))) {
+            $nom = $request->lettrerecommendation->getClientOriginalName();
+            $request->file('lettrerecommendation')->storeAs(config('documents.path'), $nom, "public");
+        }
     }
 
     /**

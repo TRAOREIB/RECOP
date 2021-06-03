@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $idinfo
  * @property int $idcorrespondant
+ * @property int $iduser
  * @property string $titre
  * @property string $contenu
  * @property string $date
@@ -30,7 +31,7 @@ class Informations extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idcorrespondant', 'titre', 'contenu', 'date', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['idcorrespondant', 'iduser', 'titre', 'contenu', 'date', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

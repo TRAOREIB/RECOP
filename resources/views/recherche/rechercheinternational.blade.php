@@ -1,27 +1,25 @@
-{{-- @extends('template')
+@extends('tprecop.template')
 @section('contenu')
-@section('script') --}}
 
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}"> 
-{{-- @endsection --}}
-<div class="row listetitreformgrand" style="">
+<br>
+ <br>
+<div class="text-center">
       <div class="col-sm-12" style="">
-        <h3 class=" offset-sm-2"> CORRESPONDANTS MEDIAS INTERNATIONAUX </h3>
+	  <label style="font-family: fantasy;color: blue"> CORRESPONDANTS MEDIAS INTERNATIONAUX </label>     
       </div>
-</div> <br>
+</div> 
+ <!--<div class="ligne_separe_titre"></div>-->
+ <hr>
+    <br><br>
 
-<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('region') }}" enctype="multipart/form-data" >
+<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('regioninter') }}" enctype="multipart/form-data" >
     {{ method_field('GET')}}
     {{ csrf_field() }}
 
 <div class="row  offset-sm-2">
    
         <label for="region" class="">REGION </label> 
-        <div class="col-sm-2  col-md-2 col-xs-6"> 
+        <div class="col-sm-3  col-md-3"> 
             <select class="form-control" name="region" required> 
                 <option selected>choisir la region</option>                                    
                 <option value="centre">Centre</option> 
@@ -50,9 +48,9 @@
 </div>
 </form>
 
-<div class="row divtabgrand  offset-sm-1" style="">
-    <div class="col-xs-12" >
-        <div class="col-xs-12 ligneform " style="background-color: #EEE">
+<div class="row divtabgrand" style="">
+    <div class="col-sm-12" >
+        <div class="col-sm-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
@@ -85,7 +83,7 @@
     </div>
 </div>
 <!--  fin de la liste-->
-
+<br>
 <div class="modal" id="confirmationta">
     <div class="modal-dialog modal-sm">
         <div class="modal-content" style="background-color : whitesmoke">
@@ -104,4 +102,4 @@
         $('#table').DataTable();
     });
 </script>
-{{-- @endsection --}}
+@endsection 

@@ -1,13 +1,15 @@
 @extends('tprecop.template')
 @section('contenu')
-<br> 
+<br>  
 <div class="text-center">
     <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label>
-</div>
+</div> 
 <div class="ligne_separe_titre"></div>
 <br>
-<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{route('piecesjointes.store')}}" enctype="multipart/form-data">
-    {{ method_field('POST')}}
+
+
+
+<form method="post" action="{{route('piecesjointes.store')}}" enctype="multipart/form-data">
     {{ csrf_field() }}	
 
     <div class="col-sm-12">  <!-- Bloc 2-->
@@ -18,7 +20,7 @@
                 <div class="form-group row">
                     <label for="pjcnib" class="col-sm-3 col-form-label">PHOTO D'IDENTITE</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="photo" type="file" name="photo" />
+                        <input class="form-control"  type="file" name="photo" />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -45,7 +47,7 @@
                 <div class="form-group row">
                     <label for="pjpasseport" class="col-sm-3 col-form-label">PASSPORT</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjpasseport" type="file" name="pjpasseport"/>
+                        <input class="form-control"  type="file" name="pjpasseport"/>
                         <label><i>scannage de la première page du passeport</i></label>
                     </div>
                 </div>

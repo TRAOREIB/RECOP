@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 
 class Repository implements RepositoryInterface {
 
@@ -14,22 +15,56 @@ class Repository implements RepositoryInterface {
     // Constructor to bind model to repo
     public function __construct(Model $model) {
         $this->model = $model;
+        Session::put("pj", "");
     }
 
     // Get all instances of model
     public function all() {
-        return $this->model->all()->where('actif',true);
+        return $this->model->all()->where('actif', true);
     }
 
     // create a new record in the database
     public function create(array $data) {
+        // MAJ OK 28/05/2021
+
+        if (!empty(session("pj"))) {
+            if (isset($data["photo"])) {
+                $data['photo'] = $data["photo"]->getClientOriginalName();
+            }
+            if (isset($data["cv"])) {           
+                $data['cv'] = $data["cv"]->getClientOriginalName();
+            }
+            if (isset($data["pjcnib"])) {           
+                $data['cv'] = $data["pjcnib"]->getClientOriginalName();
+            }
+            if (isset($data["visamedia"])) {           
+                $data['visamedia'] = $data["visamedia"]->getClientOriginalName();
+            }
+            if (isset($data["pjpasseport"])) {           
+                $data['pjpasseport'] = $data["pjpasseport"]->getClientOriginalName();
+            }
+            if (isset($data["pjcartepresse"])) {           
+                $data['pjcartepresse'] = $data["pjcartepresse"]->getClientOriginalName();
+            }
+            
+            if (session("pj") == "demandeur") {
+                $data["iddemandeur"] = session("iddemandeur");
+            }
+            if (session("pj") == "correspondant") {
+                $data["idcorrespondant"] = session("idcorrespondant");
+            }
+        }
+
         return $this->model->create($data);
     }
- 
+
     // update record in the database
     public function update(array $data, $id) {
+
+        if (!empty(session("pj"))) {
+            $data["iduser"] = session("iduser");
+        }
         $this->model->findOrFail($id)->update($data);
-       
     }
 
     // remove record from the database
