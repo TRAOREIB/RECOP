@@ -25,7 +25,7 @@ class Informations extends Model
 	 
 	 
 	 protected $table = 'informations';
-    //protected $primaryKey = 'idinfo';
+    protected $primaryKey = 'idinfo';
 
     /**
      * @var array
