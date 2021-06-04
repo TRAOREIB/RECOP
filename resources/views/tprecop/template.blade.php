@@ -18,7 +18,54 @@
         <link rel="stylesheet" href="{{asset('css/bootstrap4.css')}}">
         <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
+<<<<<<< HEAD
+		
+		
+		
+		
+		
+		
+		
+		<style>
 
+		.corpsinfo {
+			background-color:white	;
+			margin-buttom:5px ;
+			padding:20px;
+
+			}
+
+		.cadre {
+			background-color:#008080	;
+			border-radius : 10 px ;
+
+			}
+			
+			
+			
+			
+			
+			.tableau {
+			background-color:#C0C0C0;
+			
+			padding-left:20px;
+			padding-right:20px;
+			padding-buttom:5px;
+	
+			}
+			
+			.titrenouvelleinformation {
+			
+			padding-left : 20px ;
+
+			}
+			
+			
+		</style>
+        
+=======
+
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
     </head>
     <body>
 
@@ -33,7 +80,7 @@
                         <img src="{{asset('images/armoirie_bf.JPG')}}" width="100">
                         <div class="container mr-0 mt-lg-5 pr-auto">
                             <div class="row">
-                                <label class="col-auto display-5 font-italic font-weight-bold lead mr-4 mt-lg-n1 mt-sm-4 pr-auto text-center text-monospace text-primary text-uppercase w-100">Repertoire des Correspondants de Presse du Burkina Faso</label>
+                                <label class="col-auto display-5 font-italic font-weight-bold lead mr-4 mt-lg-n1 mt-sm-4 pr-auto text-center text-monospace text-primary text-uppercase w-100">Plateforme d'Enregistrement et d'Accréditation des Correspondants de Presse au Burkina Faso</label>
                             </div>
                         </div>
                     </div>
@@ -68,7 +115,7 @@
                             <li class="nav-item dropdown"> 
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);"> 
-                                    <a class="dropdown-item text-white" href="{{ url('correspondant') }}">NOUVEAU CORRESPONDANT</a> 
+                                    <a class="dropdown-item text-white" href="{{ url('choixcorrespondant') }}">NOUVEAU CORRESPONDANT</a> 
 									@guest
 									   <a class="dropdown-item text-white" href="{{ url('listevisiteur') }}">LISTE DES CORRESPONDANTS</a> 
 									@endguest
@@ -142,6 +189,17 @@
             @yield('contenu')
          
 
+<<<<<<< HEAD
+
+        <div class="container d-flex flex-row">
+ <!--    <div class="card w-50"> 
+               <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+                    <h4 class="card-title">Liens Utiles</h4> 
+                    <h6 class="card-subtitle mb-2 text-muted"></h6> 
+                    <p class="card-text">www.communication.gov.bf</p>
+                    <p class="card-text">www.rtb.bf</p>                      
+                </div>                 
+=======
         
                     
             
@@ -161,14 +219,24 @@
                         <p>ONEA : 18</p>                      
                     </div>                 
                 </div>
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
             </div>
       <div class="container" > 
             <div class="container" style="background-color:white;border-radius: 9px">
                 <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
+<<<<<<< HEAD
+        </div>    -->
+        <div class="container">
+            <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
+        </div>
+    </div>
+       
+=======
 	  </div>		
          
     </div>   
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
     </body>
 </html>

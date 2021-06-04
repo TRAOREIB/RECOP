@@ -11,7 +11,10 @@ use App\Repositories\Repository;
 use App\Repositories\RepositoryVue;
 use App\Models\Accreditation;
 use App\Models\Region;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Session;
+=======
+>>>>>>> b28a84b056198bab533a84aeee529357565e0226
 
 class AccreditationController extends Controller
 {
@@ -21,6 +24,7 @@ class AccreditationController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $accreditation;
+<<<<<<< HEAD
 	protected $vue='vueaccreditation';
 	protected $vueaccreditation;
 	protected $region;
@@ -29,6 +33,17 @@ class AccreditationController extends Controller
        $this->accreditation = new Repository($accre);
 	   $this->vueaccreditation= new RepositoryVue();
 	  //$this->region = new Repository( );
+=======
+    protected $region;
+    protected $vuerecherche;
+    protected $vue="vueaccreditation";
+
+
+    public function __construct(Accreditation $accre,Region $region) {
+       $this->vuerecherche = new RepositoryVue();
+       $this->accreditation = new Repository($accre);
+       $this->region = new Repository($region);
+>>>>>>> b28a84b056198bab533a84aeee529357565e0226
                                                    }
 
     public function index()
@@ -39,6 +54,18 @@ class AccreditationController extends Controller
 		
 		//return view('accreditation.ajout_accreditation',compact('allregion'));
     }
+
+    public function rechercheaccredi(Request $request)
+    {
+       $allregion = $this->region->all();
+       $allaccreditation = $this->vuerecherche->rechercheaccredi($this->vue,$request->nomregion);
+       $regionchoisi=$request->nomregion;
+       return view('recherche.recherchelieuaccreditation',compact('allaccreditation','allregion','regionchoisi'));
+
+    }
+
+
+
   public function indexpjaccreditation()
     {
         //

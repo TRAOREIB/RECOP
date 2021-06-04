@@ -33,7 +33,7 @@
                         <img src="<?php echo e(asset('images/armoirie_bf.JPG')); ?>" width="100">
                         <div class="container mr-0 mt-lg-5 pr-auto">
                             <div class="row">
-                                <label class="col-auto display-5 font-italic font-weight-bold lead mr-4 mt-lg-n1 mt-sm-4 pr-auto text-center text-monospace text-primary text-uppercase w-100">Repertoire des Correspondants de Presse du Burkina Faso</label>
+                                <label class="col-auto display-5 font-italic font-weight-bold lead mr-4 mt-lg-n1 mt-sm-4 pr-auto text-center text-monospace text-primary text-uppercase w-100">Plateforme d'Enregistrement et d'Accréditation des Correspondants de Presse au Burkina Faso</label>
                             </div>
                         </div>
                     </div>
@@ -56,28 +56,54 @@
                                     <a class="dropdown-item" href="#">Something else here</a> 
                                     <a class="dropdown-item" href="#">Dropdown item</a>
                                 </div>                             
-                            </li>                         
+                            </li>  
+							                       
                             <li class="nav-item"> 
                             </li>
                             <li class="nav-item"> 
                             </li>
-                            <li class="nav-item"> 
+                            <li class="nav-item">
                                 <a class="nav-link text-light" href="<?php echo e(url('accueil')); ?>">ACCUEIL</a> 
                             </li>
                             <li class="nav-item dropdown"> 
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);"> 
-                                    <a class="dropdown-item text-white" href="<?php echo e(url('correspondant')); ?>">NOUVEAU CORRESPONDANT</a> 
-                                    <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregioninter')); ?>">INTERNATIONAL</a> 
-                                    <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregion')); ?>">NATIONAL</a> 
-                                </div>                             
+                                    <a class="dropdown-item text-white" href="<?php echo e(url('choixcorrespondant')); ?>">NOUVEAU CORRESPONDANT</a> 
+									<?php if(auth()->guard()->guest()): ?>
+									   <a class="dropdown-item text-white" href="<?php echo e(url('listevisiteur')); ?>">LISTE DES CORRESPONDANTS</a> 
+									<?php endif; ?>
+									
+									<?php if(Auth::check()): ?>
+									<?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?>
+									   <a class="dropdown-item text-white" href="<?php echo e(url('listeadmin')); ?>">LISTE DES CORRESPONDANTS</a> 
+									   <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregioninter')); ?>">MEDIA INTERNATIONAL</a> 
+                                       <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregion')); ?>">MEDIA NATIONAL</a> 		
+									<?php endif; ?>
+									<?php endif; ?>
+				<?php if(Auth::check()): ?>
+			        	<?php if (\Illuminate\Support\Facades\Blade::check('correspondant')): ?>
+                                    <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregioninter')); ?>">MEDIA INTERNATIONAL</a> 
+                                    <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregion')); ?>">MEDIA NATIONAL</a> 									
+			               <?php endif; ?> 
+					  <?php endif; ?>
+                                </div>                                
                             </li>
                             <li class="nav-item"> 
                                 <a class="nav-link text-light" href="<?php echo e(url('demandeur')); ?>">ACCREDITATION PRESSE</a> 
                             </li>
+							<?php if(Auth::check()): ?>
+									<?php if (\Illuminate\Support\Facades\Blade::check('correspondant')): ?>
                             <li class="nav-item"> 
                                 <a class="nav-link text-white" href="<?php echo e(url('informationvue')); ?>">INFORMATIONS</a> 
                             </li>
+							<?php endif; ?> 
+							 
+							<?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?>
+							 <li class="nav-item"> 
+                                <a class="nav-link text-white" href="<?php echo e(url('informationvue')); ?>">INFORMATIONS</a> 
+                            </li>
+							<?php endif; ?>
+									<?php endif; ?>
                         </ul>
                          <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -112,32 +138,35 @@
                 </nav>
             </div>
             <?php echo $__env->yieldContent('contenu'); ?>
-
+         
 
         
                     
-            <div class="container row col-md-12 ">
-                <div class="card col-md-6 col-xs-12"> 
-                    <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+            
+              <div class="container  d-flex flex-row">               
+	       <div class="card col-sm-6 col-xs-12"> 
+                    <div class="card-body" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
                         <h4 class="card-title">Liens Utiles</h4> 
                         <h6 class="card-subtitle mb-2 text-muted"></h6> 
                         <p class="card-text">www.communication.gov.bf</p>
                         <p class="card-text">www.rtb.bf</p>                      
                     </div>                 
                 </div>
-                <div class="card col-md-6 col-xs-12"> 
-                    <div class="card-body w-100" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+                <div class="card col-sm-6  col-xs-12"> 
+                    <div class="card-body" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
                         <h4 class="card-title">Numeros Utiles</h4>                      
                         <p>Sapeur Pompier : 18</p>
                         <p>ONEA : 18</p>                      
                     </div>                 
                 </div>
             </div>
-            <div class="container">
+      <div class="container" > 
+            <div class="container" style="background-color:white;border-radius: 9px">
                 <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
+	  </div>		
          
-
+    </div>   
 
     </body>
 </html>

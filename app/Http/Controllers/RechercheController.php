@@ -11,6 +11,9 @@ use App\Repositories\Repository;
 
 
 
+
+
+
 class RechercheController extends Controller
 {
     /**
@@ -31,10 +34,16 @@ class RechercheController extends Controller
         $this->vuerecherche = new RepositoryVue();
         $this->modelcorresp = new Correspondant();
         $this->correspondant = new CorrespondantController($this->modelcorresp);
+<<<<<<< HEAD
+=======
 		
 		
 		
+<<<<<<< HEAD
+=======
+>>>>>>> 98b431bba3b14852135f490be92b68f1b43fa5ea
         $this->correspondant = new Repository($this->modelcorresp);
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
     }
 
     public function index()
@@ -43,14 +52,17 @@ class RechercheController extends Controller
         //
         $allcorrespondant = $this->vuerecherche->allvue($this->vue);
         //echo $allcorrespondant;
-        return view('recherche.recherchenational',compact('allcorrespondant'));
+        return view('recherche.recherchetypecorrespondant',compact('allcorrespondant'));
     }
-	
-	
 
-    public function indexinternational()
+    public function recherchetype(Request $request)
     {
         //
+<<<<<<< HEAD
+        $allcorrespondant = $this->vuerecherche->recherchetype($this->vue,$request->typecorrespondant);
+        //echo $request->typecorrespondant;
+        return view('recherche.recherchetypecorrespondant',compact('allcorrespondant'));
+=======
         $allcorrespondant = $this->vuerecherche->allvue($this->vue);
         //echo $allcorrespondant;
         return view('recherche.rechercheinternational',compact('allcorrespondant'));
@@ -63,6 +75,7 @@ class RechercheController extends Controller
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
         return view('recherche.recherchenational',compact('allcorrespondant'));
+<<<<<<< HEAD
 
     }
 
@@ -71,11 +84,28 @@ class RechercheController extends Controller
         //
         $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
         //echo $allcorrespondant;
-        return view('recherche.rechercheinternational',compact('allcorrespondant'));
+        return view('recherche.recherchenational',compact('allcorrespondant'));
 
+=======
+
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
     }
 
  
+/* public function rechercheregioninter(Request $request)
+    {
+        //
+        $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
+        //echo $allcorrespondant;
+        return view('recherche.rechercheinternational',compact('allcorrespondant'));
+<<<<<<< HEAD
+    }    */
+=======
+>>>>>>> 98b431bba3b14852135f490be92b68f1b43fa5ea
+
+    }
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
+
 
     public function listeadmin(Request $request)
     {

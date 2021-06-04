@@ -222,6 +222,7 @@
     <p></p>
 </form>
 </body>
+<br>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Laravel\RECOP\resources\views/correspondant/ajout_correspondant.blade.php ENDPATH**/ ?>

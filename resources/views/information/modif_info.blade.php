@@ -1,3 +1,5 @@
+@extends('tprecop.template')
+@section('contenu')
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/datatables.min.js')}}"></script>
@@ -11,10 +13,12 @@
       </div>
 </div> <br>
 
-<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('information.update',[$editinformation->id]) }}" enctype="multipart/form-data" >
+
+<form class="form-horizontal col-sm-10 offset-2" role="form" method="POST" action="{{ route('informations.update',[$editinformation->id]) }}" enctype="multipart/form-data" >
     {{ method_field('PUT')}}
     {{ csrf_field() }}
-<div class=" row form-group"> 
+    <div class="card-body">
+    <div class="row listetitreformgrand" style="">
                 <label for="type" class="control-label col-sm-3">Titre <b><i style="color: red">*</i></b></label> 
                 <div class="col-sm-7"> 
                     <input type="text" class="form-control" name="titre"  value="{{$editinformation->titre}}" required="required">
@@ -26,7 +30,8 @@
             <div class=" row form-group">
                 <label for="marques" class="control-label col-sm-3">Contenu <b><i style="color: red">*</i></b></label> 
                 <div class="col-sm-7" style=""> 
-                    <input type="text" class="form-control" name="contenu"  value="{{$editinformation->contenu}}" required="required">
+                    <textarea type="textarea" maxlength="2000" class="form-control" name="contenu" value="{{old('contenu')}}" required="required" >{{$editinformation->contenu}}</textarea>
+                    {{-- <input type="text" class="form-control" name="contenu"  value="{{$editinformation->contenu}}" required="required"> --}}
                     <small class="text-danger">{{ $errors->first('marques',':message') }}</small> 
                 </div> 
             </div>
@@ -36,7 +41,7 @@
         </div>
         <div class="offset-1">  
             <input type="button"  value="Annuler" onclick="location.href = ''" class="btn btn-primary" style="border: 1px solid #FFFFFF;  border-radius: 1px; margin-top:0px;margin-left:0px">
-        </div>
+        </div> </div> 
     </div> 
  </form> 
 
@@ -45,3 +50,4 @@
         $('#table').DataTable();
     });
 </script>
+@endsection 

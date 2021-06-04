@@ -2,14 +2,12 @@
 <?php $__env->startSection('contenu'); ?>
 <br>
 <div class="text-center">
-      <div class="col-sm-12" style="">
-	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
-      </div>
-</div> 
- <div class="ligne_separe_titre"></div>
+    
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANT</label></b>
+</div>
+ 
+ <hr>
     <br><br> 
-<br>
-
 
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
@@ -19,8 +17,8 @@
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
                         <th>NOM</th>
                         <th>PRENOM(S)</th>
-                        <th>MEDIA</th>
-                        <th>TYPE PRESSE</th>
+                        <th>ORGANE</th>
+                        
                         
                     </tr>
                 </thead>
@@ -30,8 +28,8 @@
                     <tr>
                         <td><?php echo e($corresp->nomcorrespondant); ?></td>
                         <td><?php echo e($corresp->prenomcorrespondant); ?></td>
-                        <td><?php echo e($corresp->media); ?></td>
-                        <td><?php echo e($corresp->typepresse); ?></td>
+                        <td><?php echo e($corresp->organe); ?></td>
+                        
                        
                     </tr>
                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -43,7 +41,7 @@
     </div>
 </div>
 <!--  fin de la liste-->
- <br>
+ <br><br>
 
 <script>
     $(document).ready(function () {

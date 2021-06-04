@@ -2,12 +2,11 @@
 @section('contenu')
 <br>
 <div class="text-center">
-      <div class="col-sm-12" style="">
-	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
-      </div>
-</div> 
-<!-- <div class="ligne_separe_titre"></div>-->
-<hr>
+    {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANT</label></b>
+</div>
+ {{-- <div class="ligne_separe_titre"></div> --}}
+ <hr>
     <br><br> 
 
 <div class="row divtabgrand" style="">
@@ -18,8 +17,8 @@
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
                         <th>NOM</th>
                         <th>PRENOM(S)</th>
-                        <th>MEDIA</th>
-                        <th>TYPE PRESSE</th>
+                        <th>ORGANE</th>
+                        {{-- <th>TYPE PRESSE</th> --}}
                         
                     </tr>
                 </thead>
@@ -29,8 +28,8 @@
                     <tr>
                         <td>{{$corresp->nomcorrespondant }}</td>
                         <td>{{$corresp->prenomcorrespondant }}</td>
-                        <td>{{$corresp->media }}</td>
-                        <td>{{$corresp->typepresse }}</td>
+                        <td>{{$corresp->organe }}</td>
+                        {{-- <td>{{$corresp->typepresse }}</td> --}}
                        
                     </tr>
                      @endforeach
@@ -42,7 +41,7 @@
     </div>
 </div>
 <!--  fin de la liste-->
- <br>
+ <br><br>
 
 <script>
     $(document).ready(function () {

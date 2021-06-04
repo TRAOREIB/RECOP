@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+ 
+<?php $__env->startSection('contenu'); ?>
+  <!-- 
+
+		<script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datatables.min.js')); ?>"></script>
+<link rel="stylesheet" href="<?php echo e(asset('css/datatables.min.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.css')); ?>">  
+	
+   -->
+<br><br>
+<div><a href="<?php echo e(route('enrinf')); ?>" class="btn btn-info">Nouvelle Information </a>
+ 
+</div>
+
+<br>
+<div class="row listetitreformgrand" style="">
+      <div class="col-sm-12" style="">
+        <h3 class=" offset-sm-2   text-center" > Liste des informations </h3>
+      </div>
+</div> <br>
+
+
+
+
+
+<br>
+<div class="row divtabgrand  offset-sm-1" style="">
+=======
 
 <?php $__env->startSection('contenu'); ?>
 
@@ -14,6 +45,7 @@
  <div class="ligne_separe_titre"></div>
     <br><br>
 <div class="row divtabgrand" style="">
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
     <div class="col-sm-12" >
         <div class="col-xs-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
@@ -71,6 +103,9 @@
         $('#table').DataTable();
     });
 </script>
+<<<<<<< HEAD
+=======
 <br><br>
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
  <?php $__env->stopSection(); ?> 
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/information/vueinfo.blade.php ENDPATH**/ ?>

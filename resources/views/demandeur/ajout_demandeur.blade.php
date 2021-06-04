@@ -216,5 +216,5 @@
 			<button class="btn btn-primary" type="reset">ANNULER</button>
       	</div>
 	</form>
-<br>	
+<br><br>	
 @endsection

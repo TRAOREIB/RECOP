@@ -4,8 +4,14 @@
 	<div class="text-center">
   		<label style="font-family: fantasy;color: blue"> ACCREDITATION DE PRESSE</label>
  	</div>
+<<<<<<< HEAD
 <div class="ligne_separe_titre"></div>
 <br>
+=======
+     {{-- <div class="ligne_separe_titre"></div> --}}
+     <hr>
+    <br>
+>>>>>>> b28a84b056198bab533a84aeee529357565e0226
 	<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('accreditation.store') }}" enctype="multipart/form-data" >
 			{{ method_field('POST')}}
 			{{ csrf_field() }}	

@@ -6,12 +6,13 @@
  
 </div>
 <br>
-<div class="text-center">
-      <div class="col-sm-12" style="">
-	  <label style="font-family: fantasy;color: blue"> LISTE DES INFORMATIONS </label>     
-      </div>
-</div> 
- <div class="ligne_separe_titre"></div>
+ <div class="text-center">
+    
+    <b><label style="" class="text-primary">LISTE DES INFORMATIONS</label></b>
+</div>
+ 
+ 
+ <hr>
     <br><br>
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
