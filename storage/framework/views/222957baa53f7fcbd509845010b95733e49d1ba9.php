@@ -2,11 +2,17 @@
 <?php $__env->startSection('contenu'); ?>
 <br> 
 	<div class="text-center">
+<<<<<<< HEAD
     
     <b><label style="" class="text-primary">NOUVEAU DEMANDEUR</label></b>
 </div>
 
 <hr>
+=======
+  		<label style="font-family: fantasy;color: blue"> NOUVELLE ACCREDITATION </label>
+ 	</div>
+<div class="ligne_separe_titre"></div>
+>>>>>>> aa7591f8b64676a64976205d462754fb1eb26858
 <br>	
 	
 	<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="<?php echo e(route('demandeur.store')); ?>" enctype="multipart/form-data">
@@ -68,7 +74,13 @@
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="telephone" placeholder=" " name="telephone">
                                 </div>
-						</div> 
+						</div>
+                                <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="telephone">EMAIL :</label>
+                                        <div class="col-sm-7">
+                                        <input type="email" class="form-control" name="mail1">
+                                </div>
+                        </div> 
                         <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="lieuresidence">LIEU DE RESIDENCE:</label>
                                 <div class="col-sm-7">
@@ -118,7 +130,7 @@
 								</div>
                         </div>
                         <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE:</label>
+                                <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE PERSONNE A PREVENIR:</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="telephonepersp" placeholder=" " name="telephonepersp">
                                 </div>

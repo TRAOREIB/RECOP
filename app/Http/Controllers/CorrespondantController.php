@@ -22,9 +22,10 @@ class CorrespondantController extends Controller {
     }
 
     public function index() {
-        //
+        
         $allcorrespondant = $this->correspondant->all();
         return view('correspondant.ajout_correspondant', compact('allcorrespondant'));
+
     }
 
     /**

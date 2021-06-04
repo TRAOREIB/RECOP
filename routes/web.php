@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', function () {
+Route::get('choixcorrespondant', function () {
     return view('correspondant.choix_correspondant');
 });
 
@@ -137,10 +137,10 @@ Route::get('enrinf', 'InformationController@index')->name('enrinf');;
 //     return view('candidat.form_ajouter');
 // });
 
-Route::get('rechercheregion', 'RechercheController@rechercheregion')->name('region');
+Route::get('recherchetype', 'RechercheController@recherchetype')->name('type');
 
 
-Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('regioninter');
+Route::get('rechercheaccredi', 'AccreditationController@rechercheaccredi')->name('lieuaccredi');
 
 
 

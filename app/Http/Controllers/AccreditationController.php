@@ -8,7 +8,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
+use App\Repositories\RepositoryVue;
 use App\Models\Accreditation;
+use App\Models\Region;
 
 class AccreditationController extends Controller
 {
@@ -18,8 +20,15 @@ class AccreditationController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $accreditation;
-    public function __construct(Accreditation $accre) {
+    protected $region;
+    protected $vuerecherche;
+    protected $vue="vueaccreditation";
+
+
+    public function __construct(Accreditation $accre,Region $region) {
+       $this->vuerecherche = new RepositoryVue();
        $this->accreditation = new Repository($accre);
+       $this->region = new Repository($region);
                                                    }
 
     public function index()
@@ -27,6 +36,18 @@ class AccreditationController extends Controller
         //
         return view('accreditation.ajout_accreditation');
     }
+
+    public function rechercheaccredi(Request $request)
+    {
+       $allregion = $this->region->all();
+       $allaccreditation = $this->vuerecherche->rechercheaccredi($this->vue,$request->nomregion);
+       $regionchoisi=$request->nomregion;
+       return view('recherche.recherchelieuaccreditation',compact('allaccreditation','allregion','regionchoisi'));
+
+    }
+
+
+
   public function indexpjaccreditation()
     {
         //

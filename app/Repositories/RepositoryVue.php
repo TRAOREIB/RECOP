@@ -22,12 +22,12 @@ class RepositoryVue implements RepositoryVueInterface {
          return DB::table("$vue")->where("id","=",$id)->where("actif","=",true)->get();
     }
 
-    public function rechercheregion($vue, $region){
-     return DB::table("$vue")->where("region","=",$region)->where("actif","=",true)->get();
+    public function recherchetype($vue, $typecorrespondant){
+     return DB::table("$vue")->where("typecorrespondant","=",$typecorrespondant)->where("actif","=",true)->get();
     }
 
-    public function rechercheregioninter($vue, $region){
-     return DB::table("$vue")->where("region","=",$region)->where("actif","=",true)->get();
+    public function rechercheaccredi($vue, $nomregion){
+     return DB::table("$vue")->where("nomregion","=",$nomregion)->where("actif","=",true)->get();
     }
 
 }

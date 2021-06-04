@@ -2,17 +2,9 @@
 @section('contenu')
 <br> 
 	<div class="text-center">
-<<<<<<< HEAD
-    {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
-    <b><label style="" class="text-primary">NOUVEAU DEMANDEUR</label></b>
-</div>
-{{-- <div class="ligne_separe_titre"></div> --}}
-<hr>
-=======
   		<label style="font-family: fantasy;color: blue"> NOUVELLE ACCREDITATION </label>
  	</div>
 <div class="ligne_separe_titre"></div>
->>>>>>> aa7591f8b64676a64976205d462754fb1eb26858
 <br>	
 	
 	<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('demandeur.store') }}" enctype="multipart/form-data">

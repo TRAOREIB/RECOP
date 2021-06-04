@@ -31,9 +31,6 @@ class RechercheController extends Controller
         $this->vuerecherche = new RepositoryVue();
         $this->modelcorresp = new Correspondant();
         $this->correspondant = new CorrespondantController($this->modelcorresp);
-		
-		
-		
         $this->correspondant = new Repository($this->modelcorresp);
     }
 
@@ -43,39 +40,18 @@ class RechercheController extends Controller
         //
         $allcorrespondant = $this->vuerecherche->allvue($this->vue);
         //echo $allcorrespondant;
-        return view('recherche.recherchenational',compact('allcorrespondant'));
+        return view('recherche.recherchetypecorrespondant',compact('allcorrespondant'));
     }
-	
-	
 
-    public function indexinternational()
+    public function recherchetype(Request $request)
     {
         //
-        $allcorrespondant = $this->vuerecherche->allvue($this->vue);
-        //echo $allcorrespondant;
-        return view('recherche.rechercheinternational',compact('allcorrespondant'));
-    }
-
-
-    public function rechercheregion(Request $request)
-    {
-        //
-        $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
-        //echo $allcorrespondant;
-        return view('recherche.recherchenational',compact('allcorrespondant'));
+        $allcorrespondant = $this->vuerecherche->recherchetype($this->vue,$request->typecorrespondant);
+        //echo $request->typecorrespondant;
+        return view('recherche.recherchetypecorrespondant',compact('allcorrespondant'));
 
     }
 
-    public function rechercheregioninter(Request $request)
-    {
-        //
-        $allcorrespondant = $this->vuerecherche->rechercheregion($this->vue,$request->region);
-        //echo $allcorrespondant;
-        return view('recherche.rechercheinternational',compact('allcorrespondant'));
-
-    }
-
- 
 
     public function listeadmin(Request $request)
     {

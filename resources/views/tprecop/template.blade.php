@@ -33,7 +33,7 @@
                         <img src="{{asset('images/armoirie_bf.JPG')}}" width="100">
                         <div class="container mr-0 mt-lg-5 pr-auto">
                             <div class="row">
-                                <label class="col-auto display-5 font-italic font-weight-bold lead mr-4 mt-lg-n1 mt-sm-4 pr-auto text-center text-monospace text-primary text-uppercase w-100">Repertoire des Correspondants de Presse du Burkina Faso</label>
+                                <label class="col-auto display-5 font-italic font-weight-bold lead mr-4 mt-lg-n1 mt-sm-4 pr-auto text-center text-monospace text-primary text-uppercase w-100">Plateforme d'Enregistrement et d'Accréditation des Correspondants de Presse au Burkina Faso</label>
                             </div>
                         </div>
                     </div>
@@ -68,17 +68,7 @@
                             <li class="nav-item dropdown"> 
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);"> 
-<<<<<<< HEAD
-                                    <a class="dropdown-item text-white" href="{{ url('correspondant') }}">NOUVEAU CORRESPONDANT</a>
-                                    @if(Auth::check())
-                                            @correspondant 
-                                            <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">INTERNATIONAL</a> 
-                                            <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">NATIONAL</a> 
-                                            @endcorrespondant
-                                    @endif
-                                </div>                             
-=======
-                                    <a class="dropdown-item text-white" href="{{ url('correspondant') }}">NOUVEAU CORRESPONDANT</a> 
+                                    <a class="dropdown-item text-white" href="{{ url('choixcorrespondant') }}">NOUVEAU CORRESPONDANT</a> 
 									@guest
 									   <a class="dropdown-item text-white" href="{{ url('listevisiteur') }}">LISTE DES CORRESPONDANTS</a> 
 									@endguest
@@ -97,20 +87,10 @@
 			               @endcorrespondant 
 					  @endif
                                 </div>                                
->>>>>>> aa7591f8b64676a64976205d462754fb1eb26858
                             </li>
                             <li class="nav-item"> 
                                 <a class="nav-link text-light" href="{{ url('demandeur') }}">ACCREDITATION PRESSE</a> 
                             </li>
-<<<<<<< HEAD
-                        @if(Auth::check())
-                                @correspondant 
-                            <li class="nav-item"> 
-                                <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
-                            </li>
-                                @endcorrespondant
-                         @endif
-=======
 							@if(Auth::check())
 									@correspondant
                             <li class="nav-item"> 
@@ -124,7 +104,6 @@
                             </li>
 							@endadministrateur
 									@endif
->>>>>>> aa7591f8b64676a64976205d462754fb1eb26858
                         </ul>
                          <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
