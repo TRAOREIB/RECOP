@@ -28,23 +28,41 @@ class Repository implements RepositoryInterface {
         // MAJ OK 28/05/2021
 
         if (!empty(session("pj"))) {
+            if (isset($data["photo"])) {
+                $data['photo'] = $data["photo"]->getClientOriginalName();
+            }
+            if (isset($data["cv"])) {           
+                $data['cv'] = $data["cv"]->getClientOriginalName();
+            }
+            if (isset($data["pjcnib"])) {           
+                $data['cv'] = $data["pjcnib"]->getClientOriginalName();
+            }
+            if (isset($data["visamedia"])) {           
+                $data['visamedia'] = $data["visamedia"]->getClientOriginalName();
+            }
+            if (isset($data["pjpasseport"])) {           
+                $data['pjpasseport'] = $data["pjpasseport"]->getClientOriginalName();
+            }
+            if (isset($data["pjcartepresse"])) {           
+                $data['pjcartepresse'] = $data["pjcartepresse"]->getClientOriginalName();
+            }
+            
             if (session("pj") == "demandeur") {
                 $data["iddemandeur"] = session("iddemandeur");
             }
             if (session("pj") == "correspondant") {
                 $data["idcorrespondant"] = session("idcorrespondant");
             }
-            
         }
-   
+
         return $this->model->create($data);
     }
 
     // update record in the database
     public function update(array $data, $id) {
-        
+
         if (!empty(session("pj"))) {
-                $data["iduser"] = session("iduser");
+            $data["iduser"] = session("iduser");
         }
         $this->model->findOrFail($id)->update($data);
     }
@@ -55,8 +73,8 @@ class Repository implements RepositoryInterface {
     }
 
     // show the record with the given id
-    public function show($id) {
-        return $this->model->findOrFail($id);
+    public function show($idinfo) {
+        return $this->model->findOrFail($idinfo);
     }
 
     // Get the associated model

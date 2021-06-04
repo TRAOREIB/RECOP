@@ -1,0 +1,24 @@
+NORMES DE DEVELOPPEMENT
+
+1- CREATION DES DOSSIERS VIEWS
+   *RECHERCHE
+   *ACCREDIATION
+   *DEMANDEUR
+   *INFORMATION
+   *CORRESPONDANT
+   
+NOM DES VUES : AJOUT_DEMANDEUR (FONCTIONNALITE_MODULE) en minuscule
+
+les variables tous en minuscule
+
+Nom des methodes : MaFonction() - Premier mot debute Majuscule et deuxieme aussi
+
+Les commentaires à faire
+
+Les variables en français
+
+NOM des controleur MonController - Premier mot debute Majuscule et deuxieme aussi
+
+
+
+   

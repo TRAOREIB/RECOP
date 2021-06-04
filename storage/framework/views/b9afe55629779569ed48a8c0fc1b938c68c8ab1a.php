@@ -140,6 +140,17 @@
             <?php echo $__env->yieldContent('contenu'); ?>
          
 
+<<<<<<< HEAD
+
+        <div class="container d-flex flex-row">
+ <!--    <div class="card w-50"> 
+               <div class="card-body w-100" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
+                    <h4 class="card-title">Liens Utiles</h4> 
+                    <h6 class="card-subtitle mb-2 text-muted"></h6> 
+                    <p class="card-text">www.communication.gov.bf</p>
+                    <p class="card-text">www.rtb.bf</p>                      
+                </div>                 
+=======
         
                     
             
@@ -159,14 +170,24 @@
                         <p>ONEA : 18</p>                      
                     </div>                 
                 </div>
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
             </div>
       <div class="container" > 
             <div class="container" style="background-color:white;border-radius: 9px">
                 <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
+<<<<<<< HEAD
+        </div>    -->
+        <div class="container">
+            <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
+        </div>
+    </div>
+       
+=======
 	  </div>		
          
     </div>   
+>>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
     </body>
 </html>
