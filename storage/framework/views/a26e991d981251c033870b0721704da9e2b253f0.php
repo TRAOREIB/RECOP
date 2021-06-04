@@ -8,8 +8,9 @@
 	  <label style="font-family: fantasy;color: blue"> LISTE DES CORRESPONDANTS </label>     
       </div>
 </div> 
- <div class="ligne_separe_titre"></div>
-    <br><br>
+ <!--<div class="ligne_separe_titre"></div>-->
+ <hr>
+    <br>
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
         <div class="col-sm-12 ligneform " style="background-color: #EEE">

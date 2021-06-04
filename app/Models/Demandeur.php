@@ -19,8 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $datedelivcnib
  * @property string $dateexpircnib
  * @property int 	$telephone
- * @property string $mail1
+ * @property string $email
  * @property string $personneprevenir
+ * @property string $adressfixeur
  * @property string $lieuresidence
  * @property string $organe
  * @property int $telorgane
@@ -53,7 +54,7 @@ class Demandeur extends Model
      * @var array
      */
   
-    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','numcnib', 'telephonepersp', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'email','personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','numcnib', 'telephonepersp','adressfixeur', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

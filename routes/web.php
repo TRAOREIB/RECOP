@@ -127,7 +127,7 @@ Route::get('enrinf', 'InformationController@index')->name('enrinf');;
 
 
 
-//Route::resource('vehicule', 'VehiculeController');
+Route::resource('vehicule', 'VehiculeController');
 
 
 //Route::resource('vehicule', 'VehiculeController');
@@ -181,3 +181,16 @@ Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->
 
 
 Route::get('listeaccreditation', 'AccreditationController@listeaccreditation')->name('listeaccreditation');
+
+ Route::get('choixmodif', function () {
+    return view('accreditation.formsmodif_accreditation');
+ });
+
+ Route::get('modifdem', function () {
+    return view('demandeur.modif_demandeur');
+ });
+
+
+ Route::get('listedem', 'DemandeurController@listedemandeur');
+
+ Route::post('modifpjaccreditation/{idpiecesjointes}', 'PiecesJointesController@editpjaccreditation')->name('modifpjaccreditation');

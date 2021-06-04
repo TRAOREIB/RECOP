@@ -47,8 +47,9 @@ use RegistersUsers;
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data) {
-        return Validator::make($data, [
-                    'name' => ['required', 'string', 'max:255'],
+		 $data['name']=session('name');
+      return Validator::make($data, [
+                    'name' => [ 'required','string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                     'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -63,7 +64,7 @@ use RegistersUsers;
     protected function create(array $data) {
         // MAJ 28/05 pour l'utilisation des sessions
         $data['identifiant'] = session("identifiant");
-        $data['email'] = session("mail");
+        $data['email'] = session("email");
         $data['name'] = session("name");
         $data['profil'] = session("profil");
         return User::create([

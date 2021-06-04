@@ -8,7 +8,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
+use App\Repositories\RepositoryVue;
 use App\Models\Accreditation;
+use App\Models\Region;
+use Illuminate\Support\Facades\Session;
 
 class AccreditationController extends Controller
 {
@@ -18,14 +21,23 @@ class AccreditationController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $accreditation;
+	protected $vue='vueaccreditation';
+	protected $vueaccreditation;
+	protected $region;
+	
     public function __construct(Accreditation $accre) {
        $this->accreditation = new Repository($accre);
+	   $this->vueaccreditation= new RepositoryVue();
+	  //$this->region = new Repository( );
                                                    }
 
     public function index()
     {
-        //
+		// $allregion = $this->region->all();
+        
         return view('accreditation.ajout_accreditation');
+		
+		//return view('accreditation.ajout_accreditation',compact('allregion'));
     }
   public function indexpjaccreditation()
     {
@@ -46,8 +58,8 @@ class AccreditationController extends Controller
 	public function listeaccreditation()
     {
         //
-		$allaccreditation=$this->accreditation->all();
-		// $allaccreditation=$this->vuerecherche->allvue($this->vue);
+		//$allaccreditation=$this->accreditation->all();
+		$allaccreditation = $this->vueaccreditation->allvue($this->vue);
     return view('accreditation.liste_accreditation',compact('allaccreditation'));
 	}
 	
@@ -63,8 +75,9 @@ class AccreditationController extends Controller
 		//  echo session('pj');     
 	   //
 			$this->accreditation->create($request->only($this->accreditation->getModel()->fillable)); 
-        //return $this->indexpjaccreditation($request->iddemandeur);
-		return view('accreditation.message_accreditation');
+        $maxidaccreditation = $this->accreditation->max("idaccreditation");
+		Session::put("idaccreditation", $maxidaccreditation);
+		return view('accreditation.pj_accreditation');
 		 
 
     }
@@ -75,7 +88,7 @@ class AccreditationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idaccreditation)
     {
         //
     }
@@ -86,9 +99,11 @@ class AccreditationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idaccreditation)
     {
         //
+		$editaccreditation = $this->accreditation->show($idaccreditation);
+        return view('accreditation.modif_accreditation', compact('editaccreditation'));
     }
 
     /**
@@ -98,10 +113,12 @@ class AccreditationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idaccreditation)
     {
         //
-    }
+	$this->accreditation->update($request->only($this->accreditation->getModel()->fillable), $idaccreditation);
+    
+	}
 
     /**
      * Remove the specified resource from storage.

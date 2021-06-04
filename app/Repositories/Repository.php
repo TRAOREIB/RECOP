@@ -42,10 +42,14 @@ class Repository implements RepositoryInterface {
 
     // update record in the database
     public function update(array $data, $id) {
-        
+       
         if (!empty(session("pj"))) {
                 $data["iduser"] = session("iduser");
-        }
+				$data["iddemandeur"] = session("iddemandeur");
+				$data["idaccreditation"] = session("idaccreditation");
+			
+		}
+		
         $this->model->findOrFail($id)->update($data);
     }
 

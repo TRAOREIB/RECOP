@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
-<body>	
-<!--Affichage de la liste des demandeurs*-->
+@extends('tprecop.template')
+@section('contenu')
 
+<br>
+ <br>
+<div class="text-center">
+      <div class="col-sm-12" style="">
+	  <label style="font-family: fantasy;color: blue"> LISTE DES DEMANDEURS </label>     
+      </div>
+</div> 
+ <div class="ligne_separe_titre"></div>
+    <br><br>
+	
+	
     <div class="row listetitreformgrand" style="">
       <div class="col-sm-12" style="">
         <h3 class=" offset-sm-2"> Liste des demandeurs</h3>
@@ -24,16 +24,20 @@
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
                         <th>NOM</th>
                         <th>PRENOM</th>
+                        <th>N° CNIB</th>
                         <th>MODIFIER</th>
                         <th>SUPPRIMER</th>   
                     </tr>
                 </thead>
                 <tbody>
-
+					<?php $i = 0 ?>
                      @foreach($alldemandeur as $demandeur)
+					 <?php $i++ ?>
                     <tr>
                         <td>{{ $demandeur->nom}}</td>
                         <td>{{ $demandeur->prenom}}</td>
+                        <td>{{ $demandeur->numcnib}}</td>
+
                         <td title="Modifier">
                             <form method="GET" action="{{ route('demandeur.edit',[$demandeur->iddemandeur]) }}">
                                 {{method_field('EDITER') }}
@@ -58,12 +62,9 @@
        
         </div>
     </div>
-
-    <script>
+<script>
     $(document).ready(function () {
         $('#table').DataTable();
     });
-
-
-</body>
-</html>
+</script>
+@endsection 

@@ -73,7 +73,7 @@ class PiecesJointesController extends Controller {
         $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
         //enregistrer l'utilisateur dans les users
         $this->enreguser->register($request);
-         //Recuperer l'id de l'utilisateur pour mettre à jour dans demandeur
+         //Recuperer l'id de l'utilisateur pour mettre à jour dans correspondant
         $maxiduser = $this->user->max("id");
         //declaration d'une session pour prendre en compte l'id de l'utilisateur
         Session::put("iduser",$maxiduser);
@@ -87,24 +87,32 @@ class PiecesJointesController extends Controller {
 
     public function storepjaccreditation(Request $request) {
         $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
-
+		
+		$maxidpj = $this->piecesjointes->max("id");
+		Session::put("idpiecesjointes", $maxidpj);
+		
         // création variables sessions 28/05/2021
 
-        Session::put("identifiant", $request->identifiant);
+      //  Session::put("identifiant", $request->identifiant);
 
         Session::put("pj", "demandeur");
-
-        // Création du compte d'utilisateur
-        $this->enreguser->register($request);
-        //Recuperer l'id de l'utilisateur pour mettre à jour dans demandeur
-        $maxid = $this->user->max("id");
-        //declaration d'une session pour prendre en compte l'id de l'utilisateur
-        Session::put("iduser", $maxid);
+	
+ 
+        //Recuperer l'id du demandeur pour mettre à jour dans piecesjointes
+        $iddemandeur=session("iddemandeur");
+		
+		//Recuperer l'id de l'accreditation pour mettre à jour dans piecesjointes
+        $idaccreditation=session("idaccreditation");
+		
+		//echo session("idaccreditation");
+		
+        
         //   $request->iduser=$maxid;
         $request->actif = "true";
 
-        $this->demandeur->update($request->only($this->demandeur->getModel()->fillable), $request->iddemandeur);
-        return $this->accreditation->indexpjaccreditation($request->iddemandeur);
+        $this->piecesjointes->update($request->only($this->piecesjointes->getModel()->fillable), $maxidpj);
+      
+     return view('accreditation.message_accreditation');
     }
 
     /**
@@ -134,9 +142,47 @@ class PiecesJointesController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+   
+// Pieces Jointes Accreditation (pjaccreditation)
+
+
+ public function showpjaccreditation($id)
+    {
         //
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editpjaccreditation($id, Request $request)
+    {
+        //
+		$editpjaccreditation = $this->piecesjointes->show($id);
+			//echo $editpjaccreditation;
+			//echo $id;
+       return view('accreditation.modifpj_accreditation', compact('editpjaccreditation'));
+			//echo $request->pjcnib;
+			//echo $request->photo;
+	}
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+
+   public function update(Request $request, $id) {
+        //
+    $this->piecesjointes->update($request->only($this->piecesjointes->getModel()->fillable), $id);
+   
+	
+	}
 
     /**
      * Remove the specified resource from storage.
@@ -147,5 +193,4 @@ class PiecesJointesController extends Controller {
     public function destroy($id) {
         //
     }
-
 }

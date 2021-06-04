@@ -5,7 +5,7 @@
  <br>
 <div class="text-center">
       <div class="col-sm-12" style="">
-	  <label style="font-family: fantasy;color: blue"> LISTE DES ACCREDITATIONS </label>     
+	  <label style="font-family: fantasy;color: blue"> LISTE DE VOS ACCREDITATIONS </label>     
       </div>
 </div> 
  <div class="ligne_separe_titre"></div>
@@ -55,19 +55,113 @@
             <table class="table table-striped table-condensed" id="table">
                 <thead>
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
-                        <th>SUJET A COUVRIR</th>
-                        <th>LIEU</th>
-                        <th>DATE DE DEBUT</th>
-                        <th>DATE DE FIN</th>                       
+                        
+						<th>SUJET A COUVRIR</th>
+						<th>DATE DE DEBUT</th>
+						<th>DATE DE FIN</th>
+						<th>ACTIONS</th>
+						<th>ETAT</th>
+						
+						
                     </tr>
                 </thead>
                 <tbody>
-                   <?php $__currentLoopData = $allaccreditation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $accredition): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <tr>
-                        <td><?php echo e($accredition->titreevenement); ?></td>
-                        <td><?php echo e($accredition->lieuevenement); ?></td>
-                        <td><?php echo e($accredition->datedebut); ?></td>
-                        <td><?php echo e($accredition->datefin); ?></td>
+                    <?php $i = 0 ?>
+                     <?php $__currentLoopData = $allaccreditation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $accreditation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $i++ ?>
+
+                   
+                    <tr> 
+						<td><?php echo e($accreditation->titreevenement); ?></td>
+						<td><?php echo e($accreditation->datedebut); ?></td>
+						<td><?php echo e($accreditation->datefin); ?></td>
+                        <td title="Action">
+						
+						<!-- Détails de l'accreditation -->
+                            
+                    <button data-toggle="modal" data-target='#recherche<?php echo e($i); ?>' value="DETAILS">DETAILS </button>              
+                                     
+                            <div class="modal fade" id='recherche<?php echo e($i); ?>'>
+                                <div class="modal-dialog modal-lg" style="">
+                                    <div class="modal-content" style="background-color : whitesmoke">
+                                        <div class="row listetitreformgrand" style="">
+                                            <div class="col-sm-12" style="">
+                                                <h3 class=" offset-sm-3"> DETAILS ACCREDITATION </h3>
+                                            </div>
+                                         </div>
+                                        <div class="modal-body">     
+                                            <div class="row form-group">
+                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">SUJET A COUVRIR</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($accreditation->titreevenement); ?></label></div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">LIEU</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($accreditation->lieuevenement); ?></label></div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">DATE DE DEBUT</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($accreditation->datedebut); ?></label></div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">DATE DE FIN</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($accreditation->datefin); ?></label></div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">MOYEN DE TRANPORT</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($accreditation->moyentransport); ?></label></div>
+                                            </div>
+                                            
+                                           
+                                            <div class="row form-group">
+                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">IMMATRICULATION</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($accreditation->immatriculation); ?></label></div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="row form-group">
+                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">LISTE DU MATERIEL</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($accreditation->listemateriel); ?></label></div>
+                                            </div>
+                                            
+
+                                            <div class="row form-group">
+                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label-info" style="margin-left:0px">MEMBRE (S) DE L'EQUIPE</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($accreditation->membresequipe); ?></label></div>
+                                            </div>
+
+                                            </div>
+                                        </div>
+                                    </div>    
+                            </div>
+                        
+						<div><!-- Modification de l'accreditation -->
+                        
+                            <form method="GET" action="<?php echo e(route('accreditation.edit',[$accreditation->idaccreditation])); ?>">
+                                <?php echo e(method_field('EDITER')); ?>
+
+                                <?php echo e(csrf_field()); ?>
+
+                                <input type="submit" value="Modifier A" style="border: 0px;background-color:">
+                            </form> 
+						</div>	
+						
+						<div><!-- Modification des PJ-->
+                            <form method="POST" action="<?php echo e(route('modifpjaccreditation',[$accreditation->idpiecesjointes])); ?>">
+                                <?php echo e(csrf_field()); ?>
+
+                                <input type="submit" value="Modifier PJ" style="border: 0px;background-color:">
+                            </form>
+						</div>	
+                       
+						<td title="ETAT"> 
+							<?php if($accreditation->valider=="0") echo "EN COURS"; ?>
+							<?php if($accreditation->valider=="1") echo "ACCORDER"; ?>
+						</td>
                     </tr>
                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
