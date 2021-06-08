@@ -20,6 +20,10 @@ Route::get('accueil', function () {
     return view('accueil.accueil');
 });
 
+Route::get('/', function () {
+    return view('accueil.accueil');
+});
+
 // Route::get('/', function () {
 //     return view('demandeur.ajout_correspondant');
 // }); 
@@ -46,7 +50,7 @@ Route::resource('piecesjointes', 'PiecesJointesController');
  
 //Route::resource('information', 'RechercheController');
 
-<<<<<<< HEAD
+
 //Route::resource('information', 'RechercheController');
 
 Route::resource('informations', 'InformationController');
@@ -56,11 +60,11 @@ Route::get('listeinfoperso', 'InformationController@listeinfoperso');
 Route::get('editfv/{idinfo}', 'InformationController@editfv')->name('editfv');
 Route::put('updatefv/{idinfo}', 'InformationController@updatefv')->name('updatefv');
 Route::put('destroyfv/{idinfo}', 'InformationController@destroyfv')->name('destroyfv');
-=======
+
 Route::resource('informations', 'InformationController');
 Route::get('informationvue', 'InformationController@indexvue');
 Route::get('enrinf', 'InformationController@index')->name('enrinf');;
->>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
+
 //Route::get('rechercheinfo', 'InformationController@indexvue');
 //Route::get('demandeinscrip',"OeuvreController@demandeinscrip");
 //Route::get('presseecrite', function () {
@@ -152,16 +156,14 @@ Route::resource('vehicule', 'VehiculeController');
 Route::get('recherchetype', 'RechercheController@recherchetype')->name('type');
 
 
-<<<<<<< HEAD
+
 Route::get('rechercheaccredi', 'AccreditationController@rechercheaccredi')->name('lieuaccredi');
-=======
-<<<<<<< HEAD
+
+
 
 Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name('region');
-=======
+
 Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('regioninter');
->>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
->>>>>>> 98b431bba3b14852135f490be92b68f1b43fa5ea
 
 
 
@@ -172,21 +174,14 @@ Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->
  
  
  
-<<<<<<< HEAD
- ////////////////Route::resource('informations', 'InformationController');
-=======
- Route::resource('informations', 'InformationController');
->>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
- 
- 
- 
- 
- 
 
-<<<<<<< HEAD
+ ////////////////Route::resource('informations', 'InformationController');
+
+ Route::resource('informations', 'InformationController');
+
+ 
+ 
 //Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('region');
-=======
->>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
 
 Route::get('listevisiteur', 'RechercheController@listevisiteur');
@@ -194,10 +189,6 @@ Route::get('listevisiteur', 'RechercheController@listevisiteur');
 Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
 
 Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
-<<<<<<< HEAD
-
-=======
->>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
 
 
 Auth::routes();

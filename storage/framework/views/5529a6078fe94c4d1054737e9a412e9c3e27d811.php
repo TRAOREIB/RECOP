@@ -67,6 +67,7 @@
                     </div>
                 </div>	
                 <input type="hidden" value="<?php echo e($maxid); ?>" name="idcorrespondant">
+                 <input type="hidden" value="correspondant" name="type">
             </div>
         </div>
     </div>

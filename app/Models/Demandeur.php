@@ -18,7 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $carteconsulaire
  * @property string $datedelivcnib
  * @property string $dateexpircnib
- * @property int 	$telephone
+ * @property int  $telephone
+ * @property int  $email
  * @property string $email
  * @property string $personneprevenir
  * @property string $adressfixeur

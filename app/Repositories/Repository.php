@@ -27,26 +27,54 @@ class Repository implements RepositoryInterface {
     public function create(array $data) {
         // MAJ OK 28/05/2021
 
+      //    echo $data['photo'];
+          if (!empty(session("accrediregion"))) {
+               $data['idregion']=session('idregion');
+               $data['idaccreditation'] = session('idaccreditation');
+              
+          }
         if (!empty(session("pj"))) {
-            if (isset($data["photo"])) {
-                $data['photo'] = $data["photo"]->getClientOriginalName();
+
+            if (!empty($data["pjcnibperprev"])) {
+                $data['pjcnibperprev'] = $data["pjcnibperprev"]->getClientOriginalName();
             }
-            if (isset($data["cv"])) {           
-                $data['cv'] = $data["cv"]->getClientOriginalName();
+            if (!empty($data["pjpasseportperprev"])) {
+                $data['pjpasseportperprev'] = $data["pjpasseportperprev"]->getClientOriginalName();
             }
-            if (isset($data["pjcnib"])) {           
-                $data['cv'] = $data["pjcnib"]->getClientOriginalName();
-            }
-            if (isset($data["visamedia"])) {           
-                $data['visamedia'] = $data["visamedia"]->getClientOriginalName();
-            }
-            if (isset($data["pjpasseport"])) {           
-                $data['pjpasseport'] = $data["pjpasseport"]->getClientOriginalName();
-            }
-            if (isset($data["pjcartepresse"])) {           
-                $data['pjcartepresse'] = $data["pjcartepresse"]->getClientOriginalName();
+            if (!empty($data["pjcarteconsulaire"])) {
+                $data['pjcarteconsulaire'] = $data["pjcarteconsulaire"]->getClientOriginalName();
             }
             
+            if (!empty($data["lettrerecommendation"])) {
+            //    echo $data["lettrerecommendation"]->getClientOriginalName();
+                $data['lettrerecommendation'] = $data["lettrerecommendation"]->getClientOriginalName();
+             //   echo $data['lettrerecommendation'];
+            }
+            if (!empty(session("idaccreditation"))) {
+                $data['idaccreditation'] = session("idaccreditation");
+            }
+
+            if (isset($data["photo"])) {
+           //     echo $data["photo"]->getClientOriginalName();
+                $data["photo"] = $data["photo"]->getClientOriginalName();
+            }
+            if (isset($data["cv"])) {
+                echo $data["cv"]->getClientOriginalName();
+                $data['cv'] = $data["cv"]->getClientOriginalName();
+            }
+            if (isset($data["pjcnib"])) {
+                $data['pjcnib'] = $data["pjcnib"]->getClientOriginalName();
+            }
+            if (isset($data["visamedia"])) {
+                $data['visamedia'] = $data["visamedia"]->getClientOriginalName();
+            }
+            if (isset($data["pjpasseport"])) {
+                $data['pjpasseport'] = $data["pjpasseport"]->getClientOriginalName();
+            }
+            if (isset($data["pjcartepresse"])) {
+                $data['pjcartepresse'] = $data["pjcartepresse"]->getClientOriginalName();
+            }
+
             if (session("pj") == "demandeur") {
                 $data["iddemandeur"] = session("iddemandeur");
             }
@@ -55,26 +83,22 @@ class Repository implements RepositoryInterface {
             }
         }
 
-        return $this->model->create($data);
+            return $this->model->create($data);
     }
 
     // update record in the database
     public function update(array $data, $id) {
-<<<<<<< HEAD
-       
+
+
         if (!empty(session("pj"))) {
-                $data["iduser"] = session("iduser");
-				$data["iddemandeur"] = session("iddemandeur");
-				$data["idaccreditation"] = session("idaccreditation");
-			
-		}
-		
-=======
+            $data["iduser"] = session("iduser");
+            $data["iddemandeur"] = session("iddemandeur");
+            $data["idaccreditation"] = session("idaccreditation");
+        }
 
         if (!empty(session("pj"))) {
             $data["iduser"] = session("iduser");
         }
->>>>>>> b28a84b056198bab533a84aeee529357565e0226
         $this->model->findOrFail($id)->update($data);
     }
 

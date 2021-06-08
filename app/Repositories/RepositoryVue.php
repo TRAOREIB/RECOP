@@ -17,7 +17,7 @@ class RepositoryVue implements RepositoryVueInterface {
     public function allvue($vue) {
          //return DB::table("$vue")->where("actif","=",true)->get();
 		// return DB::table("$vue")->where("actif","=",true)->get();
-           return DB::table("$vue")->where('actif',true)->orderBy('dateinfo','DESC')->get();
+           return DB::table("$vue")->where('actif',true)->orderBy('created_at','DESC')->get();
     }
 
     public function showvue($vue, $id) {

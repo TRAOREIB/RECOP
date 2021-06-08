@@ -1,126 +1,21 @@
-<<<<<<< HEAD
- @extends('tprecop.template')
-@section('contenu')
-  <!-- {{--@section('script') --}}
-
-		<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/datatables.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">  
-	
-{{-- @endsection --}}   -->
-<br><br>
-<div class="titrenouvelleinformation"><a href="{{ route('enrinf') }}" class="btn btn-info">Nouvelle Information </a>
- 
-</div>
-
-<br>
-<!--
-<div class="row listetitreformgrand" style="">
-      <div class="col-sm-12" style="">
-        <h1 class=" offset-sm-2   text-center" > Liste des informations </h1>
-      </div> 
-</div> <br>
--->
 
 
-
-
-<br>
-<div class="row divtabgrand  offset-sm-1" style="">
-    <div class="col-sm-12" >
-        <div  style="background-color: #EEE">
-            
-
-
-
- @foreach( $allcorrespondant as $corresp)
-  
-  
-  
-  <div class="container tableau rounded">
-  <div class="row entete">
-    <div class="col-sm-2">
-    <strong> {{$corresp->nomcorrespondant }} </strong>
-    </div>
-    <div class="col-sm-1">
-	<strong>	{{$corresp->prenomcorrespondant }} </strong>
-    </div>
-    <div class="col-sm-3">
-    <strong>  CORRESPONDANT {{$corresp->media }} </strong>
-    </div>
-	<div class="col-sm-3">
-    <strong> {{$corresp->dateinfo }} </strong>
-    </div>
-
-
-   
-     <div class="col-sm-1">
-        <td title="Modifier">
-
-            
-           <form method="GET"  action="{{ route('editfv',[$corresp->idinfo]) }}"  >
-                {{method_field('EDITER') }}
-                {{ csrf_field() }}
-                <input type="submit" value="Modifier" style="border: 0px;background-color:#56739A">
-            
-                {{-- <input type="hidden" value="tous" name="control"> --}}
-            </form>
-        </td>
-    </div>
-    <div class="col-sm-1">  
-       <td title="Supprimer">
-        
-           {{-- <form method="POST"  action="{{ route('destroyfv',[$corresp->idinfo]) }}" > --}}
-               
-            
-             <form method="POST"  action="{{ route('destroyfv',[$corresp->idinfo]) }}" > 
-                {{-- <form method="POST"  action="{{ route('informations.destroy',[$corresp->idinfo]) }}" > --}}
-                {{ method_field('PUT') }}
-                {{ csrf_field() }}
-                <a ></a>
-                <input type="submit" value="Supprimer" style="border: 0px;background-color:#56739A">
-                {{-- <input type="hidden" value="tous" name="control"> --}}
-            </form>                    
-        </td>
-    </div>  
-         
-  </div>
-  
-  <div class="corpsinfo">  <strong style="background-color: #999999" > {{$corresp->titreinfo }} </strong>  <br><br> {{$corresp->contenuinfo }} </div>
-  <br>
-  
-  </div>
-  
-   <br>
- 
-
-
-   
-		
-
-        @endforeach   
-        
-
-
-=======
 @extends('tprecop.template')
 @section('contenu')
 
 <br>
 <div><a href="{{ route('enrinf') }}" class="btn btn-info">Nouvelle Information </a>
- 
+
 </div>
 <br>
- <div class="text-center">
+<div class="text-center">
     {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
     <b><label style="" class="text-primary">LISTE DES INFORMATIONS</label></b>
 </div>
- 
- {{-- <div class="ligne_separe_titre"></div> --}}
- <hr>
-    <br><br>
+
+{{-- <div class="ligne_separe_titre"></div> --}}
+<hr>
+<br><br>
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
         <div class="col-xs-12 ligneform " style="background-color: #EEE">
@@ -129,12 +24,12 @@
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
                         <th>NOM</th>
                         <th>PRENOM(S)</th>
-						 <th>MEDIA</th>
+                        <th>MEDIA</th>
                         <th>Date</th>
                         <th>Contenu</th>
-                       
-                        
-                       
+
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -143,19 +38,19 @@
                     <tr>
                         <td>{{$corresp->nomcorrespondant }}</td>
                         <td>{{$corresp->prenomcorrespondant }}</td>
-						 <td>{{$corresp->media }}</td>
-                        <td>{{$corresp->dateinfo }}</td>
+                        <td>{{$corresp->media }}</td>
+                        <td>{{$corresp->CREATED_AT }}</td>
                         <td>{{$corresp->contenuinfo }}</td>
-                       
-                        
-              
+
+
+
                     </tr>
-                     @endforeach
+                    @endforeach
 
                 </tbody>
-                
+
             </table>
->>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
+
 
         </div>
     </div>
@@ -180,8 +75,5 @@
         $('#table').DataTable();
     });
 </script>
-<<<<<<< HEAD
-=======
-<br><br>
->>>>>>> f2d1561d2cad1225ce9e631c8dfd52516f7c0cbb
- @endsection 
+
+@endsection 
