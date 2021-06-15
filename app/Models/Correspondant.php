@@ -9,12 +9,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $iduser
  * @property string $nom
  * @property string $prenom
+ * @property string $sexe
  * @property string $typecorrespondant
  * @property string $origine
  * @property string $cnib
+ * @property string $datenaissance
+ * @property string $datedelivcnib 
+ * @property string $dateexpircnib
+ * @property string $personneprevenir
+ * @property string $telephonepersp
  * @property string $passeport
- * @property string $fonction
- * @property string $telephone1
+ * @property string $profession
+ * @property string $telephone
  * @property string $telephone2
  * @property string $mail1
  * @property string $lieuresidence
@@ -23,6 +29,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $parcourspro
  * @property string $region
  * @property string $organe
+ * @property string $telorgane
+ *  @property string $adresseorgane
  * @property string $typepresse
  * @property boolean $actif
  * @property string $CREATED_AT
@@ -51,7 +59,7 @@ class Correspondant extends Model
     /**
      * @var array
      */
-    protected $fillable = ['iduser', 'nom', 'prenom', 'typecorresondant', 'origine', 'cnib', 'passeport', 'fonction', 'telephone1', 'telephone2', 'mail1', 'lieuresidence', 'numcartepresse', 'refjournal', 'parcourspro', 'region','typepresse','organe', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser', 'nom', 'prenom','sexe', 'typecorrespondant', 'origine', 'cnib','datedelivcnib','dateexpircnib','datenaissance', 'passeport', 'profession','personneprevenir','telephonepersp', 'telephone', 'telephone2', 'mail', 'lieuresidence', 'numcartepresse', 'refjournal', 'parcourspro', 'region','typepresse','organe','telorgane','adresseorgane', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -1,13 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $idcorrespondant
- * @property int $idmedia
  * @property int $IDMEDIACORRES
+ * @property int $iduser
+ * @property string $organe
+ * @property string $telorgane
+ * @property string $adresseorgane
  * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
@@ -33,7 +36,7 @@ class MediaCorrespondant extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idcorrespondant', 'idmedia','actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['idcorrespondant','iduser', 'organe','telorgane','adresseorgane','actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

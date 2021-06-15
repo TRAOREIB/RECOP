@@ -14,20 +14,24 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $lieunaissance
  * @property string $nationalite
  * @property string $sexe
- * @property string $numPasseport
+ * @property string $passeport
+ * @property string $laissepasser
+ * @property string $professionfixeur
+ * @property string $carteprofessionnelfixeur
+ * @property string $telephoneresidence
  * @property string $carteconsulaire
  * @property string $datedelivcnib
  * @property string $dateexpircnib
  * @property int  $telephone
- * @property int  $email
- * @property string $email
+ * @property string $mail
  * @property string $personneprevenir
  * @property string $adressfixeur
  * @property string $lieuresidence
+ * @property string $adressepaysresidence
  * @property string $organe
  * @property int $telorgane
  * @property string $adressestruct
- * @property string $numcnib
+ * @property string $cnib
  * @property int $telephonepersp
  * @property boolean $actif
  * @property string $CREATED_AT
@@ -55,7 +59,7 @@ class Demandeur extends Model
      * @var array
      */
   
-    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance', 'nationalite', 'sexe', 'numPasseport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'email','personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','numcnib', 'telephonepersp','adressfixeur', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance','telephoneresidence','laissepasser','professionfixeur','carteprofessionnelfixeur', 'nationalite', 'sexe', 'passeport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'mail','personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','cnib', 'telephonepersp','adressfixeur', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

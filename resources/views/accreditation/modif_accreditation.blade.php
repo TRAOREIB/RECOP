@@ -3,132 +3,146 @@
 <script src="{{asset('js/dtable.js')}}"></script>
 <br> 
 <div class="text-center">
-    <h2> MODIFICATION DE L'ACCREDITATION</h2>
+    <label style="font-family: fantasy;color: blue"> MODIFIER LA DEMANDE D'ACCREDITATION DE PRESSE</label>
 </div>
-<div class="ligne_separe_titre"></div>
+
+<hr>
 <br>
-<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('accreditation.update',[$editaccreditation->idaccreditation]) }}" enctype="multipart/form-data" >
-    {{ method_field('PUT')}}
+
+<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('modifsujet') }}" enctype="multipart/form-data" >
+    {{ method_field('POST')}}
     {{ csrf_field() }}	
     <div class="col-sm-12">  <!-- Debut du Bloc -->
         <div class="card"> 
-            <div class=" card text-center card-header">SUJET</div>
+            <div class=" card text-center card-header">SUJET A COUVRIR</div>
             <div class="card-body">
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="titreevenement">TITRE:</label>
+                    <label class="col-sm-3 col-form-label" for="titreevenement">TITRE(S):</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="titreevenement" name="titreevenement" value="{{$editaccreditation->titreevenement}}">
+                        <input type="text" class="form-control" id="titreevenement" placeholder="Entrer le(s) titre(s) de l'evenement" name="titreevenement">
                     </div>
                 </div>
-<!--                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="lieuevenement">LIEU:</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="lieuevenement" name="lieuevenement" value="{{$editaccreditation->lieuevenement}}">
-                    </div>
-                </div>-->
+
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datedebut">DATE DE DEBUT</label>
-                    <div class="col-sm-4">
-                        <input type="date" class="form-control" id="datedebut" name="datedebut" value="{{$editaccreditation->datedebut}}">
+                    <div class="col-sm-8">
+                        <input type="date" class="form-control" id="datedebut" placeholder="Entrer " name="datedebut">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datefin">DATE DE FIN</label>
-                    <div class="col-sm-4">
-                        <input type="date" class="form-control" id="datefin" name="datefin" value="{{$editaccreditation->datefin}}">
+                    <div class="col-sm-8">
+                        <input type="date" class="form-control" id="datefin" placeholder="Entrer " name="datefin">
                     </div>
-                </div>                       
-            </div>
-        </div>
-        <p>
-        <div class="card"> 
-            <div class=" card text-center card-header">REGION (S)</div>
-            <div class="card-body">
-                <div>
-                    <?php $i = 0; ?>
-                    @foreach($regions as $reg)
-                    <?php $i++; ?>
-                    <div class="row">
-                        <div class=" col-sm-10"><label class="label">{{$reg->nomregion}}</label>
-                            <b> (cocher pour Supprimer) &nbsp;</b><input type="checkbox" value="{{$reg->idaccrediregion}}" name="regions{{$i}}">
-                        </div>
+                </div> 
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="datefin">REGION</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="idregion">
+                            @foreach($allregions as $region)
+                            <option class="col-sm-7" value="{{$region->idregion}}">{{$region->nomregion}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div> 
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="datefin">LIEU EVENEMENT</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="datefin" placeholder="Entrer " name="lieuevenement">
+                    </div>
+                </div>
+                <input type="hidden" value="{{$test}}" name="test">
+                <input type="hidden" value="{{$idaccreditation}}" name="idaccreditation">
+                <div class="row">
+                    <input type="submit" class="btn btn-primary offset-4" name="addregion" value="Valider">
+                    <input type="reset" class="btn btn-primary offset-1"  name="addregion" value="Annuler">
 
-                    </div>
+                </div>
+            </div>
+            </form>
+            <div class="card-footer">
+                <div><label>Liste des Sujets à couvrir par region</label></div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Region</th>
+                        <th>Evenement</th>
+                        <th>Lieu</th>
+                        <th>Date de Debut</th>
+                        <th>Date de Fin</th>
+                        <th>Action</th>
+                    </tr>
+                    @isset($listesujet)
+                    @foreach($listesujet as $sujet)
+                    <tr>
+                        <td>{{$sujet->nomregion}}</td>
+                        <td>{{$sujet->titre}}</td>
+                        <td>{{$sujet->lieuevenement}}</td>
+                        <td>{{$sujet->datedebut}}</td>
+                        <td>{{$sujet->datefin}}</td>
+
+                        <td><form method="POST" action="{{ route('retraitmodifsujet')}}">
+                                {{ csrf_field() }}
+                                <a ></a>
+                                <button class="btn btn-danger " type="submit"  onclick="return confirm('Confirmer le retrait du sujet ')">Retirer</button>
+                                <input type="hidden" value="{{$sujet->idaccrediregion}}" name="idaccrediregion">
+                                <input type="hidden" value="{{$idaccreditation}}" name="idaccreditation">
+                            </form> 
+                        </td>
+                    </tr>
                     @endforeach
-                </div>
-                <p>
-                <p>    
-
-                <table class="dTable col-sm-12" id="tab">
-                    <thead>
-                        <tr>
-                            <td>
-                                <input type="button" class="btn btn-primary" onclick="addLigne(this, 'nbregions'); return false;" value="Ajouter des Regions">
-                            </td>
-                        </tr>
-                    <div></div>
-                    </thead>
-
-                    <tbody>
-                        <tr>    
-                            <td> 
-                                <select name="region[]" class="form-control">
-                                    @foreach($allregions as $region)
-                                    <option class="col-sm-7" value="{{$region->idregion}}">{{$region->nomregion}}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                            <td><input type="button" class="form-control btn-info" value="Supprimer" onclick="delLigne(this, 'nbregions'); return false;"></td>
-                        </tr>
-                    </tbody>
-                    <input type="hidden" value="1" name="nbregions" id="nbregions">
+                    @endisset  
                 </table>
-
-            </div>                    
-        </div>
-        <p></p>
-        <div class="card"> 
-            <div class=" card text-center card-header">TRANSPORT</div>
-            <div class="card-body">
-                <div class="form-group row">
-                    <label for="moyentransport" class="col-sm-4 col-form-label">MOYEN DE TRANPORT</label>
-                    <div class="col-sm-7">
-                        <input class="form-control" id="moyentransport" type="text" name="moyentransport" value="{{$editaccreditation->moyentransport}}"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="immatriculation" class="col-sm-4 col-form-label">IMMATRICULATION</label>
-                    <div class="col-sm-7">
-                        <input class="form-control" id="immatriculation" type="text" name="immatriculation" value="{{$editaccreditation->immatriculation}}"/>
-                    </div>
-                </div>                    
             </div>
         </div>
-        <p></p>
-        <div class="card"> 
-            <div class=" card text-center card-header">MEMBRES DE L'EQUIPE</div>
-            <div class="card-body">
-                <div class="col-sm-14">
-                    <textarea class="form-control" name="membresequipe" rows="8"> {{$editaccreditation->membresequipe}} </textarea>
-                </div>
 
-            </div> 
-        </div>
-        <p></p> 
-        <div class="card"> 
-            <div class=" card text-center card-header">LISTE DU MATERIEL</div>
-            <div class="card-body">
-                <div class="col-sm-14">
-                    <textarea class="form-control" id="listemateriel" name="listemateriel" rows="3">{{$editaccreditation->listemateriel}}</textarea>
+        <p></p>
+        <form class="form-horizontal"  method="POST" action="{{ route('accreditation.update',[$idaccreditation]) }}" enctype="multipart/form-data" >
+            {{ method_field('PUT')}}
+            {{ csrf_field() }}	
+
+
+
+            <div class="card"> 
+                <div class=" card text-center card-header">TRANSPORT</div>
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <label for="moyentransport" class="col-sm-3 col-form-label">MOYEN DE TRANPORT</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" id="moyentransport" value=' {{$editaccreditation->moyentransport}}' type="text" name="moyentransport"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="immatriculation" class="col-sm-3 col-form-label">IMMATRICULATION</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" id="immatriculation" value=' {{$editaccreditation->immatriculation}}' type="text" name="immatriculation"/>
+                        </div>
+                    </div>     
+
                 </div>
-            </div> 
-        </div>
+            </div>
+            <p></p> 
+            <div class="card"> 
+                <div class=" card text-center card-header">LISTE DU MATERIEL</div>
+                <div class="card-body">
+                    <div class="col-sm-14">
+                        <textarea class="form-control" id="listemateriel"  name="listemateriel" rows="3">{{$editaccreditation->listemateriel}}</textarea>
+                    </div>
+                </div> 
+            </div>  
+             <input type="hidden" value="{{$idaccreditation}}" name="idaccreditation">
+             <input type="hidden" name="modifaccreditation" value='true'>
+
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit">CONTINUER</button>
+                <button class="btn btn-primary" type="reset">ANNULER</button>
+            </div>
+        </form>
     </div>
-    <p></p>
-    <div class="text-center">
-        <button class="btn btn-primary" type="submit">ENREGISTRER</button>
-        <button class="btn btn-primary" type="reset">ANNULER</button>
-    </div>
-    <p></p>
-</form>
+</div>
+<p></p>
+
+
+
+<p></p>
 @endsection

@@ -13,6 +13,8 @@ interface RepositoryVueInterface {
     public function allvue($vue); 
 
     public function showvue($vue, $id);
-
+    
+    public function showmyaccreditation($vue, $id);
+    
   
 }

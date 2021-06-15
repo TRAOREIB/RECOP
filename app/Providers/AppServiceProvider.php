@@ -27,8 +27,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        Blade::if('correspondant',function(){
-            return auth()->user()->profil==="Correspondant";
+        Blade::if('enregistre',function(){
+            return auth()->user()->profil==="Enregistre";
         });
         
          Blade::if('administrateur',function(){
