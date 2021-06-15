@@ -15,34 +15,17 @@
     <div class="col-sm-12">  <!-- Bloc 1-->
         <div class="card"> 
             <div class=" card text-center card-header">CHOISIR LE TYPE DE CORRESPONDANT</div>
-            <div class="card-body">
-               
-                
+            <div class="card-body">               
                 <div class="form-group row">
                     <label class="control-label col-sm-3" for="sexe">TYPE :</label>
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         <select class="form-control" id="sexe" name="typecorrespondant">
-                            <option value="nationale">Correspondant de la presse nationale</option>
-                            <option value="Freelance">Journaliste independant/FreeLance</option>
-                            
-                                 <option value="National">Correspondant de la presse internationale</option>
-                               
-                            
+                            <option value="Correspondant national">Correspondant de la presse nationale</option>
+                            <option value="Journaliste independant">Journaliste independant/FreeLance</option>
+                                 <option value="Correspondant international">Correspondant de la presse internationale</option>         
                         </select>
                     </div>
-                </div>
-                    <div class="form-group row">
-                       <label class="control-label col-sm-3" for="sexe">CATEGORIE :</label>
-                      <div class="col-sm-5">
-                          <select class="form-control" id="sexe" name="typecorrespondant">
-                               {{-- <option value="National">National</option>
-                               <option value="Non national">Non National</option> --}}
-                          </select>
-                          <label>selectionner si vous etes un correspond de la presse internationale</label>
-                       </div>
-                    </div>
-               
-    
+                </div>  
             </div>
         </div>				
     </div>

@@ -32,7 +32,7 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="profession">PROFESSSION:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="profession" placeholder="Entrer " name="fonction">
+                        <input type="text" class="form-control" id="profession" placeholder="Entrer " name="profession">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -65,7 +65,7 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="telephone">TELEPHONE 1:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="telephone" placeholder=" " name="telephone1">
+                        <input type="text" class="form-control" id="telephone" placeholder=" " name="telephone">
                     </div>
                 </div> 
                 <div class="form-group row">
@@ -75,13 +75,24 @@
                         <label><i>Indiquer votre numero whatsapp</i></label>
                     </div>
                 </div>
+                <?php if($typecorrespondant=="Correspondant international"): ?>
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="telephone">EMAIL :</label>
-                    <div class="col-sm-7">
-                        <input type="email" class="form-control" id="mail1" placeholder=" " name="mail1">
+                    <label class="col-sm-3 col-form-label" for="telephone2">ORIGINE</label>
+                    <div class="col-sm-5">
+                        <select name="origine" class="form-control">
+                            <option>Etranger</option>
+                            <option>National</option>
+                        </select>
                     </div>
                 </div>
-
+                <?php endif; ?>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" >EMAIL :</label>
+                    <div class="col-sm-7">
+                        <input type="email" class="form-control"   name="mail">
+                    </div>
+                </div>
+            
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="region">REGION:</label>
                     <div class="col-sm-5">
@@ -96,14 +107,14 @@
                     <label class="col-sm-3 col-form-label" for="lieuresidence">LIEU DE RESIDENCE:</label>
                     <div class="col-sm-7">
                         <input type="text" class="form-control" id="lieuresidence" placeholder=" " name="lieuresidence">
-                        <label><i>La ville, le secteur, le quartier</i></label>
+                        <label><i>La province,La ville, le secteur, le quartier</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="numcnib">N° CNIB:</label>
+                    <label class="col-sm-3 col-form-label" for="numcnib">N° CNI:</label>
                     <div class="col-sm-7">
                         <input type="text" class="form-control" id="numcnib" placeholder=" " name="cnib">
-                        <label><i>Numero de la Carte Nationale d'Identité Burkinabè</i></label>
+                        <label><i>Numero de la Carte Nationale d'Identité </i></label>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -111,7 +122,7 @@
                     <div class="col-sm-4">
                         <input type="date" class="form-control" id="datedelivcnib" placeholder=" " name="datedelivcnib">
                         <div class="">
-                            <label><i>Date de delivrance de la CNIB</i></label>
+                            <label><i>Date de delivrance de la Carte Nationale d'Identite</i></label>
                         </div>
                     </div>
                 </div>
@@ -166,8 +177,7 @@
                         <textarea class="form-control" name="parcourspro" rows="5"></textarea>
                     </div>
                 </div>
-
-
+                <input type="hidden" value="1" name="actif">
             </div>
         </div>				
     </div>
@@ -179,23 +189,23 @@
                 <div class="form-group row">
                     <label for="organe" class="col-sm-3 col-form-label">NOM DE L'ORGANE</label>
                     <div class="col-sm-8">
-                       <input class="form-control" id="telorgane" type="text" name="organe"/>          
+                        <input class="form-control" id="telorgane" type="text" name="organe"/>          
                     </div>
-                    
+
                 </div>
                 <div class="form-group row">
                     <label for="organe" class="col-sm-3 col-form-label">TYPE DE PRESSE</label>
                     <div class="col-sm-5">
                         <select class="form-control" name="typepresse">
-                        <option>Presse Ecrite</option>                       
-                        <option>Radio</option>
-                        <option>Tele</option>   
-                        <option>Presse En Ligne</option>
-                    </select>
-                 </div>
-                 
+                            <option>Presse Ecrite</option>                       
+                            <option>Radio</option>
+                            <option>Tele</option>   
+                            <option>Presse En Ligne</option>
+                        </select>
+                    </div>
+
                 </div>
-                
+
                 <p></p>
 
                 <div class="form-group row">
@@ -207,19 +217,93 @@
                 <div class="form-group row">
                     <label for="adressestruct" class="col-sm-3 col-form-label">ADRESSE</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="adressestruct" type="text" name="adressestruct" />
+                        <input class="form-control" id="adressestruct" type="text" name="adresseorgane" />
                     </div>
                 </div>
+                <input type='hidden' value="<?php echo e($typecorrespondant); ?>" name='typecorrespondant'>
+               
             </div> 
         </div>   
     </div>
-   </p>
-    <div class="text-center">
-        <button class="btn btn-primary" type="submit">CONTINUER</button>
-        <button class="btn btn-primary" type="reset">ANNULER</button>
+    <br>
+    <div class="col-sm-12"> <!-- CREATION DU COMPTE USER-->
+    <div class="card"> 
+        <div class="card-header text-center"><?php echo e(__("ENREGISTREMENT DU COMPTE D'UTILISATEUR")); ?></div>
 
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="identifiant" class="col-md-4 col-form-label text-md-right"><?php echo e(__("Nom d'utilisateur")); ?></label>
+
+                <div class="col-md-6">
+                    <input id="identifiant" type="text" class="form-control <?php $__errorArgs = ['identifiant'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="identifiant" value="<?php echo e(old('identifiant')); ?>" required autocomplete="identifiant">
+
+                    <?php $__errorArgs = ['identifiant'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <span class="invalid-feedback" role="alert">
+                        <strong><?php echo e($message); ?></strong>
+                    </span>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="password" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Mot de passe')); ?></label>
+
+                <div class="col-md-6">
+                    <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="new-password">
+
+                    <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <span class="invalid-feedback" role="alert">
+                        <strong><?php echo e($message); ?></strong>
+                    </span>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="password-confirm" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Confirmer le mot de passe')); ?></label>
+
+                <div class="col-md-6">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                </div>
+            </div>  
+        </div>
     </div>
-    <p></p>
+  </div>      
+<br>
+<div class="text-center">
+    <button class="btn btn-primary" type="submit">CONTINUER</button>
+    <button class="btn btn-primary" type="reset">ANNULER</button>
+
+</div>
+<p></p>
 </form>
 </body>
 <br>

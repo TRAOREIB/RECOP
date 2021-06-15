@@ -43,10 +43,17 @@ Route::get('/', function () {
 Route::resource('demandeur', 'DemandeurController');
 
 Route::resource('accreditation', 'AccreditationController');
-
+Route::post('retirersujet', 'AccreditationController@retirerSujet')->name("retirersujet");
 Route::resource('recherche', 'RechercheController');
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
+Route::post('detailsaccreditation', 'AccreditationController@detailsaccreditation')->name('detailsaccreditation');
+Route::post('modifsujet', 'AccreditationController@modifsujets')->name('modifsujet');
+Route::post('retraitmodifsujet', 'AccreditationController@retirerSujetModif')->name('retraitmodifsujet');
+Route::post('detailscorrespondant', 'CorrespondantController@detailsCorrespondant')->name('detailscorrespondant');
+Route::post('editpjcorrespondant', 'PiecesJointesController@editpjcorrespondant')->name('editpjcorrespondant');
+Route::post('updatecorrespondant', 'PiecesJointesController@updatecorrespondant')->name('updatecorrespondant'); 
+
  
 //Route::resource('information', 'RechercheController');
 

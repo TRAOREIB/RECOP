@@ -6,7 +6,7 @@
         <img class="card-img-top w-100" src="<?php echo e(asset('images/correspondantpresse.jpg')); ?>" alt="Card image cap"> 
         <div class="card-body w-100"> 
             <h4 class="card-title">Correspondant de Presse</h4> 
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> 
+            <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--> 
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
             <a href="#" class="btn btn-primary">Lire plus</a> 
         </div>                 
@@ -14,8 +14,8 @@
     <div class="card w-50"> 
         <img class="card-img-top" src="<?php echo e(asset('images/accreditation2.jpg')); ?>" alt="Card image cap"> 
         <div class="card-body"> 
-            <h4 class="card-title">Accreditation Presse</h4> 
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> 
+            <h4 class="card-title">Accreditation de Presse</h4> 
+            <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--> 
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
             <a href="#" class="btn btn-primary">Lire plus</a> 
         </div>                 
@@ -25,7 +25,7 @@
     <div id="panels1" role="tablist"> 
         <div class="card"> 
             <div class="card-header" role="tab"> 
-                <h5 class="mb-0"> <a data-toggle="collapse" href="#collapse1" aria-expanded="true" aria-controls="collapse1">Comment obtenir l&apos;accreditation presse</a> </h5> 
+                <h5 class="mb-0"> <a data-toggle="collapse" href="#collapse1" aria-expanded="true" aria-controls="collapse1">Comment obtenir l&apos;accreditation de presse</a> </h5> 
             </div>                     
             <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#panels1"> 
                 <div class="card-body">                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.                            </div>                         

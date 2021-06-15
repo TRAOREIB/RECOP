@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $idaccrediregion
  * @property int $idregion
+ * @property string $datedebut
+ * @property string $datefin
+ *  @property string $lieuevenement
+ * @property string $titreevenement
  * @property int $idaccreditation
  * @property boolean $actif
  * @property string $created_at
@@ -31,6 +35,6 @@ class AccrediRegion extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idregion', 'idaccreditation','actif', 'created_at', 'updated_at'];
+    protected $fillable = ['idregion', 'idaccreditation','datedebut','datefin','lieuevenement','titreevenement','actif', 'created_at', 'updated_at'];
 
 }

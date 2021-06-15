@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Repositories\RepositoryVue;
 use App\Models\Accreditation;
+use App\Models\Demandeur;
+use App\Models\PiecesJointes;
 use App\Models\Region;
 use App\Models\AccrediRegion;
 use Illuminate\Support\Facades\Session;
@@ -23,10 +25,14 @@ class AccreditationController extends Controller {
      */
     protected $accreditation;
     protected $vue = 'vueaccreditation';
+    protected $vue2 = 'vueaccrediregion';
     protected $vueaccreditation;
+    protected $vueaccrediregion;
     protected $region;
     protected $vuerecherche;
     protected $accrediregion;
+    protected $demandeur;
+    protected $piecesjointes;
 
     public function __construct(Accreditation $accre) {
         $reg = new Region();
@@ -36,6 +42,9 @@ class AccreditationController extends Controller {
         $this->region = new Repository($reg);
         $this->accrediregion = new Repository($acregion);
         $this->vueaccreditation = new RepositoryVue();
+        $this->vueaccrediregion = new RepositoryVue();
+        $this->demandeur = new Repository(new Demandeur());
+        $this->piecesjointes = new Repository(new PiecesJointes);
     }
 
     public function index() {
@@ -82,14 +91,62 @@ class AccreditationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-//  echo session('pj');     
-//
+        $allregions = $this->region->all();
+        if ($request->test == 0) {
+            echo "il le fait dans le store et bien";
+            $this->accreditation->create($request->only($this->accreditation->getModel()->fillable));
+            $maxidaccreditation = $this->accreditation->max("idaccreditation");
+            Session::put("idaccreditation", $maxidaccreditation);
+        }
+        $test = 1;
+        echo $test; 
+        $this->accrediregion->create($request->only($this->accrediregion->getModel()->fillable));
+        // $this->saveRegions($request);
+        // echo session("idaccreditation");
+        $idaccreditation = session("idaccreditation");
+        $listesujet = $this->vueaccrediregion->showvue($this->vue2, session("idaccreditation"));
+        return view('accreditation.ajout_accreditation', compact("test", "allregions", "listesujet", "idaccreditation"));
+    }
 
-        $this->accreditation->create($request->only($this->accreditation->getModel()->fillable));
-        $maxidaccreditation = $this->accreditation->max("idaccreditation");
-        Session::put("idaccreditation", $maxidaccreditation);
-        $this->saveRegions($request);
-        return view('accreditation.pj_accreditation');
+    public function modifsujets(Request $request) {
+        $allregions = $this->region->all();
+        $editaccreditation = $this->accreditation->show($request->idaccreditation);
+        if ($request->test == 0) {
+            echo "il entre encore dans le test ---";
+            $this->accreditation->create($request->only($this->accreditation->getModel()->fillable));
+            $maxidaccreditation = $this->accreditation->max("idaccreditation");
+            Session::put("idaccreditation", $maxidaccreditation);
+        }
+        $test = 1;
+     
+        $this->accrediregion->create($request->only($this->accrediregion->getModel()->fillable));
+        // $this->saveRegions($request);
+        // echo session("idaccreditation");
+        $idaccreditation = $request->idaccreditation;
+        $listesujet = $this->vueaccrediregion->showvue($this->vue2, $request->idaccreditation);
+       // return view('accreditation.modif_accreditation', compact("test", "allregions", "listesujet", "idaccreditation", "editaccreditation"));
+    }
+
+    public function retirerSujet(Request $request) {
+        $allregions = $this->region->all();
+        $test = 1;
+        $this->accrediregion->delete($request->idaccrediregion);
+        $listesujet = $this->vueaccrediregion->showvue($this->vue2, session("idaccreditation"));
+//        echo session("idaccreditation");
+//        echo $listesujet;
+        $idaccreditation = session("idaccreditation");
+        return view('accreditation.ajout_accreditation', compact("test", "allregions", "listesujet", "idaccreditation"));
+    }
+
+    public function retirerSujetModif(Request $request) {
+     
+        $allregions = $this->region->all();
+        $test = 1;
+        $idaccreditation = $request->idaccreditation;
+        $this->accrediregion->delete($request->idaccrediregion);
+        $listesujet = $this->vueaccrediregion->showvue($this->vue2, $idaccreditation);
+        $editaccreditation = $this->accreditation->show($request->idaccreditation);
+        return view('accreditation.modif_accreditation', compact("test", "allregions", "listesujet", "idaccreditation", "editaccreditation"));
     }
 
     public function saveRegions(Request $request) {
@@ -102,9 +159,9 @@ class AccreditationController extends Controller {
             foreach ($regions as $reg) {
                 $i++;
                 if ($i != 1) {
-                      
+
                     Session::put("idregion", $reg);
-                 //   echo session("idaccreditation");
+                    //   echo session("idaccreditation");
                     $this->accrediregion->create($request->only($this->accrediregion->getModel()->fillable));
                 }
             }
@@ -127,12 +184,38 @@ class AccreditationController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($idaccreditation) {
-//
-         $allregions = $this->region->all();
+    public function edit(Request $request, $idaccreditation) {
+        $test = $request->test;
+        $allregions = $this->region->all();
         $regions = $this->vueaccreditation->showvue($this->vue, $idaccreditation);
         $editaccreditation = $this->accreditation->show($idaccreditation);
-        return view('accreditation.modif_accreditation', compact('editaccreditation', 'regions','allregions'));
+        //   echo $editaccreditation;
+        echo "je suis dans le test ".$test;
+        $listesujet = $this->vueaccrediregion->showvue($this->vue2, $idaccreditation);
+        return view('accreditation.modif_accreditation', compact('editaccreditation', 'regions', 'allregions', 'test', 'idaccreditation', 'listesujet'));
+    }
+
+    public function detailsaccreditation(Request $request) {
+       
+        $idaccreditation = $request->idaccreditation;
+        $iduser = $request->iduser;
+        $iddemandeur = $request->iddemandeur;
+        $idcorrespondant = $request->idcorrespondant;
+        // Mettre Toutes les données identifiant dans des variables session
+        Session::put("monidaccreditation", $idaccreditation);
+        Session::put("moniduser", $iduser);
+        Session::put("moniddemandeur", $iddemandeur);
+        Session::put("monidcorrespondant", $idcorrespondant);
+        //Envoyer test à zero
+        
+        $demandeurs = $this->demandeur->showinfodemandeur($iddemandeur);
+        $monaccreditation = $this->accreditation->showinfoaccreditation($idaccreditation);
+        $accreditations = $this->vueaccrediregion->showvue($this->vue2, $idaccreditation);
+        $piecesjointes = $this->piecesjointes->showinfopj($idaccreditation);
+        echo $idaccreditation;
+        echo $piecesjointes;
+
+        return view("accreditation.details_accreditation", compact("demandeurs", "accreditations", "piecesjointes", "monaccreditation", "idaccreditation", "iddemandeur", "iduser", "idcorrespondant"));
     }
 
     /**
@@ -143,33 +226,19 @@ class AccreditationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $idaccreditation) {
-
-        //selection de la vue accreditation pour avoir les regions en fonction de l'accreditation choisie
-        $allregions=$this->vueaccreditation->showvue($this->vue, $idaccreditation);
-        //supprimer les fichiers
-        //On supprime dabord les fichiers
-        $i = 0;
-        foreach ($allregions as $reg) {
-            $i++;
-            $region = "regions" . $i;
-            if (isset($request->$region)) {
-             //  echo "il a coché ---".$request->$region;
-              //Suppression des elements cochés
-              $this->accrediregion->delete($request->$region); 
-            }
+        if (isset($request->modifaccreditation)) {
+            $this->accreditation->update($request->only($this->accreditation->getModel()->fillable), $idaccreditation);
+            $request->idaccreditation = session("monidaccreditation");
+            $request->iduser = session("moniduser");
+            $request->iddemandeur = session("moniddemandeur");
+            $request->idcorrespondant = session("monidcorrespondant");
+            return $this->detailsaccreditation($request);
+            
+        //    return view('accreditation.modif_accreditation');
+        } else {
+            $this->accreditation->update($request->only($this->accreditation->getModel()->fillable), $idaccreditation);
+            return view('accreditation.pj_accreditation');
         }
-        //Raffraichir l'id de l'accreditation
-        Session::put("idaccreditation",$idaccreditation);
-       //Enregistrer les nouvelles regions
-        $this->saveRegions($request);
-
-
-
-        //supprimer dans la base la table accrediregion
-        //
-        //ajouter les nouveaux fichiers
-
-        $this->accreditation->update($request->only($this->accreditation->getModel()->fillable), $idaccreditation);
     }
 
     /**

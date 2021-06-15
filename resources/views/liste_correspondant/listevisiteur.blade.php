@@ -9,8 +9,8 @@
  <hr>
     <br><br> 
 
-<div class="row divtabgrand" style="">
-    <div class="col-sm-12" >
+<div class="row divtabgrand justify-content-center" style="">
+    <div class="col-sm-7" >
         <div class="col-sm-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>

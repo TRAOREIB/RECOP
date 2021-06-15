@@ -18,44 +18,36 @@
         <link rel="stylesheet" href="{{asset('css/bootstrap4.css')}}">
         <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
-	
-		<style>
 
-		.corpsinfo {
-			background-color:white	;
-			margin-buttom:5px ;
-			padding:20px;
+        <style>
 
-			}
+            .corpsinfo {
+                background-color:white	;
+                margin-buttom:5px ;
+                padding:20px;
 
-		.cadre {
-			background-color:#008080	;
-			border-radius : 10 px ;
+            }
+            .cadre {
+                background-color:#00808;
+                border-radius : 10 px ;
 
-			}
-			
-			
-			
-			
-			
-			.tableau {
-			background-color:#C0C0C0;
-			
-			padding-left:20px;
-			padding-right:20px;
-			padding-buttom:5px;
-	
-			}
-			
-			.titrenouvelleinformation {
-			
-			padding-left : 20px ;
+            }
 
-			}
-			
-			
-		</style>
-      
+            .tableau {
+                background-color:#C0C0C0;
+
+                padding-left:20px;
+                padding-right:20px;
+                padding-buttom:5px;
+
+            }
+            .titrenouvelleinformation {
+
+                padding-left : 20px ;
+
+            }
+        </style>
+
     </head>
     <body>
 
@@ -94,7 +86,7 @@
                                     <a class="dropdown-item" href="#">Dropdown item</a>
                                 </div>                             
                             </li>  
-							                       
+
                             <li class="nav-item"> 
                             </li>
                             <li class="nav-item"> 
@@ -106,63 +98,63 @@
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);"> 
                                     <a class="dropdown-item text-white" href="{{ url('choixcorrespondant') }}">NOUVEAU CORRESPONDANT</a> 
-									@guest
-									   <a class="dropdown-item text-white" href="{{ url('listevisiteur') }}">LISTE DES CORRESPONDANTS</a> 
-									@endguest
-									
-									@if(Auth::check())
-									@administrateur
-									   <a class="dropdown-item text-white" href="{{ url('listeadmin') }}">LISTE DES CORRESPONDANTS</a> 
-									   <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a> 
-                                       <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a> 		
-									@endadministrateur
-									@endif
-				@if(Auth::check())
-			        	@correspondant
+                                    @guest
+                                    <a class="dropdown-item text-white" href="{{ url('listevisiteur') }}">LISTE DES CORRESPONDANTS</a> 
+                                    @endguest
+
+                                    @if(Auth::check())
+                                    @administrateur
+                                    <a class="dropdown-item text-white" href="{{ url('listeadmin') }}">LISTE DES CORRESPONDANTS</a> 
+                                    <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a> 
+                                    <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a> 		
+                                    @endadministrateur
+                                    @endif
+                                    @if(Auth::check())
+                                    @enregistre
                                     <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a> 
                                     <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a> 									
-			               @endcorrespondant 
-					  @endif
+                                    @endenregistre 
+                                    @endif
                                 </div>                                
                             </li>
                             <li class="nav-item"> 
-                                <a class="nav-link text-light" href="{{ url('demandeur') }}">ACCREDITATION PRESSE</a> 
+                                <a class="nav-link text-light" href="{{ url('demandeur') }}">ACCREDITATION DE PRESSE</a> 
                             </li>
-							@if(Auth::check())
-									@correspondant
+                            @if(Auth::check())
+                            @enregistre
                             <li class="nav-item"> 
                                 <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
                             </li>
-							@endcorrespondant 
-							 
-							@administrateur
-							 <li class="nav-item"> 
+                            @endenregistre 
+
+                            @administrateur
+                            <li class="nav-item"> 
                                 <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
                             </li>
-							@endadministrateur
-									@endif
+                            @endadministrateur
+                            @endif
                         </ul>
-                         <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Authentication Links -->
+                            @guest
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ url('login') }}"><b><i>{{ __('CONNEXION') }}</i></b></a>
                             </li>
-                            {{-- @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif --}}
-                        @else
+                            @if(Auth::check())
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Modifier vos informations') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Changer le Mot de Passe') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('Deconnexion') }}
                                     </a>
 
@@ -171,19 +163,20 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
-                    </ul>
+                            @endif
+                            @endguest
+                        </ul>
                     </div>                 
                 </nav>
             </div>
             @yield('contenu')
-         
 
 
 
-       
-              <div class="container  d-flex flex-row">               
-	       <div class="card col-sm-6 col-xs-12"> 
+
+
+            <div class="container  d-flex flex-row">               
+                <div class="card col-sm-6 col-xs-12"> 
                     <div class="card-body" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
                         <h4 class="card-title">Liens Utiles</h4> 
                         <h6 class="card-subtitle mb-2 text-muted"></h6> 
@@ -200,18 +193,13 @@
                 </div>
 
             </div>
-<!--      <div class="container" > 
-            <div class="container" style="background-color:white;border-radius: 9px">
+
+            <div class="container">
                 <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
 
-        </div>    -->
-        <div class="container">
-            <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
-        </div>
-   		
-         
-     
+
+
 
 
     </body>

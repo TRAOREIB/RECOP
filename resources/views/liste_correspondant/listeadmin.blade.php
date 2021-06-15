@@ -18,9 +18,7 @@
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
                         <th>NOM</th>
                         <th>PRENOM(S)</th>
-                        <th>TYPE</th>
-                        <th>CNIB</th>
-                        <th>PASSPORT</th>
+                        <th>TYPE</th>                      
                         <th>TELEPHONE</th>
                         <th>MAIL</th>
                         <th>ORGANE</th>
@@ -38,9 +36,7 @@
                     <tr>
                         <td>{{$corresp->nomcorrespondant }}</td>
                         <td>{{$corresp->prenomcorrespondant }}</td>
-                         <td>{{$corresp->typecorrespondant }}</td>
-                        <td>{{$corresp->cnibcorrespondant }}</td>
-                        <td>{{$corresp->passportcorrespondant }}</td>
+                         <td>{{$corresp->typecorrespondant }}</td>                   
                         <td>{{$corresp->telephonecorrespondant }}</td>
                         <td>{{$corresp->mailcorrespondant }}</td>
                         <td>{{$corresp->organe }}</td>
@@ -60,8 +56,7 @@
                                         <div class="modal-body">  
 
                                          <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">PHOTO</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->photo }}</label></div>
+                                               
                                             </div>
 
                                             <div class="row form-group">
@@ -76,7 +71,7 @@
 
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">FONCTION</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->fonction }}</label></div>
+                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->profession }}</label></div>
                                             </div>
 
                                              <div class="row form-group">
@@ -93,13 +88,7 @@
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">MAIL</label></div>
                                                 <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->mailcorrespondant }}</label></div>
                                             </div>
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">CV</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->cv }}</label></div>
-                                            </div>
-
-
+                                          
                                             <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">TYPE</label></div>
                                                 <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->typecorrespondant }}</label></div>
@@ -147,21 +136,13 @@
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">REFERENCE JOUNALISTIQUE</label></div>
                                                 <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->refjournal }}</label></div>
                                             </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">CNIB</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->pjcnib }}</label></div>
-                                            </div>
-
+                                           
                                              <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">PARCOURS PROFESSIONNEL</label></div>
                                                 <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->parcourspro }}</label></div>
                                             </div>
 
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">VISA MEDIA</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->visamedia }}</label></div>
-                                            </div>
+                                            
 
                                              <div class="row form-group">
                                                 <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">CARTE PRESSE</label></div>

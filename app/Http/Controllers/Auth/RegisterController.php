@@ -48,6 +48,7 @@ use RegistersUsers;
      */
     protected function validator(array $data) {
 		 $data['name']=session('name');
+                 $data['email']=session('email');
       return Validator::make($data, [
                     'name' => [ 'required','string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
