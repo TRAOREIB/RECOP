@@ -18,30 +18,42 @@
         <div class="card"> <div class=" card text-center card-header">PIECES JOINTES</div>
             <div class="card-body">
                 <div class="form-group row">
-                    <label for="pjcnib" class="col-sm-3 col-form-label">PHOTO D'IDENTITE</label>
+                    <label for="photo" class="col-sm-3 col-form-label">PHOTO D'IDENTITE <span style="color:red">*</span></label>
                     <div class="col-sm-7">
-                        <input class="form-control"  type="file" name="photo" />
+                        <input class="form-control @error('photo') is-invalid @enderror"  type="file" name="photo" value="{{ old('photo') }}" required>
+                    @error('nom')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+					</div>
+                </div>
+                <div class="form-group row">
+                    <label for="cv" class="col-sm-3 col-form-label">CV <span style="color:red">*</span></label>
+                    <div class="col-sm-7">
+                        <input class="form-control @error('cv') is-invalid @enderror" id="cv" type="file" name="cv" value="{{ old('cv') }}" required>
+                        @error('cv')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+						<label><i>Scan du fichier numerique du CV</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="cv" class="col-sm-3 col-form-label">CV</label>
+                    <label for="visamedia" class="col-sm-3 col-form-label">VISA DU MEDIA <span style="color:red">*</span></label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="cv" type="file" name="cv" />
-                        <label><i>Scan du fichier numerique du CV</i></label>
+                        <input class="form-control @error('visamedia') is-invalid @enderror" id="visamedia" type="file" name="visamedia" value="{{ old('visamedia') }}" required>
+                        @error('visamedia')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+						<label><i>Scan du fichier numerique du visa</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="pjcnib" class="col-sm-3 col-form-label">VISA DU MEDIA</label>
+                    <label for="pjcnib" class="col-sm-3 col-form-label">CNI <span style="color:red">*</span></label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjcnib" type="file" name="visamedia" />
-                        <label><i>Scan du fichier numerique du visa</i></label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="pjcnib" class="col-sm-3 col-form-label">CNI</label>
-                    <div class="col-sm-7">
-                        <input class="form-control" id="pjcnib" type="file" name="pjcnib" />
-                        <label><i>Scan de la CNI (Recto et Verso)</i></label>
+                        <input class="form-control @error('pjcnib') is-invalid @enderror" id="pjcnib" type="file" name="pjcnib" value="{{ old('pjcnib') }}" required>
+                        @error('pjcnib')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+						<label><i>Scan de la CNI (Recto et Verso)</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -60,10 +72,13 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="pjcartepresse" class="col-sm-3 col-form-label">CARTE PRESSE</label>
+                    <label for="pjcartepresse" class="col-sm-3 col-form-label">CARTE PRESSE <span style="color:red">*</span></label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjcartepresse" type="file" name="pjcartepresse" />
-                        <label><i>Scan de la carte de Presse (Recto et Verso)</i></label>
+                        <input class="form-control @error('pjcartepresse') is-invalid @enderror" id="pjcartepresse" type="file" name="pjcartepresse" value="{{ old('pjcartepresse') }}" required>
+                        @error('pjcartepresse')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+						<label><i>Scan de la carte de Presse (Recto et Verso)</i></label>
                     </div>
                 </div>	
                 <input type="hidden" value="{{$maxid}}" name="idcorrespondant">

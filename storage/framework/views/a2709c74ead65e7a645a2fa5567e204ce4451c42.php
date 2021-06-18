@@ -5,10 +5,11 @@
 
 <div class="text-center">
     
-    <b><label style="" class="text-primary">LISTE DES CORRESPONDANT</label></b>
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANTS </label></b>
 </div>
  
  <hr>
+ <input type="submit" class="btn btn-warning" value="Exporter en PDF">
     <br><br>
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
@@ -43,120 +44,13 @@
                         
 
                         <td title="">
-                        <button data-toggle="modal" data-target='#recherche<?php echo e($i); ?>' value="DETAILS">DETAILS </button>              
-                                     
-                            <div class="modal fade" id='recherche<?php echo e($i); ?>'>
-                                <div class="modal-dialog modal-lg" style="">
-                                    <div class="modal-content" style="background-color : whitesmoke">
-                                        <div class="row listetitreformgrand" style="">
-                                            <div class="col-sm-12" style="">
-                                                <h3 class=" offset-sm-3"> DETAILS CORRESPONDANTS </h3>
-                                            </div>
-                                         </div>
-                                        <div class="modal-body">  
-
-                                         <div class="row form-group">
-                                               
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">NOM</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->nomcorrespondant); ?></label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">PRENOM(S)</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->prenomcorrespondant); ?></label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">FONCTION</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->profession); ?></label></div>
-                                            </div>
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">TELEPHONE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->telephonecorrespondant); ?></label></div>
-                                            </div>
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">TELEPHONE2</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->telephone2correspondant); ?></label></div>
-                                            </div>
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">MAIL</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->mailcorrespondant); ?></label></div>
-                                            </div>
-                                          
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">TYPE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->typecorrespondant); ?></label></div>
-                                            </div>
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">NUMERO CARTE PRESSE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->numcartepresse); ?></label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">NUMERO CNIB</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->cnibcorrespondant); ?></label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">NUMERO PASSPORT</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->passportcorrespondant); ?></label></div>
-                                            </div>
-                                            
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">ORGANE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->organe); ?></label></div>
-                                            </div>
-                                            
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label-info" style="margin-left:0px">LIEU DE RESIDENCE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->lieuresidence); ?></label></div>
-                                            </div>
-
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">REGION</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->region); ?></label></div>
-                                            </div>
-
-                                            
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">REFERENCE JOUNALISTIQUE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->refjournal); ?></label></div>
-                                            </div>
-                                           
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">PARCOURS PROFESSIONNEL</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->parcourspro); ?></label></div>
-                                            </div>
-
-                                            
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">CARTE PRESSE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->pjcartepresse); ?></label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">PASSPORT</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info"><?php echo e($corresp->pjpasseport); ?></label></div>
-                                            </div>
-
-                                             
-                                        </div>
-                                    </div>    
-                                </div>
-                             </div>
-                            
-                            <form method="GET" action="<?php echo e(route('retirer',[$corresp->idcorrespondant])); ?>">
+                        
+						<form  method="post" action="<?php echo e(route('detailscorrespondant')); ?>">
+							<input type="submit" class="btn btn-warning" value="voir les details du compte">           
+						</form>		
+                                                      
+                            <!-- Retirer un correspondant-->
+							<form method="GET" action="<?php echo e(route('retirer',[$corresp->idcorrespondant])); ?>">
                                 <?php echo e(method_field('DELETE')); ?>
 
                                 <?php echo e(csrf_field()); ?>

@@ -213,6 +213,10 @@ class Repository implements RepositoryInterface {
     public function showinfopjcorrespondant($id) {
         return $this->model::where([["idcorrespondant", $id], ["actif", true]])->get();
     }
+	
+	public function showinfopjdemandeur($id) {
+        return $this->model::where([["iddemandeur", $id], ["actif", true]])->get();
+    }
 
     //Fonction qui retourne le correspondant en fonction de l'id user
     public function showcorrespondant($id) {

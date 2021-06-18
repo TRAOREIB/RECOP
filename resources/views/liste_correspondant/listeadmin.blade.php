@@ -5,10 +5,11 @@
 
 <div class="text-center">
     {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
-    <b><label style="" class="text-primary">LISTE DES CORRESPONDANT</label></b>
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANTS </label></b>
 </div>
  {{-- <div class="ligne_separe_titre"></div> --}}
  <hr>
+ <input type="submit" class="btn btn-warning" value="Exporter en PDF">
     <br><br>
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
@@ -43,124 +44,13 @@
                         {{-- <td>{{$corresp->lieuresidence }}</td> --}}
 
                         <td title="">
-                        <button data-toggle="modal" data-target='#recherche{{$i}}' value="DETAILS">DETAILS </button>              
-                                     
-                            <div class="modal fade" id='recherche{{$i}}'>
-                                <div class="modal-dialog modal-lg" style="">
-                                    <div class="modal-content" style="background-color : whitesmoke">
-                                        <div class="row listetitreformgrand" style="">
-                                            <div class="col-sm-12" style="">
-                                                <h3 class=" offset-sm-3"> DETAILS CORRESPONDANTS </h3>
-                                            </div>
-                                         </div>
-                                        <div class="modal-body">  
-
-                                         <div class="row form-group">
-                                               
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">NOM</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->nomcorrespondant }}</label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">PRENOM(S)</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->prenomcorrespondant }}</label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">FONCTION</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->profession }}</label></div>
-                                            </div>
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">TELEPHONE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->telephonecorrespondant }}</label></div>
-                                            </div>
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">TELEPHONE2</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->telephone2correspondant }}</label></div>
-                                            </div>
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">MAIL</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->mailcorrespondant }}</label></div>
-                                            </div>
-                                          
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">TYPE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->typecorrespondant }}</label></div>
-                                            </div>
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">NUMERO CARTE PRESSE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->numcartepresse }}</label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">NUMERO CNIB</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->cnibcorrespondant }}</label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">NUMERO PASSPORT</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->passportcorrespondant }}</label></div>
-                                            </div>
-                                            
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left: 0px">ORGANE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->organe }}</label></div>
-                                            </div>
-                                            
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label-info" style="margin-left:0px">LIEU DE RESIDENCE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->lieuresidence }}</label></div>
-                                            </div>
-
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">REGION</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->region }}</label></div>
-                                            </div>
-
-                                            {{-- <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">TYPE PRESSE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->typepresse }}</label></div>
-
-                                            </div> --}}
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">REFERENCE JOUNALISTIQUE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->refjournal }}</label></div>
-                                            </div>
-                                           
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">PARCOURS PROFESSIONNEL</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->parcourspro }}</label></div>
-                                            </div>
-
-                                            
-
-                                             <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">CARTE PRESSE</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->pjcartepresse }}</label></div>
-                                            </div>
-
-                                            <div class="row form-group">
-                                                <div class="col-sm-4" style="background-color: skyblue;margin-left: 15px"><label class="label" style="margin-left:0px">PASSPORT</label></div>
-                                                <div class="col-sm-7" style="background-color: #EEEEEE"><label class="label-info">{{$corresp->pjpasseport }}</label></div>
-                                            </div>
-
-                                             
-                                        </div>
-                                    </div>    
-                                </div>
-                             </div>
-                            
-                            <form method="GET" action="{{ route('retirer',[$corresp->idcorrespondant]) }}">
+                        
+						<form  method="post" action="{{route('detailscorrespondant')}}">
+							<input type="submit" class="btn btn-warning" value="voir les details du compte">           
+						</form>		
+                                                      
+                            <!-- Retirer un correspondant-->
+							<form method="GET" action="{{ route('retirer',[$corresp->idcorrespondant]) }}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                                 

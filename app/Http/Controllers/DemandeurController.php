@@ -8,6 +8,7 @@ use App\Repositories\Repository;
 use App\Models\Demandeur;
 use App\Models\Correspondant;
 use App\Models\Region;
+use App\Models\PiecesJointes;
 use App\Models\Accreditation;
 use App\Http\Controllers\AccreditationController;
 use Illuminate\Support\Facades\Session;
@@ -36,6 +37,7 @@ class DemandeurController extends Controller {
     protected $vue = 'vueaccrediregion';
     protected $vueaccrediregion;
     protected $accreditation;
+	protected $piecesjointes;
 
     public function __construct(Demandeur $dem) {
         $this->demandeur = new Repository($dem);
@@ -52,6 +54,7 @@ class DemandeurController extends Controller {
         $this->accreditation = new AccreditationController($this->accredi);
         $this->correspondant = new Repository(new Correspondant());
         $this->vueaccrediregion = new RepositoryVue();
+		$this->piecesjointes = new Repository(new PiecesJointes());
         // $this->accreditation=new 
     }
 
@@ -150,6 +153,20 @@ class DemandeurController extends Controller {
         //return $this->accreditation->indexpjaccreditation($request->iddemandeur);
         //return view('demandeur.ajout_demandeur_suite', compact("maxid", "request"));
         //return view('accreditation.ajout_accreditation', compact("maxid", "request"));
+    }
+	
+	public function detailsDemandeur(Request $request) {
+        $iduser = Auth::id();
+        $iddemandeur = $request->iddemandeur;
+		//echo ($iddemandeur);
+		// Mettre Toutes les données identifiant dans des variables session
+        Session::put("moniduser", $iduser);
+        Session::put("moniddemandeur", $iddemandeur);
+		
+		$demandeurs = $this->demandeur->showinfodemandeur($iddemandeur);
+            
+        return view('demandeur.details_demandeur', compact("demandeurs","iddemandeur","iduser"));
+															
     }
 
     /**

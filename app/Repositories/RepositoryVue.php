@@ -24,13 +24,40 @@ class RepositoryVue implements RepositoryVueInterface {
         return DB::table("$vue")->where("id", "=", $id)->where("actif", "=", true)->get();
     }
 
-    public function recherchetype($vue, $typecorrespondant) {
+    public function recherchetype($vue, $typecorrespondant, $originecorrespondant) {
+		if($typecorrespondant==null && $originecorrespondant==null){
+		return DB::table("$vue")->where("actif", "=", true)->get();	
+		}
+		if($typecorrespondant!=null && $originecorrespondant!=null){
+        return DB::table("$vue")->where("typecorrespondant", "=", $typecorrespondant)->where("originecorrespondant","=",$originecorrespondant)->where("actif", "=", true)->get();
+		}
+		if($typecorrespondant!=null && $originecorrespondant==null){
         return DB::table("$vue")->where("typecorrespondant", "=", $typecorrespondant)->where("actif", "=", true)->get();
-    }
+		}
+		if($typecorrespondant==null && $originecorrespondant!=null){
+        echo ('type null & origine non null');
+		return DB::table("$vue")->where("originecorrespondant", "=", $originecorrespondant)->where("actif", "=", true)->get();
+		}
+	}
+	
+	 public function recherchetypeorgane($vue, $typeorgane) {
+		if($typeorgane==null){
+		return DB::table("$vue")->where("actif", "=", true)->get();	
+		}
+		else{
+        return DB::table("$vue")->where("typeorgane", "=", $typeorgane)->where("actif", "=", true)->get();
+		}
+	}
 
     public function rechercheaccredi($vue, $nomregion) {
-        return DB::table("$vue")->where("nomregion", "=", $nomregion)->where("actif", "=", true)->get();
-    }
+		if($nomregion==null){
+        return DB::table("$vue")->where("actif", "=", true)->get();
+		}
+		else{
+		return DB::table("$vue")->where("nomregion", "=", $nomregion)->where("actif", "=", true)->get();	
+		}	
+		
+	}
 
     public function showmyaccreditation($vue, $iduser) {
         return DB::table("$vue")->where("iduser", "=", $iduser)->where("actif", "=", true)->get();

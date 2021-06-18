@@ -24,8 +24,8 @@ class AccreditationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     protected $accreditation;
-    protected $vue = 'vueaccreditation';
-    protected $vue2 = 'vueaccrediregion';
+    protected $vue='vueaccreditation';
+    protected $vue2='vueaccrediregion';
     protected $vueaccreditation;
     protected $vueaccrediregion;
     protected $region;
@@ -57,9 +57,9 @@ class AccreditationController extends Controller {
 
     public function rechercheaccredi(Request $request) {
         $allregion = $this->region->all();
-        $allaccreditation = $this->vuerecherche->rechercheaccredi($this->vue, $request->nomregion);
+        $allaccreditation = $this->vuerecherche->rechercheaccredi($this->vue2, $request->nomregion);
         $regionchoisi = $request->nomregion;
-        return view('recherche.recherchelieuaccreditation', compact('allaccreditation', 'allregion', 'regionchoisi'));
+		return view('recherche.recherchelieuaccreditation', compact('allaccreditation', 'allregion', 'regionchoisi'));
     }
 
     public function indexpjaccreditation() {
@@ -212,8 +212,8 @@ class AccreditationController extends Controller {
         $monaccreditation = $this->accreditation->showinfoaccreditation($idaccreditation);
         $accreditations = $this->vueaccrediregion->showvue($this->vue2, $idaccreditation);
         $piecesjointes = $this->piecesjointes->showinfopj($idaccreditation);
-        echo $idaccreditation;
-        echo $piecesjointes;
+        //echo $idaccreditation;
+       // echo $piecesjointes;
 
         return view("accreditation.details_accreditation", compact("demandeurs", "accreditations", "piecesjointes", "monaccreditation", "idaccreditation", "iddemandeur", "iduser", "idcorrespondant"));
     }
