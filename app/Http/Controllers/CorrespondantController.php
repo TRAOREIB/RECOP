@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use App\Models\Correspondant;
 use App\Models\Demandeur;
+use App\Models\Region;
 use App\Models\PiecesJointes;
+use App\Http\Controllers\PiecesJointesController;
 use App\Models\MediaCorrespondant;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +30,8 @@ class CorrespondantController extends Controller {
     protected $enreguser;
     protected $piecesjointes;
     protected $mediacorrespondant;
+    protected $region;
+    protected $pjcontroller;
 
     public function __construct(Correspondant $corresp) {
         $this->correspondant = new Repository($corresp);
@@ -37,6 +41,7 @@ class CorrespondantController extends Controller {
         $this->enreguser = new RegisterController();
         $this->piecesjointes = new Repository(new PiecesJointes());
         $this->mediacorrespondant = new Repository(new MediaCorrespondant());
+        $this->region = new Repository(new Region());
     }
 
     public function index(Request $request) {
@@ -136,7 +141,7 @@ class CorrespondantController extends Controller {
         $editcorrespondant = $this->correspondant->show($idcorrespondant);
         foreach ($piecesjointes as $editpj) {
             $idpiecesjointes = $editpj->id;
-        }    
+        }
         return view('correspondant.details_correspondant', compact('editcorrespondant', 'piecesjointes', 'iduser', 'idpiecesjointes', 'idcorrespondant'));
     }
 
@@ -159,6 +164,8 @@ class CorrespondantController extends Controller {
         //recuperation de l'id du demandeur
         $idpiecesjointes = $request->idpj;
         $idcorrespondant = $request->idcorrespondant;
+        //Ajouter dans la table media correspondant pour l'historique
+        $this->mediacorrespondant->create($request->only($this->mediacorrespondant->getModel()->fillable));
         $this->correspondant->update($request->only($this->correspondant->getModel()->fillable), $id);
         //update le demandeur
         $this->demandeur->update($request->only($this->demandeur->getModel()->fillable), $iddemandeur);
@@ -178,5 +185,38 @@ class CorrespondantController extends Controller {
         $this->correspondant->delete($id);
         return $this->index();
     }
+
+    public function devenirCorrespondant(Request $request) {
+        $this->pjcontroller = new PiecesJointesController(new PiecesJointes());
+        $iduser = Auth::id();
+        $allregions = $this->region->all();
+        return view("demandeur.demandeur_correspondant", compact("iduser", "allregions"));
+    }
+
+    public function storenouvCorrespondant(Request $request) {
+        $id = Auth::id();
+        Session::put("iduser", $id);
+        //Selectionner le id du correspondant
+        $correspondant = $this->correspondant->showcorrespondantinactif($id);
+        //recuperation de l'id du correspondant
+        foreach ($correspondant as $corresp) {
+            $idcorrespondant = $corresp->idcorrespondant;
+        }
+        //faire un update dans correspondant
+        $this->correspondant->update($request->only($this->correspondant->getModel()->fillable), $idcorrespondant);
+        return view("demandeur.pj_nouveaucorrespondant", compact("idcorrespondant"));
+    }
+
+    public function strorenouvcorrespondantpj(Request $request) {
+        //  echo $request->idcorrespondant;
+        //ajout des pieces jointes
+        Session::put("pj", "true");
+        Session::put("type", "correspondant");
+        Session::put("idcorrespondant", $request->idcorrespondant);
+        $this->pjcontroller = new PiecesJointesController(new PiecesJointes());
+        return $this->pjcontroller->store($request);
+    }
+
+   
 
 }

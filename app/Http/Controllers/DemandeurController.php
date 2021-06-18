@@ -9,7 +9,9 @@ use App\Models\Demandeur;
 use App\Models\Correspondant;
 use App\Models\Region;
 use App\Models\Accreditation;
+use App\Models\PiecesJointes;
 use App\Http\Controllers\AccreditationController;
+use App\Http\Controllers\PiecesJointesController;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\RepositoryVue;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +38,7 @@ class DemandeurController extends Controller {
     protected $vue = 'vueaccrediregion';
     protected $vueaccrediregion;
     protected $accreditation;
+    protected $pjcontroller;
 
     public function __construct(Demandeur $dem) {
         $this->demandeur = new Repository($dem);
@@ -121,35 +124,6 @@ class DemandeurController extends Controller {
         Session::put("type", "demandeur");
         return view('accreditation.ajout_accreditation', compact("maxiddemandeur", "request", "allregions", "test", "idaccreditation"));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* AJOUT 01/06/2021	
-          // Création du compte d'utilisateur
-          $this->enreguser->register($request);
-          //Recuperer l'id de l'utilisateur pour mettre à jour dans demandeur
-          $maxid = $this->user->max("id");
-          //declaration d'une session pour prendre en compte l'id de l'utilisateur
-          Session::put("iduser", $maxid);
-          //   $request->iduser=$maxid;
-          $request->actif = "true";
-          FIN */
-
-
-        //return $this->accreditation->indexpjaccreditation($request->iddemandeur);
-        //return view('demandeur.ajout_demandeur_suite', compact("maxid", "request"));
-        //return view('accreditation.ajout_accreditation', compact("maxid", "request"));
     }
 
     /**
@@ -221,4 +195,47 @@ class DemandeurController extends Controller {
         return $this->index();
     }
 
+    
+     public function devenirdemandeur() {
+        //Renseigner le type de la personne qui enregistre la nouvelle demande d'accreditation
+      //  Session::put("type", "demandeur"); 
+        return view("correspondant.correspondant_demandeur");
+    }
+    
+    public function storenouvdemandeur(Request $request){
+         $id = Auth::id();
+         $allregions = $this->region->all();
+         $test=0;
+         $idaccreditation = '';
+        Session::put("iduser", $id);
+        //Selectionner le id du correspondant
+        $demandeur = $this->demandeur->showdemandeurinactif($id);
+        //recuperation de l'id du correspondant
+        foreach ($demandeur as $dem) {
+            $iddemandeur = $dem->iddemandeur;
+        }
+        if($demandeur=="[]"){
+            $ledemandeur=$this->demandeur->showdemandeur($id);
+            foreach($ledemandeur as $dem){
+                $iddemandeur=$dem->iddemandeur;
+            }
+        }
+        //Mettre le id demandeur dans une variable session
+         Session::put("iddemandeur",$iddemandeur);
+        //faire un update dans correspondant
+        $this->demandeur->update($request->only($this->correspondant->getModel()->fillable), $iddemandeur);
+        return view("demandeur.nouv_accreditation", compact("iddemandeur","allregions","test","idaccreditation"));
+    }
+    
+     public function strorenouvdemandeurpj(Request $request) {
+       echo "on arrive bien par la";
+        //ajout des pieces jointes
+        Session::put("pj", "true");
+        Session::put("type", "demandeur");
+      //  Session::put("idcorrespondant", $request->idcorrespondant);
+        $this->pjcontroller = new PiecesJointesController(new PiecesJointes());
+        return $this->pjcontroller->store($request);
+    }
+
+   
 }

@@ -22,6 +22,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $membresequipe
  * @property boolean $actif
  * @property boolean $valider
+ * @property boolean $transfer
+ * @property string $datetransfer
+ * @property string $datevalider
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
  * @property Demandeur $demandeur
@@ -45,7 +48,7 @@ class Accreditation extends Model
     /**
      * @var array
      */
-    protected $fillable = ['iddemandeur','iduser', 'titreevenement','region1','region2','region3','region4','region5','datedebut', 'datefin', 'moyentransport', 'immatriculation', 'listemateriel', 'membresequipe', 'actif','valider', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iddemandeur','iduser', 'titreevenement','region1','region2','region3','region4','region5','datedebut', 'datefin', 'moyentransport', 'immatriculation', 'listemateriel', 'membresequipe', 'actif','valider','transfer','datetransfer','datevalider', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

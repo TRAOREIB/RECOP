@@ -1,0 +1,120 @@
+@extends('tprecop.template')
+@section('contenu')
+<br> 
+<div class="text-center">
+    <label style="font-family: fantasy;color: blue"> DEMANDER UNE ACCREDITATION DE PRESSE </label>
+</div>
+<div class="ligne_separe_titre"></div>
+<br>	
+
+<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('storenouvdemandeur') }}" enctype="multipart/form-data">
+    {{ method_field('POST')}}
+    {{ csrf_field() }}	
+
+    <!-- IDENTITE DU DEMANDEUR-->
+
+    <div class="col-sm-12">  <!-- Bloc IDENTITE DU DEMANDEUR-->
+        <div class="card"> 
+            <div class=" card text-center card-header">IDENTITE DU DEMANDEUR</div>
+            <div class="card-body"> 
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="telephone">TELEPHONE PAYS DE RESIDENCE:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="telephone" placeholder=" Entrer le numero de telephone de votre pays de residence " name="telephoneresidence">
+                    </div>
+                </div>
+                
+                
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="lieuresidence">PAYS DE RESIDENCE:</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="lieuresidence" placeholder=" " name="lieuresidence">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="adressepaysresidence">ADRESSE PAYS DE RESIDENCE:</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control"   name="adressepaysresidence">
+                        <label><i>La province, la ville, rue, secteur </i></label>
+                    </div>
+                </div>
+          
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="personneprevenir">FIXEUR:</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="personneprevenir" placeholder=" " name="personneprevenir">
+                        <label><i>Nom et Prenom(s) du fixeur</i></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE DU FIXEUR:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="telephonepersp" placeholder=" " name="telephonepersp">
+                    </div>
+                </div> 
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="adressfixeur">ADRESSE DU FIXEUR:</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="adressfixeur" placeholder=" " name="adressfixeur">
+                        <label><i>La province, La ville, le secteur, le quartier</i></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="professionfixeur">PROFESSION DU FIXEUR:</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="professionfixeur" placeholder=" " name="professionfixeur">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="carteprofessionnel">N° CARTE PROFESSIONEL DU FIXEUR:</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="carteprofessionnel" placeholder=" " name="carteprofessionnelfixeur">
+                    </div>
+                </div>
+                <input type="hidden" value="1" name="actif">
+                <input type="hidden" value="0" name="actifcorrespondant">
+            </div>
+        </div>				
+    </div>		
+    <br>
+    <div class="col-sm-12">  <!-- Bloc ORGANE DE PRESSE-->
+        <div class="card"> <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="organe" class="col-sm-3 col-form-label">NOM ORGANE/INSTITUTION</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" id="organe" type="text" name="organe"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="telorgane" class="col-sm-3 col-form-label">TELEPHONE ORGANE</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" id="telorgane" type="text" name="telorgane"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="adressestruct" class="col-sm-3 col-form-label">ADRESSE ORGANE</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" id="adressestruct" type="text" name="adressestruct" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="laissepasser">N° LAISSEZ PASSER:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control"  placeholder=" " name="laissepasser">
+                        <label><i>Le numéro du laissez passer</i></label>
+                    </div>
+                </div>
+                <input type="hidden" value="0" name="test">
+            </div> 
+        </div>
+    </div>
+
+    <br>		
+    <div class="text-center">	
+        <button class="btn btn-primary" type="submit">CONTINUER</button>
+        <button class="btn btn-primary" type="reset">ANNULER</button>
+    </div>
+</form>
+<br><br>	
+@endsection

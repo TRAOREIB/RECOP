@@ -3,7 +3,7 @@
 <script src="<?php echo e(asset('js/dtable.js')); ?>"></script>
 <br> 
 <div class="text-center">
-    <label style="font-family: fantasy;color: blue"> ACCREDITATION DE PRESSE</label>
+    <label style="font-family: fantasy;color: blue"> ACCREDITATION DE PRESSE BONNE</label>
 </div>
 
 <hr>

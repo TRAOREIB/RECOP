@@ -71,7 +71,7 @@ class PiecesJointesController extends Controller {
     public function store(Request $request) {
 
         if (session('type') == 'correspondant') {
-          
+            echo $request->idcorrespondant;
             Session::put("idaccreditation", null);
             Session::put("iddemandeur", null);
             Session::put("pj", "correspondant");
@@ -82,6 +82,7 @@ class PiecesJointesController extends Controller {
             return view("correspondant.message_correspondant");
         }
         if (session('type') == 'demandeur') {
+            echo "j'arrive dans demandeur walayi";
             Session::put("idcorrespondant", null);
             Session::put("pj", "demandeur");
             $request->actif = "true";

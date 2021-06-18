@@ -34,5 +34,11 @@ class AppServiceProvider extends ServiceProvider
          Blade::if('administrateur',function(){
             return auth()->user()->profil==="Administrateur";
         });
+         Blade::if('verificateur',function(){
+            return auth()->user()->profil==="Verificateur";
+        });
+         Blade::if('coordonateur',function(){
+            return auth()->user()->profil==="Coordonateur";
+        });
     }
 }

@@ -41,6 +41,14 @@ Route::get('/', function () {
  // Route::resource('vehicule', 'VehiculeController');
 
 Route::resource('demandeur', 'DemandeurController');
+Route::resource('home', 'HomeController');
+Route::resource('verificateur', 'VerificateurController');
+Route::resource('coordonateur', 'CoordonateurController');
+Route::post('transfererdemande', 'VerificateurController@transferer')->name('transfererdemande');
+Route::post('validerdemande', 'CoordonateurController@validerdemande')->name('validerdemande');
+Route::post('invaliderdemande', 'CoordonateurController@invaliderdemande')->name('invaliderdemande');
+
+
 
 Route::resource('accreditation', 'AccreditationController');
 Route::post('retirersujet', 'AccreditationController@retirerSujet')->name("retirersujet");
@@ -48,13 +56,21 @@ Route::resource('recherche', 'RechercheController');
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
 Route::post('detailsaccreditation', 'AccreditationController@detailsaccreditation')->name('detailsaccreditation');
-Route::post('modifsujet', 'AccreditationController@modifsujets')->name('modifsujet');
+Route::post('detailscoordonateur', 'CoordonateurController@detailsaccreditation')->name('detailscoordonateur');
+
+Route::post('detailsverificateur', 'VerificateurController@detailsaccreditation')->name('detailsverificateur');
+Route::post('modifsujet', 'AccreditationController@modifsujets')->name('modifsujet'); 
 Route::post('retraitmodifsujet', 'AccreditationController@retirerSujetModif')->name('retraitmodifsujet');
 Route::post('detailscorrespondant', 'CorrespondantController@detailsCorrespondant')->name('detailscorrespondant');
 Route::post('editpjcorrespondant', 'PiecesJointesController@editpjcorrespondant')->name('editpjcorrespondant');
 Route::post('updatecorrespondant', 'PiecesJointesController@updatecorrespondant')->name('updatecorrespondant'); 
+Route::post('devenircorrespondant', 'CorrespondantController@devenirCorrespondant')->name('devenircorrespondant');
+Route::post('nouvcorrespondant', 'CorrespondantController@storenouvCorrespondant')->name('nouvcorrespondant');
+Route::post('nouvcorrespondantpj', 'CorrespondantController@strorenouvcorrespondantpj')->name('nouvcorrespondantpj');   
+Route::post('devenirdemandeur', 'DemandeurController@devenirdemandeur')->name('devenirdemandeur');   
+Route::post('storenouvdemandeur', 'DemandeurController@storenouvdemandeur')->name('storenouvdemandeur');   
+Route::post('nouvdemandeurpj', 'DemandeurController@strorenouvdemandeurpj')->name('nouvdemandeurpj');
 
- 
 //Route::resource('information', 'RechercheController');
 
 

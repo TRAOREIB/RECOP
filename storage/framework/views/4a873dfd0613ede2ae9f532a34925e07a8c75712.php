@@ -103,11 +103,9 @@
                 <label class="col-form-label" for="telorgane">TELEPHONE ORGANE:  <?php echo e($editcorrespondant->telorgane); ?></label>                     
             </div>
             <div class="form-group row">
-                <label class="col-form-label" for="adresseorgane">ADRESSE ORGANE:  <?php echo e($editcorrespondant->adressestruct); ?></label>      
+                <label class="col-form-label" for="adresseorgane">ADRESSE ORGANE:  <?php echo e($editcorrespondant->adresseorgane); ?></label>      
             </div>
-            <div class="form-group row">
-                <label class="col-form-label" for="laissezpasser">N° LAISSEZ PASSER:  <?php echo e($editcorrespondant->laissepasser); ?></label>                     
-            </div>
+           
         </div>
     </div>	
 
@@ -158,6 +156,9 @@
                 <?php endif; ?>
                 <?php if(empty(!$pj->lettrerecommendation)): ?>
                 <label class=" col-form-label" for="nom">LETTRE DE RECOMMANDATION:  voir la pièce cliquez<a href="<?php echo e(asset("storage/docs/$pj->lettrerecommendation")); ?>" target="blank"> ici</a></label>
+                <?php endif; ?>
+                <?php if(empty(!$pj->visamedia)): ?>
+                <label class=" col-form-label" for="nom">VISA DU MEDIA:  voir la pièce cliquez<a href="<?php echo e(asset("storage/docs/$pj->visamedia")); ?>" target="blank"> ici</a></label>
                 <?php endif; ?>
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

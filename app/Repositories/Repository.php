@@ -27,7 +27,11 @@ class Repository implements RepositoryInterface {
     // create a new record in the database
     public function create(array $data) {
 
-
+        echo "le idaccreditation dehors la " . session("idaccreditation");
+        if (!empty(session("idaccreditation"))) {
+            echo "on arrive bien dans le id accreditation dans Repository";
+            $data['idaccreditation'] = session("idaccreditation");
+        }
         // MAJ OK 28/05/2021
         //    echo $data['photo'];
         if (!empty(session("iduser"))) {
@@ -48,6 +52,9 @@ class Repository implements RepositoryInterface {
         }
         if (!empty(session("pj"))) {
 
+            if (!empty(session("idcorrespondant"))) {
+                $data['idcorrespondant'] = $data["idcorrespondant"];
+            }
             if (!empty($data["pjcnibperprev"])) {
                 $data['pjcnibperprev'] = $data["pjcnibperprev"]->getClientOriginalName();
             }
@@ -63,16 +70,14 @@ class Repository implements RepositoryInterface {
                 $data['lettrerecommendation'] = $data["lettrerecommendation"]->getClientOriginalName();
                 //   echo $data['lettrerecommendation'];
             }
-            if (!empty(session("idaccreditation"))) {
-                $data['idaccreditation'] = session("idaccreditation");
-            }
+
 
             if (isset($data["photo"])) {
                 //     echo $data["photo"]->getClientOriginalName();
                 $data["photo"] = $data["photo"]->getClientOriginalName();
             }
             if (isset($data["cv"])) {
-                echo $data["cv"]->getClientOriginalName();
+                //   echo $data["cv"]->getClientOriginalName();
                 $data['cv'] = $data["cv"]->getClientOriginalName();
             }
             if (isset($data["pjcnib"])) {
@@ -105,11 +110,11 @@ class Repository implements RepositoryInterface {
 
         if (!empty($data['actif'])) {
             if (!empty(session("actifcorrespondant"))) {
-                echo "//// il arrive dans correspondant dans update ////";
+                //    echo "//// il arrive dans correspondant dans update ////";
                 $data["actif"] = 0;
             }
             if (!empty(session("actifdemandeur"))) {
-                echo "//// il arrive dans demandeur dans update ////";
+                //    echo "//// il arrive dans demandeur dans update ////";
                 $data["actif"] = 0;
             }
         }
@@ -149,7 +154,7 @@ class Repository implements RepositoryInterface {
             $data["photo"] = $data["photo"]->getClientOriginalName();
         }
         if (isset($data["cv"])) {
-            echo $data["cv"]->getClientOriginalName();
+            // echo $data["cv"]->getClientOriginalName();
             $data['cv'] = $data["cv"]->getClientOriginalName();
         }
         if (isset($data["pjcnib"])) {
@@ -219,10 +224,25 @@ class Repository implements RepositoryInterface {
         return $this->model::where([["iduser", $id], ["actif", true]])->get();
     }
 
-     public function showdemandeur($id) {
+    public function showcorrespondantinactif($id) {
+        return $this->model::where([["iduser", $id], ["actif", false]])->get();
+    }
+
+    public function showdemandeurinactif($id) {
+        return $this->model::where([["iduser", $id], ["actif", false]])->get();
+    }
+
+    public function showdemandeur($id) {
         return $this->model::where("iduser", $id)->get();
     }
 
+    public function showaccreditationverificateur(){
+         return $this->model::where([["transfer",null], ["actif", true]])->orderBy("CREATED_AT", 'desc')->get();
+    }
+    
+    public function showaccreditationcoordonateur(){
+         return $this->model::where([["transfer",true], ["actif", true],["valider",null]])->orderBy("CREATED_AT", 'desc')->get();
+    }
     
     public function showmyaccreditation($id) {
         return $this->model::where([["iduser", $id], ["actif", true]])->orderBy("CREATED_AT", 'desc')->get();

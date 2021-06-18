@@ -7,7 +7,7 @@
     <hr>
     <br>
     <div><label class="label label-primary"><b>Votre Tableau de Bord</b></label></div>
-    <br>
+
     @if($idcomptecorrespondant!=null)
     <div class="card col-sm-6 justify-content-center">
         <div class="card-header">Modifier votre compte Correspondant</div>
@@ -23,7 +23,19 @@
         </div>
     </div>
     @endif
+    @if($idcomptecorrespondant==null) 
+    <form method='POST' action='{{route("devenircorrespondant")}}'>
+        @csrf
+        <input type="submit" class="btn btn-success" value="S'insvrire comme correspondant de presse" name=""incirecorresp>
+    </form>
+    @endif
     <br>
+    <form method="POST" action="{{route("devenirdemandeur")}}">
+        @csrf
+        <input type="submit" class="btn btn-warning" value="Ajouter une accreditation de presse" name="ajoutaccredi"> 
+    </form>
+    <br>
+
 
     <div class="card col-sm-12 ">
         <div class="card-header">Liste de vos demandes d'accreditation</div>
@@ -75,23 +87,23 @@
     </div>
 
     <br>
-<!--    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+    <!--    <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
+    
+                    <div class="card-body">
+                        @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                        @endif
+    
+                        {{ __('You are logged in!') }}
                     </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
-        </div>
-    </div>-->
+        </div>-->
 </div>
 <br>
 @endsection

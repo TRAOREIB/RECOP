@@ -18,36 +18,44 @@
         <link rel="stylesheet" href="<?php echo e(asset('css/bootstrap4.css')); ?>">
         <link rel="stylesheet" href="<?php echo e(asset('css/datatables.min.css')); ?>">
         <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
+	
+		<style>
 
-        <style>
+		.corpsinfo {
+			background-color:white	;
+			margin-buttom:5px ;
+			padding:20px;
 
-            .corpsinfo {
-                background-color:white	;
-                margin-buttom:5px ;
-                padding:20px;
+			}
 
-            }
-            .cadre {
-                background-color:#00808;
-                border-radius : 10 px ;
+		.cadre {
+			background-color:#008080	;
+			border-radius : 10 px ;
 
-            }
+			}
+			
+			
+			
+			
+			
+			.tableau {
+			background-color:#C0C0C0;
+			
+			padding-left:20px;
+			padding-right:20px;
+			padding-buttom:5px;
+	
+			}
+			
+			.titrenouvelleinformation {
+			
+			padding-left : 20px ;
 
-            .tableau {
-                background-color:#C0C0C0;
-
-                padding-left:20px;
-                padding-right:20px;
-                padding-buttom:5px;
-
-            }
-            .titrenouvelleinformation {
-
-                padding-left : 20px ;
-
-            }
-        </style>
-
+			}
+			
+			
+		</style>
+      
     </head>
     <body>
 
@@ -86,7 +94,7 @@
                                     <a class="dropdown-item" href="#">Dropdown item</a>
                                 </div>                             
                             </li>  
-
+							                       
                             <li class="nav-item"> 
                             </li>
                             <li class="nav-item"> 
@@ -98,50 +106,63 @@
                                 <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a> 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);"> 
                                     <a class="dropdown-item text-white" href="<?php echo e(url('choixcorrespondant')); ?>">NOUVEAU CORRESPONDANT</a> 
-                                    <?php if(auth()->guard()->guest()): ?>
-                                    <a class="dropdown-item text-white" href="<?php echo e(url('listevisiteur')); ?>">LISTE DES CORRESPONDANTS</a> 
-                                    <?php endif; ?>
-
-                                    <?php if(Auth::check()): ?>
-                                    <?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?>
-                                    <a class="dropdown-item text-white" href="<?php echo e(url('listeadmin')); ?>">LISTE DES CORRESPONDANTS</a> 
-                                    <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregioninter')); ?>">MEDIA INTERNATIONAL</a> 
-                                    <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregion')); ?>">MEDIA NATIONAL</a> 		
-                                    <?php endif; ?>
-                                    <?php endif; ?>
-                                    <?php if(Auth::check()): ?>
-                                    <?php if (\Illuminate\Support\Facades\Blade::check('enregistre')): ?>
+									<?php if(auth()->guard()->guest()): ?>
+									   <a class="dropdown-item text-white" href="<?php echo e(url('listevisiteur')); ?>">LISTE DES CORRESPONDANTS</a> 
+									<?php endif; ?>
+									
+									<?php if(Auth::check()): ?>
+									<?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?>
+									   <a class="dropdown-item text-white" href="<?php echo e(url('listeadmin')); ?>">LISTE DES CORRESPONDANTS</a> 
+									   <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregioninter')); ?>">MEDIA INTERNATIONAL</a> 
+                                       <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregion')); ?>">MEDIA NATIONAL</a> 		
+									<?php endif; ?>
+									<?php endif; ?>
+				<?php if(Auth::check()): ?>
+			        	<?php if (\Illuminate\Support\Facades\Blade::check('enregistre')): ?>
                                     <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregioninter')); ?>">MEDIA INTERNATIONAL</a> 
                                     <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregion')); ?>">MEDIA NATIONAL</a> 									
-                                    <?php endif; ?> 
-                                    <?php endif; ?>
+			               <?php endif; ?>
+					  <?php endif; ?>
                                 </div>                                
                             </li>
                             <li class="nav-item"> 
-                                <a class="nav-link text-light" href="<?php echo e(url('demandeur')); ?>">ACCREDITATION DE PRESSE</a> 
+                                <a class="nav-link text-light" href="<?php echo e(url('demandeur')); ?>">ACCREDITATION PRESSE</a> 
                             </li>
-                            <?php if(Auth::check()): ?>
-                            <?php if (\Illuminate\Support\Facades\Blade::check('enregistre')): ?>
+							<?php if(Auth::check()): ?>
+									<?php if (\Illuminate\Support\Facades\Blade::check('enregistre')): ?>
+							<!--		
                             <li class="nav-item"> 
                                 <a class="nav-link text-white" href="<?php echo e(url('informationvue')); ?>">INFORMATIONS</a> 
+                            </li>-->
+							 <li class="nav-item"> 
+                                <a class="nav-link text-white" href="<?php echo e(url('home')); ?>">MON COMPTE</a> 
                             </li>
-                            <?php endif; ?> 
-
-                            <?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?>
-                            <li class="nav-item"> 
-                                <a class="nav-link text-white" href="<?php echo e(url('informationvue')); ?>">INFORMATIONS</a> 
+							
+							<?php endif; ?>
+							
+							<?php if (\Illuminate\Support\Facades\Blade::check('verificateur')): ?>
+							<li class="nav-item"> 
+                                <a class="nav-link text-white" href="<?php echo e(url('verificateur')); ?>">LISTE DEMANDES ACCREDITATION</a> 
                             </li>
-                            <?php endif; ?>
-                            <?php endif; ?>
+							
+							<?php endif; ?>
+							<?php if (\Illuminate\Support\Facades\Blade::check('coordonateur')): ?>
+							<li class="nav-item"> 
+                                <a class="nav-link text-white" href="<?php echo e(url('coordonateur')); ?>">LISTE DEMANDES ACCREDITATION</a> 
+                            </li>
+							
+							<?php endif; ?>
+							
+									<?php endif; ?>
                         </ul>
-                        <ul class="navbar-nav ml-auto">
-                            <!-- Authentication Links -->
-                            <?php if(auth()->guard()->guest()): ?>
+                         <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        <?php if(auth()->guard()->guest()): ?>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="<?php echo e(url('login')); ?>"><b><i><?php echo e(__('CONNEXION')); ?></i></b></a>
                             </li>
-                            <?php if(Auth::check()): ?>
-
+                            
+                        <?php else: ?>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <?php echo e(Auth::user()->name); ?>
@@ -149,15 +170,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <?php echo e(__('Modifier vos informations')); ?>
-
-                                    </a>
-                                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <?php echo e(__('Changer le Mot de Passe')); ?>
-
-                                    </a>
-                                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                                         <?php echo e(__('Deconnexion')); ?>
 
                                     </a>
@@ -167,20 +182,19 @@
                                     </form>
                                 </div>
                             </li>
-                            <?php endif; ?>
-                            <?php endif; ?>
-                        </ul>
+                        <?php endif; ?>
+                    </ul>
                     </div>                 
                 </nav>
             </div>
             <?php echo $__env->yieldContent('contenu'); ?>
+         
 
 
 
-
-
-            <div class="container  d-flex flex-row">               
-                <div class="card col-sm-6 col-xs-12"> 
+       
+              <div class="container  d-flex flex-row">               
+	       <div class="card col-sm-6 col-xs-12"> 
                     <div class="card-body" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);"> 
                         <h4 class="card-title">Liens Utiles</h4> 
                         <h6 class="card-subtitle mb-2 text-muted"></h6> 
@@ -197,13 +211,18 @@
                 </div>
 
             </div>
-
-            <div class="container">
+<!--      <div class="container" > 
+            <div class="container" style="background-color:white;border-radius: 9px">
                 <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
             </div>
 
-
-
+        </div>    -->
+        <div class="container">
+            <b> <label class="offset-2">Tous droits reservés au Ministère de la Communication et des Relations avec le Parlement @ 2021</label></b>
+        </div>
+   		
+         
+     
 
 
     </body>

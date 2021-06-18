@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CoordonateurController;
+use App\Http\Controllers\VerificateurController;
 use App\Repositories\RepositoryVue;
 use App\Repositories\Repository;
 use App\Models\Accreditation;
@@ -18,6 +20,8 @@ class HomeController extends Controller {
     protected $accreditation;
     protected $correspondant;
     protected $piecesjointes;
+    protected $coordonateur;
+    protected $verificateur;
 
     public function __construct() {
         
@@ -37,6 +41,20 @@ class HomeController extends Controller {
          $id = Auth::id();
          $idpiecesjointes=null;
          $idcomptecorrespondant=null;
+         //creer une instance pour utiliser la fonction index dans verificateur controller
+         $this->verificateur=new VerificateurController();
+         $this->coordonateur=new CoordonateurController();
+         
+         echo Auth::user()->profil;
+         if(Auth::user()->profil=="Verificateur"){
+             echo "il est la";
+        //   return  $this->verificateur->index();
+         }
+         if(Auth::user()->profil=="Coordonateur"){
+             echo "il est le coordonateur";
+             return $this->coordonateur->index();
+         }
+         
         $correspondant=$this->correspondantvue->showvue($this->vuecorrespondant, $id);
         $idcorrespondant=$this->correspondant->showcorrespondant($id);
         foreach($idcorrespondant as $corresp){
@@ -51,7 +69,7 @@ class HomeController extends Controller {
         }
 
      //   echo $pjcorrespondant;
-        return view('home',compact("correspondant","accreditations","idcomptecorrespondant","pjcorrespondant","idpiecesjointes"));
+      //  return view('home',compact("correspondant","accreditations","idcomptecorrespondant","pjcorrespondant","idpiecesjointes"));
     }
 
 }

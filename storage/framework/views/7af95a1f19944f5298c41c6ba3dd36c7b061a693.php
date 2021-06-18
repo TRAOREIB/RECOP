@@ -7,7 +7,7 @@
     <hr>
     <br>
     <div><label class="label label-primary"><b>Votre Tableau de Bord</b></label></div>
-    <br>
+
     <?php if($idcomptecorrespondant!=null): ?>
     <div class="card col-sm-6 justify-content-center">
         <div class="card-header">Modifier votre compte Correspondant</div>
@@ -23,7 +23,19 @@
         </div>
     </div>
     <?php endif; ?>
+    <?php if($idcomptecorrespondant==null): ?> 
+    <form method='POST' action='<?php echo e(route("devenircorrespondant")); ?>'>
+        <?php echo csrf_field(); ?>
+        <input type="submit" class="btn btn-success" value="S'insvrire comme correspondant de presse" name=""incirecorresp>
+    </form>
+    <?php endif; ?>
     <br>
+    <form method="POST" action="<?php echo e(route("devenirdemandeur")); ?>">
+        <?php echo csrf_field(); ?>
+        <input type="submit" class="btn btn-warning" value="Ajouter une accreditation de presse" name="ajoutaccredi"> 
+    </form>
+    <br>
+
 
     <div class="card col-sm-12 ">
         <div class="card-header">Liste de vos demandes d'accreditation</div>
@@ -75,25 +87,25 @@
     </div>
 
     <br>
-<!--    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header"><?php echo e(__('Dashboard')); ?></div>
+    <!--    <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"><?php echo e(__('Dashboard')); ?></div>
+    
+                    <div class="card-body">
+                        <?php if(session('status')): ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php echo e(session('status')); ?>
 
-                <div class="card-body">
-                    <?php if(session('status')): ?>
-                    <div class="alert alert-success" role="alert">
-                        <?php echo e(session('status')); ?>
+                        </div>
+                        <?php endif; ?>
+    
+                        <?php echo e(__('You are logged in!')); ?>
 
                     </div>
-                    <?php endif; ?>
-
-                    <?php echo e(__('You are logged in!')); ?>
-
                 </div>
             </div>
-        </div>
-    </div>-->
+        </div>-->
 </div>
 <br>
 <?php $__env->stopSection(); ?>

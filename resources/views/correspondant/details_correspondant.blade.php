@@ -103,11 +103,9 @@
                 <label class="col-form-label" for="telorgane">TELEPHONE ORGANE:  {{$editcorrespondant->telorgane}}</label>                     
             </div>
             <div class="form-group row">
-                <label class="col-form-label" for="adresseorgane">ADRESSE ORGANE:  {{$editcorrespondant->adressestruct}}</label>      
+                <label class="col-form-label" for="adresseorgane">ADRESSE ORGANE:  {{$editcorrespondant->adresseorgane}}</label>      
             </div>
-            <div class="form-group row">
-                <label class="col-form-label" for="laissezpasser">N° LAISSEZ PASSER:  {{$editcorrespondant->laissepasser}}</label>                     
-            </div>
+           
         </div>
     </div>	
 
@@ -158,6 +156,9 @@
                 @endempty
                 @empty(!$pj->lettrerecommendation)
                 <label class=" col-form-label" for="nom">LETTRE DE RECOMMANDATION:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->lettrerecommendation")}}" target="blank"> ici</a></label>
+                @endempty
+                @empty(!$pj->visamedia)
+                <label class=" col-form-label" for="nom">VISA DU MEDIA:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->visamedia")}}" target="blank"> ici</a></label>
                 @endempty
             </div>
             @endforeach
