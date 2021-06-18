@@ -59,7 +59,7 @@ class Demandeur extends Model
      * @var array
      */
   
-    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance','telephoneresidence','laissepasser','professionfixeur','carteprofessionnelfixeur', 'nationalite', 'sexe', 'passeport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'mail','personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','cnib', 'telephonepersp','adressfixeur', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance','telephoneresidence','laissepasser','professionfixeur','adressepaysresidence','carteprofessionnelfixeur', 'nationalite', 'sexe', 'passeport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'mail','personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','cnib', 'telephonepersp','adressfixeur', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

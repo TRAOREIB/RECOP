@@ -104,12 +104,18 @@
             </div>
             <div class="form-group row">
                 <label class="col-form-label" for="adresseorgane">ADRESSE ORGANE:  {{$editcorrespondant->adresseorgane}}</label>      
+<<<<<<< HEAD
+=======
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label" for="laissezpasser">N° LAISSEZ PASSER:  {{$editcorrespondant->laissepasser}}</label>                     
+>>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
             </div>
            
         </div>
     </div>	
 
-    <!-- Bloc IDENTITE DU DEMANDEUR-->
+    <!-- Bloc PIECES JOINTES-->
 
     <div class="card col-sm-6 "> 
         <div class=" text-center card-header">MES PIECES JOINTES </div>
@@ -128,34 +134,34 @@
             @foreach($piecesjointes as $pj)
             <div class="form-group">
                 @empty(!$pj->photo)
-                <label class=" col-form-label" for="nom">PHOTO:voir la pièce cliquez<a href="{{asset("storage/docs/$pj->photo ")}}" target="blank"> ici</a></label><br>
+                <label class=" col-form-label" for="nom">PHOTO:voir la pièce cliquez<a href="{{asset("storage/docs/$pj->photo ")}}" target="_blank"> ici</a></label><br>
                 @endempty
                 @empty(!$pj->cv)
-                <label class=" col-form-label " for="nom">CV: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->cv")}}" target="blank"> ici</a> </label> <br>                 
+                <label class=" col-form-label " for="nom">CV: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->cv")}}" target="_blank"> ici</a> </label> <br>                 
                 @endempty
                 @empty(!$pj->pjpasseport)
-                <label class=" col-form-label" for="nom">PASSEPORT:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjpasseport")}}" target="blank"> ici</a></label><br>  
+                <label class=" col-form-label" for="nom">PASSEPORT:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjpasseport")}}" target="_blank"> ici</a></label><br>  
                 @endempty
                 @empty(!$pj->pjcnib)
-                <label class=" col-form-label" for="nom">CNI:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcnib  ")}}" target="blank"> ici</a></label><br> 
+                <label class=" col-form-label" for="nom">CNI:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcnib  ")}}" target="_blank"> ici</a></label><br> 
                 @endempty
                 @empty(!$pj->pjcartepresse)
-                <label class=" col-form-label" for="nom">CARTE DE PRESSE:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcartepresse")}}" target="blank"> ici</a></label><br> 
+                <label class=" col-form-label" for="nom">CARTE DE PRESSE:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcartepresse")}}" target="_blank"> ici</a></label><br> 
                 @endempty
                 @empty(!$pj->pjlaissezpasser)
-                <label class=" col-form-label" for="nom">LAISSEZ PASSER:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjlaissezpasser")}}" target="blank"> ici</a></label><br> 
+                <label class=" col-form-label" for="nom">LAISSEZ PASSER:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjlaissezpasser")}}" target="_blank"> ici</a></label><br> 
                 @endempty
                 @empty(!$pj->pjcnibperprev)
-                <label class=" col-form-label" for="nom">CNI FIXEUR: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcnibperprev")}}" target="blank"> ici</a> </label><br>
+                <label class=" col-form-label" for="nom">CNI FIXEUR: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcnibperprev")}}" target="_blank"> ici</a> </label><br>
                 @endempty
                 @empty(!$pj->pjpasseportperprev)
-                <label class=" col-form-label" for="nom">PASSEPORT FIXEUR: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjpasseportperprev")}}" target="blank"> ici</a> </label><br>
+                <label class=" col-form-label" for="nom">PASSEPORT FIXEUR: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjpasseportperprev")}}" target="_blank"> ici</a> </label><br>
                 @endempty
                 @empty(!$pj->pjcarteconsulaire)
-                <label class=" col-form-label" for="nom">CARTE CONSULAIRE: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcarteconsulaire")}}" target="blank"> ici</a> </label><br>
+                <label class=" col-form-label" for="nom">CARTE CONSULAIRE: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcarteconsulaire")}}" target="_blank"> ici</a> </label><br>
                 @endempty
                 @empty(!$pj->lettrerecommendation)
-                <label class=" col-form-label" for="nom">LETTRE DE RECOMMANDATION:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->lettrerecommendation")}}" target="blank"> ici</a></label>
+                <label class=" col-form-label" for="nom">LETTRE DE RECOMMANDATION:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->lettrerecommendation")}}" target="_blank"> ici</a></label>
                 @endempty
                 @empty(!$pj->visamedia)
                 <label class=" col-form-label" for="nom">VISA DU MEDIA:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->visamedia")}}" target="blank"> ici</a></label>

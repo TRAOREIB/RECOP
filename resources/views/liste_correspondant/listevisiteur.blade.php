@@ -3,14 +3,18 @@
 <br>
 <div class="text-center">
     {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
-    <b><label style="" class="text-primary">LISTE DES CORRESPONDANT</label></b>
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANTS</label></b>
 </div>
  {{-- <div class="ligne_separe_titre"></div> --}}
  <hr>
     <br><br> 
+	<a href="{{ route('generatepdf') }}">Download PDF</a><br>
+	<a href="{{ route('listecorrespondant') }}">LISTE CORRESPONDANT PDF</a><br>
+	<a href="{{ route('listeaccreditation1') }}">LISTE ACCREDITATION PDF</a><br>
+	<a href="{{ route('listedemandeur1') }}">LISTE DEMANDEUR PDF</a><br>
 
 <div class="row divtabgrand justify-content-center" style="">
-    <div class="col-sm-7" >
+    <div class="col-sm-12" >
         <div class="col-sm-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>

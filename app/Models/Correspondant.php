@@ -14,7 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $origine
  * @property string $cnib
  * @property string $datenaissance
+<<<<<<< HEAD
  * @property string $lieunaissance
+=======
+ * @property string $lieunaissance 
+>>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
  * @property string $nationalite
  * @property string $datedelivcnib 
  * @property string $dateexpircnib
@@ -24,13 +28,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $profession
  * @property string $telephone
  * @property string $telephone2
- * @property string $mail1
+ * @property string $mail
  * @property string $lieuresidence
  * @property int $numcartepresse
  * @property string $refjournal
  * @property string $parcourspro
  * @property string $region
  * @property string $organe
+ * @property string $typeorgane
  * @property string $telorgane
  *  @property string $adresseorgane
  * @property string $typepresse
@@ -61,7 +66,11 @@ class Correspondant extends Model
     /**
      * @var array
      */
+<<<<<<< HEAD
     protected $fillable = ['iduser', 'nom', 'prenom','sexe', 'typecorrespondant', 'origine', 'cnib','datedelivcnib','dateexpircnib','datenaissance','lieunaissance','nationalite', 'passeport', 'profession','personneprevenir','telephonepersp', 'telephone', 'telephone2', 'mail', 'lieuresidence', 'numcartepresse', 'refjournal', 'parcourspro', 'region','typepresse','organe','telorgane','adresseorgane', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+=======
+    protected $fillable = ['iduser', 'nom', 'prenom','sexe', 'typecorrespondant', 'origine', 'cnib','datedelivcnib','dateexpircnib','datenaissance','lieunaissance','nationalite','passeport', 'profession','personneprevenir','telephonepersp', 'telephone', 'telephone2', 'mail', 'lieuresidence', 'numcartepresse', 'refjournal', 'parcourspro', 'region','typepresse','organe','typeorgane','telorgane','adresseorgane', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+>>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

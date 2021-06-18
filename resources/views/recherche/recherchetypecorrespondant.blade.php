@@ -8,6 +8,7 @@
 </div>
  {{-- <div class="ligne_separe_titre"></div> --}}
  <hr>
+
     <br><br>
 
 <form class="form-horizontal col-sm-10" role="form" method="POST" action="{{ route('type') }}" enctype="multipart/form-data" >
@@ -17,11 +18,11 @@
    
        <label for="typecorrespondant" class="">TYPE </label> 
         <div class="col-sm-6  col-md-6"> 
-            <select class="form-control" name="typecorrespondant" required> 
-                <option selected="selected">Choisir le type</option>                                    
-                <option value="Correspondant de la Presse Nationale">Correspondant de la Presse Nationale</option> 
-                <option value="Journaliste Independant/Freelance">Journaliste Independant/Freelance</option> 
-                <option value="Correspondant de la Presse Internationale">Correspondant de la Presse Internationale</option> 
+            <select class="form-control" name="typecorrespondant" > 
+                <option value="" selected="selected">Choisir le type</option>                                    
+                <option value="Correspondant national">Correspondant de la Presse Nationale</option> 
+                <option value="Journaliste independant">Journaliste Independant/Freelance</option> 
+                <option value="Correspondant international">Correspondant de la Presse Internationale</option> 
                                                  
                 <small class="text-danger">{{ $errors->first('typecorrespondant',':message') }}</small> 
             </select> 
@@ -30,9 +31,9 @@
         <label for="originecorrespondant" class="">ORIGINE </label> 
         <div class="col-sm-3  col-md-3"> 
             <select class="form-control" name="originecorrespondant">                                     
-                <option selected="selected"> </option> 
-                <option value="nationale">Nationale</option> 
-                <option value="non nationale">Non Nationale</option> 
+                <option value="" selected="selected">Choisir l'origine </option> 
+                <option value="Nationale">Nationale</option> 
+                <option value="Etrangere">Etrangere</option> 
                                                  
                 <small class="text-danger">{{ $errors->first('originecorrespondant',':message') }}</small> 
             </select> 
@@ -47,6 +48,21 @@
 </div>
  </form>
 <br><br>
+
+<div class="text-center">
+       <b><label style="" class="text-primary">LISTE DES CORRESPONDANTS PAR ... </label></b>
+</div>
+
+<form class="form-horizontal col-sm-10" role="form" method="POST" action="{{ route('listecorrespondant') }}" enctype="multipart/form-data">
+	{{ method_field('GET')}}
+	<input type="submit" class="btn btn-warning" value="Exporter en PDF"> 
+	<input type="hidden" value="{{$typecorrespondant}}" name="typecorrespondant">
+	<input type="hidden" value="{{$originecorrespondant}}" name="originecorrespondant"> 
+
+</form>
+
+<br><br>
+
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
         <div class="col-sm-12 ligneform " style="background-color: #EEE">

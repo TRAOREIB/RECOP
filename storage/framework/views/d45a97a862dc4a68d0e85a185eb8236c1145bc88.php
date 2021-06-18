@@ -3,14 +3,18 @@
 <br>
 <div class="text-center">
     
-    <b><label style="" class="text-primary">LISTE DES CORRESPONDANT</label></b>
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANTS</label></b>
 </div>
  
  <hr>
     <br><br> 
+	<a href="<?php echo e(route('generatepdf')); ?>">Download PDF</a><br>
+	<a href="<?php echo e(route('listecorrespondant')); ?>">LISTE CORRESPONDANT PDF</a><br>
+	<a href="<?php echo e(route('listeaccreditation1')); ?>">LISTE ACCREDITATION PDF</a><br>
+	<a href="<?php echo e(route('listedemandeur1')); ?>">LISTE DEMANDEUR PDF</a><br>
 
 <div class="row divtabgrand justify-content-center" style="">
-    <div class="col-sm-7" >
+    <div class="col-sm-12" >
         <div class="col-sm-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>

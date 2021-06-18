@@ -18,30 +18,98 @@
         <div class="card"> <div class=" card text-center card-header">PIECES JOINTES</div>
             <div class="card-body">
                 <div class="form-group row">
-                    <label for="pjcnib" class="col-sm-3 col-form-label">PHOTO D'IDENTITE</label>
+                    <label for="photo" class="col-sm-3 col-form-label">PHOTO D'IDENTITE <span style="color:red">*</span></label>
                     <div class="col-sm-7">
-                        <input class="form-control"  type="file" name="photo" />
+                        <input class="form-control <?php $__errorArgs = ['photo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"  type="file" name="photo" value="<?php echo e(old('photo')); ?>" required>
+                    <?php $__errorArgs = ['nom'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+					</div>
+                </div>
+                <div class="form-group row">
+                    <label for="cv" class="col-sm-3 col-form-label">CV <span style="color:red">*</span></label>
+                    <div class="col-sm-7">
+                        <input class="form-control <?php $__errorArgs = ['cv'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="cv" type="file" name="cv" value="<?php echo e(old('cv')); ?>" required>
+                        <?php $__errorArgs = ['cv'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+						<label><i>Scan du fichier numerique du CV</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="cv" class="col-sm-3 col-form-label">CV</label>
+                    <label for="visamedia" class="col-sm-3 col-form-label">VISA DU MEDIA <span style="color:red">*</span></label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="cv" type="file" name="cv" />
-                        <label><i>Scan du fichier numerique du CV</i></label>
+                        <input class="form-control <?php $__errorArgs = ['visamedia'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="visamedia" type="file" name="visamedia" value="<?php echo e(old('visamedia')); ?>" required>
+                        <?php $__errorArgs = ['visamedia'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+						<label><i>Scan du fichier numerique du visa</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="pjcnib" class="col-sm-3 col-form-label">VISA DU MEDIA</label>
+                    <label for="pjcnib" class="col-sm-3 col-form-label">CNI <span style="color:red">*</span></label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjcnib" type="file" name="visamedia" />
-                        <label><i>Scan du fichier numerique du visa</i></label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="pjcnib" class="col-sm-3 col-form-label">CNI</label>
-                    <div class="col-sm-7">
-                        <input class="form-control" id="pjcnib" type="file" name="pjcnib" />
-                        <label><i>Scan de la CNI (Recto et Verso)</i></label>
+                        <input class="form-control <?php $__errorArgs = ['pjcnib'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="pjcnib" type="file" name="pjcnib" value="<?php echo e(old('pjcnib')); ?>" required>
+                        <?php $__errorArgs = ['pjcnib'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+						<label><i>Scan de la CNI (Recto et Verso)</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -60,10 +128,27 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="pjcartepresse" class="col-sm-3 col-form-label">CARTE PRESSE</label>
+                    <label for="pjcartepresse" class="col-sm-3 col-form-label">CARTE PRESSE <span style="color:red">*</span></label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjcartepresse" type="file" name="pjcartepresse" />
-                        <label><i>Scan de la carte de Presse (Recto et Verso)</i></label>
+                        <input class="form-control <?php $__errorArgs = ['pjcartepresse'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="pjcartepresse" type="file" name="pjcartepresse" value="<?php echo e(old('pjcartepresse')); ?>" required>
+                        <?php $__errorArgs = ['pjcartepresse'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+						<label><i>Scan de la carte de Presse (Recto et Verso)</i></label>
                     </div>
                 </div>	
                 <input type="hidden" value="<?php echo e($maxid); ?>" name="idcorrespondant">

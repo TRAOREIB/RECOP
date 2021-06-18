@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CorrespondantController;
 use App\Http\Controllers\AccreditationController;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\PiecesJointesRequest;
 
 class PiecesJointesController extends Controller {
 
@@ -68,7 +69,7 @@ class PiecesJointesController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(PiecesJointesRequest $request) {
 
         if (session('type') == 'correspondant') {
             echo $request->idcorrespondant;
@@ -206,6 +207,15 @@ class PiecesJointesController extends Controller {
         $editpjcorrespondant = $this->piecesjointes->show($idpiecesjointes);
         return view("correspondant.modif_pj", compact("editpjcorrespondant","idcorrespondant"));
     }
+	
+	public function editpjdemandeur(Request $request){
+        echo "on y arrive ";
+        $idpiecesjointes=$request->idpj;
+        $iddemandeur=$request->iddemandeur;
+        echo $idpiecesjointes;
+        $editpjdemandeur=$this->piecesjointes->show($idpiecesjointes);
+        return view("demandeur.modif_pj", compact("editpjdemandeur","iddemandeur"));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -235,6 +245,15 @@ class PiecesJointesController extends Controller {
         $request->idcorrespondant = $request->idcorresp;
         $request->idpiecesjointes=$idpj;
         return $this->corresp->detailsCorrespondant($request);
+    }
+	
+	public function updatedemandeur(Request $request){
+         $idpj = $request->idpj;
+        $this->savepiecesjointes($request);
+        $this->piecesjointes->update($request->only($this->piecesjointes->getModel()->fillable), $idpj);
+        $request->iddemandeur = $request->iddemand;
+        $request->idpiecesjointes=$idpj;
+        return $this->accredi->detailsCorrespondant($request);
     }
 
     /**

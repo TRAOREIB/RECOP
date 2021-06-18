@@ -19,7 +19,7 @@
                 <div class="form-group row">
                     <label class="control-label col-sm-3" for="sexe">TYPE :</label>
                     <div class="col-sm-6">
-                        <select class="form-control" id="sexe" name="typecorrespondant">
+                        <select class="form-control" id="typecorrespondant" name="typecorrespondant">
                             <option value="Correspondant national">Correspondant de la presse nationale</option>
                             <option value="Journaliste independant">Journaliste independant/FreeLance</option>
                                  <option value="Correspondant international">Correspondant de la presse internationale</option>         

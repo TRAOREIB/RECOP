@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Requests\CorrespondantRequest;
 
 class CorrespondantController extends Controller {
 
@@ -69,7 +70,7 @@ class CorrespondantController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(CorrespondantRequest $request) {
 
         $nom = $request->nom;
         $prenom = $request->prenom;

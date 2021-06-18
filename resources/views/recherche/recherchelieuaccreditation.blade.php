@@ -38,11 +38,17 @@
 </form>
 <br>
 
-<div class="offset-1">
-    {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
-    <b><label style="" class="">Liste des Accréditations de la Region : {{$regionchoisi}} </label></b>
+<div class="text-center">
+    <b><label style="" class="text-primary">LISTE DES ACCREDITATIONS DE LA REGION: {{$regionchoisi}} </label></b>
 </div>
-<br>
+
+
+<form class="form-horizontal col-sm-10" role="form" method="POST" action="{{ route('listeaccreditation1') }}" enctype="multipart/form-data">
+	{{ method_field('GET')}}
+	<input type="submit" class="btn btn-warning" value="Exporter en PDF"> 
+	<input type="hidden" value="{{$regionchoisi}}" name="nomregion"> 
+</form>
+<br><br>
 
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
@@ -52,8 +58,7 @@
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
                         <th>NOM</th>
                         <th>PRENOM(s)</th>
-                        <th>TELEPHONE</th>
-                        <th>SUJET A COUVRIR</th>
+						<th>SUJET A COUVRIR</th> 
                         <th>DATE DEBUT</th>
                         <th>DATE FIN</th>
                         <th>LIEU EVENEMENT</th>
@@ -65,8 +70,7 @@
                     <tr>
                         <td>{{$accredi->nomdemandeur }}</td>
                         <td>{{$accredi->prenomdemandeur }}</td>
-                        <td>{{$accredi->telephone }}</td>
-                        <td>{{$accredi->titreevenement }}</td>
+                        <td>{{$accredi->titre }}</td>                        
                         <td>{{$accredi->datedebut }}</td>
                         <td>{{$accredi->datefin }}</td>                       
                         <td>{{$accredi->lieuevenement }}</td>

@@ -121,7 +121,11 @@
 			        	@enregistre
                                     <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a> 
                                     <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a> 									
+<<<<<<< HEAD
 			               @endenregistre
+=======
+			               @endenregistre 
+>>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
 					  @endif
                                 </div>                                
                             </li>
@@ -130,13 +134,17 @@
                             </li>
 							@if(Auth::check())
 									@enregistre
+<<<<<<< HEAD
 							<!--		
+=======
+>>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
                             <li class="nav-item"> 
                                 <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
                             </li>-->
 							 <li class="nav-item"> 
                                 <a class="nav-link text-white" href="{{ url('home') }}">MON COMPTE</a> 
                             </li>
+<<<<<<< HEAD
 							
 							@endenregistre
 							
@@ -153,6 +161,15 @@
 							
 							@endcoordonateur
 							
+=======
+							@endenregistre 
+							 
+							@administrateur
+							 <li class="nav-item"> 
+                                <a class="nav-link text-white" href="{{ url('informationvue') }}">INFORMATIONS</a> 
+                            </li>
+							@endadministrateur
+>>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
 									@endif
                         </ul>
                          <ul class="navbar-nav ml-auto">

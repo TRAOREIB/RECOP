@@ -121,7 +121,11 @@
 			        	<?php if (\Illuminate\Support\Facades\Blade::check('enregistre')): ?>
                                     <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregioninter')); ?>">MEDIA INTERNATIONAL</a> 
                                     <a class="dropdown-item text-white" href="<?php echo e(url('rechercheregion')); ?>">MEDIA NATIONAL</a> 									
+<<<<<<< HEAD
 			               <?php endif; ?>
+=======
+			               <?php endif; ?> 
+>>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
 					  <?php endif; ?>
                                 </div>                                
                             </li>
@@ -130,13 +134,17 @@
                             </li>
 							<?php if(Auth::check()): ?>
 									<?php if (\Illuminate\Support\Facades\Blade::check('enregistre')): ?>
+<<<<<<< HEAD
 							<!--		
+=======
+>>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
                             <li class="nav-item"> 
                                 <a class="nav-link text-white" href="<?php echo e(url('informationvue')); ?>">INFORMATIONS</a> 
                             </li>-->
 							 <li class="nav-item"> 
                                 <a class="nav-link text-white" href="<?php echo e(url('home')); ?>">MON COMPTE</a> 
                             </li>
+<<<<<<< HEAD
 							
 							<?php endif; ?>
 							
@@ -153,6 +161,15 @@
 							
 							<?php endif; ?>
 							
+=======
+							<?php endif; ?> 
+							 
+							<?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?>
+							 <li class="nav-item"> 
+                                <a class="nav-link text-white" href="<?php echo e(url('informationvue')); ?>">INFORMATIONS</a> 
+                            </li>
+							<?php endif; ?>
+>>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
 									<?php endif; ?>
                         </ul>
                          <ul class="navbar-nav ml-auto">

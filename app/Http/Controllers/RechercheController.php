@@ -29,6 +29,8 @@ class RechercheController extends Controller
 	
 	
 	
+	
+	
 
     public function __construct() {
         $this->vuerecherche = new RepositoryVue();
@@ -49,15 +51,18 @@ class RechercheController extends Controller
     public function recherchetype(Request $request)
     {
         //
-        $allcorrespondant = $this->vuerecherche->recherchetype($this->vue,$request->typecorrespondant);
-        //echo $allcorrespondant;
-        return view('recherche.recherchetypecorrespondant',compact('allcorrespondant'));
+        $allcorrespondant = $this->vuerecherche->recherchetype($this->vue,$request->typecorrespondant,$request->originecorrespondant);
+        $typecorrespondant=$request->typecorrespondant;
+		$originecorrespondant=$request->originecorrespondant;
+		//echo $allcorrespondant;
+        return view('recherche.recherchetypecorrespondant',compact('allcorrespondant','typecorrespondant','originecorrespondant'));
     }
 
     public function listeadmin(Request $request)
     {
         //
         $allcorrespondant = $this->vuerecherche->allvue($this->vue);
+		
         //echo $allcorrespondant;
         return view('liste_correspondant.listeadmin',compact('allcorrespondant'));
     }
@@ -69,7 +74,14 @@ class RechercheController extends Controller
         //echo $allcorrespondant;
         return view('liste_correspondant.listevisiteur',compact('allcorrespondant'));
     }
-
+	
+	public function recherchetypeorgane(Request $request)
+    {
+        //
+        $allcorrespondant = $this->vuerecherche->recherchetypeorgane($this->vue,$request->typeorgane);
+        //echo $allcorrespondant;
+        return view('recherche.recherchetypeorganecorrespondant',compact('allcorrespondant'));
+    }
 
 
 

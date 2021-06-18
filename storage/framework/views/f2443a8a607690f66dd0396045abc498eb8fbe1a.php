@@ -40,11 +40,18 @@
 </form>
 <br>
 
-<div class="offset-1">
-    
-    <b><label style="" class="">Liste des Accréditations de la Region : <?php echo e($regionchoisi); ?> </label></b>
+<div class="text-center">
+    <b><label style="" class="text-primary">LISTE DES ACCREDITATIONS DE LA REGION: <?php echo e($regionchoisi); ?> </label></b>
 </div>
-<br>
+
+
+<form class="form-horizontal col-sm-10" role="form" method="POST" action="<?php echo e(route('listeaccreditation1')); ?>" enctype="multipart/form-data">
+	<?php echo e(method_field('GET')); ?>
+
+	<input type="submit" class="btn btn-warning" value="Exporter en PDF"> 
+	<input type="hidden" value="<?php echo e($regionchoisi); ?>" name="nomregion"> 
+</form>
+<br><br>
 
 <div class="row divtabgrand" style="">
     <div class="col-sm-12" >
@@ -54,8 +61,7 @@
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
                         <th>NOM</th>
                         <th>PRENOM(s)</th>
-                        <th>TELEPHONE</th>
-                        <th>SUJET A COUVRIR</th>
+						<th>SUJET A COUVRIR</th> 
                         <th>DATE DEBUT</th>
                         <th>DATE FIN</th>
                         <th>LIEU EVENEMENT</th>
@@ -67,8 +73,7 @@
                     <tr>
                         <td><?php echo e($accredi->nomdemandeur); ?></td>
                         <td><?php echo e($accredi->prenomdemandeur); ?></td>
-                        <td><?php echo e($accredi->telephone); ?></td>
-                        <td><?php echo e($accredi->titreevenement); ?></td>
+                        <td><?php echo e($accredi->titre); ?></td>                        
                         <td><?php echo e($accredi->datedebut); ?></td>
                         <td><?php echo e($accredi->datefin); ?></td>                       
                         <td><?php echo e($accredi->lieuevenement); ?></td>

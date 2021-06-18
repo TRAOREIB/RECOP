@@ -50,6 +50,21 @@ Route::post('invaliderdemande', 'CoordonateurController@invaliderdemande')->name
 
 
 
+// AJOUT ROUTE DEMANDEURS 17/06/2021
+
+Route::post('detailsdemandeur', 'DemandeurController@detailsdemandeur')->name('detailsdemandeur');
+// END
+
+// LISTE PDF 
+
+Route::get('generatepdf', 'EtatController@listevisiteur')->name('generatepdf');
+Route::get('listecorrespondant', 'EtatController@listecorrespondant')->name('listecorrespondant');
+Route::get('listeaccreditation1', 'EtatController@listeaccreditation')->name('listeaccreditation1');
+Route::get('listedemandeur1', 'EtatController@listedemandeur')->name('listedemandeur1');
+
+//END
+
+
 Route::resource('accreditation', 'AccreditationController');
 Route::post('retirersujet', 'AccreditationController@retirerSujet')->name("retirersujet");
 Route::resource('recherche', 'RechercheController');
@@ -178,7 +193,7 @@ Route::resource('vehicule', 'VehiculeController');
 
 Route::get('recherchetype', 'RechercheController@recherchetype')->name('type');
 
-
+Route::get('recherchetypeorgane', 'RechercheController@recherchetypeorgane')->name('typeorgane');
 
 Route::get('rechercheaccredi', 'AccreditationController@rechercheaccredi')->name('lieuaccredi');
 
