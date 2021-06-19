@@ -38,7 +38,7 @@ class Repository implements RepositoryInterface {
             $data['iduser'] = session('iduser');
         }
         if (!empty(session("idcorrespondant"))) {
-            $data['idcorrespondant'] = session('idregion');
+            $data['idcorrespondant'] = session('idcorrespondant');
         }
 
         if (!empty(session("ac"))) {

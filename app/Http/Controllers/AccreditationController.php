@@ -17,7 +17,8 @@ use App\Models\AccrediRegion;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
-class AccreditationController extends Controller {
+class AccreditationController extends Controller
+{
 
     /**
      * Display a listing of the resource.
@@ -25,8 +26,8 @@ class AccreditationController extends Controller {
      * @return \Illuminate\Http\Response
      */
     protected $accreditation;
-    protected $vue='vueaccreditation';
-    protected $vue2='vueaccrediregion';
+    protected $vue = 'vueaccreditation';
+    protected $vue2 = 'vueaccrediregion';
     protected $vueaccreditation;
     protected $vueaccrediregion;
     protected $region;
@@ -35,7 +36,8 @@ class AccreditationController extends Controller {
     protected $demandeur;
     protected $piecesjointes;
 
-    public function __construct(Accreditation $accre) {
+    public function __construct(Accreditation $accre)
+    {
         $reg = new Region();
         $acregion = new AccrediRegion();
         $this->vuerecherche = new RepositoryVue();
@@ -48,23 +50,26 @@ class AccreditationController extends Controller {
         $this->piecesjointes = new Repository(new PiecesJointes);
     }
 
-    public function index() {
-// $allregion = $this->region->all();
+    public function index()
+    {
+        // $allregion = $this->region->all();
         $allregions = $this->region->all();
         return view('accreditation.ajout_accreditation', compact("allregions"));
 
-//return view('accreditation.ajout_accreditation',compact('allregion'));
+        //return view('accreditation.ajout_accreditation',compact('allregion'));
     }
 
-    public function rechercheaccredi(Request $request) {
+    public function rechercheaccredi(Request $request)
+    {
         $allregion = $this->region->all();
         $allaccreditation = $this->vuerecherche->rechercheaccredi($this->vue2, $request->nomregion);
         $regionchoisi = $request->nomregion;
-		return view('recherche.recherchelieuaccreditation', compact('allaccreditation', 'allregion', 'regionchoisi'));
+        return view('recherche.recherchelieuaccreditation', compact('allaccreditation', 'allregion', 'regionchoisi'));
     }
 
-    public function indexpjaccreditation() {
-//      
+    public function indexpjaccreditation()
+    {
+        //      
         $allregions = $this->region->all();
         return view('accreditation.ajout_accreditation', compact('allregions'));
     }
@@ -74,13 +79,15 @@ class AccreditationController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-//
+    public function create()
+    {
+        //
     }
 
-    public function listeaccreditation() {
-//
-//$allaccreditation=$this->accreditation->all();
+    public function listeaccreditation()
+    {
+        //
+        //$allaccreditation=$this->accreditation->all();
         $allaccreditation = $this->vueaccreditation->allvue($this->vue);
         return view('accreditation.liste_accreditation', compact('allaccreditation'));
     }
@@ -91,7 +98,8 @@ class AccreditationController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $allregions = $this->region->all();
         if ($request->test == 0) {
             echo "il le fait dans le store et bien";
@@ -123,11 +131,14 @@ class AccreditationController extends Controller {
         }
     }
 
-    public function modifsujets(Request $request) {
+    public function modifsujets(Request $request)
+    {
+
+        echo "la valeure de test ici ---" . $request->test;
         $allregions = $this->region->all();
         $editaccreditation = $this->accreditation->show($request->idaccreditation);
         if ($request->test == 0) {
-            echo "il entre encore dans le test ---";
+            // echo "il entre encore dans le test ---";
             $this->accreditation->create($request->only($this->accreditation->getModel()->fillable));
             $maxidaccreditation = $this->accreditation->max("idaccreditation");
             Session::put("idaccreditation", $maxidaccreditation);
@@ -139,26 +150,28 @@ class AccreditationController extends Controller {
         // echo session("idaccreditation");
         $idaccreditation = $request->idaccreditation;
         $listesujet = $this->vueaccrediregion->showvue($this->vue2, $request->idaccreditation);
-        // return view('accreditation.modif_accreditation', compact("test", "allregions", "listesujet", "idaccreditation", "editaccreditation"));
+        return view('accreditation.modif_accreditation', compact("test", "allregions", "listesujet", "idaccreditation", "editaccreditation"));
     }
 
-    public function retirerSujet(Request $request) {
+    public function retirerSujet(Request $request)
+    {
         $allregions = $this->region->all();
         $test = 1;
         $this->accrediregion->delete($request->idaccrediregion);
         $listesujet = $this->vueaccrediregion->showvue($this->vue2, session("idaccreditation"));
-//        echo session("idaccreditation");
-//        echo $listesujet;
+        //        echo session("idaccreditation");
+        //        echo $listesujet;
         $idaccreditation = session("idaccreditation");
         if (empty($request->nouveaudemandeur)) {
-            $iddemandeur=session("iddemandeur");
-            return view('demandeur.nouv_accreditation', compact("test", "allregions", "listesujet", "idaccreditation","iddemandeur"));
+            $iddemandeur = session("iddemandeur");
+            return view('demandeur.nouv_accreditation', compact("test", "allregions", "listesujet", "idaccreditation", "iddemandeur"));
         } else {
             return view('accreditation.ajout_accreditation', compact("test", "allregions", "listesujet", "idaccreditation"));
         }
     }
 
-    public function retirerSujetModif(Request $request) {
+    public function retirerSujetModif(Request $request)
+    {
 
         $allregions = $this->region->all();
         $test = 1;
@@ -169,7 +182,8 @@ class AccreditationController extends Controller {
         return view('accreditation.modif_accreditation', compact("test", "allregions", "listesujet", "idaccreditation", "editaccreditation"));
     }
 
-    public function saveRegions(Request $request) {
+    public function saveRegions(Request $request)
+    {
 
         // echo session('idaccreditation');
         Session::put("accrediregion", "vrai");
@@ -194,8 +208,9 @@ class AccreditationController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idaccreditation) {
-//
+    public function show($idaccreditation)
+    {
+        //
     }
 
     /**
@@ -204,18 +219,24 @@ class AccreditationController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $idaccreditation) {
+    public function edit(Request $request, $idaccreditation)
+    {
         $test = $request->test;
         $allregions = $this->region->all();
         $regions = $this->vueaccreditation->showvue($this->vue, $idaccreditation);
         $editaccreditation = $this->accreditation->show($idaccreditation);
-        //   echo $editaccreditation;
+        if ($editaccreditation->idaccreditation != null) {
+            $test = 1;
+        } 
+         echo "voila l'idaccreditation ".$idaccreditation ; 
         echo "je suis dans le test " . $test;
-        $listesujet = $this->vueaccrediregion->showvue($this->vue2, $idaccreditation);
-        return view('accreditation.modif_accreditation', compact('editaccreditation', 'regions', 'allregions', 'test', 'idaccreditation', 'listesujet'));
+    
+         $listesujet = $this->vueaccrediregion->showvue($this->vue2, $idaccreditation);
+         return view('accreditation.modif_accreditation', compact('editaccreditation', 'regions', 'allregions', 'test', 'idaccreditation', 'listesujet'));
     }
 
-    public function detailsaccreditation(Request $request) {
+    public function detailsaccreditation(Request $request)
+    {
 
         $idaccreditation = $request->idaccreditation;
         $iduser = $request->iduser;
@@ -233,7 +254,7 @@ class AccreditationController extends Controller {
         $accreditations = $this->vueaccrediregion->showvue($this->vue2, $idaccreditation);
         $piecesjointes = $this->piecesjointes->showinfopj($idaccreditation);
         //echo $idaccreditation;
-       // echo $piecesjointes;
+        // echo $piecesjointes;
 
         return view("accreditation.details_accreditation", compact("demandeurs", "accreditations", "piecesjointes", "monaccreditation", "idaccreditation", "iddemandeur", "iduser", "idcorrespondant"));
     }
@@ -245,7 +266,8 @@ class AccreditationController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idaccreditation) {
+    public function update(Request $request, $idaccreditation)
+    {
         if (isset($request->modifaccreditation)) {
             $this->accreditation->update($request->only($this->accreditation->getModel()->fillable), $idaccreditation);
             $request->idaccreditation = session("monidaccreditation");
@@ -272,8 +294,8 @@ class AccreditationController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
-//
+    public function destroy($id)
+    {
+        //
     }
-
 }

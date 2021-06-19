@@ -3,36 +3,36 @@
 <br>
 
 <div class="container">
-    <label class="label label-primary"><b>BIENVENUE  {{ Auth::user()->name }}</b></label>
+    <label class="label label-primary"><b>BIENVENUE {{ Auth::user()->name }}</b></label>
     <hr>
     <br>
     <div><label class="label label-primary"><b>Votre Tableau de Bord</b></label></div>
-
-    @if($idcomptecorrespondant!=null)
+    @if($correspondantexiste==1)
     <div class="card col-sm-6 justify-content-center">
         <div class="card-header">Modifier votre compte Correspondant</div>
         <div class="card-body row">
-            <form  method="post" action="{{route('detailscorrespondant')}}">
+            <form method="post" action="{{route('detailscorrespondant')}}">
                 @csrf
                 <input type="submit" class="btn btn-primary" value="Modifier vos informations" name="idcorrespondant"> &nbsp;
-                <input type="hidden"  value="{{$idcomptecorrespondant}}" name="idcorrespondant">
-                <input type="hidden"  value="{{$idpiecesjointes}}" name="idpj">    
-                <input type="submit" class="btn btn-warning" value="voir les details du compte" name="pjcorrespondant">           
+                <input type="hidden" value="{{$idcomptecorrespondant}}" name="idcorrespondant">
+                <input type="hidden" value="{{$idpiecesjointes}}" name="idpj">
+                <input type="submit" class="btn btn-warning" value="voir les details du compte" name="pjcorrespondant">
             </form>
 
         </div>
     </div>
     @endif
-    @if($idcomptecorrespondant==null) 
+    @if($correspondantexiste==0)
     <form method='POST' action='{{route("devenircorrespondant")}}'>
         @csrf
-        <input type="submit" class="btn btn-success" value="S'insvrire comme correspondant de presse" name=""incirecorresp>
+        <input type="submit" class="btn btn-success" value="S'insvrire comme correspondant de presse" name="" incirecorresp>
     </form>
     @endif
     <br>
     <form method="POST" action="{{route("devenirdemandeur")}}">
         @csrf
-        <input type="submit" class="btn btn-warning" value="Ajouter une accreditation de presse" name="ajoutaccredi"> 
+        <input type="submit" class="btn btn-warning" value="Ajouter une accreditation de presse" name="ajoutaccredi">
+        <input type="hidden" value="{{$idcomptecorrespondant}}" name="idcorrespondant">
     </form>
     <br>
 
@@ -48,19 +48,19 @@
                         <tr style="background-color:#2a6496;color: #FFFFFF;">
                             <th>Numero de la Demande</th>
                             <th>Date de Soumission</th>
-                            <th>Sujet(s)</th>  
-                            <th>Etat</th> 
-                            <th>Modifier</th> 
+                            <th>Sujet(s)</th>
+                            <th>Etat</th>
+                            <th>Modifier</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        @foreach($accreditations as $mesaccredi) 
+                        @foreach($accreditations as $mesaccredi)
                         <tr>
                             <td>{{$mesaccredi->idaccreditation}}</td>
                             <td>{{$mesaccredi->CREATED_AT}}</td>
-                            <td>{{$mesaccredi->titreevenement}},....</td> 
-                            <td>En cours</td> 
+                            <td>{{$mesaccredi->titreevenement}},....</td>
+                            <td>En cours</td>
                             <td>
                                 <div class="row">
                                     <form method="post" action="{{route('detailsaccreditation')}}">
@@ -73,8 +73,8 @@
                                         &nbsp;
                                         <input type="submit" class="btn btn-warning" value="Modifier la demande">
                                     </form>
-                                </div>    
-                            </td> 
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
 
@@ -82,7 +82,7 @@
                 </table>
 
             </div>
-        </div>  
+        </div>
 
     </div>
 

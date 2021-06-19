@@ -3,36 +3,36 @@
 <br>
 
 <div class="container">
-    <label class="label label-primary"><b>BIENVENUE  <?php echo e(Auth::user()->name); ?></b></label>
+    <label class="label label-primary"><b>BIENVENUE <?php echo e(Auth::user()->name); ?></b></label>
     <hr>
     <br>
     <div><label class="label label-primary"><b>Votre Tableau de Bord</b></label></div>
-
-    <?php if($idcomptecorrespondant!=null): ?>
+    <?php if($correspondantexiste==1): ?>
     <div class="card col-sm-6 justify-content-center">
         <div class="card-header">Modifier votre compte Correspondant</div>
         <div class="card-body row">
-            <form  method="post" action="<?php echo e(route('detailscorrespondant')); ?>">
+            <form method="post" action="<?php echo e(route('detailscorrespondant')); ?>">
                 <?php echo csrf_field(); ?>
                 <input type="submit" class="btn btn-primary" value="Modifier vos informations" name="idcorrespondant"> &nbsp;
-                <input type="hidden"  value="<?php echo e($idcomptecorrespondant); ?>" name="idcorrespondant">
-                <input type="hidden"  value="<?php echo e($idpiecesjointes); ?>" name="idpj">    
-                <input type="submit" class="btn btn-warning" value="voir les details du compte" name="pjcorrespondant">           
+                <input type="hidden" value="<?php echo e($idcomptecorrespondant); ?>" name="idcorrespondant">
+                <input type="hidden" value="<?php echo e($idpiecesjointes); ?>" name="idpj">
+                <input type="submit" class="btn btn-warning" value="voir les details du compte" name="pjcorrespondant">
             </form>
 
         </div>
     </div>
     <?php endif; ?>
-    <?php if($idcomptecorrespondant==null): ?> 
+    <?php if($correspondantexiste==0): ?>
     <form method='POST' action='<?php echo e(route("devenircorrespondant")); ?>'>
         <?php echo csrf_field(); ?>
-        <input type="submit" class="btn btn-success" value="S'insvrire comme correspondant de presse" name=""incirecorresp>
+        <input type="submit" class="btn btn-success" value="S'insvrire comme correspondant de presse" name="" incirecorresp>
     </form>
     <?php endif; ?>
     <br>
     <form method="POST" action="<?php echo e(route("devenirdemandeur")); ?>">
         <?php echo csrf_field(); ?>
-        <input type="submit" class="btn btn-warning" value="Ajouter une accreditation de presse" name="ajoutaccredi"> 
+        <input type="submit" class="btn btn-warning" value="Ajouter une accreditation de presse" name="ajoutaccredi">
+        <input type="hidden" value="<?php echo e($idcomptecorrespondant); ?>" name="idcorrespondant">
     </form>
     <br>
 
@@ -48,19 +48,19 @@
                         <tr style="background-color:#2a6496;color: #FFFFFF;">
                             <th>Numero de la Demande</th>
                             <th>Date de Soumission</th>
-                            <th>Sujet(s)</th>  
-                            <th>Etat</th> 
-                            <th>Modifier</th> 
+                            <th>Sujet(s)</th>
+                            <th>Etat</th>
+                            <th>Modifier</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        <?php $__currentLoopData = $accreditations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mesaccredi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
+                        <?php $__currentLoopData = $accreditations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mesaccredi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
                             <td><?php echo e($mesaccredi->idaccreditation); ?></td>
                             <td><?php echo e($mesaccredi->CREATED_AT); ?></td>
-                            <td><?php echo e($mesaccredi->titreevenement); ?>,....</td> 
-                            <td>En cours</td> 
+                            <td><?php echo e($mesaccredi->titreevenement); ?>,....</td>
+                            <td>En cours</td>
                             <td>
                                 <div class="row">
                                     <form method="post" action="<?php echo e(route('detailsaccreditation')); ?>">
@@ -73,8 +73,8 @@
                                         &nbsp;
                                         <input type="submit" class="btn btn-warning" value="Modifier la demande">
                                     </form>
-                                </div>    
-                            </td> 
+                                </div>
+                            </td>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -82,7 +82,7 @@
                 </table>
 
             </div>
-        </div>  
+        </div>
 
     </div>
 
@@ -109,5 +109,4 @@
 </div>
 <br>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/home.blade.php ENDPATH**/ ?>

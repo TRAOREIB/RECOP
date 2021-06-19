@@ -1,12 +1,14 @@
 @extends('tprecop.template')
 @section('contenu')
 <br> 
-				<div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Félicitation</h5>
-                        <p class="card-text">Votre demande d'accréditation a été enregistrée.</p>
-                    <a href="#" class="btn btn-primary">Nouvelle accréditation</a>
-                <br>
-                </div>
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">L'equipe de la Plateforme vous remercie</p>
+        <p>Votre Demande d'accreditation est en attente de Validation</p>
+        <p>Vous recevriez un mail de validation de votre demande incessamment</p>
+        <br>
+    </div>
+</div>
                  
 @endsection

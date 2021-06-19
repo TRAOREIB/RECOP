@@ -26,19 +26,19 @@
 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datedebut">DATE DE DEBUT</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         <input type="date" class="form-control" id="datedebut" placeholder="Entrer " name="datedebut">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datefin">DATE DE FIN</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         <input type="date" class="form-control" id="datefin" placeholder="Entrer " name="datefin">
                     </div>
                 </div> 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datefin">REGION</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         <select class="form-control" name="idregion">
                             <?php $__currentLoopData = $allregions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $region): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option class="col-sm-7" value="<?php echo e($region->idregion); ?>"><?php echo e($region->nomregion); ?></option>

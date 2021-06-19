@@ -104,12 +104,6 @@
             </div>
             <div class="form-group row">
                 <label class="col-form-label" for="adresseorgane">ADRESSE ORGANE:  <?php echo e($editcorrespondant->adresseorgane); ?></label>      
-<<<<<<< HEAD
-=======
-            </div>
-            <div class="form-group row">
-                <label class="col-form-label" for="laissezpasser">N° LAISSEZ PASSER:  <?php echo e($editcorrespondant->laissepasser); ?></label>                     
->>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
             </div>
            
         </div>

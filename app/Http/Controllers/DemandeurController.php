@@ -10,7 +10,6 @@ use App\Models\Correspondant;
 use App\Models\Region;
 use App\Models\PiecesJointes;
 use App\Models\Accreditation;
-use App\Models\PiecesJointes;
 use App\Http\Controllers\AccreditationController;
 use App\Http\Controllers\PiecesJointesController;
 use Illuminate\Support\Facades\Session;
@@ -39,12 +38,9 @@ class DemandeurController extends Controller {
     protected $vue = 'vueaccrediregion';
     protected $vueaccrediregion;
     protected $accreditation;
-<<<<<<< HEAD
     protected $pjcontroller;
-=======
 	protected $piecesjointes;
->>>>>>> 1b01a56d65aad96206c35f45961f8532ec4fafe1
-
+ 
     public function __construct(Demandeur $dem) {
         $this->demandeur = new Repository($dem);
         Session::put("pj", "");
@@ -184,10 +180,12 @@ class DemandeurController extends Controller {
      */
     public function update(Request $request, $iddemandeur) {
         $idutilisateur = Auth::id();
+        echo "voila le id demandeur ".$iddemandeur;
         //Mise à jour des informations dans update
         Session::put("name", $request->nom . " " . $request->prenom);
         //Faire un update dans le demandeur
         $idcorrespondant = $request->idcorrespondant;
+        //echo "---- le id correspondant ----".$idcorrespondant;
         $this->demandeur->update($request->only($this->demandeur->getModel()->fillable), $iddemandeur);
         //Faire un update dans le correspondant
        // echo "le id de correspondant " . $request->idcorrespondant;

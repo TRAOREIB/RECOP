@@ -162,7 +162,9 @@
                 @empty(!$pj->cv)
                 <label class=" col-form-label " for="nom">CV: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->cv  ")}}"> ici</a> </label> <br>                 
                 @endempty
+                @empty(!$pj->pjpasseport)
                 <label class=" col-form-label" for="nom">PASSEPORT:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjpasseport  ")}}"> ici</a></label><br>  
+                @endempty
                 @empty(!$pj->pjcnib)
                 <label class=" col-form-label" for="nom">CNI:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcnib")}}"> ici</a></label><br> 
                 @endempty
@@ -171,8 +173,8 @@
                 @endempty
                 @empty(!$pj->pjlaissezpasser)
                 <label class=" col-form-label" for="nom">LAISSEZ PASSER:  voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjlaissezpasser")}}"> ici</a></label><br> 
-                @endempty
-                @empty(!$pj->pjlaissezpasser)
+                @endempty 
+                @empty(!$pj->pjcnibperprev)
                 <label class=" col-form-label" for="nom">CNI FIXEUR: voir la pièce cliquez<a href="{{asset("storage/docs/$pj->pjcnibperprev")}}"> ici</a> </label><br>
                 @endempty
                 @empty(!$pj->pjpasseportperprev)

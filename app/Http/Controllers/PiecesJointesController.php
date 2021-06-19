@@ -69,7 +69,7 @@ class PiecesJointesController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PiecesJointesRequest $request) {
+    public function store(Request $request) {
 
         if (session('type') == 'correspondant') {
             echo $request->idcorrespondant;
