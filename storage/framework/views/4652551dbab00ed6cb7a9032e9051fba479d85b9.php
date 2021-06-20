@@ -22,12 +22,12 @@
     </div> &nbsp;&nbsp;&nbsp;
     <div class="">
         <?php $__currentLoopData = $demandeurs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <form method="post" action="<?php echo e(route("transfererdemande")); ?>">
+        <form method="post" action="<?php echo e(route("invaliderdemande")); ?>">
             <?php echo csrf_field(); ?>
             <input type="submit" value="Invalider la Demande" class="btn btn-warning">
             <input type="hidden"  value="<?php echo e($idaccreditation); ?>" name="idaccreditation">
             <input type="hidden"  value="<?php echo e($datevalider); ?>" name="datevalider">
-            <input type="hidden"  value="0" name="valider">
+            <input type="hidden"  value="2" name="valider">
         </form>    
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>

@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $telephone2
  * @property string $mail
  * @property string $lieuresidence
- * @property int $numcartepresse
+ * @property string $numcartepresse
  * @property string $refjournal
  * @property string $parcourspro
  * @property string $region

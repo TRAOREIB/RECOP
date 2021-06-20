@@ -1,13 +1,10 @@
 @extends('tprecop.template')
 @section('contenu')
 <br> 
-	<div class="text-center">
-  		<h2> SUJET A COUVRIR </h2>
- 	</div>
      <div class="ligne_separe_titre"></div>
 
 <br>
-<form   method="POST" action="{{route('piecesjointes.store')}}" enctype="multipart/form-data">
+<form   method="POST" class="was-validated" action="{{route('piecesjointes.store')}}" enctype="multipart/form-data">
     {{ csrf_field() }}	
 
     <div class="col-sm-12">  <!-- Bloc 1-->
@@ -18,20 +15,20 @@
                 <div class="form-group row">
                     <label for="pjcarteconsulaire" class="col-sm-3 col-form-label">LETTRE DE RECOMMANDATION</label>
                     <div class="col-sm-7">
-                        <input class="form-control"  type="file" name="lettrerecommendation" />
+                        <input class="form-control"  type="file" name="lettrerecommendation" required/>
                         <label><i>joindre le fichier de la lettre de recommendation</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="pjcnib" class="col-sm-3 col-form-label">PHOTO D'IDENTITE</label>
                     <div class="col-sm-7">
-                        <input class="form-control"  type="file" name="photo" />
+                        <input class="form-control"  type="file" name="photo" required/>
                     </div>
                 </div>              
                 <div class="form-group row">
                     <label for="pjcnib" class="col-sm-3 col-form-label">CNI</label>
                     <div class="col-sm-7">
-                        <input class="form-control"  type="file" name="pjcnib" />
+                        <input class="form-control"  type="file" name="pjcnib" required/>
                         <label><i>scan de la Carte National d'Identité (Recto et Verso)</i></label>
                     </div>
                 </div>
@@ -52,7 +49,7 @@
                 <div class="form-group row">
                     <label for="pjcinibperprev" class="col-sm-3 col-form-label">CNI/PASSEPORT DU FIXEUR</label>
                     <div class="col-sm-7">
-                        <input class="form-control" type="file" name="pjcnibperprev"/>
+                        <input class="form-control" type="file" name="pjcnibperprev" required/>
                         <label><i>scan de la Carte Nationale d'Identité(Recto et Verso) ou du passeport(première page)</i></label>
                     </div>
                 </div>
@@ -60,14 +57,14 @@
                 <div class="form-group row">
                     <label for="pjcartepresse" class="col-sm-3 col-form-label">CARTE PRESSE/CARTE PROFESSIONNELLE</label>
                     <div class="col-sm-7">
-                        <input class="form-control"  type="file" name="pjcartepresse" />
+                        <input class="form-control"  type="file" name="pjcartepresse" required/>
                         <label><i>scan de la carte de Presse ou professionnelle (Recto et Verso)</i></label>
                     </div>
                 </div>	
                 <div class="form-group row">
                     <label for="pjcartepresse" class="col-sm-3 col-form-label">LAISSEZ PRESSE</label>
                     <div class="col-sm-7">
-                        <input class="form-control"  type="file" name="pjlaissezpasser" />
+                        <input class="form-control"  type="file" name="pjlaissezpasser" required/>
                         <label><i>scan du laissez passser </i></label>
                     </div>
                 </div>

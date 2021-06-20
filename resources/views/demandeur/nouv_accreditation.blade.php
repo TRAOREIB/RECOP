@@ -9,7 +9,7 @@
 <hr>
 <br>
 
-<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{ route('accreditation.store') }}" enctype="multipart/form-data" >
+<form class="form-horizontal was-validated col-sm-10 offset-1" role="form" method="POST" action="{{ route('accreditation.store') }}" enctype="multipart/form-data" >
     {{ method_field('POST')}}
     {{ csrf_field() }}	
     <div class="col-sm-12">  <!-- Debut du Bloc -->
@@ -19,26 +19,31 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="titreevenement">TITRE(S):</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="titreevenement" placeholder="Entrer le(s) titre(s) de l'evenement" name="titreevenement">
+                    <input type="text" class="form-control @error('titreevenement') is-invalid @enderror" id="titreevenement" placeholder="Entrer le titre de l'evenement" name="titreevenement" value="{{ old('titreevenement') }}" required>
+                        @error('titreevenement')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datedebut">DATE DE DEBUT</label>
-                    <div class="col-sm-8">
-                        <input type="date" class="form-control" id="datedebut" placeholder="Entrer " name="datedebut">
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" id="datedebut" placeholder="Entrer " name="datedebut" value="{{ old('datedebut') }}"  required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datefin">DATE DE FIN</label>
-                    <div class="col-sm-8">
-                        <input type="date" class="form-control" id="datefin" placeholder="Entrer " name="datefin">
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" id="datefin" placeholder="Entrer " name="datefin" value="{{ old('datefin') }}"  required>
                     </div>
                 </div> 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datefin">REGION</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="idregion">
+                        <select class="form-control" name="idregion" required>
                             @foreach($allregions as $region)
                             <option class="col-sm-7" value="{{$region->idregion}}">{{$region->nomregion}}</option>
                             @endforeach
@@ -46,9 +51,14 @@
                     </div>
                 </div> 
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="datefin">LIEU EVENEMENT</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="datefin" placeholder="Entrer " name="lieuevenement">
+                    <label class="col-sm-3 col-form-label" for="lieuevenement">LIEU EVENEMENT</label>
+                    <div class="col-sm-8"> 
+                    <input type="text" class="form-control @error('lieuevenement') is-invalid @enderror" id="lieuevenement" placeholder="Entrer " name="lieuevenement" value="{{ old('lieuevenement') }}" required>
+                        @error('lieuevenement')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                 </div>
                 <input type="hidden" value="{{$test}}" name="test">
@@ -107,13 +117,13 @@
                     <div class="form-group row">
                         <label for="moyentransport" class="col-sm-3 col-form-label">MOYEN DE TRANPORT</label>
                         <div class="col-sm-7">
-                            <input class="form-control" id="moyentransport" type="text" name="moyentransport"/>
+                            <input class="form-control" id="moyentransport" type="text" name="moyentransport" required/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="immatriculation" class="col-sm-3 col-form-label">IMMATRICULATION</label>
                         <div class="col-sm-7">
-                            <input class="form-control" id="immatriculation" type="text" name="immatriculation"/>
+                            <input class="form-control" id="immatriculation" type="text" name="immatriculation" required/>
                         </div>
                     </div>     
 
@@ -124,9 +134,9 @@
                 <div class=" card text-center card-header">LISTE DU MATERIEL</div>
                 <div class="card-body">
                     <div class="col-sm-14">
-                        <textarea class="form-control" id="listemateriel" name="listemateriel" rows="3"></textarea>
+                        <textarea class="form-control" id="listemateriel" name="listemateriel" rows="3" required></textarea>
                     </div>
-                    <input type="hidden" value="0" name="nouveaudemandeur">
+                    <input type="hidden" value="0" name="nouveaudemandeur" required>
                 </div> 
 
             </div>

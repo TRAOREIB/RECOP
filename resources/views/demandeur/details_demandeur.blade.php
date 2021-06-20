@@ -103,4 +103,4 @@
 <!-- FIN DU Bloc sur les informations personnelles-->
 </div>
 <br><br>	
-@endsection
+@endsection-

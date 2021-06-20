@@ -35,7 +35,7 @@ class RepositoryVue implements RepositoryVueInterface {
         return DB::table("$vue")->where("typecorrespondant", "=", $typecorrespondant)->where("actif", "=", true)->get();
 		}
 		if($typecorrespondant==null && $originecorrespondant!=null){
-        echo ('type null & origine non null');
+      //  echo ('type null & origine non null');
 		return DB::table("$vue")->where("originecorrespondant", "=", $originecorrespondant)->where("actif", "=", true)->get();
 		}
 	}
@@ -62,5 +62,13 @@ class RepositoryVue implements RepositoryVueInterface {
     public function showmyaccreditation($vue, $iduser) {
         return DB::table("$vue")->where("iduser", "=", $iduser)->where("actif", "=", true)->get();
     }
+
+	public function showaccrediregionnew($vue,$idaccreditation){
+		return DB::table("$vue")->where("id", "=", $idaccreditation)->where("actif", "=", true)->get();
+	}
+
+	public function showmyaccrediregion($vue,$iddemandeur){
+		return DB::table("$vue")->where("iddemandeur", "=", $iddemandeur)->where("actif", "=", true)->get();
+	}
 
 }

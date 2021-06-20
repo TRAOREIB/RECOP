@@ -3,19 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/DemandeurController.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/Auth/RegisterController.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/PiecesJointesController.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/resources/views/correspondant/ajout_correspondant.blade.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/CorrespondantController.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/resources/views/accreditation/pj_accreditation.blade.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/resources/views/tprecop/template.blade.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Repositories/Repository.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/resources/views/correspondant/ajout_correspondant_suite.blade.php</file>
             <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/Auth/LoginController.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/HomeController.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/correspondant/ajout_correspondant_suite.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/PiecesJointesController.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Models/PiecesJointes.php</file>
             <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/AccreditationController.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/home.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/correspondant/details_correspondant.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/accreditation/pj_accreditation.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/correspondant/ajout_correspondant.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Kernel.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/CorrespondantController.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/composer.json</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/tprecop/template.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/liste_correspondant/listevisiteur.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/DemandeurController.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/resources/views/accreditation/ajout_accreditation.blade.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Http/Controllers/RechercheController.php</file>
             <file>file:/C:/xampp/htdocs/RECOP/app/Providers/AppServiceProvider.php</file>
-            <file>file:/C:/xampp/htdocs/RECOP/app/Models/Correspondant.php</file>
+            <file>file:/C:/xampp/htdocs/RECOP/app/Repositories/Repository.php</file>
         </group>
     </open-files>
 </project-private>

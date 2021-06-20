@@ -47,7 +47,7 @@ Route::resource('coordonateur', 'CoordonateurController');
 Route::post('transfererdemande', 'VerificateurController@transferer')->name('transfererdemande');
 Route::post('validerdemande', 'CoordonateurController@validerdemande')->name('validerdemande');
 Route::post('invaliderdemande', 'CoordonateurController@invaliderdemande')->name('invaliderdemande');
-
+Route::post('recherchedemande', 'CoordonateurController@recherchedemande')->name('recherchedemande');
 
 
 // AJOUT ROUTE DEMANDEURS 17/06/2021
@@ -61,6 +61,7 @@ Route::get('generatepdf', 'EtatController@listevisiteur')->name('generatepdf');
 Route::get('listecorrespondant', 'EtatController@listecorrespondant')->name('listecorrespondant');
 Route::get('listeaccreditation1', 'EtatController@listeaccreditation')->name('listeaccreditation1');
 Route::get('listedemandeur1', 'EtatController@listedemandeur')->name('listedemandeur1');
+Route::get('generateattestation', 'EtatController@attestationaccreditation')->name('generateattestation');
 
 //END
 
@@ -86,6 +87,7 @@ Route::post('devenirdemandeur', 'DemandeurController@devenirdemandeur')->name('d
 Route::post('storenouvdemandeur', 'DemandeurController@storenouvdemandeur')->name('storenouvdemandeur');   
 Route::post('nouvdemandeurpj', 'DemandeurController@strorenouvdemandeurpj')->name('nouvdemandeurpj');
 
+ 
 //Route::resource('information', 'RechercheController');
 
 
@@ -256,3 +258,13 @@ Route::get('listeaccreditation', 'AccreditationController@listeaccreditation')->
  Route::get('listedem', 'DemandeurController@listedemandeur');
 
  Route::post('modifpjaccreditation/{idpiecesjointes}', 'PiecesJointesController@editpjaccreditation')->name('modifpjaccreditation');
+
+ //add zoure 20/06/2021
+ Route::post('creeruser', 'CreationUtilisateurController@store')->name('creeruser');
+ Route::post('changepassword', 'CreationUtilisateurController@index')->name('changepassword');
+ Route::post('updatepassword', 'CreationUtilisateurController@update')->name('updatepassword');
+ Route::post('updateadmin', 'CreationUtilisateurController@updateadmin')->name('updateadmin');
+
+ Route::get('resetadmin', function () {
+    return view('auth.passwords.reset_admin');
+});

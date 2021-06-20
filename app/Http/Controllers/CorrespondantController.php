@@ -50,9 +50,10 @@ class CorrespondantController extends Controller {
         Session::forget("actficorrespondant");
         Session::forget("actifdemandeur");
 
+        $allregions = $this->region->all();
         $typecorrespondant = $request->typecorrespondant;
         $allcorrespondant = $this->correspondant->all();
-        return view('correspondant.ajout_correspondant', compact('allcorrespondant', 'typecorrespondant'));
+        return view('correspondant.ajout_correspondant', compact('allcorrespondant', 'typecorrespondant','allregions'));
     }
 
     /**
@@ -136,7 +137,7 @@ class CorrespondantController extends Controller {
 
     public function detailsCorrespondant(Request $request) {
         $iduser = Auth::id();
-        //  $idpiecesjointes = $request->idpj;
+         $idpiecesjointes = null;
         $idcorrespondant = $request->idcorrespondant;
         $piecesjointes = $this->piecesjointes->showinfopjcorrespondant($idcorrespondant);
         $editcorrespondant = $this->correspondant->show($idcorrespondant);
@@ -188,6 +189,10 @@ class CorrespondantController extends Controller {
     }
 
     public function devenirCorrespondant(Request $request) {
+         //vider les variables sessions de controle d'existence du demandeur et du correspondant bien avant une nouvelle operation
+         Session::forget("actficorrespondant");
+         Session::forget("actifdemandeur");
+         
         $this->pjcontroller = new PiecesJointesController(new PiecesJointes());
         $iduser = Auth::id();
         $allregions = $this->region->all();

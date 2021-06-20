@@ -50,13 +50,13 @@ class HomeController extends Controller
         $this->coordonateur = new CoordonateurController();
         $correspondantexiste = 0;
 
-        echo Auth::user()->profil;
+       // echo Auth::user()->profil;
         if (Auth::user()->profil == "Verificateur") {
-            echo "il est la";
+          //  echo "il est la";
             return  $this->verificateur->index();
         }
         if (Auth::user()->profil == "Coordonateur") {
-            echo "il est le coordonateur";
+          //  echo "il est le coordonateur";
             return $this->coordonateur->index();
         }
 
@@ -68,7 +68,7 @@ class HomeController extends Controller
         }
         $idcorrespondant = $this->correspondant->showcorrespondant($id);
 
-        echo $idcorrespondant;
+       // echo $idcorrespondant;
         foreach ($idcorrespondant as $corresp) {
             $idcomptecorrespondant = $corresp->idcorrespondant;
             $correspondantexiste = 1; 

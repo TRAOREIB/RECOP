@@ -101,34 +101,38 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ url('accueil') }}">ACCUEIL</a>
                         </li>
+
                         <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT&nbsp;</a>
+                            <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT DE PRESSE&nbsp;</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);">
+
                                 <a class="dropdown-item text-white" href="{{ url('choixcorrespondant') }}">NOUVEAU CORRESPONDANT</a>
                                 @guest
                                 <a class="dropdown-item text-white" href="{{ url('listevisiteur') }}">LISTE DES CORRESPONDANTS</a>
                                 @endguest
+                                @if(Auth::check())
+                                @enregistre
+                                <a class="dropdown-item text-white" href="{{ url('listevisiteur') }}">LISTE DES CORRESPONDANTS</a>
+                                @endenregistre
+                                @endif
 
                                 @if(Auth::check())
                                 @administrateur
                                 <!-- <a class="dropdown-item text-white" href="{{ url('listeadmin') }}">LISTE DES CORRESPONDANTS</a>-->
                                 <a class="dropdown-item text-white" href="{{ url('recherchetype') }}">LISTE DES CORRESPONDANTS</a>
-                                <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a>
-                                <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a>
+
                                 @endadministrateur
                                 @endif
-                                @if(Auth::check())
-                                @enregistre
-                                <a class="dropdown-item text-white" href="{{ url('rechercheregioninter') }}">MEDIA INTERNATIONAL</a>
-                                <a class="dropdown-item text-white" href="{{ url('rechercheregion') }}">MEDIA NATIONAL</a>
-                                @endenregistre
-                                @endif
+
                             </div>
                         </li>
+
+
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACCREDITATION DE PRESSE&nbsp;</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: #343a40;">
                                 <a class="dropdown-item text-light" href="{{ url('demandeur') }}">NOUVELLE ACCREDITATION</a>
+                                <a class="dropdown-item text-light" href="{{ url('rechercheaccredi') }}">LISTE DES ACCREDITATIONS</a>
                             </div>
                         </li>
                         @if(Auth::check())
@@ -176,16 +180,27 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="{{ route('changepassword') }}" onclick="event.preventDefault();
+                                                     document.getElementById('change-form').submit();">
+                                    {{ __('Changer votre mot de passe') }}
+                                </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Deconnexion') }}
                                 </a>
 
+                                <form id="change-form" action="{{ route('changepassword') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
+
                         </li>
+
                         @endguest
                     </ul>
                 </div>
@@ -199,7 +214,7 @@
 
         <div class="container  d-flex flex-row">
             <div class="card col-sm-6 col-xs-12">
-                <div class="card-body" style="border-radius: 3px; background: #343a40;">
+                <div class="card-body" style="border-radius: 3px; background: linear-gradient(90deg, #83a4d4, #b6fbff);">
                     <h4 class="card-title">Liens Utiles</h4>
                     <h6 class="card-subtitle mb-2 text-muted"></h6>
                     <p class="card-text">www.communication.gov.bf</p>
@@ -209,8 +224,6 @@
             <div class="card col-sm-6  col-xs-12">
                 <div class="card-body" style="background: linear-gradient(90deg, #83a4d4, #b6fbff);">
                     <h4 class="card-title">Numeros Utiles</h4>
-                    <p>Sapeur Pompier : 18</p>
-                    <p>ONEA : 18</p>
                 </div>
             </div>
 

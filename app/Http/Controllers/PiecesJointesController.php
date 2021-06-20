@@ -13,9 +13,11 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CorrespondantController;
 use App\Http\Controllers\AccreditationController;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PiecesJointesRequest;
 
-class PiecesJointesController extends Controller {
+class PiecesJointesController extends Controller
+{
 
     /**
      * Display a listing of the resource.
@@ -35,7 +37,8 @@ class PiecesJointesController extends Controller {
     protected $user;
     protected $corresp;
 
-    public function __construct(PiecesJointes $pj) {
+    public function __construct(PiecesJointes $pj)
+    {
         $this->demande = new Demandeur();
         $this->demandeur = new Repository($this->demande);
         $this->correspond = new Correspondant();
@@ -47,10 +50,11 @@ class PiecesJointesController extends Controller {
         $this->piecesjointes = new Repository($pj);
         $this->accreditation = new AccreditationController($this->accredi);
         $this->pjaccreditation = new Repository(new PiecesJointes);
-        $this->corresp=new CorrespondantController(new Correspondant());
+        $this->corresp = new CorrespondantController(new Correspondant());
     }
 
-    public function index() {
+    public function index()
+    {
         //
     }
 
@@ -59,8 +63,8 @@ class PiecesJointesController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        
+    public function create()
+    {
     }
 
     /**
@@ -69,10 +73,14 @@ class PiecesJointesController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
+      
+        $iduser = Auth::id();
+        Session::put("iduser", $iduser);
         if (session('type') == 'correspondant') {
-            echo $request->idcorrespondant;
+         //   echo $request->idcorrespondant;
             Session::put("idaccreditation", null);
             Session::put("iddemandeur", null);
             Session::put("pj", "correspondant");
@@ -83,7 +91,7 @@ class PiecesJointesController extends Controller {
             return view("correspondant.message_correspondant");
         }
         if (session('type') == 'demandeur') {
-            echo "j'arrive dans demandeur walayi";
+          //  echo "j'arrive dans demandeur walayi";
             Session::put("idcorrespondant", null);
             Session::put("pj", "demandeur");
             $request->actif = "true";
@@ -93,56 +101,68 @@ class PiecesJointesController extends Controller {
             return view('accreditation.message_accreditation');
         }
 
-// Creation des pieces jointes
+        // Creation des pieces jointes
 
         $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
     }
 
-    public function savepiecesjointes(Request $request) {
-     
+    public function savepiecesjointes(Request $request)
+    {
+        $iduser = Auth::id();
+
         if (!empty($request->file('lettrerecommendation'))) {
             $nom = $request->lettrerecommendation->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('lettrerecommendation')->storeAs(config('documents.path'), $nom, "public");
-      
         }
         if (!empty($request->file('photo'))) {
             $nom = $request->photo->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('photo')->storeAs(config('documents.path'), $nom, "public");
         }
         if (!empty($request->file('cv'))) {
             $nom = $request->cv->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('cv')->storeAs(config('documents.path'), $nom, "public");
         }
         if (!empty($request->file('visamedia'))) {
             $nom = $request->visamedia->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('visamedia')->storeAs(config('documents.path'), $nom, "public");
         }
         if (!empty($request->file('pjcnib'))) {
             $nom = $request->pjcnib->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('pjcnib')->storeAs(config('documents.path'), $nom, "public");
         }
         if (!empty($request->file('pjpasseport'))) {
             $nom = $request->pjpasseport->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('pjpasseport')->storeAs(config('documents.path'), $nom, "public");
         }
         if (!empty($request->file('pjcarteconsulaire'))) {
             $nom = $request->pjcarteconsulaire->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('pjcarteconsulaire')->storeAs(config('documents.path'), $nom, "public");
         }
         if (!empty($request->file('pjpasseport'))) {
             $nom = $request->pjpasseport->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('pjpasseport')->storeAs(config('documents.path'), $nom, "public");
         }
         if (!empty($request->file('pjcartepresse'))) {
             $nom = $request->pjcartepresse->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('pjcartepresse')->storeAs(config('documents.path'), $nom, "public");
         }
         if (!empty($request->file('pjcnibperprev'))) {
             $nom = $request->pjcnibperprev->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('pjcnibperprev')->storeAs(config('documents.path'), $nom, "public");
         }
         if (!empty($request->file('lettrerecommendation'))) {
             $nom = $request->lettrerecommendation->getClientOriginalName();
+            $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('lettrerecommendation')->storeAs(config('documents.path'), $nom, "public");
         }
     }
@@ -153,7 +173,8 @@ class PiecesJointesController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function show($id)
+    {
         //
     }
 
@@ -163,7 +184,8 @@ class PiecesJointesController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit($id)
+    {
 
         $editpjaccreditation = $this->piecesjointes->showinfopj($id);
         return view("accreditation.modifpj_accreditation", compact("editpjaccreditation"));
@@ -176,10 +198,11 @@ class PiecesJointesController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-// Pieces Jointes Accreditation (pjaccreditation)
+    // Pieces Jointes Accreditation (pjaccreditation)
 
 
-    public function showpjaccreditation($id) {
+    public function showpjaccreditation($id)
+    {
         //
     }
 
@@ -189,7 +212,8 @@ class PiecesJointesController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editpjaccreditation($id, Request $request) {
+    public function editpjaccreditation($id, Request $request)
+    {
         //
         $editpjaccreditation = $this->piecesjointes->show($id);
         //echo $editpjaccreditation;
@@ -198,23 +222,25 @@ class PiecesJointesController extends Controller {
         //echo $request->pjcnib;
         //echo $request->photo;
     }
-    
-    public function editpjcorrespondant(Request $request){
-        echo "on y arrive ";
-        $idpiecesjointes=$request->idpj;
-        $idcorrespondant=$request->idcorrespondant;
-        echo $idpiecesjointes;
+
+    public function editpjcorrespondant(Request $request)
+    {
+      //  echo "on y arrive ";
+        $idpiecesjointes = $request->idpj;
+        $idcorrespondant = $request->idcorrespondant;
+      //  echo $idpiecesjointes;
         $editpjcorrespondant = $this->piecesjointes->show($idpiecesjointes);
-        return view("correspondant.modif_pj", compact("editpjcorrespondant","idcorrespondant"));
+        return view("correspondant.modif_pj", compact("editpjcorrespondant", "idcorrespondant"));
     }
-	
-	public function editpjdemandeur(Request $request){
-        echo "on y arrive ";
-        $idpiecesjointes=$request->idpj;
-        $iddemandeur=$request->iddemandeur;
-        echo $idpiecesjointes;
-        $editpjdemandeur=$this->piecesjointes->show($idpiecesjointes);
-        return view("demandeur.modif_pj", compact("editpjdemandeur","iddemandeur"));
+
+    public function editpjdemandeur(Request $request)
+    {
+      //  echo "on y arrive ";
+        $idpiecesjointes = $request->idpj;
+        $iddemandeur = $request->iddemandeur;
+      //  echo $idpiecesjointes;
+        $editpjdemandeur = $this->piecesjointes->show($idpiecesjointes);
+        return view("demandeur.modif_pj", compact("editpjdemandeur", "iddemandeur"));
     }
 
     /**
@@ -224,11 +250,12 @@ class PiecesJointesController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         //
-        echo "on est dans la pièce jointe";
+      //  echo "on est dans la pièce jointe";
         $idpj = $request->idpj;
-        echo $idpj;
+      //  echo $idpj;
         $this->savepiecesjointes($request);
         $this->piecesjointes->update($request->only($this->piecesjointes->getModel()->fillable), $idpj);
         $request->idaccreditation = session("monidaccreditation");
@@ -237,22 +264,24 @@ class PiecesJointesController extends Controller {
         $request->idcorrespondant = session("monidcorrespondant");
         return $this->accreditation->detailsaccreditation($request);
     }
-    
-    public function updatecorrespondant(Request $request){
-         $idpj = $request->idpj;
+
+    public function updatecorrespondant(Request $request)
+    {
+        $idpj = $request->idpj;
         $this->savepiecesjointes($request);
         $this->piecesjointes->update($request->only($this->piecesjointes->getModel()->fillable), $idpj);
         $request->idcorrespondant = $request->idcorresp;
-        $request->idpiecesjointes=$idpj;
+        $request->idpiecesjointes = $idpj;
         return $this->corresp->detailsCorrespondant($request);
     }
-	
-	public function updatedemandeur(Request $request){
-         $idpj = $request->idpj;
+
+    public function updatedemandeur(Request $request)
+    {
+        $idpj = $request->idpj;
         $this->savepiecesjointes($request);
         $this->piecesjointes->update($request->only($this->piecesjointes->getModel()->fillable), $idpj);
         $request->iddemandeur = $request->iddemand;
-        $request->idpiecesjointes=$idpj;
+        $request->idpiecesjointes = $idpj;
         return $this->accredi->detailsCorrespondant($request);
     }
 
@@ -262,8 +291,8 @@ class PiecesJointesController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         //
     }
-
 }

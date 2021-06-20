@@ -9,10 +9,10 @@
 
 
 
-<form method="post" action="{{route('piecesjointes.store')}}" enctype="multipart/form-data">
+<form method="post" class="was-validated offset-2" action="{{route('piecesjointes.store')}}" enctype="multipart/form-data">
     {{ csrf_field() }}	
 
-    <div class="col-sm-12">  <!-- Bloc 2-->
+    <div class="col-sm-10">  <!-- Bloc 2-->
 
         <p></p>
         <div class="card"> <div class=" card text-center card-header">PIECES JOINTES</div>
@@ -91,7 +91,7 @@
 
     
     <p></p>
-    <div class="text-center">
+    <div class="offset-3">
         <button class="btn btn-primary" type="submit">CONTINUER</button>
         <button class="btn btn-primary" type="reset">ANNULER</button>
         <p></p>    

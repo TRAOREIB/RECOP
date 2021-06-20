@@ -19,8 +19,8 @@
             <div class="card-body"> 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="telephone">TELEPHONE PAYS DE RESIDENCE:</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="telephone" placeholder=" Entrer le numero de telephone de votre pays de residence " name="telephoneresidence">
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="telephone" placeholder=" telephone de votre pays de residence " name="telephoneresidence">
                     </div>
                 </div>
                 

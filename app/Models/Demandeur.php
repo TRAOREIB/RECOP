@@ -29,10 +29,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $lieuresidence
  * @property string $adressepaysresidence
  * @property string $organe
- * @property int $telorgane
+ * @property string $telorgane
  * @property string $adressestruct
  * @property string $cnib
- * @property int $telephonepersp
+ * @property string $telephonepersp
  * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT

@@ -15,7 +15,7 @@ class ConnexionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        echo 'here'; 
+       // echo 'here'; 
     }
 
     public function connexion(Request $request) {
@@ -27,7 +27,7 @@ class ConnexionController extends Controller {
 
 if($request->identifiant=="damien" and $request->password=="damien1234"){
     //return view("accueil.accueil");
-    echo 'here'; 
+  //  echo 'here'; 
 }
        
      }

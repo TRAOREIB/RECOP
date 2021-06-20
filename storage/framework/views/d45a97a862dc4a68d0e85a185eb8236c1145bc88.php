@@ -7,14 +7,14 @@
 </div>
  
  <hr>
-    <br><br> 
+    <!-- <br><br> 
 	<a href="<?php echo e(route('generatepdf')); ?>">Download PDF</a><br>
 	<a href="<?php echo e(route('listecorrespondant')); ?>">LISTE CORRESPONDANT PDF</a><br>
 	<a href="<?php echo e(route('listeaccreditation1')); ?>">LISTE ACCREDITATION PDF</a><br>
-	<a href="<?php echo e(route('listedemandeur1')); ?>">LISTE DEMANDEUR PDF</a><br>
+	<a href="<?php echo e(route('listedemandeur1')); ?>">LISTE DEMANDEUR PDF</a><br> -->
 
 <div class="row divtabgrand justify-content-center" style="">
-    <div class="col-sm-12" >
+    <div class="col-sm-7" >
         <div class="col-sm-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>
@@ -22,7 +22,7 @@
                         <th>NOM</th>
                         <th>PRENOM(S)</th>
                         <th>ORGANE</th>
-                        
+                        <th>TYPE PRESSE</th>
                         
                     </tr>
                 </thead>
@@ -33,7 +33,7 @@
                         <td><?php echo e($corresp->nomcorrespondant); ?></td>
                         <td><?php echo e($corresp->prenomcorrespondant); ?></td>
                         <td><?php echo e($corresp->organe); ?></td>
-                        
+                        <td><?php echo e($corresp->typepresse); ?></td>
                        
                     </tr>
                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

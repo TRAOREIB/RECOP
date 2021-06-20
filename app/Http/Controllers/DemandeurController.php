@@ -17,8 +17,11 @@ use App\Repositories\RepositoryVue;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Requests\DemandeurRequest;
+use App\Http\Requests\PiecesJointesRequest;
 
-class DemandeurController extends Controller {
+class DemandeurController extends Controller
+{
 
     /**
      * Display a listing of the resource.
@@ -39,9 +42,11 @@ class DemandeurController extends Controller {
     protected $vueaccrediregion;
     protected $accreditation;
     protected $pjcontroller;
-	protected $piecesjointes;
- 
-    public function __construct(Demandeur $dem) {
+    protected $piecesjointes;
+    protected $accreditationtest;
+
+    public function __construct(Demandeur $dem)
+    {
         $this->demandeur = new Repository($dem);
         Session::put("pj", "");
         // AJOUT 01/06/2021
@@ -56,11 +61,13 @@ class DemandeurController extends Controller {
         $this->accreditation = new AccreditationController($this->accredi);
         $this->correspondant = new Repository(new Correspondant());
         $this->vueaccrediregion = new RepositoryVue();
-		$this->piecesjointes = new Repository(new PiecesJointes());
-        // $this->accreditation=new 
+        $this->piecesjointes = new Repository(new PiecesJointes());
+
+        $this->accreditationtest = new Repository(new Accreditation());
     }
 
-    public function index() {
+    public function index()
+    {
         //vider les variables sessions de controle d'existence du demandeur et du correspondant bien avant une nouvelle operation
         Session::forget("actficorrespondant");
         Session::forget("actifdemandeur");
@@ -73,7 +80,8 @@ class DemandeurController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         //
     }
 
@@ -83,7 +91,8 @@ class DemandeurController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(DemandeurRequest $request)
+    {
         $nom = $request->nom;
         $prenom = $request->prenom;
         $email = $request->mail;
@@ -122,24 +131,23 @@ class DemandeurController extends Controller {
         //la variable test de controle pour gerer l'ajout des accreditations par region
         $test = $request->test;
         $idaccreditation = '';
-      
+
         Session::put("type", "demandeur");
         return view('accreditation.ajout_accreditation', compact("maxiddemandeur", "request", "allregions", "test", "idaccreditation"));
-
     }
-	
-	public function detailsDemandeur(Request $request) {
+
+    public function detailsDemandeur(Request $request)
+    {
         $iduser = Auth::id();
         $iddemandeur = $request->iddemandeur;
-		//echo ($iddemandeur);
-		// Mettre Toutes les données identifiant dans des variables session
+        //echo ($iddemandeur);
+        // Mettre Toutes les données identifiant dans des variables session
         Session::put("moniduser", $iduser);
         Session::put("moniddemandeur", $iddemandeur);
-		
-		$demandeurs = $this->demandeur->showinfodemandeur($iddemandeur);
-            
-        return view('demandeur.details_demandeur', compact("demandeurs","iddemandeur","iduser"));
-															
+
+        $demandeurs = $this->demandeur->showinfodemandeur($iddemandeur);
+
+        return view('demandeur.details_demandeur', compact("demandeurs", "iddemandeur", "iduser"));
     }
 
     /**
@@ -148,11 +156,13 @@ class DemandeurController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($iddemandeur) {
+    public function show($iddemandeur)
+    {
         //
     }
 
-    public function listedemandeur() {
+    public function listedemandeur()
+    {
         //
         $alldemandeur = $this->demandeur->all();
         return view('demandeur.liste_demandeur', compact('alldemandeur'));
@@ -164,7 +174,8 @@ class DemandeurController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $iddemandeur) {
+    public function edit(Request $request, $iddemandeur)
+    {
         //
         $idcorrespondant = $request->idcorrespondant;
         $editdemandeur = $this->demandeur->show($iddemandeur);
@@ -178,9 +189,10 @@ class DemandeurController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $iddemandeur) {
+    public function update(Request $request, $iddemandeur)
+    {
         $idutilisateur = Auth::id();
-        echo "voila le id demandeur ".$iddemandeur;
+        // echo "voila le id demandeur " . $iddemandeur;
         //Mise à jour des informations dans update
         Session::put("name", $request->nom . " " . $request->prenom);
         //Faire un update dans le demandeur
@@ -188,7 +200,7 @@ class DemandeurController extends Controller {
         //echo "---- le id correspondant ----".$idcorrespondant;
         $this->demandeur->update($request->only($this->demandeur->getModel()->fillable), $iddemandeur);
         //Faire un update dans le correspondant
-       // echo "le id de correspondant " . $request->idcorrespondant;
+        // echo "le id de correspondant " . $request->idcorrespondant;
         $this->correspondant->update($request->only($this->correspondant->getModel()->fillable), $idcorrespondant);
         //Faire un update dans users aussi pour prendre en compte le nom
         $this->user->update($request->only($this->user->getModel()->fillable), $idutilisateur);
@@ -207,53 +219,82 @@ class DemandeurController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($iddemandeur) {
+    public function destroy($iddemandeur)
+    {
         //
         $this->demandeur->delete($iddemandeur);
         return $this->index();
     }
 
-    
-     public function devenirdemandeur() {
-        //Renseigner le type de la personne qui enregistre la nouvelle demande d'accreditation
-      //  Session::put("type", "demandeur"); 
-        return view("correspondant.correspondant_demandeur");
+
+    public function devenirdemandeur()
+    {
+        //vider les variables sessions de controle d'existence du demandeur et du correspondant bien avant une nouvelle operation
+        Session::forget("actficorrespondant");
+        Session::forget("actifdemandeur");
+       /*  $idaccreditation = null;
+       
+        $id = Auth::id();
+        //Verification pour voir si le demandeur n'est pas deja actif à 1
+        $mondemandeur = $this->demandeur->showdemandeur($id);
+        //choisir son actif
+        foreach ($mondemandeur as $dem) {
+            $actif = $dem->actif;
+        }
+        if ($actif == 1) {
+          
+            //Recuperation des regions de all regions
+            $allregions = $this->region->all();
+            $listesujet = null;
+            $idaccreditation = '';
+            $test=0;
+            return view('accreditation.ajout_accreditation', compact("test", "allregions", "listesujet", "idaccreditation"));
+        } */
+/*         if ($actif == 0) { */
+            return view("correspondant.correspondant_demandeur");
+      /*   } */
     }
-    
-    public function storenouvdemandeur(Request $request){
-         $id = Auth::id();
-         $allregions = $this->region->all();
-         $test=0;
-         $idaccreditation = '';
+
+    public function storenouvdemandeur(Request $request)
+    {
+        $id = Auth::id();
+        $allregions = $this->region->all();
+        $test = 0;
+        $idaccreditation = '';
         Session::put("iduser", $id);
+        //  echo "voila le id ".$id;
         //Selectionner le id du correspondant
         $demandeur = $this->demandeur->showdemandeurinactif($id);
         //recuperation de l'id du correspondant
         foreach ($demandeur as $dem) {
             $iddemandeur = $dem->iddemandeur;
         }
-        if($demandeur=="[]"){
-            $ledemandeur=$this->demandeur->showdemandeur($id);
-            foreach($ledemandeur as $dem){
-                $iddemandeur=$dem->iddemandeur;
+        if ($demandeur == "[]") {
+            $ledemandeur = $this->demandeur->showdemandeur($id);
+            foreach ($ledemandeur as $dem) {
+
+                $iddemandeur = $dem->iddemandeur;
             }
         }
+        echo $request->actif;
+        echo $iddemandeur;
+
+        //  echo "le  demandeur ".$demandeur;
         //Mettre le id demandeur dans une variable session
-         Session::put("iddemandeur",$iddemandeur);
+        Session::put("iddemandeur", $iddemandeur);
         //faire un update dans correspondant
         $this->demandeur->update($request->only($this->correspondant->getModel()->fillable), $iddemandeur);
-        return view("demandeur.nouv_accreditation", compact("iddemandeur","allregions","test","idaccreditation"));
+        return view("demandeur.nouv_accreditation", compact("iddemandeur", "allregions", "test", "idaccreditation"));
     }
-    
-     public function strorenouvdemandeurpj(Request $request) {
-       echo "on arrive bien par la";
+
+    public function strorenouvdemandeurpj(Request $request)
+    {
+        //  echo "on arrive bien par la";
         //ajout des pieces jointes
         Session::put("pj", "true");
         Session::put("type", "demandeur");
-      //  Session::put("idcorrespondant", $request->idcorrespondant);
+        //  Session::put("idcorrespondant", $request->idcorrespondant);
         $this->pjcontroller = new PiecesJointesController(new PiecesJointes());
         return $this->pjcontroller->store($request);
     }
-
-   
 }

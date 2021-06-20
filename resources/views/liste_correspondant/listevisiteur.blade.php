@@ -7,14 +7,14 @@
 </div>
  {{-- <div class="ligne_separe_titre"></div> --}}
  <hr>
-    <br><br> 
+    <!-- <br><br> 
 	<a href="{{ route('generatepdf') }}">Download PDF</a><br>
 	<a href="{{ route('listecorrespondant') }}">LISTE CORRESPONDANT PDF</a><br>
 	<a href="{{ route('listeaccreditation1') }}">LISTE ACCREDITATION PDF</a><br>
-	<a href="{{ route('listedemandeur1') }}">LISTE DEMANDEUR PDF</a><br>
+	<a href="{{ route('listedemandeur1') }}">LISTE DEMANDEUR PDF</a><br> -->
 
 <div class="row divtabgrand justify-content-center" style="">
-    <div class="col-sm-12" >
+    <div class="col-sm-7" >
         <div class="col-sm-12 ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>
@@ -22,7 +22,7 @@
                         <th>NOM</th>
                         <th>PRENOM(S)</th>
                         <th>ORGANE</th>
-                        {{-- <th>TYPE PRESSE</th> --}}
+                        <th>TYPE PRESSE</th>
                         
                     </tr>
                 </thead>
@@ -33,7 +33,7 @@
                         <td>{{$corresp->nomcorrespondant }}</td>
                         <td>{{$corresp->prenomcorrespondant }}</td>
                         <td>{{$corresp->organe }}</td>
-                        {{-- <td>{{$corresp->typepresse }}</td> --}}
+                        <td>{{$corresp->typepresse }}</td>
                        
                     </tr>
                      @endforeach

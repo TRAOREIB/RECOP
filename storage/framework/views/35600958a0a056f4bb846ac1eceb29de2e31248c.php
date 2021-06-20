@@ -9,7 +9,7 @@
 <hr>
 <br>
 
-<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="<?php echo e(route('accreditation.store')); ?>" enctype="multipart/form-data" >
+<form class="form-horizontal was-validated col-sm-10 offset-1" role="form" method="POST" action="<?php echo e(route('accreditation.store')); ?>" enctype="multipart/form-data" >
     <?php echo e(method_field('POST')); ?>
 
     <?php echo e(csrf_field()); ?>	
@@ -20,26 +20,45 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="titreevenement">TITRE(S):</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="titreevenement" placeholder="Entrer le(s) titre(s) de l'evenement" name="titreevenement">
+                    <input type="text" class="form-control <?php $__errorArgs = ['titreevenement'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="titreevenement" placeholder="Entrer le titre de l'evenement" name="titreevenement" value="<?php echo e(old('titreevenement')); ?>" required>
+                        <?php $__errorArgs = ['titreevenement'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <span class="invalid-feedback" role="alert">
+                            <strong><?php echo e($message); ?></strong>
+                        </span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datedebut">DATE DE DEBUT</label>
-                    <div class="col-sm-8">
-                        <input type="date" class="form-control" id="datedebut" placeholder="Entrer " name="datedebut">
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" id="datedebut" placeholder="Entrer " name="datedebut" value="<?php echo e(old('datedebut')); ?>"  required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datefin">DATE DE FIN</label>
-                    <div class="col-sm-8">
-                        <input type="date" class="form-control" id="datefin" placeholder="Entrer " name="datefin">
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" id="datefin" placeholder="Entrer " name="datefin" value="<?php echo e(old('datefin')); ?>"  required>
                     </div>
                 </div> 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datefin">REGION</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="idregion">
+                        <select class="form-control" name="idregion" required>
                             <?php $__currentLoopData = $allregions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $region): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option class="col-sm-7" value="<?php echo e($region->idregion); ?>"><?php echo e($region->nomregion); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -47,9 +66,28 @@
                     </div>
                 </div> 
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="datefin">LIEU EVENEMENT</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="datefin" placeholder="Entrer " name="lieuevenement">
+                    <label class="col-sm-3 col-form-label" for="lieuevenement">LIEU EVENEMENT</label>
+                    <div class="col-sm-8"> 
+                    <input type="text" class="form-control <?php $__errorArgs = ['lieuevenement'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="lieuevenement" placeholder="Entrer " name="lieuevenement" value="<?php echo e(old('lieuevenement')); ?>" required>
+                        <?php $__errorArgs = ['lieuevenement'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <span class="invalid-feedback" role="alert">
+                            <strong><?php echo e($message); ?></strong>
+                        </span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
                 <input type="hidden" value="<?php echo e($test); ?>" name="test">
@@ -110,13 +148,13 @@
                     <div class="form-group row">
                         <label for="moyentransport" class="col-sm-3 col-form-label">MOYEN DE TRANPORT</label>
                         <div class="col-sm-7">
-                            <input class="form-control" id="moyentransport" type="text" name="moyentransport"/>
+                            <input class="form-control" id="moyentransport" type="text" name="moyentransport" required/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="immatriculation" class="col-sm-3 col-form-label">IMMATRICULATION</label>
                         <div class="col-sm-7">
-                            <input class="form-control" id="immatriculation" type="text" name="immatriculation"/>
+                            <input class="form-control" id="immatriculation" type="text" name="immatriculation" required/>
                         </div>
                     </div>     
 
@@ -127,9 +165,9 @@
                 <div class=" card text-center card-header">LISTE DU MATERIEL</div>
                 <div class="card-body">
                     <div class="col-sm-14">
-                        <textarea class="form-control" id="listemateriel" name="listemateriel" rows="3"></textarea>
+                        <textarea class="form-control" id="listemateriel" name="listemateriel" rows="3" required></textarea>
                     </div>
-                    <input type="hidden" value="0" name="nouveaudemandeur">
+                    <input type="hidden" value="0" name="nouveaudemandeur" required>
                 </div> 
 
             </div>

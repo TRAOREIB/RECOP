@@ -6,7 +6,7 @@
 </div>
 <div class="ligne_separe_titre"></div>
 <br>
-<form class="form-horizontal col-sm-10 offset-1" role="form" method="POST" action="{{route('pjaccreditation')}}" enctype="multipart/form-data">
+<form class="form-horizontal was-validated col-sm-10 offset-1" role="form" method="POST" action="{{route('pjaccreditation')}}" enctype="multipart/form-data">
     {{ method_field('POST')}}
     {{ csrf_field() }}	
 
@@ -18,41 +18,41 @@
                 <div class="form-group row">
                     <label for="pjcnib" class="col-sm-3 col-form-label">PHOTO D'IDENTITE</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="photo" type="file" name="photo" />
+                        <input class="form-control" id="photo" type="file" name="photo" required/>
                     </div>
                 </div>              
                 <div class="form-group row">
                     <label for="pjcnib" class="col-sm-3 col-form-label">CNIB</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjcnib" type="file" name="pjcnib" />
+                        <input class="form-control" id="pjcnib" type="file" name="pjcnib" required />
                         <label><i>scannage de la CNIB (Recto et Verso)</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="pjpasseport" class="col-sm-3 col-form-label">PASSPORT</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjpasseport" type="file" name="pjpasseport"/>
+                        <input class="form-control" id="pjpasseport" type="file" name="pjpasseport" required/>
                         <label><i>scannage de la première page du passeport</i></label>
                     </div>
                 </div>
 				<div class="form-group row">
                     <label for="pjcarteconsulaire" class="col-sm-3 col-form-label">CARTE CONSULAIRE</label>
                     <div class="col-sm-7">
-                     <input class="form-control" id="pjcarteconsulaire" type="file" name="pjcarteconsulaire" />
+                     <input class="form-control" id="pjcarteconsulaire" type="file" name="pjcarteconsulaire" required />
 					 <label><i>scannage de la carte consulaire (Recto et Verso)</i></label>
                     </div>
                 </div>
 				<div class="form-group row">
                     <label for="pjcinibperprev" class="col-sm-3 col-form-label">CNIB PERSONNE A PREVENIR</label>
                     <div class="col-sm-7">
-                     <input class="form-control" id="pjcnibperprev" type="file" name="pjcnibperprev"/>
+                     <input class="form-control" id="pjcnibperprev" type="file" name="pjcnibperprev" required/>
 					 <label><i>scannage de la CNIB (Recto et Verso) de la personne à prevenir </i></label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="pjcartepresse" class="col-sm-3 col-form-label">CARTE PRESSE</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjcartepresse" type="file" name="pjcartepresse" />
+                        <input class="form-control" id="pjcartepresse" type="file" name="pjcartepresse" required/>
                         <label><i>scannage de la carte de Presse (Recto et Verso)</i></label>
                     </div>
                 </div>	

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class PiecesJointesRequest extends FormRequest
 {
     /**
@@ -11,6 +12,9 @@ class PiecesJointesRequest extends FormRequest
      *
      * @return bool
      */
+
+   //  protected $redirectRoute="piecesjointes.index";
+
     public function authorize()
     {
         return true;
@@ -24,13 +28,13 @@ class PiecesJointesRequest extends FormRequest
     public function rules()
     {
         return [
-			 /*	'photo' => 'bail|required|mimes:png,jpg,jpeg,pdf|max:2048',
+			 	'photo' => 'bail|required|mimes:png,jpg,jpeg,pdf|max:2048',
 				'cv' => 'bail|required|mimes:doc,docx,pdf|max:2048',
-				'visamedia' => 'bail|required|mimes:doc,docx,pdf|max:2048',
+			
 				'pjcnib' => 'bail|required|mimes:png,jpg,jpeg,pdf|max:2048',
 				'pjcartepresse' => 'bail|required|mimes:png,jpg,jpeg,pdf|max:2048',
 				
-			*/	
+				
             //'bail|required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf|max:2048',
         ];
     }

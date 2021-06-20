@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class CoordonateurController extends Controller {
+class CoordonateurController extends Controller
+{
 
     protected $vuecorrespondant = "vuecorrespondant";
     protected $vue = 'vueaccreditation';
@@ -23,7 +24,8 @@ class CoordonateurController extends Controller {
     protected $correspondant;
     protected $piecesjointes;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         $this->correspondantvue = new RepositoryVue();
         $this->accreditation = new Repository(new Accreditation());
@@ -34,13 +36,15 @@ class CoordonateurController extends Controller {
         $this->vueaccrediregion = new RepositoryVue();
     }
 
-    public function index() {
+    public function index()
+    {
         $datevalider = date("D, d M Y H:i:s");
         $accreditations = $this->accreditation->showaccreditationcoordonateur();
         return view('coordonateur.liste_demande', compact("accreditations", "datevalider"));
     }
 
-    public function detailsaccreditation(Request $request) {
+    public function detailsaccreditation(Request $request)
+    {
 
         $idaccreditation = $request->idaccreditation;
         $iduser = $request->iduser;
@@ -63,25 +67,43 @@ class CoordonateurController extends Controller {
         return view("coordonateur.details_accreditation", compact("demandeurs", "accreditations", "datevalider", "piecesjointes", "monaccreditation", "idaccreditation", "iddemandeur", "iduser", "idcorrespondant"));
     }
 
-    public function validerdemande(Request $request) {
+    public function validerdemande(Request $request)
+    {
         $idaccreditation = $request->idaccreditation;
         $this->accreditation->update($request->only($this->accreditation->getModel()->fillable), $idaccreditation);
         //Retour à la liste avec le message
         $message = "la demande Numero $idaccreditation a ete validé";
         $datevalider = date("D, d M Y H:i:s");
         $accreditations = $this->accreditation->showaccreditationcoordonateur();
-        
-         return view('coordonateur.liste_demande', compact("accreditations","message","datevalider"));
+
+        return view('coordonateur.liste_demande', compact("accreditations", "message", "datevalider"));
     }
 
-    public function invaliderdemande(Request $request) {
+    public function invaliderdemande(Request $request)
+    {
         $idaccreditation = $request->idaccreditation;
         $this->accreditation->update($request->only($this->accreditation->getModel()->fillable), $idaccreditation);
         //Retour à la liste avec le message
         $message = "la demande Numero $idaccreditation a ete invalidé";
-         $accreditations = $this->accreditation->showaccreditationcoordonateur();
-          $datevalider = date("D, d M Y H:i:s");
-        return view('coordonateur.liste_demande', compact("accreditations", "message","datevalider"));
+        $accreditations = $this->accreditation->showaccreditationcoordonateur();
+        $datevalider = date("D, d M Y H:i:s");
+        return view('coordonateur.liste_demande', compact("accreditations", "message", "datevalider"));
+    }
+
+    public function recherchedemande(Request $request)
+    {
+        if ($request->etat == 'En cours') {
+            $accreditations = $this->accreditation->showaccreditationcoordonateur();
+            return view('coordonateur.liste_demande', compact("accreditations"));
+        }
+        if ($request->etat == 'Validée') {
+            $accreditations = $this->accreditation->showaccreditationvalide();
+            return view('coordonateur.liste_demande', compact("accreditations"));
+        }
+        if ($request->etat == 'Invalidée') {
+            $accreditations = $this->accreditation->showaccreditationinvalide();
+            return view('coordonateur.liste_demande', compact("accreditations"));
+        }
     }
 
     /**
@@ -89,7 +111,8 @@ class CoordonateurController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         //
     }
 
@@ -99,7 +122,8 @@ class CoordonateurController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         //
     }
 
@@ -109,7 +133,8 @@ class CoordonateurController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function show($id)
+    {
         //
     }
 
@@ -119,7 +144,8 @@ class CoordonateurController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         //
     }
 
@@ -130,7 +156,8 @@ class CoordonateurController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         //
     }
 
@@ -140,8 +167,8 @@ class CoordonateurController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         //
     }
-
 }

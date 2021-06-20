@@ -22,12 +22,12 @@
     </div> &nbsp;&nbsp;&nbsp;
     <div class="">
         @foreach($demandeurs as $dem)
-        <form method="post" action="{{route("transfererdemande")}}">
+        <form method="post" action="{{route("invaliderdemande")}}">
             @csrf
             <input type="submit" value="Invalider la Demande" class="btn btn-warning">
             <input type="hidden"  value="{{$idaccreditation}}" name="idaccreditation">
             <input type="hidden"  value="{{$datevalider}}" name="datevalider">
-            <input type="hidden"  value="0" name="valider">
+            <input type="hidden"  value="2" name="valider">
         </form>    
         @endforeach
     </div>
