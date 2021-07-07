@@ -69,7 +69,8 @@
                                             @if($mesaccredi->valider==1)
                                             <form method="post" action="{{route('generateattestation')}}">
                                                 @csrf
-                                                <input type="submit" class="btn btn-success" value="Export PDF">
+                                                <!-- <input type="submit" class="btn btn-success" value="Export PDF"> -->
+                                                <a href="{{asset('storage/docs/modelaccreditation.doc')}}"><input type="button" class="btn btn-success" value="Export Accreditation "></a>
                                                 <input type="hidden" value="{{$mesaccredi->idaccreditation}}" name="idaccreditation">
                                                 <input type="hidden" value="{{$mesaccredi->iduser}}" name="iduser">
                                                 <input type="hidden" value="{{$mesaccredi->iddemandeur}}" name="iddemandeur">
@@ -98,7 +99,11 @@
 
     <script>
         $(document).ready(function() {
-            $('#table').DataTable();
+            $('#table').DataTable({
+                order: [
+                    [0, 'desc']
+                ]
+            });
         });
     </script>
     @endsection

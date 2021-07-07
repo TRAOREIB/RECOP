@@ -27,18 +27,21 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        Blade::if('enregistre',function(){
-            return auth()->user()->profil==="Enregistre";
+        Blade::if('enregistre', function () {
+            return auth()->user()->profil === "Enregistre";
         });
-        
-         Blade::if('administrateur',function(){
-            return auth()->user()->profil==="Administrateur";
+
+        Blade::if('administrateur', function () {
+            return auth()->user()->profil === "Administrateur";
         });
-         Blade::if('verificateur',function(){
-            return auth()->user()->profil==="Verificateur";
+        Blade::if('verificateur', function () {
+            return auth()->user()->profil === "Verificateur";
         });
-         Blade::if('coordonateur',function(){
-            return auth()->user()->profil==="Coordonateur";
+        Blade::if('coordonateur', function () {
+            return auth()->user()->profil === "Coordonateur";
         });
+        Blade::if('ampliateur', function () {
+            return auth()->user()->profil === "Ampliateur";
+        }); 
     }
 }

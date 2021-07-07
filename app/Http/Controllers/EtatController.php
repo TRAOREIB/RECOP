@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use PDF;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
@@ -11,6 +12,7 @@ use App\Repositories\RepositoryVue;
 use App\Models\Correspondant;
 use App\Models\Accreditation;
 use App\Models\Demandeur;
+use App\Http\Controllers\SimpleQRcodeController;
 
 class EtatController extends Controller
 {
@@ -29,13 +31,17 @@ class EtatController extends Controller
     protected $vue1 = 'vueaccrediregion';
     protected $vueaccrediregion;
     protected $vue2 = 'vuedemandeur';
+    protected $vueattestation = 'vueattestation';
     protected $vuedemandeur;
+    protected $vueattest;
+    protected $qrcode;
+
 
 
 
     // public function __construct (demandeur $dem) (Correspondant $corresp)
 
-    public function __construct(accreditation $accredi)
+    public function __construct()
     {
 
         // Correspondant
@@ -44,13 +50,19 @@ class EtatController extends Controller
         $this->vuecorrespondant = new RepositoryVue();
 
         //Accreditation
-        $this->accreditation = new Repository($accredi);
+        $this->accreditation = new Repository(new Accreditation());
         $this->vueaccrediregion = new RepositoryVue();
 
         //Demandeur
         $dem = new Demandeur();
         $this->demandeur = new Repository($dem);
         $this->vuedemandeur = new RepositoryVue();
+
+        //attestation
+        $this->vueattest = new RepositoryVue();
+
+        //qrcode
+        $this->qrcode = new SimpleQRcodeController();
     }
 
 
@@ -114,28 +126,56 @@ class EtatController extends Controller
         return $pdf->download('listedemandeur.pdf');
     }
 
+    public function recipissecorrespondant()
+    {
+        $iduser = Auth::id();
+        //$iduser= $request->idcorrespondant;
+
+        //Information du correspondant
+        $corresp = $this->correspondant->showcorrespondant($iduser);
+
+        // echo $corresp; 
+
+        $codeqr = $this->qrcode->generate($corresp);
+        $pdf = PDF::loadview("etats.recipissecorrespondant", compact("corresp", "codeqr"));
+        $pdf->save(storage_path("app/public/recipisse/recipissecorrespondant.pdf"));
+        return $pdf->download('recipissecorrespondant.pdf');
+    }
+
+    public function recipisseaccreditation($iddemandeur)
+    {
+        $iduser = Auth::id();
+
+        //Recuperation infos de l'Accreditation
+
+        $accredit = $this->vueaccrediregion->showmyaccrediregion($this->vue1, $iddemandeur);
+
+        $codeqra = $this->qrcode->generatea($accredit);
+        $pdf = PDF::loadview("etats.recipisseaccreditation", compact("accredit", "codeqra"));
+        $pdf->save(storage_path("app/public/recipisse/recipisseaccreditation.pdf"));
+        return $pdf->download('recipisseaccreditation.pdf');
+    }
+
+    public function attestationpaccreditation($accredit)
+    {
+        $codeqrap = $this->qrcode->generateap($accredit);
+        $pdf = PDF::loadview("etats.attestationpaccreditation", compact("accredit", "codeqrap"));
+        $pdf->save(storage_path("app/public/recipisse/attestationpaccreditation.pdf"));
+        return $pdf->download('attestationpaccreditation.pdf');
+    }
+
     public function attestationaccreditation(Request $request)
     {
         $idaccreditation = $request->idaccreditation;
-        $iduser = $request->iduser;
-        $iddemandeur = $request->iddemandeur;
-        //Information du demandeur
-        $demandeur=$this->demandeur->showinfodemandeur($iddemandeur);
-        //Information de l'Accreditation
-        $accreditation=$this->accreditation->showmyaccreditation($iduser);
+        echo $idaccreditation;
+        $infoaccrediation = $this->vueattest->showattestationaccredi($this->vueattestation, $idaccreditation);
+        //echo $infoaccrediation;
+        $codeqrattest = $this->qrcode->generateattest($infoaccrediation);
+        return view("etats.attestationaccreditation", compact("infoaccrediation", "codeqrattest"));
 
-        //Information Accredi Region
-        $sujets=$this->vueaccrediregion->showmyaccrediregion($this->vue1, $iddemandeur);
-
-        echo "----------------------";
-        echo $demandeur;
-        echo'-----------------------'; 
-      /*   echo $accreditation; */
-        echo'-----------------------';
-        echo $sujets;
-        echo "----------------------";
-        $pdf = PDF::loadview("etats.attestation", compact("alldemandeur"));
-        return $pdf->download('listedemandeur.pdf');
+        // $pdf = PDF::loadview("etats.attestationaccreditation", compact("infoaccrediation","codeqrattest"));
+        //$pdf->save(storage_path("app/public/recipisse/attestationaccreditation.pdf")); 
+        // return $pdf->download('attestationaccreditation.pdf');
 
     }
 }

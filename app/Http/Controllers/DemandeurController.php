@@ -71,8 +71,16 @@ class DemandeurController extends Controller
         //vider les variables sessions de controle d'existence du demandeur et du correspondant bien avant une nouvelle operation
         Session::forget("actficorrespondant");
         Session::forget("actifdemandeur");
+        return view("demandeur.choix_demandeur");
+        //   $alldemandeur = $this->demandeur->all();
+        // return view('demandeur.ajout_demandeur', compact('alldemandeur'));
+    }
+
+    public function form_demandeur(Request $request)
+    {
+        $typedemandeur = $request->typedemandeur;
         $alldemandeur = $this->demandeur->all();
-        return view('demandeur.ajout_demandeur', compact('alldemandeur'));
+        return view('demandeur.ajout_demandeur', compact('alldemandeur', 'typedemandeur'));
     }
 
     /**
@@ -182,6 +190,23 @@ class DemandeurController extends Controller
         return view('demandeur.modif_demandeur', compact('editdemandeur', 'idcorrespondant'));
     }
 
+    public function formChoixDemandeur(Request $request)
+    {
+        $iddemandeur = $request->iddemandeur;
+        $idcorrespondant=$request->idcorrespondant;
+        $demandeur = $this->demandeur->show($iddemandeur);
+        return view("demandeur.choix_demandeur_modif", compact("demandeur","idcorrespondant"));
+    }
+
+    public function formModifDemandeur(Request $request)
+    {
+        $typedemandeur=$request->typedemandeur;
+        $iddemandeur = $request->iddemandeur;
+        $idcorrespondant = $request->idcorrespondant;
+        $editdemandeur = $this->demandeur->show($iddemandeur);
+        return view('demandeur.modif_demandeur', compact('editdemandeur', 'idcorrespondant','typedemandeur'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -191,6 +216,10 @@ class DemandeurController extends Controller
      */
     public function update(Request $request, $iddemandeur)
     {
+        //vider les champs des sessions actifcorrespondant et actifdemandeur
+        Session::forget("actficorrespondant");
+        Session::forget("actifdemandeur");
+
         $idutilisateur = Auth::id();
         // echo "voila le id demandeur " . $iddemandeur;
         //Mise à jour des informations dans update
@@ -230,9 +259,9 @@ class DemandeurController extends Controller
     public function devenirdemandeur()
     {
         //vider les variables sessions de controle d'existence du demandeur et du correspondant bien avant une nouvelle operation
-        Session::forget("actficorrespondant");
+        Session::forget("actifcorrespondant");
         Session::forget("actifdemandeur");
-       /*  $idaccreditation = null;
+        /*  $idaccreditation = null;
        
         $id = Auth::id();
         //Verification pour voir si le demandeur n'est pas deja actif à 1
@@ -250,9 +279,16 @@ class DemandeurController extends Controller
             $test=0;
             return view('accreditation.ajout_accreditation', compact("test", "allregions", "listesujet", "idaccreditation"));
         } */
-/*         if ($actif == 0) { */
-            return view("correspondant.correspondant_demandeur");
-      /*   } */
+        /*         if ($actif == 0) { */
+         
+        return view("correspondant.correspondant_demandeur");
+        /*   } */
+    }
+
+
+    public function formDemandeur(Request $request){
+        $typedemandeur=$request->typedemandeur; 
+        return view("correspondant.correspondant_demandeur",compact("typedemandeur")); 
     }
 
     public function storenouvdemandeur(Request $request)

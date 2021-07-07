@@ -16,7 +16,8 @@
         "knplabs/knp-snappy": "^1.2",
         "koolreport/core": "^5.0",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "simplesoftwareio/simple-qrcode": "~4"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

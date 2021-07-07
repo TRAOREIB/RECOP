@@ -140,6 +140,7 @@ unset($__errorArgs, $__bag); ?>
                                     <option value="Verificateur">Verificateur</option>
                                     <option value="Coordonnateur">Coordonnateur</option>
                                     <option value="Administrateur">Administrateur</option>
+                                    <option value="Ampliateur">Ampliateur</option>
                                 </select>
                             </div>
                         </div>

@@ -101,7 +101,9 @@
 </div>
 <script>
     $(document).ready(function () {
-        $('#table').DataTable();
+        $('#table').DataTable({
+            "order": [[ 3, "desc" ]]
+        });
     });
 </script>
 @endsection 

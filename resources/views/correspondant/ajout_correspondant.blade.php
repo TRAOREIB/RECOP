@@ -35,6 +35,10 @@
                         @enderror
                     </div>
                 </div>
+
+
+
+
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="profession">PROFESSSION <span style="color:red">*</span></label>
                     <div class="col-sm-8">
@@ -80,6 +84,17 @@
                         @enderror
                     </div>
                 </div>
+                <div class=" form-group row">
+                    <label class="col-sm-3 col-form-label">AUTRE NATIONALITE</label>
+                    <div class="col-sm-4">
+                        <select id="autrenationalite" class="form-control" onchange="nouvelleLigne()">
+                            <option value="Non">Non</option>
+                            <option value="Oui">Oui</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="othernationalite">
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="telephone">TELEPHONE 1 <span style="color:red">*</span></label>
                     <div class="col-sm-5">
@@ -104,7 +119,7 @@
                     <label class="col-sm-3 col-form-label" for="telephone">ORIGINE <span style="color:red">*</span></label>
                     <div class="col-sm-5">
                         <select name="origine" class="form-control">
-                            <option>Etranger</option>
+                            <option>Non Burkinabè</option>
                             <option>National</option>
                         </select>
                     </div>
@@ -120,7 +135,7 @@
                         @enderror
                     </div>
                 </div>
-
+                @if($typecorrespondant=="Correspondant national")
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="region">REGION <span style="color:red">*</span></label>
 
@@ -134,6 +149,18 @@
                     </div>
 
                 </div>
+                @endif
+                @if($typecorrespondant=="Correspondant international")
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="region">REGION DE RESIDENCE <span style="color:red">*</span></label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control @error('telephone') is-invalid @enderror" id="telephone" placeholder=" " name="region" value="{{ old('region') }}" required>
+                        @error('region')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                @endif
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="lieuresidence">LIEU DE RESIDENCE <span style="color:red">*</span></label>
                     <div class="col-sm-7">
@@ -144,6 +171,7 @@
                         @enderror
                     </div>
                 </div>
+                @if($typecorrespondant=="Correspondant national")
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="cnib">N° CNI <span style="color:red">*</span></label>
                     <div class="col-sm-7">
@@ -176,12 +204,30 @@
                         <label><i>Date d'expiration de la CNIB</i></label>
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSEPORT </label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="numPasseport" placeholder=" " name="passeport">
                     </div>
                 </div>
+                @endif
+                @if($typecorrespondant=="Journaliste independant")
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSEPORT </label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="numPasseport" placeholder=" " name="passeport" required>
+                    </div>
+                </div>
+                @endif
+                @if($typecorrespondant=="Correspondant international")
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSEPORT </label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="numPasseport" placeholder=" " name="passeport" required>
+                    </div>
+                </div>
+                @endif
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="carteconsulaire">N° CARTE CONSULAIRE</label>
                     <div class="col-sm-5">
@@ -197,26 +243,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="personneprevenir">PERSONNE A PREVENIR <span style="color:red">*</span></label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control @error('personneprevenir') is-invalid @enderror" id="personneprevenir" placeholder=" " name="personneprevenir" value="{{ old('personneprevenir') }}" required>
-                        @error('personneprevenir')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <label><i>Nom et Prenom(s) de la personne à prevenir</i></label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE <span style="color:red">*</span></label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control @error('telephonepersp') is-invalid @enderror" id="telephonepersp" placeholder=" " name="telephonepersp" value="{{ old('telephonepersp') }}" required>
-                        @error('telephonepersp')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <label><i>Telephone de la personne à prevenir</i></label>
-                    </div>
-                </div>
+
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="references">REFERENCES JOURNALISTIQUES <span style="color:red">*</span></label>
                     <div class="col-sm-7">
@@ -237,6 +264,26 @@
                     </div>
 
                 </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="personneprevenir">PERSONNE DE REFERENCE <span style="color:red">*</span></label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control @error('personneprevenir') is-invalid @enderror" id="personneprevenir" placeholder=" " name="personneprevenir" value="{{ old('personneprevenir') }}" required>
+                        @error('personneprevenir')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <label><i>Nom et Prenom(s) de la personne à prevenir</i></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE PERSONNE DE REFERENCE <span style="color:red">*</span></label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control @error('telephonepersp') is-invalid @enderror" id="telephonepersp" placeholder=" " name="telephonepersp" value="{{ old('telephonepersp') }}" required>
+                        @error('telephonepersp')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <label><i>Telephone de la personne à prevenir</i></label>
+                    </div>
+                </div>
                 <input type="hidden" value="1" name="actif">
             </div>
         </div>
@@ -244,7 +291,92 @@
     <p>
 
     <div class="col-sm-12">
+        <!-- les informations des organes de presse pour le freelance - independant -->
+        @if($typecorrespondant=="Journaliste independant")
+        <div class="card">
+            <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <th>Nom de l'organe de Presse</th>
+                        <th>Type de presse</th>
+                        <th>Telephone de l'organe</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control col-sm-12" name="organe1" required>
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" required name="typepresse1">
+                                    <option>Presse Ecrite</option>
+                                    <option>Radio</option>
+                                    <option>Tele</option>
+                                    <option>Radio/Tele</option>
+                                    <option>Radio/Tele/Presse Ecrite</option>
+                                    <option>Radio/Tele/Presse Ecrite/Presse en Ligne</option>
+                                    <option>Presse en Ligne/Presse Ecrite</option>
+                                    <option>Presse En Ligne</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control col-sm-12" name="telorgane1" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control col-sm-12" name="organe2">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" name="typepresse2">
+                                    <option>Presse Ecrite</option>
+                                    <option>Radio</option>
+                                    <option>Tele</option>
+                                    <option>Radio/Tele</option>
+                                    <option>Radio/Tele/Presse Ecrite</option>
+                                    <option>Radio/Tele/Presse Ecrite/Presse en Ligne</option>
+                                    <option>Presse en Ligne/Presse Ecrite</option>
+                                    <option>Presse En Ligne</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control col-sm-12" name="telorgane2">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control col-sm-12" name="organe3">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" name="typepresse3">
+                                    <option>Presse Ecrite</option>
+                                    <option>Radio</option>
+                                    <option>Tele</option>
+                                    <option>Radio/Tele</option>
+                                    <option>Radio/Tele/Presse Ecrite</option>
+                                    <option>Radio/Tele/Presse Ecrite/Presse en Ligne</option>
+                                    <option>Presse en Ligne/Presse Ecrite</option>
+                                    <option>Presse En Ligne</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control col-sm-12" name="telorgane3">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type='hidden' value="{{$typecorrespondant}}" name='typecorrespondant'>
+            </div>
+        </div>
+        @endif
         <!-- Bloc 2-->
+        @if($typecorrespondant!="Journaliste independant")
         <div class="card">
             <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
             <div class="card-body">
@@ -265,6 +397,10 @@
                             <option>Presse Ecrite</option>
                             <option>Radio</option>
                             <option>Tele</option>
+                            <option>Radio/Tele</option>
+                            <option>Radio/Tele/Presse Ecrite</option>
+                            <option>Radio/Tele/Presse Ecrite/Presse en Ligne</option>
+                            <option>Presse en Ligne/Presse Ecrite</option>
                             <option>Presse En Ligne</option>
                         </select>
                     </div>
@@ -309,6 +445,7 @@
 
             </div>
         </div>
+        @endif
     </div>
     <br>
     <div class="col-sm-12">

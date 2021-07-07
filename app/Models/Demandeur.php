@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $adressestruct
  * @property string $cnib
  * @property string $telephonepersp
+ * @property string $typedemandeur
  * @property boolean $actif
  * @property string $CREATED_AT
  * @property string $UPDATED_AT
@@ -59,7 +60,7 @@ class Demandeur extends Model
      * @var array
      */
   
-    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance','telephoneresidence','laissepasser','professionfixeur','adressepaysresidence','carteprofessionnelfixeur', 'nationalite', 'sexe', 'passeport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'mail','personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','cnib', 'telephonepersp','adressfixeur', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance','telephoneresidence','laissepasser','professionfixeur','adressepaysresidence','carteprofessionnelfixeur', 'nationalite', 'sexe', 'passeport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'mail','personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','cnib', 'telephonepersp','adressfixeur','typedemandeur', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

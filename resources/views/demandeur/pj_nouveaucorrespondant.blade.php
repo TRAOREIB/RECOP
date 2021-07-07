@@ -9,7 +9,7 @@
 
 
 
-<form method="post" action="{{route('nouvcorrespondantpj')}}" enctype="multipart/form-data">
+<form method="post" class="was-validated" action="{{route('nouvcorrespondantpj')}}" enctype="multipart/form-data">
     {{ csrf_field() }}	
 
     <div class="col-sm-12">  <!-- Bloc 2-->
@@ -20,27 +20,27 @@
                 <div class="form-group row">
                     <label for="pjcnib" class="col-sm-3 col-form-label">PHOTO D'IDENTITE</label>
                     <div class="col-sm-7">
-                        <input class="form-control"  type="file" name="photo" />
+                        <input class="form-control"  type="file" name="photo" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="cv" class="col-sm-3 col-form-label">CV</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="cv" type="file" name="cv" />
+                        <input class="form-control" id="cv" type="file" name="cv" required/>
                         <label><i>Scan du fichier numerique du CV</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="pjcnib" class="col-sm-3 col-form-label">VISA DU MEDIA</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjcnib" type="file" name="visamedia" />
+                        <input class="form-control" id="pjcnib" type="file" name="visamedia"required  />
                         <label><i>Scan du fichier numerique du visa</i></label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="pjcnib" class="col-sm-3 col-form-label">CNI</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjcnib" type="file" name="pjcnib" />
+                        <input class="form-control" id="pjcnib" type="file" name="pjcnib" required/>
                         <label><i>Scan de la CNI (Recto et Verso)</i></label>
                     </div>
                 </div>
@@ -62,12 +62,12 @@
                 <div class="form-group row">
                     <label for="pjcartepresse" class="col-sm-3 col-form-label">CARTE PRESSE</label>
                     <div class="col-sm-7">
-                        <input class="form-control" id="pjcartepresse" type="file" name="pjcartepresse" />
+                        <input class="form-control" id="pjcartepresse" type="file" name="pjcartepresse" required/>
                         <label><i>Scan de la carte de Presse (Recto et Verso)</i></label>
                     </div>
                 </div>	
                  <input type="hidden" value="correspondant" name="type">
-                 <input type="text" value="{{$idcorrespondant}}" name="idcorrespondant">
+                 <input type="hidden" value="{{$idcorrespondant}}" name="idcorrespondant">
             </div>
         </div>
     </div>

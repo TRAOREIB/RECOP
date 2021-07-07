@@ -15,6 +15,7 @@
     <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/datatables.min.js')); ?>"></script>
     <script src="<?php echo e(asset('/js/popper.js')); ?>"></script>
+    <script src="<?php echo e(asset('/js/ajouter.js')); ?>"></script>
 
     <link rel="stylesheet" href="<?php echo e(asset('css/bootstrap4.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('css/datatables.min.css')); ?>">
@@ -67,8 +68,9 @@
             <div class="row w-100">
                 <div class="col-lg-12 container d-flex flex-row ml-lg-3 w-auto" style="background: linear-gradient(90deg, #FFEEEE, #DDEFBB); border-top-left-radius: 6px; border-top-right-radius: 6px;">
                     <img src="<?php echo e(asset('images/armoirie_bf.JPG')); ?>" width="100">
-                    <div class="container mr-0 mt-lg-5 pr-auto">
-                        <div class="row">
+                    <div class=" ">
+                        <div class="" style="margin-top: 13px;">
+                            <label class="col-auto display-5 font-italic font-weight-bold lead mr-4 mt-lg-n1 mt-sm-4 pr-auto text-center text-monospace text-danger text-uppercase w-100">Ministère de la Communication et des Relations avec Le Parlement</label>
                             <label class="col-auto display-5 font-italic font-weight-bold lead mr-4 mt-lg-n1 mt-sm-4 pr-auto text-center text-monospace text-primary text-uppercase w-100">Plateforme d'Enregistrement et d'Accréditation des Correspondants de Presse au Burkina Faso</label>
                         </div>
                     </div>
@@ -81,81 +83,139 @@
                 </button>
                 <div class="collapse navbar-collapse w-100" id="navbarToggler29">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                        </li>
-                        <li class="nav-item">
-                        </li>
-                        <li class="nav-item dropdown">
-                            <div class="bg-info dropdown-menu" aria-labelledby="navbarDropdownMenuLink30">
-                                <a class="bg-light border-width-1 dropdown-item text-success text-uppercase" href="#">Ajouter Informations</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                <a class="dropdown-item" href="#">Dropdown item</a>
-                            </div>
-                        </li>
 
-                        <li class="nav-item">
-                        </li>
-                        <li class="nav-item">
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="<?php echo e(url('accueil')); ?>">ACCUEIL</a>
                         </li>
 
-                        <li class="nav-item dropdown">
+                        <!-- menu nouveau correspondant visible par tous -->
+                        <?php if(auth()->guard()->guest()): ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('choixcorrespondant')); ?>">NOUVEAU CORRESPONDANT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="<?php echo e(url('demandeur')); ?>">NOUVELLE ACCREDITATION</a>
+                        </li>
+                        <?php endif; ?>
+
+
+                        <!-- <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT DE PRESSE&nbsp;</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);">
 
-                                <a class="dropdown-item text-white" href="<?php echo e(url('choixcorrespondant')); ?>">NOUVEAU CORRESPONDANT</a>
-                                <?php if(auth()->guard()->guest()): ?>
+ -->
+                        <!--   <?php if(auth()->guard()->guest()): ?>
                                 <a class="dropdown-item text-white" href="<?php echo e(url('listevisiteur')); ?>">LISTE DES CORRESPONDANTS</a>
-                                <?php endif; ?>
-                                <?php if(Auth::check()): ?>
+                                <?php endif; ?> -->
+                        <!--  <?php if(Auth::check()): ?>
                                 <?php if (\Illuminate\Support\Facades\Blade::check('enregistre')): ?>
                                 <a class="dropdown-item text-white" href="<?php echo e(url('listevisiteur')); ?>">LISTE DES CORRESPONDANTS</a>
                                 <?php endif; ?>
                                 <?php endif; ?>
 
                                 <?php if(Auth::check()): ?>
-                                <?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?>
-                                <!-- <a class="dropdown-item text-white" href="<?php echo e(url('listeadmin')); ?>">LISTE DES CORRESPONDANTS</a>-->
-                                <a class="dropdown-item text-white" href="<?php echo e(url('recherchetype')); ?>">LISTE DES CORRESPONDANTS</a>
+                                <?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?> -->
+                        <!-- <a class="dropdown-item text-white" href="<?php echo e(url('listeadmin')); ?>">LISTE DES CORRESPONDANTS</a>-->
+                        <!-- <a class="dropdown-item text-white" href="<?php echo e(url('recherchetype')); ?>">LISTE DES CORRESPONDANTS</a>
 
+                                <?php endif; ?>
+                                <?php if (\Illuminate\Support\Facades\Blade::check('ampliateur')): ?> -->
+                        <!-- <a class="dropdown-item text-white" href="<?php echo e(url('listeadmin')); ?>">LISTE DES CORRESPONDANTS</a>-->
+                        <!--  <a class="dropdown-item text-white" href="<?php echo e(url('recherchetype')); ?>">LISTE DES CORRESPONDANTS</a>
                                 <?php endif; ?>
                                 <?php endif; ?>
 
                             </div>
-                        </li>
+                        </li> -->
 
 
-                        <li class="nav-item dropdown">
+                        <!--          <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACCREDITATION DE PRESSE&nbsp;</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: #343a40;">
-                                <a class="dropdown-item text-light" href="<?php echo e(url('demandeur')); ?>">NOUVELLE ACCREDITATION</a>
-                                <a class="dropdown-item text-light" href="<?php echo e(url('rechercheaccredi')); ?>">LISTE DES ACCREDITATIONS</a>
-                            </div>
+
+                                <?php if(Auth::check()): ?>
+                                <?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('home')); ?>">MON COMPTE</a>
                         </li>
+                        <a class="dropdown-item text-light" href="<?php echo e(url('rechercheaccredi')); ?>">LISTE DES ACCREDITATIONS</a>
+                        <?php endif; ?>
+                        <?php if (\Illuminate\Support\Facades\Blade::check('ampliateur')): ?>
+                        <a class="dropdown-item text-light" href="<?php echo e(url('rechercheaccredi')); ?>">LISTE DES ACCREDITATIONS</a>
+                        <?php endif; ?>
+                        <?php endif; ?>
+                </div>
+                </li> -->
                         <?php if(Auth::check()): ?>
                         <?php if (\Illuminate\Support\Facades\Blade::check('enregistre')): ?>
-                        <!--		
-                            <li class="nav-item"> 
-                                <a class="nav-link text-white" href="<?php echo e(url('informationvue')); ?>">INFORMATIONS</a> 
-                            </li>-->
+                       <!--  <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT DE PRESSE&nbsp;</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);">
+                                <a class="dropdown-item text-white" href="<?php echo e(url('listevisiteur')); ?>">LISTE DES CORRESPONDANTS</a>
+                        </li> -->
+                        
                         <li class="nav-item">
                             <a class="nav-link text-white" href="<?php echo e(url('home')); ?>">MON COMPTE</a>
                         </li>
 
                         <?php endif; ?>
 
+                        <?php if (\Illuminate\Support\Facades\Blade::check('administrateur')): ?>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link text-white" href="#" id="navbarDropdownMenuLink44" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CORRESPONDANT DE PRESSE&nbsp;</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink44" style="background: linear-gradient(90deg, #757F9A, #D7DDE8);">
+                                <a class="dropdown-item text-white" href="<?php echo e(url('listeadmin')); ?>">LISTE DES CORRESPONDANTS</a>
+                                <a class="dropdown-item text-white" href="<?php echo e(url('recherchetype')); ?>">RECHERCHER CORRESPONDANTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('coordonateur')); ?>">LISTE DEMANDES ACCREDITATION</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">GESTION DES UTILISATEURS</a>
+                        </li>
+                        <!--  <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('home')); ?>">MON COMPTE</a>
+                        </li> -->
+                        <?php endif; ?>
+
+                        <?php if (\Illuminate\Support\Facades\Blade::check('ampliateur')): ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('recherchetype')); ?>">LISTE DES CORRESPONDANTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('home')); ?>">MON COMPTE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('listemessages')); ?>">MES MESSAGES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item text-white" href="<?php echo e(url('listevisiteur')); ?>">LISTE DES CORRESPONDANTS</a>
+                        </li>
+                        <?php endif; ?>
+
                         <?php if (\Illuminate\Support\Facades\Blade::check('verificateur')): ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('listeadmin')); ?>">LISTE DES CORRESPONDANTS</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="<?php echo e(url('verificateur')); ?>">LISTE DEMANDES ACCREDITATION</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('home')); ?>">MON COMPTE</a>
+                        </li>
 
                         <?php endif; ?>
+
                         <?php if (\Illuminate\Support\Facades\Blade::check('coordonateur')): ?>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="<?php echo e(url('coordonateur')); ?>">LISTE DEMANDES ACCREDITATION</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('home')); ?>">MON COMPTE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(url('listeadmin')); ?>">LISTE DES CORRESPONDANTS</a>
                         </li>
 
                         <?php endif; ?>

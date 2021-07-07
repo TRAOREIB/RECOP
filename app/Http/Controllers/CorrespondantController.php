@@ -17,7 +17,8 @@ use App\User;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Requests\CorrespondantRequest;
 
-class CorrespondantController extends Controller {
+class CorrespondantController extends Controller
+{
 
     /**
      * Display a listing of the resource.
@@ -34,7 +35,8 @@ class CorrespondantController extends Controller {
     protected $region;
     protected $pjcontroller;
 
-    public function __construct(Correspondant $corresp) {
+    public function __construct(Correspondant $corresp)
+    {
         $this->correspondant = new Repository($corresp);
         $this->demandeur = new Repository(new Demandeur());
         $this->users = new User();
@@ -45,15 +47,16 @@ class CorrespondantController extends Controller {
         $this->region = new Repository(new Region());
     }
 
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         //vider les variables sessions de controle d'existence du demandeur et du correspondant bien avant une nouvelle operation
-        Session::forget("actficorrespondant");
+        Session::forget("actifcorrespondant");
         Session::forget("actifdemandeur");
 
         $allregions = $this->region->all();
         $typecorrespondant = $request->typecorrespondant;
         $allcorrespondant = $this->correspondant->all();
-        return view('correspondant.ajout_correspondant', compact('allcorrespondant', 'typecorrespondant','allregions'));
+        return view('correspondant.ajout_correspondant', compact('allcorrespondant', 'typecorrespondant', 'allregions'));
     }
 
     /**
@@ -61,7 +64,8 @@ class CorrespondantController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         //
     }
 
@@ -71,7 +75,8 @@ class CorrespondantController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CorrespondantRequest $request) {
+    public function store(CorrespondantRequest  $request)
+    {
 
         $nom = $request->nom;
         $prenom = $request->prenom;
@@ -117,7 +122,8 @@ class CorrespondantController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function show($id)
+    {
         //
     }
 
@@ -127,23 +133,42 @@ class CorrespondantController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id) {
+    public function edit(Request $request, $id)
+    {
         //
         $idcorrespondant = $request->idcorrespondant;
         $idpiecesjointes = $request->idpiecesjointes;
         $correspondant = $this->correspondant->show($idcorrespondant);
-        return view("correspondant.modif_correspondant", compact("correspondant", "idcorrespondant", "idpiecesjointes"));
+        return view("correspondant.choix_correspondant_modif", compact("correspondant", "idcorrespondant", "idpiecesjointes"));
+        // return view("correspondant.modif_correspondant", compact("correspondant", "idcorrespondant", "idpiecesjointes"));
     }
 
-    public function detailsCorrespondant(Request $request) {
-        $iduser = Auth::id();
-         $idpiecesjointes = null;
+    public function formModifCorrespondant(Request $request)
+    {
+
         $idcorrespondant = $request->idcorrespondant;
+        $idpiecesjointes = $request->idpiecesjointes;
+        $correspondant = $this->correspondant->show($idcorrespondant);
+        $typecorrespondant = $request->typecorrespondant;
+        $allregions = $this->region->all();
+        /*    echo "le correspondant ".$correspondant;
+        echo "le id du correspondant ".$idcorrespondant; */
+        return view("correspondant.modif_correspondant", compact("correspondant", "idcorrespondant", "idpiecesjointes", "typecorrespondant", "allregions"));
+    }
+
+    public function detailsCorrespondant(Request $request)
+    {
+        $iduser = Auth::id();
+        $idpiecesjointes = null;
+        $idcorrespondant = $request->idcorrespondant;
+     //   echo "le id du correspondant";
         $piecesjointes = $this->piecesjointes->showinfopjcorrespondant($idcorrespondant);
         $editcorrespondant = $this->correspondant->show($idcorrespondant);
         foreach ($piecesjointes as $editpj) {
             $idpiecesjointes = $editpj->id;
         }
+
+     //   echo $piecesjointes;
         return view('correspondant.details_correspondant', compact('editcorrespondant', 'piecesjointes', 'iduser', 'idpiecesjointes', 'idcorrespondant'));
     }
 
@@ -154,7 +179,11 @@ class CorrespondantController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
+        //vider les champs des sessions actifcorrespondant et actifdemandeur
+        Session::forget("actifcorrespondant");
+        Session::forget("actifdemandeur");
         //
         $iduser = Auth::id();
         Session::put("name", $request->nom . " " . $request->prenom);
@@ -182,24 +211,39 @@ class CorrespondantController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         //
         $this->correspondant->delete($id);
         return $this->index();
     }
 
-    public function devenirCorrespondant(Request $request) {
+    public function choixCorrespondantDevenir()
+    {
          //vider les variables sessions de controle d'existence du demandeur et du correspondant bien avant une nouvelle operation
-         Session::forget("actficorrespondant");
-         Session::forget("actifdemandeur");
-         
+       
+        return view("demandeur.choix_devenircorrespondant");
+    }
+
+    public function devenirCorrespondant(Request $request)
+    {
+        //vider les variables sessions de controle d'existence du demandeur et du correspondant bien avant une nouvelle operation
+        Session::forget("actifcorrespondant");
+        Session::forget("actifdemandeur");
+
+        $typecorrespondant = $request->typecorrespondant;
         $this->pjcontroller = new PiecesJointesController(new PiecesJointes());
         $iduser = Auth::id();
         $allregions = $this->region->all();
-        return view("demandeur.demandeur_correspondant", compact("iduser", "allregions"));
+        return view("demandeur.demandeur_correspondant", compact("iduser", "allregions", "typecorrespondant"));
     }
 
-    public function storenouvCorrespondant(Request $request) {
+    public function storenouvCorrespondant(Request $request)
+    {
+
+        //vider les variables sessions de controle d'existence du demandeur et du correspondant bien avant une nouvelle operation
+        Session::forget("actifcorrespondant");
+        Session::forget("actifdemandeur");
         $id = Auth::id();
         Session::put("iduser", $id);
         //Selectionner le id du correspondant
@@ -213,7 +257,9 @@ class CorrespondantController extends Controller {
         return view("demandeur.pj_nouveaucorrespondant", compact("idcorrespondant"));
     }
 
-    public function strorenouvcorrespondantpj(Request $request) {
+    public function strorenouvcorrespondantpj(Request $request)
+    {
+      
         //  echo $request->idcorrespondant;
         //ajout des pieces jointes
         Session::put("pj", "true");
@@ -222,7 +268,4 @@ class CorrespondantController extends Controller {
         $this->pjcontroller = new PiecesJointesController(new PiecesJointes());
         return $this->pjcontroller->store($request);
     }
-
-   
-
 }

@@ -36,18 +36,18 @@ class CorrespondantRequest extends FormRequest
 			'mail'=> 'bail|required|email|max:50|unique:correspondant',
 			'identifiant'=> 'bail|required|alphanum|max:50|unique:users',			
 			'lieuresidence' => 'bail|required|max:50',
-			'cnib' => 'bail|required|max:20',
+			/* 'cnib' => 'bail|required|max:20',
 			'datedelivcnib' => 'bail|required|date',
-			'dateexpircnib' => 'bail|required|date',
+			'dateexpircnib' => 'bail|required|date', */
 			'numcartepresse' => 'bail|required|max:20',
 			'personneprevenir' => 'bail|required|max:50',
 			'telephonepersp'=> 'bail|required|max:20',
 			'refjournal'=> 'bail|required|max:255',
 			'parcourspro'=> 'bail|required|max:255',
-			'organe'=> 'bail|required|max:50',
+			/* 'organe'=> 'bail|required|max:50',
 			'typepresse'=> 'bail|required',
 			'telorgane'=> 'bail|required|max:20',
-			'adresseorgane' => 'bail|required|max:50',
+			'adresseorgane' => 'bail|required|max:50', */
 			
 			
 			

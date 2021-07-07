@@ -75,15 +75,15 @@
 
             <div class="form-group row">
                 <label class=" col-form-label" for="nom">N° CARTE DE PRESSE:  {{$editcorrespondant->numcartepresse}}</label> 
-            </div>
+            </div> 
             <!--            <div class="form-group row">
                             <label class=" col-form-label" for="nom">N° CARTE CONSULAIRE:  {{$editcorrespondant->carteconsulaire}}</label> 
                         </div>-->
             <div class="form-group row">
-                <label class="col-form-label" for="nom">PERSONNE A PREVENIR:  {{$editcorrespondant->personneprevenir}}</label>                   
+                <label class="col-form-label" for="nom">PERSONNE DE REFERENCE:  {{$editcorrespondant->personneprevenir}}</label>                   
             </div>
             <div class="form-group row">
-                <label class=" col-form-label" for="nom">TELEPHONE PERSONNE A PREVENIR:  {{$editcorrespondant->telephonepersp}}</label>          
+                <label class=" col-form-label" for="nom">TELEPHONE PERSONNE DE REFERENCE:  {{$editcorrespondant->telephonepersp}}</label>          
             </div> 
             <!--            <div class="form-group row">
                             <label class=" col-form-label" for="nom">ADRESSE FIXEUR:  {{$editcorrespondant->adressfixeur}}</label>                                     

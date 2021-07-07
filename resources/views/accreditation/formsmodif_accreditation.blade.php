@@ -31,13 +31,13 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datefin">DATE DE FIN</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-5">
                         <input type="date" class="form-control" id="datefin" placeholder="Entrer " name="datefin">
                     </div>
                 </div> 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="datefin">REGION</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-5">
                         <select class="form-control" name="idregion">
                             @foreach($allregions as $region)
                             <option class="col-sm-7" value="{{$region->idregion}}">{{$region->nomregion}}</option>

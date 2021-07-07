@@ -15,14 +15,14 @@
 
 <div class="text-center">
     {{-- <label style="font-family: fantasy;color: blue">NOUVEAU CORRESPONDANT</label> --}}
-    <b><label style="" class="text-primary">LISTE DES CORRESPONDANTS </label></b>
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANTS</label></b>
 </div>
  {{-- <div class="ligne_separe_titre"></div> --}}
  <hr>
  
-<div class="row divtabgrand" style="">
-    <div class="col-sm-12" >
-        <div class="col-sm-12 ligneform " style="background-color: #EEE">
+<div class="row col-sm-10" style="">
+    <div class="" >
+        <div class="ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
@@ -34,9 +34,6 @@
                         <th>TELEPHONE</th>
                         <th>MAIL</th>
                         <th>ORGANE</th>
-                        
-                       
-                       
                     </tr>
                 </thead>
                 <tbody>
@@ -53,8 +50,7 @@
                          <td>{{$corresp->typecorrespondant }}</td>                   
                         <td>{{$corresp->telephonecorrespondant}}</td>
                         <td>{{$corresp->mailcorrespondant}}</td>
-                        <td>{{$corresp->organe }}</td>
-                                               
+                        <td>{{$corresp->organe }}</td>                                           
                     </tr>
                      @endforeach
 

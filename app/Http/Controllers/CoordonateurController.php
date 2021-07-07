@@ -81,6 +81,7 @@ class CoordonateurController extends Controller
 
     public function invaliderdemande(Request $request)
     {
+       
         $idaccreditation = $request->idaccreditation;
         $this->accreditation->update($request->only($this->accreditation->getModel()->fillable), $idaccreditation);
         //Retour à la liste avec le message
@@ -88,6 +89,12 @@ class CoordonateurController extends Controller
         $accreditations = $this->accreditation->showaccreditationcoordonateur();
         $datevalider = date("D, d M Y H:i:s");
         return view('coordonateur.liste_demande', compact("accreditations", "message", "datevalider"));
+    }
+
+    public function showMessage(Request $request){
+        $idaccreditation = $request->idaccreditation;
+        $accrediregion=$this->vueaccrediregion->showmyaccrediregion($this->vue2,$idaccreditation);
+        return view('coordonateur.ajout_information', compact("idaccreditation","accrediregion"));
     }
 
     public function recherchedemande(Request $request)

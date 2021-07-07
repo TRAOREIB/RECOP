@@ -4,71 +4,92 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 
-class RepositoryVue implements RepositoryVueInterface {
+class RepositoryVue implements RepositoryVueInterface
+{
 
-    // model property on class instances
-    protected $model;
+	// model property on class instances
+	protected $model;
 
-    // Constructor to bind model to repo
-    public function __construct() {
-        
-    }
-
-    public function allvue($vue) {
-        //return DB::table("$vue")->where("actif","=",true)->get();
-        // return DB::table("$vue")->where("actif","=",true)->get();
-        return DB::table("$vue")->where('actif', true)->orderBy('created_at', 'DESC')->get();
-    }
-
-    public function showvue($vue, $id) {
-        return DB::table("$vue")->where("id", "=", $id)->where("actif", "=", true)->get();
-    }
-
-    public function recherchetype($vue, $typecorrespondant, $originecorrespondant) {
-		if($typecorrespondant==null && $originecorrespondant==null){
-		return DB::table("$vue")->where("actif", "=", true)->get();	
-		}
-		if($typecorrespondant!=null && $originecorrespondant!=null){
-        return DB::table("$vue")->where("typecorrespondant", "=", $typecorrespondant)->where("originecorrespondant","=",$originecorrespondant)->where("actif", "=", true)->get();
-		}
-		if($typecorrespondant!=null && $originecorrespondant==null){
-        return DB::table("$vue")->where("typecorrespondant", "=", $typecorrespondant)->where("actif", "=", true)->get();
-		}
-		if($typecorrespondant==null && $originecorrespondant!=null){
-      //  echo ('type null & origine non null');
-		return DB::table("$vue")->where("originecorrespondant", "=", $originecorrespondant)->where("actif", "=", true)->get();
-		}
+	// Constructor to bind model to repo
+	public function __construct()
+	{
 	}
-	
-	 public function recherchetypeorgane($vue, $typeorgane) {
-		if($typeorgane==null){
-		return DB::table("$vue")->where("actif", "=", true)->get();	
+
+	public function allvue($vue)
+	{
+		//return DB::table("$vue")->where("actif","=",true)->get();
+		// return DB::table("$vue")->where("actif","=",true)->get();
+		return DB::table("$vue")->where('actif', true)->orderBy('created_at', 'DESC')->get();
+	}
+
+	public function showvue($vue, $id)
+	{
+		return DB::table("$vue")->where("id", "=", $id)->where("actif", "=", true)->get();
+	}
+
+	public function recherchetype($vue, $typecorrespondant, $originecorrespondant)
+	{
+		if ($typecorrespondant == null && $originecorrespondant == null) {
+			return DB::table("$vue")->where("actif", "=", true)->get();
 		}
-		else{
-        return DB::table("$vue")->where("typeorgane", "=", $typeorgane)->where("actif", "=", true)->get();
+		if ($typecorrespondant != null && $originecorrespondant != null) {
+			return DB::table("$vue")->where("typecorrespondant", "=", $typecorrespondant)->where("originecorrespondant", "=", $originecorrespondant)->where("actif", "=", true)->get();
+		}
+		if ($typecorrespondant != null && $originecorrespondant == null) {
+			return DB::table("$vue")->where("typecorrespondant", "=", $typecorrespondant)->where("actif", "=", true)->get();
+		}
+		if ($typecorrespondant == null && $originecorrespondant != null) {
+			//  echo ('type null & origine non null');
+			return DB::table("$vue")->where("originecorrespondant", "=", $originecorrespondant)->where("actif", "=", true)->get();
 		}
 	}
 
-    public function rechercheaccredi($vue, $nomregion) {
-		if($nomregion==null){
-        return DB::table("$vue")->where("actif", "=", true)->get();
+	public function recherchetypeorgane($vue, $typeorgane)
+	{
+		if ($typeorgane == null) {
+			return DB::table("$vue")->where("actif", "=", true)->get();
+		} else {
+			return DB::table("$vue")->where("typeorgane", "=", $typeorgane)->where("actif", "=", true)->get();
 		}
-		else{
-		return DB::table("$vue")->where("nomregion", "=", $nomregion)->where("actif", "=", true)->get();	
-		}	
-		
 	}
 
-    public function showmyaccreditation($vue, $iduser) {
-        return DB::table("$vue")->where("iduser", "=", $iduser)->where("actif", "=", true)->get();
-    }
+	public function rechercheaccredi($vue, $nomregion)
+	{
+		if ($nomregion == null) {
+			return DB::table("$vue")->where("actif", "=", true)->get();
+		} else {
+			return DB::table("$vue")->where("nomregion", "=", $nomregion)->where("actif", "=", true)->get();
+		}
+	}
 
-	public function showaccrediregionnew($vue,$idaccreditation){
+	public function showmyaccreditation($vue, $iduser)
+	{
+		return DB::table("$vue")->where("iduser", "=", $iduser)->where("actif", "=", true)->get();
+	}
+
+	public function showaccrediregionnew($vue, $idaccreditation)
+	{
 		return DB::table("$vue")->where("id", "=", $idaccreditation)->where("actif", "=", true)->get();
 	}
 
-	public function showmyaccrediregion($vue,$iddemandeur){
+	public function showmyaccrediregion($vue, $iddemandeur)
+	{
 		return DB::table("$vue")->where("iddemandeur", "=", $iddemandeur)->where("actif", "=", true)->get();
 	}
 
+	public function showMessagesAll($vue, $iduser)
+	{
+		return DB::table("$vue")->where("iduser", "=", $iduser)->paginate(10);
+	}
+
+	public function showMessagesByAccreditation($vue, $iduser,$idaccreditation)
+	{
+		return DB::table("$vue")->where("iduser", "=", $iduser)->where("idaccreditation", "=", $idaccreditation)->get();
+	}
+
+	public function showAllMessagesByAccreditation($vue,$idaccreditation)
+	{
+		return DB::table("$vue")->where("idaccreditation", "=", $idaccreditation)->paginate(10);
+	} 
+	
 }

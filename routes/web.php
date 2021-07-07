@@ -38,7 +38,7 @@ Route::get('/', function () {
 // // return view('candidat.form_ajouter');
 //  });
 
- // Route::resource('vehicule', 'VehiculeController');
+// Route::resource('vehicule', 'VehiculeController');
 
 Route::resource('demandeur', 'DemandeurController');
 Route::resource('home', 'HomeController');
@@ -48,6 +48,14 @@ Route::post('transfererdemande', 'VerificateurController@transferer')->name('tra
 Route::post('validerdemande', 'CoordonateurController@validerdemande')->name('validerdemande');
 Route::post('invaliderdemande', 'CoordonateurController@invaliderdemande')->name('invaliderdemande');
 Route::post('recherchedemande', 'CoordonateurController@recherchedemande')->name('recherchedemande');
+Route::post('info', 'CoordonateurController@showMessage')->name('info');
+Route::post('envoieinfo', 'CoordonateurController@invaliderdemande')->name('envoieinfo');
+Route::resource('ampliateur', 'AmpliateurController');
+Route::post('infoampliateur', 'AmpliateurController@formCommenter')->name('infoampliateur');
+Route::get('listemessages', 'AmpliateurController@listeMessages')->name('listemessages');
+Route::post('formmodifiermessage', 'AmpliateurController@formModifMessage')->name('formmodifiermessage');
+Route::post('modifiermessage', 'AmpliateurController@modifierMessage')->name('modifiermessage');
+Route::post('tousmessage', 'AmpliateurController@allMessages')->name('tousmessage');
 
 
 // AJOUT ROUTE DEMANDEURS 17/06/2021
@@ -68,26 +76,34 @@ Route::get('generateattestation', 'EtatController@attestationaccreditation')->na
 
 Route::resource('accreditation', 'AccreditationController');
 Route::post('retirersujet', 'AccreditationController@retirerSujet')->name("retirersujet");
-Route::resource('recherche', 'RechercheController');
+/* Route::resource('recherche', 'RechercheController'); */
 Route::resource('correspondant', 'CorrespondantController');
 Route::resource('piecesjointes', 'PiecesJointesController');
 Route::post('detailsaccreditation', 'AccreditationController@detailsaccreditation')->name('detailsaccreditation');
 Route::post('detailscoordonateur', 'CoordonateurController@detailsaccreditation')->name('detailscoordonateur');
+Route::post('detailsampliateur', 'AmpliateurController@detailsaccreditation')->name('detailsampliateur');
 
 Route::post('detailsverificateur', 'VerificateurController@detailsaccreditation')->name('detailsverificateur');
-Route::post('modifsujet', 'AccreditationController@modifsujets')->name('modifsujet'); 
+Route::post('modifsujet', 'AccreditationController@modifsujets')->name('modifsujet');
 Route::post('retraitmodifsujet', 'AccreditationController@retirerSujetModif')->name('retraitmodifsujet');
 Route::post('detailscorrespondant', 'CorrespondantController@detailsCorrespondant')->name('detailscorrespondant');
 Route::post('editpjcorrespondant', 'PiecesJointesController@editpjcorrespondant')->name('editpjcorrespondant');
-Route::post('updatecorrespondant', 'PiecesJointesController@updatecorrespondant')->name('updatecorrespondant'); 
+Route::post('updatecorrespondant', 'PiecesJointesController@updatecorrespondant')->name('updatecorrespondant');
 Route::post('devenircorrespondant', 'CorrespondantController@devenirCorrespondant')->name('devenircorrespondant');
-Route::post('nouvcorrespondant', 'CorrespondantController@storenouvCorrespondant')->name('nouvcorrespondant');
-Route::post('nouvcorrespondantpj', 'CorrespondantController@strorenouvcorrespondantpj')->name('nouvcorrespondantpj');   
-Route::post('devenirdemandeur', 'DemandeurController@devenirdemandeur')->name('devenirdemandeur');   
-Route::post('storenouvdemandeur', 'DemandeurController@storenouvdemandeur')->name('storenouvdemandeur');   
-Route::post('nouvdemandeurpj', 'DemandeurController@strorenouvdemandeurpj')->name('nouvdemandeurpj');
+Route::post('choixdevenircorrespondant', 'CorrespondantController@choixCorrespondantDevenir')->name('choixdevenircorrespondant');
 
- 
+
+Route::post('formdevenirdemandeur', 'DemandeurController@formDemandeur')->name('formdevenirdemandeur');
+Route::post('nouvcorrespondant', 'CorrespondantController@storenouvCorrespondant')->name('nouvcorrespondant');
+Route::post('nouvcorrespondantpj', 'CorrespondantController@strorenouvcorrespondantpj')->name('nouvcorrespondantpj');
+Route::post('devenirdemandeur', 'DemandeurController@devenirdemandeur')->name('devenirdemandeur');
+Route::post('storenouvdemandeur', 'DemandeurController@storenouvdemandeur')->name('storenouvdemandeur');
+Route::post('nouvdemandeurpj', 'DemandeurController@strorenouvdemandeurpj')->name('nouvdemandeurpj');
+Route::post('modifcorrespondant', 'CorrespondantController@formModifCorrespondant')->name('modifcorrespondant');
+Route::post('nouveaudemandeur', 'DemandeurController@form_demandeur')->name('nouveaudemandeur');
+Route::post('modifdemandeur', 'DemandeurController@formChoixDemandeur')->name('modifdemandeur');
+Route::post('formdemandeur', 'DemandeurController@formModifDemandeur')->name('formdemandeur');
+
 //Route::resource('information', 'RechercheController');
 
 
@@ -112,7 +128,7 @@ Route::get('enrinf', 'InformationController@index')->name('enrinf');;
 //});
 
 
-   
+
 //Route::get('presseligne','OeuvreController@presseligne');
 //Route::get('presseecrite','OeuvreController@presseecrite');
 //Route::get('mediatele','OeuvreController@pressetelevision');
@@ -193,42 +209,42 @@ Route::resource('vehicule', 'VehiculeController');
 //     return view('candidat.form_ajouter');
 // });
 
-Route::get('recherchetype', 'RechercheController@recherchetype')->name('type');
+Route::get('recherchetype', 'ChercheController@recherchetype')->name('type');
 
-Route::get('recherchetypeorgane', 'RechercheController@recherchetypeorgane')->name('typeorgane');
+Route::get('recherchetypeorgane', 'ChercheController@recherchetypeorgane')->name('typeorgane');
 
 Route::get('rechercheaccredi', 'AccreditationController@rechercheaccredi')->name('lieuaccredi');
 
 
 
-Route::get('rechercheregioninter', 'RechercheController@rechercheregion')->name('region');
+Route::get('rechercheregioninter', 'ChercheController@rechercheregion')->name('region');
 
-Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('regioninter');
+Route::get('rechercheregioninter', 'ChercheController@rechercheregioninter')->name('regioninter');
 
 
 
- //Route::get('/', function () {
-   // return view('information.ajout_information');
- //});
- 
- 
- 
- 
+//Route::get('/', function () {
+// return view('information.ajout_information');
+//});
 
- ////////////////Route::resource('informations', 'InformationController');
 
- Route::resource('informations', 'InformationController');
 
- 
- 
+
+
+////////////////Route::resource('informations', 'InformationController');
+
+Route::resource('informations', 'InformationController');
+
+
+
 //Route::get('rechercheregioninter', 'RechercheController@rechercheregioninter')->name('region');
 
 
-Route::get('listevisiteur', 'RechercheController@listevisiteur');
+Route::get('listevisiteur', 'ChercheController@listevisiteur');
 
-Route::get('retirer/{id}', 'RechercheController@destroy')->name('retirer');
+Route::get('retirer/{id}', 'ChercheController@destroy')->name('retirer');
 
-Route::get('listeadmin', 'RechercheController@listeadmin')->name('rechercher');
+Route::get('listeadmin', 'ChercheController@listeadmin')->name('rechercher');
 
 
 Auth::routes();
@@ -246,25 +262,25 @@ Route::post('pjaccreditation', 'PiecesJointesController@storepjaccreditation')->
 
 Route::get('listeaccreditation', 'AccreditationController@listeaccreditation')->name('listeaccreditation');
 
- Route::get('choixmodif', function () {
+Route::get('choixmodif', function () {
     return view('accreditation.formsmodif_accreditation');
- });
+});
 
- Route::get('modifdem', function () {
+Route::get('modifdem', function () {
     return view('demandeur.modif_demandeur');
- });
+});
 
 
- Route::get('listedem', 'DemandeurController@listedemandeur');
+Route::get('listedem', 'DemandeurController@listedemandeur');
 
- Route::post('modifpjaccreditation/{idpiecesjointes}', 'PiecesJointesController@editpjaccreditation')->name('modifpjaccreditation');
+Route::post('modifpjaccreditation/{idpiecesjointes}', 'PiecesJointesController@editpjaccreditation')->name('modifpjaccreditation');
 
- //add zoure 20/06/2021
- Route::post('creeruser', 'CreationUtilisateurController@store')->name('creeruser');
- Route::post('changepassword', 'CreationUtilisateurController@index')->name('changepassword');
- Route::post('updatepassword', 'CreationUtilisateurController@update')->name('updatepassword');
- Route::post('updateadmin', 'CreationUtilisateurController@updateadmin')->name('updateadmin');
+//add zoure 20/06/2021
+Route::post('creeruser', 'CreationUtilisateurController@store')->name('creeruser');
+Route::post('changepassword', 'CreationUtilisateurController@index')->name('changepassword');
+Route::post('updatepassword', 'CreationUtilisateurController@update')->name('updatepassword');
+Route::post('updateadmin', 'CreationUtilisateurController@updateadmin')->name('updateadmin');
 
- Route::get('resetadmin', function () {
+Route::get('resetadmin', function () {
     return view('auth.passwords.reset_admin');
 });

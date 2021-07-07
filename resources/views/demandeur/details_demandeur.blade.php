@@ -93,9 +93,7 @@
             <div class="form-group row">
                 <label class="col-form-label" for="adresseorgane">ADRESSE ORGANE:  {{$dem->adressestruct}}</label>      
             </div>
-            <div class="form-group row">
-                <label class="col-form-label" for="laissezpasser">N° LAISSEZ PASSER:  {{$dem->laissepasser}}</label>                     
-            </div>
+           
         </div>
     </div>	
        

@@ -69,7 +69,8 @@
                                             <?php if($mesaccredi->valider==1): ?>
                                             <form method="post" action="<?php echo e(route('generateattestation')); ?>">
                                                 <?php echo csrf_field(); ?>
-                                                <input type="submit" class="btn btn-success" value="Export PDF">
+                                                <!-- <input type="submit" class="btn btn-success" value="Export PDF"> -->
+                                                <a href="<?php echo e(asset('storage/docs/modelaccreditation.doc')); ?>"><input type="button" class="btn btn-success" value="Export Accreditation "></a>
                                                 <input type="hidden" value="<?php echo e($mesaccredi->idaccreditation); ?>" name="idaccreditation">
                                                 <input type="hidden" value="<?php echo e($mesaccredi->iduser); ?>" name="iduser">
                                                 <input type="hidden" value="<?php echo e($mesaccredi->iddemandeur); ?>" name="iddemandeur">
@@ -98,7 +99,11 @@
 
     <script>
         $(document).ready(function() {
-            $('#table').DataTable();
+            $('#table').DataTable({
+                order: [
+                    [0, 'desc']
+                ]
+            });
         });
     </script>
     <?php $__env->stopSection(); ?>

@@ -75,15 +75,15 @@
 
             <div class="form-group row">
                 <label class=" col-form-label" for="nom">N° CARTE DE PRESSE:  <?php echo e($editcorrespondant->numcartepresse); ?></label> 
-            </div>
+            </div> 
             <!--            <div class="form-group row">
                             <label class=" col-form-label" for="nom">N° CARTE CONSULAIRE:  <?php echo e($editcorrespondant->carteconsulaire); ?></label> 
                         </div>-->
             <div class="form-group row">
-                <label class="col-form-label" for="nom">PERSONNE A PREVENIR:  <?php echo e($editcorrespondant->personneprevenir); ?></label>                   
+                <label class="col-form-label" for="nom">PERSONNE DE REFERENCE:  <?php echo e($editcorrespondant->personneprevenir); ?></label>                   
             </div>
             <div class="form-group row">
-                <label class=" col-form-label" for="nom">TELEPHONE PERSONNE A PREVENIR:  <?php echo e($editcorrespondant->telephonepersp); ?></label>          
+                <label class=" col-form-label" for="nom">TELEPHONE PERSONNE DE REFERENCE:  <?php echo e($editcorrespondant->telephonepersp); ?></label>          
             </div> 
             <!--            <div class="form-group row">
                             <label class=" col-form-label" for="nom">ADRESSE FIXEUR:  <?php echo e($editcorrespondant->adressfixeur); ?></label>                                     

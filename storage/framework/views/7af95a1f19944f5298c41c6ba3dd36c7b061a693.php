@@ -23,15 +23,15 @@
     </div>
     <?php endif; ?>
     <?php if($correspondantexiste==0): ?>
-    <form method='POST' action='<?php echo e(route("devenircorrespondant")); ?>'>
+    <form method='POST' action='<?php echo e(route("choixdevenircorrespondant")); ?>'>
         <?php echo csrf_field(); ?>
-        <input type="submit" class="btn btn-success" value="S'insvrire comme correspondant de presse" name="" incirecorresp>
+        <input type="submit" class="btn btn-success" value="S'inscrire comme correspondant de presse" name="" incirecorresp>
     </form>
     <?php endif; ?>
     <br>
     <form method="POST" action="<?php echo e(route("devenirdemandeur")); ?>">
         <?php echo csrf_field(); ?>
-        <input type="submit" class="btn btn-warning" value="Ajouter une accreditation de presse" name="ajoutaccredi">
+        <input type="submit" class="btn btn-warning" value="Demander une accreditation de presse" name="ajoutaccredi">
         <input type="hidden" value="<?php echo e($idcomptecorrespondant); ?>" name="idcorrespondant">
     </form>
     <br>
@@ -108,5 +108,14 @@
         </div>-->
 </div>
 <br>
+<script>
+    $(document).ready(function() {
+        $('#table').DataTable({
+            order: [
+                [0, 'desc']
+            ]
+        });
+    });
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/home.blade.php ENDPATH**/ ?>

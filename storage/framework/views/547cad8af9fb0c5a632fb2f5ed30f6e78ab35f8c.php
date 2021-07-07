@@ -15,14 +15,14 @@
 
 <div class="text-center">
     
-    <b><label style="" class="text-primary">LISTE DES CORRESPONDANTS </label></b>
+    <b><label style="" class="text-primary">LISTE DES CORRESPONDANTS</label></b>
 </div>
  
  <hr>
  
-<div class="row divtabgrand" style="">
-    <div class="col-sm-12" >
-        <div class="col-sm-12 ligneform " style="background-color: #EEE">
+<div class="row col-sm-10" style="">
+    <div class="" >
+        <div class="ligneform " style="background-color: #EEE">
             <table class="table table-striped table-condensed" id="table">
                 <thead>
                     <tr style="background-color:#2a6496;color: #FFFFFF;">
@@ -34,9 +34,6 @@
                         <th>TELEPHONE</th>
                         <th>MAIL</th>
                         <th>ORGANE</th>
-                        
-                       
-                       
                     </tr>
                 </thead>
                 <tbody>
@@ -53,8 +50,7 @@
                          <td><?php echo e($corresp->typecorrespondant); ?></td>                   
                         <td><?php echo e($corresp->telephonecorrespondant); ?></td>
                         <td><?php echo e($corresp->mailcorrespondant); ?></td>
-                        <td><?php echo e($corresp->organe); ?></td>
-                                               
+                        <td><?php echo e($corresp->organe); ?></td>                                           
                     </tr>
                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

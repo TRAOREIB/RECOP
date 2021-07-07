@@ -19,7 +19,7 @@
         <!-- Bloc IDENTITE DU DEMANDEUR-->
         <div class="card">
             <div class=" card text-center card-header">IDENTITE DU DEMANDEUR</div>
-            <div class="card-body"> 
+            <div class="card-body">
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="nom">NOM:</label>
                     <div class="col-sm-8">
@@ -305,9 +305,10 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                         <label><i>La province, la ville, rue, secteur </i></label>
-                        
+
                     </div>
                 </div>
+                <?php if($typedemandeur=="Ressortissant Espace CEDEAO"): ?>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="lieuresidence">N° CNI:</label>
                     <div class="col-sm-7">
@@ -412,6 +413,35 @@ unset($__errorArgs, $__bag); ?>
                         <label><i>Le numéro du passport</i></label>
                     </div>
                 </div>
+                <?php endif; ?>
+                <?php if($typedemandeur=="Autre"): ?>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSPORT:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control <?php $__errorArgs = ['passeport'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" placeholder=" " name="passeport" value="<?php echo e(old('passeport')); ?>" required>
+                        <?php $__errorArgs = ['passeport'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <span class="invalid-feedback" role="alert">
+                            <strong><?php echo e($message); ?></strong>
+                        </span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        <label><i>Le numéro du passport</i></label>
+                    </div>
+                </div>
+                <?php endif; ?>
 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="carteconsulaire">N° CARTE CONSULAIRE:</label>
@@ -652,32 +682,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="laissepasser">N° LAISSEZ PASSER:</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control <?php $__errorArgs = ['laissepasser'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" placeholder=" " name="laissepasser" value="<?php echo e(old('laissepasser')); ?>">
-                        <?php $__errorArgs = ['laissepasser'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                        <span class="invalid-feedback" role="alert">
-                            <strong><?php echo e($message); ?></strong>
-                        </span>
-                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                        <label><i>Le numéro du laissez passer</i></label>
-                    </div>
-                </div>
+               <input type=hidden value="<?php echo e($typedemandeur); ?>" name="typedemandeur">
                 <input type="hidden" value="0" name="test">
             </div>
         </div>

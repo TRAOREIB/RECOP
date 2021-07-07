@@ -128,11 +128,11 @@ class Repository implements RepositoryInterface
 
         if (!empty($data['actif'])) {
             if (!empty(session("actifcorrespondant"))) {
-                //    echo "//// il arrive dans correspondant dans update ////";
+                echo "//// il arrive dans correspondant dans update ////";
                 $data["actif"] = 0;
             }
             if (!empty(session("actifdemandeur"))) {
-                //    echo "//// il arrive dans demandeur dans update ////";
+                echo "//// il arrive dans demandeur dans update ////";
                 $data["actif"] = 0;
             }
         }
@@ -310,5 +310,15 @@ class Repository implements RepositoryInterface
     public function showiduser($identifiant)
     {
         return $this->model::where("identifiant", $identifiant)->get();
+    }
+
+    public function showuser($iduser)
+    {
+        return $this->model::where("id", $iduser)->get();
+    }
+
+    public function showuserinactif($iduser)
+    {
+        return $this->model::where([["id", $iduser], ["valid", false]])->get();
     }
 }

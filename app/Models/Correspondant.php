@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $datenaissance
  * @property string $lieunaissance
  * @property string $nationalite
+ * @property string $autrenationalite
  * @property string $datedelivcnib 
  * @property string $dateexpircnib
  * @property string $personneprevenir
@@ -31,9 +32,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $parcourspro
  * @property string $region
  * @property string $organe
+ * @property string $organe1
+ * @property string $telorgane1
+ * @property string $typepresse1
+ * @property string $organe2
+ * @property string $telorgane2
+ * @property string $typepresse2
+ * @property string $organe3
+ * @property string $telorgane3
+ * @property string $typepresse3
  * @property string $typeorgane
  * @property string $telorgane
- *  @property string $adresseorgane
+ * @property string $adresseorgane
  * @property string $typepresse
  * @property boolean $actif
  * @property string $CREATED_AT
@@ -59,10 +69,10 @@ class Correspondant extends Model
      */
     protected $primaryKey = 'idcorrespondant';
 
-    /**
+    /** 
      * @var array
      */
-    protected $fillable = ['iduser', 'nom', 'prenom','sexe', 'typecorrespondant', 'origine', 'cnib','datedelivcnib','dateexpircnib','datenaissance','lieunaissance','nationalite','passeport', 'profession','personneprevenir','telephonepersp', 'telephone', 'telephone2', 'mail', 'lieuresidence', 'numcartepresse', 'refjournal', 'parcourspro', 'region','typepresse','organe','typeorgane','telorgane','adresseorgane', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser', 'nom', 'prenom', 'sexe', 'typecorrespondant', 'origine', 'cnib', 'datedelivcnib', 'dateexpircnib', 'datenaissance', 'lieunaissance', 'nationalite', 'autrenationalite', 'passeport', 'profession', 'personneprevenir', 'telephonepersp', 'telephone', 'telephone2', 'mail', 'lieuresidence', 'numcartepresse', 'refjournal', 'parcourspro', 'region', 'typepresse', 'organe', 'organe1', 'telorgane1', 'typepresse1', 'organe2', 'telorgane2', 'typepresse2', 'organe3', 'telorgane3', 'typepresse3', 'typeorgane', 'telorgane', 'adresseorgane', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

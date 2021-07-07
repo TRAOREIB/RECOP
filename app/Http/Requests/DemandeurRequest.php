@@ -34,9 +34,9 @@ class DemandeurRequest extends FormRequest
 			'mail'=> 'bail|required|email|max:50|unique:demandeur',
 			'identifiant'=> 'bail|required|alphanum|max:50|unique:users',			
 			'lieuresidence' => 'bail|required|max:50',
-			'cnib' => 'bail|required|max:20',
+			/* 'cnib' => 'bail|required|max:20',
 			'datedelivcnib' => 'bail|required|date',
-			'dateexpircnib' => 'bail|required|date',	
+			'dateexpircnib' => 'bail|required|date',	 */
             'telephoneresidence'=> 'bail|required|numeric',           
 			'personneprevenir' => 'bail|required|max:50',
 			'telephonepersp'=> 'bail|required|max:20',		

@@ -65,6 +65,10 @@ endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
+
+
+
+
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="profession">PROFESSSION <span style="color:red">*</span></label>
                     <div class="col-sm-8">
@@ -166,6 +170,17 @@ endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
+                <div class=" form-group row">
+                    <label class="col-sm-3 col-form-label">AUTRE NATIONALITE</label>
+                    <div class="col-sm-4">
+                        <select id="autrenationalite" class="form-control" onchange="nouvelleLigne()">
+                            <option value="Non">Non</option>
+                            <option value="Oui">Oui</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="othernationalite">
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="telephone">TELEPHONE 1 <span style="color:red">*</span></label>
                     <div class="col-sm-5">
@@ -218,7 +233,7 @@ unset($__errorArgs, $__bag); ?>
                     <label class="col-sm-3 col-form-label" for="telephone">ORIGINE <span style="color:red">*</span></label>
                     <div class="col-sm-5">
                         <select name="origine" class="form-control">
-                            <option>Etranger</option>
+                            <option>Non Burkinabè</option>
                             <option>National</option>
                         </select>
                     </div>
@@ -248,7 +263,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
-
+                <?php if($typecorrespondant=="Correspondant national"): ?>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="region">REGION <span style="color:red">*</span></label>
 
@@ -262,6 +277,32 @@ unset($__errorArgs, $__bag); ?>
                     </div>
 
                 </div>
+                <?php endif; ?>
+                <?php if($typecorrespondant=="Correspondant international"): ?>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="region">REGION DE RESIDENCE <span style="color:red">*</span></label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control <?php $__errorArgs = ['telephone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="telephone" placeholder=" " name="region" value="<?php echo e(old('region')); ?>" required>
+                        <?php $__errorArgs = ['region'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="lieuresidence">LIEU DE RESIDENCE <span style="color:red">*</span></label>
                     <div class="col-sm-7">
@@ -286,6 +327,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
+                <?php if($typecorrespondant=="Correspondant national"): ?>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="cnib">N° CNI <span style="color:red">*</span></label>
                     <div class="col-sm-7">
@@ -360,12 +402,30 @@ unset($__errorArgs, $__bag); ?>
                         <label><i>Date d'expiration de la CNIB</i></label>
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSEPORT </label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="numPasseport" placeholder=" " name="passeport">
                     </div>
                 </div>
+                <?php endif; ?>
+                <?php if($typecorrespondant=="Journaliste independant"): ?>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSEPORT </label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="numPasseport" placeholder=" " name="passeport" required>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php if($typecorrespondant=="Correspondant international"): ?>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSEPORT </label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="numPasseport" placeholder=" " name="passeport" required>
+                    </div>
+                </div>
+                <?php endif; ?>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="carteconsulaire">N° CARTE CONSULAIRE</label>
                     <div class="col-sm-5">
@@ -395,54 +455,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="personneprevenir">PERSONNE A PREVENIR <span style="color:red">*</span></label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control <?php $__errorArgs = ['personneprevenir'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" id="personneprevenir" placeholder=" " name="personneprevenir" value="<?php echo e(old('personneprevenir')); ?>" required>
-                        <?php $__errorArgs = ['personneprevenir'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                        <div class="invalid-feedback"><?php echo e($message); ?></div>
-                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                        <label><i>Nom et Prenom(s) de la personne à prevenir</i></label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE <span style="color:red">*</span></label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control <?php $__errorArgs = ['telephonepersp'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" id="telephonepersp" placeholder=" " name="telephonepersp" value="<?php echo e(old('telephonepersp')); ?>" required>
-                        <?php $__errorArgs = ['telephonepersp'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                        <div class="invalid-feedback"><?php echo e($message); ?></div>
-                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                        <label><i>Telephone de la personne à prevenir</i></label>
-                    </div>
-                </div>
+
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="references">REFERENCES JOURNALISTIQUES <span style="color:red">*</span></label>
                     <div class="col-sm-7">
@@ -491,6 +504,54 @@ unset($__errorArgs, $__bag); ?>
                     </div>
 
                 </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="personneprevenir">PERSONNE DE REFERENCE <span style="color:red">*</span></label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control <?php $__errorArgs = ['personneprevenir'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="personneprevenir" placeholder=" " name="personneprevenir" value="<?php echo e(old('personneprevenir')); ?>" required>
+                        <?php $__errorArgs = ['personneprevenir'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        <label><i>Nom et Prenom(s) de la personne à prevenir</i></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="telephonepersp">TELEPHONE PERSONNE DE REFERENCE <span style="color:red">*</span></label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control <?php $__errorArgs = ['telephonepersp'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="telephonepersp" placeholder=" " name="telephonepersp" value="<?php echo e(old('telephonepersp')); ?>" required>
+                        <?php $__errorArgs = ['telephonepersp'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <div class="invalid-feedback"><?php echo e($message); ?></div>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        <label><i>Telephone de la personne à prevenir</i></label>
+                    </div>
+                </div>
                 <input type="hidden" value="1" name="actif">
             </div>
         </div>
@@ -498,7 +559,92 @@ unset($__errorArgs, $__bag); ?>
     <p>
 
     <div class="col-sm-12">
+        <!-- les informations des organes de presse pour le freelance - independant -->
+        <?php if($typecorrespondant=="Journaliste independant"): ?>
+        <div class="card">
+            <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <th>Nom de l'organe de Presse</th>
+                        <th>Type de presse</th>
+                        <th>Telephone de l'organe</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control col-sm-12" name="organe1" required>
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" required name="typepresse1">
+                                    <option>Presse Ecrite</option>
+                                    <option>Radio</option>
+                                    <option>Tele</option>
+                                    <option>Radio/Tele</option>
+                                    <option>Radio/Tele/Presse Ecrite</option>
+                                    <option>Radio/Tele/Presse Ecrite/Presse en Ligne</option>
+                                    <option>Presse en Ligne/Presse Ecrite</option>
+                                    <option>Presse En Ligne</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control col-sm-12" name="telorgane1" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control col-sm-12" name="organe2">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" name="typepresse2">
+                                    <option>Presse Ecrite</option>
+                                    <option>Radio</option>
+                                    <option>Tele</option>
+                                    <option>Radio/Tele</option>
+                                    <option>Radio/Tele/Presse Ecrite</option>
+                                    <option>Radio/Tele/Presse Ecrite/Presse en Ligne</option>
+                                    <option>Presse en Ligne/Presse Ecrite</option>
+                                    <option>Presse En Ligne</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control col-sm-12" name="telorgane2">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" class="form-control col-sm-12" name="organe3">
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control" name="typepresse3">
+                                    <option>Presse Ecrite</option>
+                                    <option>Radio</option>
+                                    <option>Tele</option>
+                                    <option>Radio/Tele</option>
+                                    <option>Radio/Tele/Presse Ecrite</option>
+                                    <option>Radio/Tele/Presse Ecrite/Presse en Ligne</option>
+                                    <option>Presse en Ligne/Presse Ecrite</option>
+                                    <option>Presse En Ligne</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control col-sm-12" name="telorgane3">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type='hidden' value="<?php echo e($typecorrespondant); ?>" name='typecorrespondant'>
+            </div>
+        </div>
+        <?php endif; ?>
         <!-- Bloc 2-->
+        <?php if($typecorrespondant!="Journaliste independant"): ?>
         <div class="card">
             <div class=" card text-center card-header">INFORMATIONS SUR L'ORGANE DE PRESSE</div>
             <div class="card-body">
@@ -533,6 +679,10 @@ unset($__errorArgs, $__bag); ?>
                             <option>Presse Ecrite</option>
                             <option>Radio</option>
                             <option>Tele</option>
+                            <option>Radio/Tele</option>
+                            <option>Radio/Tele/Presse Ecrite</option>
+                            <option>Radio/Tele/Presse Ecrite/Presse en Ligne</option>
+                            <option>Presse en Ligne/Presse Ecrite</option>
                             <option>Presse En Ligne</option>
                         </select>
                     </div>
@@ -605,6 +755,7 @@ unset($__errorArgs, $__bag); ?>
 
             </div>
         </div>
+        <?php endif; ?>
     </div>
     <br>
     <div class="col-sm-12">

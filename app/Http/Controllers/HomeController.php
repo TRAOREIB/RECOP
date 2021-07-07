@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CoordonateurController;
 use App\Http\Controllers\VerificateurController;
+use App\Http\Controllers\AmpliateurController;
 use App\Repositories\RepositoryVue;
 use App\Repositories\Repository;
 use App\Models\Accreditation;
+use App\Models\Ampliateur;
 use App\Models\Correspondant;
 use App\Models\PiecesJointes;
 use Illuminate\Http\Request;
@@ -24,6 +26,7 @@ class HomeController extends Controller
     protected $piecesjointes;
     protected $coordonateur;
     protected $verificateur;
+    protected $ampliateur;
 
     public function __construct()
     {
@@ -33,6 +36,7 @@ class HomeController extends Controller
         $this->accreditation = new Repository(new Accreditation());
         $this->correspondant = new Repository(new Correspondant());
         $this->piecesjointes = new Repository(new PiecesJointes());
+    
     }
 
     /**
@@ -48,6 +52,7 @@ class HomeController extends Controller
         //creer une instance pour utiliser la fonction index dans verificateur controller
         $this->verificateur = new VerificateurController();
         $this->coordonateur = new CoordonateurController();
+        $this->ampliateur=new AmpliateurController();
         $correspondantexiste = 0;
 
        // echo Auth::user()->profil;
@@ -59,6 +64,10 @@ class HomeController extends Controller
           //  echo "il est le coordonateur";
             return $this->coordonateur->index();
         }
+        if (Auth::user()->profil == "Ampliateur") {
+            //  echo "il est le coordonateur";
+              return $this->ampliateur->index();
+          }
 
         $correspondant = $this->correspondantvue->showvue($this->vuecorrespondant, $id);
         //
@@ -67,8 +76,7 @@ class HomeController extends Controller
             $idcomptecorrespondant = $coinactif->idcorrespondant;
         }
         $idcorrespondant = $this->correspondant->showcorrespondant($id);
-
-       // echo $idcorrespondant;
+     
         foreach ($idcorrespondant as $corresp) {
             $idcomptecorrespondant = $corresp->idcorrespondant;
             $correspondantexiste = 1; 

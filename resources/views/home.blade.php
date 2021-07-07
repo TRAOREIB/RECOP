@@ -23,15 +23,15 @@
     </div>
     @endif
     @if($correspondantexiste==0)
-    <form method='POST' action='{{route("devenircorrespondant")}}'>
+    <form method='POST' action='{{route("choixdevenircorrespondant")}}'>
         @csrf
-        <input type="submit" class="btn btn-success" value="S'insvrire comme correspondant de presse" name="" incirecorresp>
+        <input type="submit" class="btn btn-success" value="S'inscrire comme correspondant de presse" name="" incirecorresp>
     </form>
     @endif
     <br>
     <form method="POST" action="{{route("devenirdemandeur")}}">
         @csrf
-        <input type="submit" class="btn btn-warning" value="Ajouter une accreditation de presse" name="ajoutaccredi">
+        <input type="submit" class="btn btn-warning" value="Demander une accreditation de presse" name="ajoutaccredi">
         <input type="hidden" value="{{$idcomptecorrespondant}}" name="idcorrespondant">
     </form>
     <br>
@@ -106,4 +106,13 @@
         </div>-->
 </div>
 <br>
+<script>
+    $(document).ready(function() {
+        $('#table').DataTable({
+            order: [
+                [0, 'desc']
+            ]
+        });
+    });
+</script>
 @endsection

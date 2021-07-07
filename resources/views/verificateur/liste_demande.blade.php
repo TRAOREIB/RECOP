@@ -3,7 +3,7 @@
 <br>
 
 <div class="container">
-    <label class="label label-primary"><b>BIENVENUE  {{ Auth::user()->name }}</b></label>
+    <label class="label label-primary"><b>BIENVENUE {{ Auth::user()->name }}</b></label>
     <hr>
     <br>
     <div><label class="label label-primary"><b>Votre Tableau de Bord</b></label></div>
@@ -19,42 +19,41 @@
                         <tr style="background-color:#2a6496;color: #FFFFFF;">
                             <th>N°Demande</th>
                             <th>Date de Soumission</th>
-                            <th>Sujet(s)</th>  
-                            <th>Etat</th> 
-                            <th>Modifier</th> 
+                            <th>Sujet(s)</th>
+                            <th>Etat</th>
+                            <th>Modifier</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        @foreach($accreditations as $mesaccredi) 
+                        @foreach($accreditations as $mesaccredi)
                         <tr>
                             <td>{{$mesaccredi->idaccreditation}}</td>
                             <td>{{$mesaccredi->CREATED_AT}}</td>
-                            <td>{{$mesaccredi->titreevenement}},....</td> 
-                            <td>En cours</td> 
+                            <td>{{$mesaccredi->titreevenement}},....</td>
+                            <td>En cours</td>
                             <td>
                                 <div class="row ">
                                     <div>
-                                    <form method="post" action="{{route('detailsverificateur')}}">
-                                        @csrf
-                                        <input type="submit" class="btn btn-success" value="voir details">
-                                        <input type="hidden" value="{{$mesaccredi->idaccreditation}}" name="idaccreditation">
-                                        <input type="hidden" value="{{$mesaccredi->iduser}}" name="iduser">
-                                        <input type="hidden" value="{{$mesaccredi->iddemandeur}}" name="iddemandeur">                     
-                                        &nbsp;
-                                    </form>
-                                    </div> 
+                                        <form method="post" action="{{route('detailsverificateur')}}">
+                                            @csrf
+                                            <input type="submit" class="btn btn-success" value="voir details">
+                                            <input type="hidden" value="{{$mesaccredi->idaccreditation}}" name="idaccreditation">
+                                            <input type="hidden" value="{{$mesaccredi->iduser}}" name="iduser">
+                                            <input type="hidden" value="{{$mesaccredi->iddemandeur}}" name="iddemandeur">
+                                            &nbsp;
+                                        </form>
+                                    </div>
                                     <div>
-                                    <form method="post" action="{{route("transfererdemande")}}">
-                                        @csrf
-                                        <input type="submit" value="Transferer la Demande" class="btn btn-warning">
-                                        <input type="hidden"  value="{{$mesaccredi->idaccreditation}}" name="idaccreditation">
-                                        <input type="hidden"  value="1" name="transfer">
-                                        <input type="hidden"  value="{{$datetransfer}}" name="datetransfer">
-                                    </form>  
-                                    </div>     
-                                </div>    
-                            </td> 
+                                        <form method="post" action="{{route("transfererdemande")}}">
+                                            @csrf
+                                            <input type="submit" value="Transferer la Demande" class="btn btn-warning">
+                                            <input type="hidden" value="{{$mesaccredi->idaccreditation}}" name="idaccreditation">
+                                            <input type="hidden" value="1" name="transfer">
+                                            <input type="hidden" value="{{$datetransfer}}" name="datetransfer">
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
 
@@ -62,7 +61,7 @@
                 </table>
 
             </div>
-        </div>  
+        </div>
 
     </div>
 
@@ -71,8 +70,13 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        $('#table').DataTable();
+    $(document).ready(function() {
+        $('#table').DataTable({
+            order: [
+                [0, 'desc'] 
+            ]
+        });
+
     });
 </script>
 @endsection

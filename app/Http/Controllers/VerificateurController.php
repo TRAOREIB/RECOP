@@ -41,6 +41,7 @@ class VerificateurController extends Controller {
 //        $idcomptecorrespondant = null;
         $datetransfer = date("D, d M Y H:i:s");
         $accreditations = $this->accreditation->showaccreditationverificateur();
+       // echo $accreditations; 
         return view('verificateur.liste_demande', compact("accreditations","datetransfer"));
     }
 

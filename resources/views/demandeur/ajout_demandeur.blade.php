@@ -17,7 +17,7 @@
         <!-- Bloc IDENTITE DU DEMANDEUR-->
         <div class="card">
             <div class=" card text-center card-header">IDENTITE DU DEMANDEUR</div>
-            <div class="card-body"> 
+            <div class="card-body">
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="nom">NOM:</label>
                     <div class="col-sm-8">
@@ -149,9 +149,10 @@
                         </span>
                         @enderror
                         <label><i>La province, la ville, rue, secteur </i></label>
-                        
+
                     </div>
                 </div>
+                @if($typedemandeur=="Ressortissant Espace CEDEAO")
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="lieuresidence">N° CNI:</label>
                     <div class="col-sm-7">
@@ -200,6 +201,21 @@
                         <label><i>Le numéro du passport</i></label>
                     </div>
                 </div>
+                @endif
+                @if($typedemandeur=="Autre")
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="numPasseport">N° PASSPORT:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control @error('passeport') is-invalid @enderror" placeholder=" " name="passeport" value="{{ old('passeport') }}" required>
+                        @error('passeport')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <label><i>Le numéro du passport</i></label>
+                    </div>
+                </div>
+                @endif
 
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="carteconsulaire">N° CARTE CONSULAIRE:</label>
@@ -314,18 +330,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="laissepasser">N° LAISSEZ PASSER:</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control @error('laissepasser') is-invalid @enderror" placeholder=" " name="laissepasser" value="{{ old('laissepasser') }}">
-                        @error('laissepasser')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <label><i>Le numéro du laissez passer</i></label>
-                    </div>
-                </div>
+               <input type=hidden value="{{$typedemandeur}}" name="typedemandeur">
                 <input type="hidden" value="0" name="test">
             </div>
         </div>
