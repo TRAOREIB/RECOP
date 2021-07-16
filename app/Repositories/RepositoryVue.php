@@ -92,4 +92,8 @@ class RepositoryVue implements RepositoryVueInterface
 		return DB::table("$vue")->where("idaccreditation", "=", $idaccreditation)->paginate(10);
 	} 
 	
+    public function showattestationaccredi($vue,$idaccreditation){
+		return DB::table("$vue")->where("id", "=", $idaccreditation)->where("actif", "=", true)->get();
+	}
+
 }

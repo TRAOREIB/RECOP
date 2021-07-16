@@ -31,6 +31,18 @@ class Repository implements RepositoryInterface
     public function create(array $data)
     {
 
+        //le type du fichier à enregistrer dans la table document
+        if (!empty(session("type"))) {
+            //  echo "on arrive bien dans le id accreditation dans Repository";
+            $data['type'] = session("type");
+        }
+
+        //Le nom du fichier existe on l'enregistre dans la table document
+        if (!empty(session("nomfichier"))) {
+            //  echo "on arrive bien dans le id accreditation dans Repository";
+            $data['nomdocument'] = session("nomfichier");
+        }
+
         //  echo "le idaccreditation dehors la " . session("idaccreditation");
         if (!empty(session("idaccreditation"))) {
             //  echo "on arrive bien dans le id accreditation dans Repository";
@@ -320,5 +332,15 @@ class Repository implements RepositoryInterface
     public function showuserinactif($iduser)
     {
         return $this->model::where([["id", $iduser], ["valid", false]])->get();
+    }
+
+    public function alluser()
+    {
+        return $this->model::where("valid", true)->get();
+    }
+
+    public function deleteuser($id)
+    {
+        $this->model->find($id)->update(["valid" => false]);
     }
 }

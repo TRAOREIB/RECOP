@@ -83,7 +83,7 @@
                 <div class="form-group row">
                     <label for="pjcinibperprev" class="col-sm-3 col-form-label">CNI/PASSEPORT DU FIXEUR</label>
                     <div class="col-sm-7">
-                        <input class="form-control error('pjcnibperprev') is-invalid @enderror " type="file" name="pjcnibperprev" required />
+                        <input class="form-control @error('pjcnibperprev') is-invalid @enderror " type="file" name="pjcnibperprev" required />
                         <label><i>scan de la Carte Nationale d'Identité(Recto et Verso) ou du passeport(première page)</i></label>
                         @error('pjcnibperprev')
                         <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
                 <div class="form-group row">
                     <label for="pjcartepresse" class="col-sm-3 col-form-label">CARTE DE PRESSE/CARTE PROFESSIONNELLE</label>
                     <div class="col-sm-7">
-                        <input class="form-control error('pjcartepresse') is-invalid @enderror" type="file" name="pjcartepresse" required />
+                        <input class="form-control @error('pjcartepresse') is-invalid @enderror" type="file" name="pjcartepresse" required />
                         <label><i>scan de la carte de Presse ou professionnelle (Recto et Verso)</i></label>
                         @error('pjcartepresse')
                         <span class="invalid-feedback" role="alert">

@@ -32,6 +32,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $telorgane
  * @property string $adressestruct
  * @property string $cnib
+ * @property string $organefixeur
+ * @property string $datedelivpass
+ * @property string $dateexpirpass
  * @property string $telephonepersp
  * @property string $typedemandeur
  * @property boolean $actif
@@ -60,7 +63,7 @@ class Demandeur extends Model
      * @var array
      */
   
-    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance','telephoneresidence','laissepasser','professionfixeur','adressepaysresidence','carteprofessionnelfixeur', 'nationalite', 'sexe', 'passeport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'mail','personneprevenir', 'lieuresidence', 'organe', 'telorgane', 'adressestruct','cnib', 'telephonepersp','adressfixeur','typedemandeur', 'actif', 'CREATED_AT', 'UPDATED_AT'];
+    protected $fillable = ['iduser','nom', 'prenom', 'profession', 'datenaissance', 'lieunaissance','telephoneresidence','laissepasser','professionfixeur','adressepaysresidence','carteprofessionnelfixeur', 'nationalite', 'sexe', 'passeport', 'carteconsulaire', 'datedelivcnib', 'dateexpircnib', 'telephone', 'mail','personneprevenir', 'datedelivpass', 'dateexpirpass', 'organefixeur','lieuresidence', 'organe', 'telorgane', 'adressestruct','cnib', 'telephonepersp','adressfixeur','typedemandeur', 'actif', 'CREATED_AT', 'UPDATED_AT'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

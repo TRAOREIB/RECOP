@@ -21,7 +21,7 @@
                     <label for="photo" class="col-sm-3 col-form-label">PHOTO D'IDENTITE <span style="color:red">*</span></label>
                     <div class="col-sm-7">
                         <input class="form-control @error('photo') is-invalid @enderror"  type="file" name="photo" value="{{ old('photo') }}" required>
-                    @error('nom')
+                    @error('photo')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
 					</div>
@@ -60,6 +60,9 @@
                     <label for="pjpasseport" class="col-sm-3 col-form-label">PASSPORT</label>
                     <div class="col-sm-7">
                         <input class="form-control"  type="file" name="pjpasseport"/>
+                        @error('pjpasseport')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         <label><i>Scan de la première page du passeport</i></label>
                     </div>
                 </div>
@@ -67,6 +70,9 @@
                     <label for="pjcarteconsulaire" class="col-sm-3 col-form-label">CARTE CONSULAIRE</label>
                     <div class="col-sm-7">
                         <input class="form-control" id="pjcarteconsulaire" type="file" name="pjcarteconsulaire" />
+                        @error('pjcarteconsulaire')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         <label><i>Scan de la carte (Recto et Verso)</i></label>
                     </div>
                 </div>
@@ -82,7 +88,7 @@
                     </div>
                 </div>	
                 <input type="hidden" value="{{$maxid}}" name="idcorrespondant">
-                 <input type="hidden" value="correspondant" name="type">
+                <input type="hidden" value="correspondant" name="type">
             </div>
         </div>
     </div>

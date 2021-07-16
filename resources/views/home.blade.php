@@ -60,7 +60,10 @@
                             <td>{{$mesaccredi->idaccreditation}}</td>
                             <td>{{$mesaccredi->CREATED_AT}}</td>
                             <td>{{$mesaccredi->titreevenement}},....</td>
-                            <td>En cours</td>
+                            <td>@if($mesaccredi->valider==0)En Cours @endif
+								@if($mesaccredi->valider==1)Validée @endif
+								@if($mesaccredi->valider==2)Invalidée @endif
+							</td>
                             <td>
                                 <div class="row">
                                     <form method="post" action="{{route('detailsaccreditation')}}">
@@ -71,7 +74,8 @@
                                         <input type="hidden" value="{{$mesaccredi->iddemandeur}}" name="iddemandeur">
                                         <input type="hidden" value="{{$idcomptecorrespondant}}" name="idcorrespondant">
                                         &nbsp;
-                                        <input type="submit" class="btn btn-warning" value="Modifier la demande">
+										@if($mesaccredi->valider==0)
+                                        <input type="submit" class="btn btn-warning" value="Modifier la demande">@endif
                                     </form>
                                 </div>
                             </td>

@@ -17,6 +17,7 @@
         "koolreport/core": "^5.0",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
+        "mews/captcha": "^3.2",
         "simplesoftwareio/simple-qrcode": "~4"
     },
     "require-dev": {

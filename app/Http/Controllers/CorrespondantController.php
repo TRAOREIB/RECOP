@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Requests\CorrespondantRequest;
+use App\Http\Controllers\CaptchaController;
 
 class CorrespondantController extends Controller
 {
@@ -34,6 +35,7 @@ class CorrespondantController extends Controller
     protected $mediacorrespondant;
     protected $region;
     protected $pjcontroller;
+    protected $captcha;
 
     public function __construct(Correspondant $corresp)
     {
@@ -45,6 +47,7 @@ class CorrespondantController extends Controller
         $this->piecesjointes = new Repository(new PiecesJointes());
         $this->mediacorrespondant = new Repository(new MediaCorrespondant());
         $this->region = new Repository(new Region());
+        $this->captcha = new CaptchaController();
     }
 
     public function index(Request $request)
@@ -56,6 +59,7 @@ class CorrespondantController extends Controller
         $allregions = $this->region->all();
         $typecorrespondant = $request->typecorrespondant;
         $allcorrespondant = $this->correspondant->all();
+        
         return view('correspondant.ajout_correspondant', compact('allcorrespondant', 'typecorrespondant', 'allregions'));
     }
 
@@ -93,6 +97,8 @@ class CorrespondantController extends Controller
         $maxid = $this->correspondant->max("idcorrespondant");
         //mettre l' id du correspondant dans une variable session
         Session::put("idcorrespondant", $maxid);
+
+        //echo $maxid;
 
         //enregistrer l'utilisateur dans les users
         $this->enreguser->register($request);

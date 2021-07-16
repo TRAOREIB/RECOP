@@ -43,6 +43,7 @@ class DemandeurRequest extends FormRequest
 			'organe'=> 'bail|required|max:50',
 			'telorgane'=> 'bail|required|max:20',
 			'adressestruct' => 'bail|required|max:50',
+            'captcha' => 'required|captcha',
         ];
     }
 }

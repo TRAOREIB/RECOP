@@ -12,6 +12,9 @@ use App\Models\AccrediRegion;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Document;
+use App\Http\Controllers\EtatController;
+use App\Http\Controllers\TestMailController;
 
 class CoordonateurController extends Controller
 {
@@ -23,6 +26,9 @@ class CoordonateurController extends Controller
     protected $accreditation;
     protected $correspondant;
     protected $piecesjointes;
+    protected $mail;
+	protected $document;
+	Protected $etat;
 
     public function __construct()
     {
@@ -34,6 +40,13 @@ class CoordonateurController extends Controller
         $this->demandeur = new Repository(new Demandeur());
         $this->vueaccreditation = new RepositoryVue();
         $this->vueaccrediregion = new RepositoryVue();
+        $this->mail=new TestMailController();
+		$this->etat=new EtatController();
+		
+		//Document
+        $doc = new Document();
+        $this->document = new Repository($doc);
+        
     }
 
     public function index()
@@ -69,8 +82,29 @@ class CoordonateurController extends Controller
 
     public function validerdemande(Request $request)
     {
+		Session::put("validerdemande","oui");
         $idaccreditation = $request->idaccreditation;
+        $accreditations = $this->vueaccrediregion->showvue($this->vue2, $idaccreditation);
         $this->accreditation->update($request->only($this->accreditation->getModel()->fillable), $idaccreditation);
+        
+		//recuperation de ID Demandeur
+		
+		foreach($accreditations as $accred){
+			$iddemandeur=$accred->iddemandeur;
+		}
+		
+		//recuperer les informations du demandeur
+		
+		$demandeur=$this->demandeur->show($iddemandeur);
+		
+		$mail=$demandeur->mail;
+		
+        // GENERATION ATTESTATION PROVISOIRE
+        $this->etat->attestationpaccreditation($accreditations,$request);
+		
+		//ENVOI MAIL
+		$this->mail->SendMailAttestation($mail);
+
         //Retour à la liste avec le message
         $message = "la demande Numero $idaccreditation a ete validé";
         $datevalider = date("D, d M Y H:i:s");

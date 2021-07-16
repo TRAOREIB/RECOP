@@ -86,7 +86,7 @@ $qrcodea = QrCode::size(200)->generate( "$nom $prenom REGION: $region");
             }
               
                       
-        $qrcodeattest = QrCode::size(200)->generate( "$nom $prenom REGION: $region $datevalid");
+        $qrcodeattest = QrCode::size(100)->generate( "$nom $prenom REGION: $region $datevalid");
             
            return $qrcodeattest;
             

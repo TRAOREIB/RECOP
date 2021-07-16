@@ -12,6 +12,8 @@ use App\Repositories\RepositoryVue;
 use App\Models\Correspondant;
 use App\Models\Accreditation;
 use App\Models\Demandeur;
+use App\Models\Document;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\SimpleQRcodeController;
 
 class EtatController extends Controller
@@ -34,6 +36,7 @@ class EtatController extends Controller
     protected $vueattestation = 'vueattestation';
     protected $vuedemandeur;
     protected $vueattest;
+    protected $document;
     protected $qrcode;
 
 
@@ -60,6 +63,10 @@ class EtatController extends Controller
 
         //attestation
         $this->vueattest = new RepositoryVue();
+
+        //Document
+        $doc = new Document();
+        $this->document = new Repository($doc);
 
         //qrcode
         $this->qrcode = new SimpleQRcodeController();
@@ -126,7 +133,7 @@ class EtatController extends Controller
         return $pdf->download('listedemandeur.pdf');
     }
 
-    public function recipissecorrespondant()
+    public function recipissecorrespondant(Request $request)
     {
         $iduser = Auth::id();
         //$iduser= $request->idcorrespondant;
@@ -138,11 +145,18 @@ class EtatController extends Controller
 
         $codeqr = $this->qrcode->generate($corresp);
         $pdf = PDF::loadview("etats.recipissecorrespondant", compact("corresp", "codeqr"));
-        $pdf->save(storage_path("app/public/recipisse/recipissecorrespondant.pdf"));
-        return $pdf->download('recipissecorrespondant.pdf');
+        $nom =  $iduser . date('y-m-d') . time();
+      
+        $nomfichier=$nom."recipisse_correspondant.pdf";
+        $type="recipissecorrespondant";
+        //Enregistrer les informations du document
+        $this->ajoutDocument($request,$nomfichier,$type) ;
+        $pdf->save(storage_path("app/public/recipisse_correspondant/$nomfichier"));
+        //Enregistrer le recipisse dans la table document
+      //  return $pdf->download('recipisse_correspondant.pdf');
     }
 
-    public function recipisseaccreditation($iddemandeur)
+    public function recipisseaccreditation($iddemandeur,Request $request)
     {
         $iduser = Auth::id();
 
@@ -152,30 +166,78 @@ class EtatController extends Controller
 
         $codeqra = $this->qrcode->generatea($accredit);
         $pdf = PDF::loadview("etats.recipisseaccreditation", compact("accredit", "codeqra"));
-        $pdf->save(storage_path("app/public/recipisse/recipisseaccreditation.pdf"));
-        return $pdf->download('recipisseaccreditation.pdf');
+        $nom =  $iduser . date('y-m-d') . time();
+        
+		// ADD
+		
+		$nomfichier=$nom."recipisse_accreditation.pdf";
+        $type="recipisseaccreditation";
+        //Enregistrer les informations du document
+        $this->ajoutDocument($request,$nomfichier,$type) ;
+        $pdf->save(storage_path("app/public/recipisse_accreditation/$nomfichier"));
+		
+		//$nomfichier=$nom."recipisse_accreditation.pdf";
+       // $type="recipissecorrespondant";
+        //Enregistrer les informations du document
+        //$this->ajoutDocument($request,$nomfichier,$type) ;
+        //$pdf->save(storage_path("app/public/recipisse_accreditation/$nom. recipisse_accreditation.pdf"));
+        //return $pdf->download('recipisse_accreditation.pdf');
     }
 
-    public function attestationpaccreditation($accredit)
+    public function attestationpaccreditation($accredit, Request $request)
     {
+		
         $codeqrap = $this->qrcode->generateap($accredit);
         $pdf = PDF::loadview("etats.attestationpaccreditation", compact("accredit", "codeqrap"));
-        $pdf->save(storage_path("app/public/recipisse/attestationpaccreditation.pdf"));
-        return $pdf->download('attestationpaccreditation.pdf');
+        
+		if (!empty(session("validerdemande"))){
+			foreach ($accredit as $idaccredi){
+				$idap=$idaccredi->id;
+			}
+			$nom =  $idap . date('y-m-d') . time();
+		}
+		
+		else {
+		$nom =  $accredit . date('y-m-d') . time();
+		}
+		
+		
+		// ADD
+		$nomfichier=$nom."attestation_provisoire.pdf";
+        $type="attestationprovisoire";
+        //Enregistrer les informations du document
+        $this->ajoutDocument($request,$nomfichier,$type) ;
+        $pdf->save(storage_path("app/public/attestation_provisoire/$nomfichier"));
+		
+		
+		
+        //$pdf->save(storage_path("app/public/attestation_provisoire/$nom. attestation_provisoire.pdf"));
+       // return $pdf->download('attestation_provisoire.pdf');
     }
 
     public function attestationaccreditation(Request $request)
     {
+        // $iduser = Auth::id();
         $idaccreditation = $request->idaccreditation;
         echo $idaccreditation;
         $infoaccrediation = $this->vueattest->showattestationaccredi($this->vueattestation, $idaccreditation);
-        //echo $infoaccrediation;
-        $codeqrattest = $this->qrcode->generateattest($infoaccrediation);
-        return view("etats.attestationaccreditation", compact("infoaccrediation", "codeqrattest"));
+        echo $infoaccrediation;
+         $codeqrattest = $this->qrcode->generateattest($infoaccrediation);
+        //return view("etats.attestationaccreditation", compact("infoaccrediation", "codeqrattest"));
 
-        // $pdf = PDF::loadview("etats.attestationaccreditation", compact("infoaccrediation","codeqrattest"));
-        //$pdf->save(storage_path("app/public/recipisse/attestationaccreditation.pdf")); 
-        // return $pdf->download('attestationaccreditation.pdf');
+         $pdf = PDF::loadview("etats.attestationaccreditation", compact("infoaccrediation", "codeqrattest"));
+         $nom =  $idaccreditation . date('y-m-d') . time();
+         $pdf->save(storage_path("app/public/attestation_accreditation/$nom. attestation_accreditation.pdf"));
+         return $pdf->download('attestation_accreditation.pdf');
+    }
 
+    //Fonction pour ajouter les documents recipisse et attestations d'accreditation
+    public function ajoutDocument(Request $request, $nomfichier, $type)
+    {
+        $iduser = Auth::id();
+        Session::put("iduser", $iduser);
+        Session::put("nomfichier", $nomfichier);
+        Session::put("type", $type);
+        $this->document->create($request->only($this->document->getModel()->fillable));
     }
 }

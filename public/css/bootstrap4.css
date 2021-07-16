@@ -4298,7 +4298,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: black;
+  background-color: #007bff;
 }
 
 .nav-fill > .nav-link,
@@ -10296,4 +10296,25 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+.titreaccredi{
+	border:10px double black;
+	text-align:center;
+	width:780px;
+	margin:auto;
+}	
+.droite{
+	float:right;
+}
+
+.gauche{
+	float:left;
+}
+.pied{
+	font-size:10px;
+}
+.accredi{
+background:url('../images/imagefond.png');
+background-repeat:no-repeat;
+background-position:50% 50%;
 }

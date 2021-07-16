@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Http\Controllers\Auth\RegisterController;
 
+//23_06
+
+use App\Models\Accreditation;
+
 class CreationUtilisateurController extends Controller
 {
     protected $users;
@@ -31,10 +35,12 @@ class CreationUtilisateurController extends Controller
             $this->enreguser=new RegisterController();
     
     }
-     public function index(Request $request)
+     
+    //index changement de mot de passe
+    public function index(Request $request)
     {
         
-        $iduser = Auth::id();
+        $iduser = Auth::id();      
         return view("auth.passwords.reset", compact("iduser"));
         //
     }
@@ -61,7 +67,12 @@ class CreationUtilisateurController extends Controller
         Session::put("name", $request->name);
         Session::put("email", $request->email);
         Session::put('identifiant', $request->identifiant);
+		Session::put("telephone", $request->telephone);
+        Session::put('telephone1', $request->telephone1);
+        Session::put('service', $request->service);
         Session::put("profil", $request->profil);
+
+        
         
         // echo Session('name');
         // echo Session('email');
@@ -70,7 +81,11 @@ class CreationUtilisateurController extends Controller
         // echo $request->email;
         //enregistrer l'utilisateur dans les users
         $this->enreguser->register($request);
-        return back();
+
+        
+        $alluser=$this->user->alluser();
+        return view('auth.panneau', compact('alluser'));
+		//echo ('OK');
        
     }
 
@@ -91,10 +106,7 @@ class CreationUtilisateurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    
   
     /**
      * Update the specified resource in storage.
@@ -103,7 +115,9 @@ class CreationUtilisateurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    
+    //MAJ changement de mot de passe
+     public function update(Request $request)
     {
         $iduser = Auth::id();
         $motdepasse=bcrypt($request->password);
@@ -113,6 +127,19 @@ class CreationUtilisateurController extends Controller
         //
         return view("auth.passwords.reset_message");
         }
+
+        public function updatereset(Request $request)
+        {
+            $iduser=$request->id;
+        echo $iduser;
+         $motdepasse=bcrypt($request->password);
+         Session::put('password',$motdepasse);
+        $this->user->update($request->only($this->user->getModel()->fillable), $iduser);
+        $alluser=$this->users->all();
+        return view('auth.panneau', compact('alluser'));
+
+        }
+
 
         public function updateadmin(Request $request)
         {
@@ -125,11 +152,59 @@ class CreationUtilisateurController extends Controller
             }
             $motdepasse=bcrypt($request->password);
             Session::put('password',$motdepasse);
-           $this->user->update($request->only($this->user->getModel()->fillable), $iduser, $identifiant);
+           $this->user->update($request->only($this->user->getModel()->fillable), $iduser);
            // return back();
             //
            return view("auth.passwords.reset_message");
             }
+// add 24 & 25			
+	public function listeuser()
+    {
+        //$allaccreditation=$this->accreditation->all();
+		 $alluser=$this->user->alluser();
+        return view('auth.panneau', compact('alluser'));
+    }		
+		
+		public function creeruser()
+    {
+		
+		return view('auth.register');
+    }
+	
+	public function edituser(Request $request, $id)
+    {
+	//	$idcorrespondant = $request->idcorrespondant;
+        // $idpiecesjointes = $request->idpiecesjointes;
+        // $correspondant = $this->correspondant->show($idcorrespondant);
+        // return view("correspondant.modif_correspondant", compact("correspondant", "idcorrespondant", "idpiecesjointes"));
+        //
+		$user=$this->user->show($id);
+        
+        return view("auth.modif_user", compact("user","id"));
+		
+		
+    }
+
+    public function updateuser(Request $request)
+    {
+       // $iduser = Auth::id();
+        
+        $iduser=$request->id;
+       
+       $this->user->update($request->only($this->user->getModel()->fillable), $iduser);
+       $alluser=$this->user->alluser();
+       return view('auth.panneau', compact('alluser'));
+        }
+
+    public function editpass(Request $request, $id)
+    {
+		$user=$this->user->show($id);
+     
+        return view("auth.passwords.resetpass", compact("user","id"));
+		
+		
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -139,6 +214,10 @@ class CreationUtilisateurController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $this->user->deleteuser($id);
+        $alluser=$this->user->alluser();
+       return view('auth.panneau', compact('alluser'));
+        
     }
 }

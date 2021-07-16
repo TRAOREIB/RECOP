@@ -70,7 +70,7 @@ Route::get('listecorrespondant', 'EtatController@listecorrespondant')->name('lis
 Route::get('listeaccreditation1', 'EtatController@listeaccreditation')->name('listeaccreditation1');
 Route::get('listedemandeur1', 'EtatController@listedemandeur')->name('listedemandeur1');
 Route::get('generateattestation', 'EtatController@attestationaccreditation')->name('generateattestation');
-
+Route::post('attestationdef', 'EtatController@attestationaccreditation')->name('attestationdef');
 //END
 
 
@@ -284,3 +284,21 @@ Route::post('updateadmin', 'CreationUtilisateurController@updateadmin')->name('u
 Route::get('resetadmin', function () {
     return view('auth.passwords.reset_admin');
 });
+
+//Add 24/06
+
+Route::get('panneau', 'CreationUtilisateurController@listeuser')->name('panneau');
+
+Route::post('adduser', 'CreationUtilisateurController@creeruser')->name('adduser');
+
+Route::post('edituser/{iduser}', 'CreationUtilisateurController@edituser')->name('edituser');
+
+Route::post('updateuser/{iduser}', 'CreationUtilisateurController@updateuser')->name('updateuser');
+
+Route::post('resetpass/{iduser}', 'CreationUtilisateurController@editpass')->name('resetpass');
+
+Route::post('updatereset/{iduser}', 'CreationUtilisateurController@updatereset')->name('updatereset');
+
+Route::post('supprimer/{iduser}', 'CreationUtilisateurController@destroy')->name('supprimer');
+
+Route::get('refreshCaptcha', 'CaptchaController@refreshCaptcha')->name('refreshCaptcha');

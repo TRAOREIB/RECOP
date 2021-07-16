@@ -757,9 +757,38 @@ unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
 
+                <div class="form-group row">
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
+                            <div class="col-md-6">
+                                <span class="captcha-image"><?php echo Captcha::img(); ?></span> &nbsp;&nbsp;
+                                <button type="button" class="btn btn-success refresh-button">Actualiser</button>
+                                <input id="captcha" type="text" class="form-control <?php $__errorArgs = ['captcha'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="captcha" required>
+                                <?php $__errorArgs = ['captcha'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                </div>
+
+
             </div>
         </div>
-        <input type="hidden" name="name">
+         <input type="hidden" name="name">
     </div>
     <br>
     <div class="text-center">
@@ -768,5 +797,19 @@ unset($__errorArgs, $__bag); ?>
     </div>
 </form>
 <br><br>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.refresh-button').click(function() {
+            $.ajax({
+                type: 'get',
+                url: '<?php echo e(route('refreshCaptcha')); ?>',
+                success:function(data) {
+                    $('.captcha-image').html(data.captcha);
+                }
+            });
+        });
+    });
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('tprecop.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\RECOP\resources\views/demandeur/ajout_demandeur.blade.php ENDPATH**/ ?>

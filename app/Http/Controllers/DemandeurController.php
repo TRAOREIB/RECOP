@@ -19,6 +19,7 @@ use App\User;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Requests\DemandeurRequest;
 use App\Http\Requests\PiecesJointesRequest;
+use App\Http\Controllers\CaptchaController;
 
 class DemandeurController extends Controller
 {
@@ -44,6 +45,7 @@ class DemandeurController extends Controller
     protected $pjcontroller;
     protected $piecesjointes;
     protected $accreditationtest;
+    protected $captcha;
 
     public function __construct(Demandeur $dem)
     {
@@ -64,6 +66,7 @@ class DemandeurController extends Controller
         $this->piecesjointes = new Repository(new PiecesJointes());
 
         $this->accreditationtest = new Repository(new Accreditation());
+        $this->captcha = new CaptchaController();
     }
 
     public function index()

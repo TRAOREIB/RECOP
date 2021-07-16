@@ -24,7 +24,7 @@
                         <div class="offset-1" >
                             <input class=" col-sm-2 btn btn-primary" type="submit"  value="connexion">                 
                         </div>
-                        
+                
                         </div>
 
                     </form>

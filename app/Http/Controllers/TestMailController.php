@@ -17,6 +17,7 @@ class TestMailController extends Controller
 
     protected $users;
     protected $user;
+    public $cheminfichier;
 
     public function __construct()
     {
@@ -24,7 +25,7 @@ class TestMailController extends Controller
         $this->user = new Repository($this->users);
     }
 
-    public function SendMail()
+    public function SendMailCorrespondant()
     {
 
         // 
@@ -47,8 +48,11 @@ class TestMailController extends Controller
         //echo $mail;
         // echo 'test envoie de mail';
         $essaie = 'mes donnees';
-        Mail::send('mailing.mailpatient', ['donnee' => $essaie], function ($message) {
-            $message->from('zoureabdoulaye@gmail.com', 'RECOP');
+        $nomfichier=session("nomfichier");
+        $this->cheminfichier="\app\public\\recipisse_correspondant\\"."$nomfichier";
+       
+        Mail::send('mailing.mailrecipisse', ['donnee' => $essaie], function ($message) {
+            $message->from('peacop.mcrp@communication.gov.bf', 'PEACOP');
 
             //	echo $mail;
             //$message->to('montestk21@gmail.com'); 
@@ -57,7 +61,92 @@ class TestMailController extends Controller
             $message->to(session('email'));
 
             $message->subject("Inscription correspondant");
-            $message->attach(storage_path() . '/' . "app/public/recipisse/recipissecorrespondant.pdf");
+            $message->attach(storage_path() . $this->cheminfichier);
+        });
+    }
+
+    public function SendMailDemandeur()
+    {
+
+        // 
+        $iduser = Auth::id();
+
+        // RECUPERATION DES INFOS DU USER
+        $monemail = $this->user->showuser($iduser);
+
+
+        foreach ($monemail as $monmail) {
+            // RECUPERATION MAIL DU USER
+            $mail = $monmail->email;
+            // VARIABLE SESSION MAIL
+            Session::put('email', $mail);
+        }
+        // echo $monemail;
+
+
+
+        //echo $mail;
+        // echo 'test envoie de mail';
+        $essaie = 'mes donnees';
+		//add
+		$nomfichier=session("nomfichier");
+        $this->cheminfichier="\app\public\\recipisse_accreditation\\"."$nomfichier";
+		
+        Mail::send('mailing.mailrecipisse', ['donnee' => $essaie], function ($message) {
+            $message->from('peacop.mcrp@communication.gov.bf', 'PEACOP');
+
+            //	echo $mail;
+            //$message->to('montestk21@gmail.com'); 
+
+            //echo session('email');
+            $message->to(session('email'));
+
+            $message->subject("Demande d'accreditation");
+            $message->attach(storage_path() . $this->cheminfichier);
+        });
+    }
+
+    public function SendMailAttestation($mail)
+    {
+
+        // 
+        //$iduser = Auth::id();
+          Session::put('email', $mail);
+		  
+		  
+        // RECUPERATION DES INFOS DU USER
+       // $monemail = $this->user->showuser($iduser);
+
+
+       // foreach ($monemail as $monmail) {
+            // RECUPERATION MAIL DU USER
+       //     $mail = $monmail->email;
+            // VARIABLE SESSION MAIL
+         //   Session::put('email', $mail);
+      //  }
+        // echo $monemail;
+
+
+
+        //echo $mail;
+        // echo 'test envoie de mail';
+        $essaie = 'mes donnees';
+		//add
+		$nomfichier=session("nomfichier");
+		//echo $nomfichier;
+        $this->cheminfichier="\app\public\\attestation_provisoire\\"."$nomfichier";
+		
+        Mail::send('mailing.mailattestation', ['donnee' => $essaie], function ($message) {
+            $message->from('peacop.mcrp@communication.gov.bf', 'PEACOP');
+
+            //	echo $mail;
+            //$message->to('montestk21@gmail.com'); 
+
+            //echo session('email');
+            $message->to(session('email'));
+
+            $message->subject("Attestation d'Accreditation Provisoire");
+            $message->attach(storage_path() . $this->cheminfichier);
         });
     }
 

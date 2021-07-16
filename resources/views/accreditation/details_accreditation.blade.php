@@ -18,7 +18,11 @@
             <label class="col-sm-12 row" style="background-color: #16c7ff">INFO  PERSONNELLES      
                 <form method="POST" action="{{route('modifdemandeur')}}">
                     @csrf
+					@foreach($monaccreditation as $monaccredi)
+					@if($monaccredi->valider==0) 
                     <input type="submit" class="btn btn-warning offset-8" value="Modifier Vos Informations">
+					@endif
+					@endforeach
                     <input type="hidden"  value="{{$idaccreditation}}" name="idaccreditation">
                     <input type="hidden"  value="{{$iddemandeur}}" name="iddemandeur">
                     <input type="hidden"  value="{{$iduser}}" name="iduser">
@@ -116,8 +120,12 @@
                 <label class="col-sm-12 row" style="background-color: #16c7ff">SUJETS ET MATERIELS 
                     <form method="get" action="{{route('accreditation.edit',[$idaccreditation])}}">
                         @csrf
+						@foreach($monaccreditation as $monaccredi)
+						@if($monaccredi->valider==0)
                         <input type="submit" class="btn btn-warning offset-7" value="Modifier les Sujets">
-                        <input type="hidden"  value="{{$idaccreditation}}" name="idaccreditation">
+                        @endif
+						@endforeach
+						<input type="hidden"  value="{{$idaccreditation}}" name="idaccreditation">
                         <input type="hidden"  value="{{$iddemandeur}}" name="iddemandeur">
                         <input type="hidden"  value="{{$iduser}}" name="iduser">
                         <input type="hidden"  value="{{$idcorrespondant}}" name="idcorrespondant">
@@ -145,8 +153,12 @@
             <label class="col-sm-12 row " style="background-color: #16c7ff">PIECES JOINTES
                 <form method="get" action="{{route('piecesjointes.edit',[$idaccreditation])}}">
                     @csrf
+					@foreach($monaccreditation as $monaccredi)
+					@if($monaccredi->valider==0)
                     <input type="submit" class="btn btn-warning offset-8" value="Modifier les Pièces">
-                    <input type="hidden"  value="{{$idaccreditation}}" name="idaccreditation">
+                    @endif
+					@endforeach
+					<input type="hidden"  value="{{$idaccreditation}}" name="idaccreditation">
                     <input type="hidden"  value="{{$iddemandeur}}" name="iddemandeur">
                     <input type="hidden"  value="{{$iduser}}" name="iduser">
                     <input type="hidden"  value="{{$idcorrespondant}}" name="idcorrespondant">

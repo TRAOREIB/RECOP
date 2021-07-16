@@ -32,7 +32,7 @@ class CorrespondantRequest extends FormRequest
 			'lieunaissance'=> 'bail|required|alpha|max:50',
 			'nationalite'	=> 'bail|required|alpha|max:50',
 			'telephone'=> 'bail|required|numeric',
-			'telephone2'=> 'bail|required|numeric',
+			//'telephone2'=> 'bail|required|numeric',
 			'mail'=> 'bail|required|email|max:50|unique:correspondant',
 			'identifiant'=> 'bail|required|alphanum|max:50|unique:users',			
 			'lieuresidence' => 'bail|required|max:50',
@@ -48,6 +48,7 @@ class CorrespondantRequest extends FormRequest
 			'typepresse'=> 'bail|required',
 			'telorgane'=> 'bail|required|max:20',
 			'adresseorgane' => 'bail|required|max:50', */
+			'captcha' => 'required|captcha',
 			
 			
 			

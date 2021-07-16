@@ -40,6 +40,22 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
+                            <div class="col-md-6">
+                                <span class="captcha-image">{!! Captcha::img() !!}</span> &nbsp;&nbsp;
+                                <button type="button" class="btn btn-success refresh-button">Actualiser</button>
+                                <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" name="captcha" required>
+                                @error('captcha')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                </div><br>
+
+
+
+                        <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -71,5 +87,20 @@
     </div>
 </div>
 <br><br>
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.refresh-button').click(function() {
+            $.ajax({
+                type: 'get',
+                url: '{{ route('refreshCaptcha') }}',
+                success:function(data) {
+                    $('.captcha-image').html(data.captcha);
+                }
+            });
+        });
+    });
+</script>
 
 @endsection

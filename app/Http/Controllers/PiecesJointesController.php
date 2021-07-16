@@ -87,35 +87,22 @@ class PiecesJointesController extends Controller
 
         $iduser = Auth::id();
         Session::put("iduser", $iduser);
-
-        $validator = Validator::make($request->all(), [
-            'lettrerecommendation' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
-            'photo' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
-            'pjcnib' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
-            'pjcartepresse' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
-            'pjcnibperprev' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
-        ]);
-
-        if ($validator->fails()) {
-            return view('accreditation.pj_accreditation')
-                ->withErrors($validator);
-        }
-
+        $maxid=session("iduser");
         if (session('type') == 'correspondant') {
 
             $validator = Validator::make($request->all(), [
-                'photo'  => 'required|mimes:jpg,png,gif|max:50000000000',
-                'cv'  => 'required|mimes:jpg,png,pdf,gif|max:5000000000',
-                'visamedia'  => 'required|mimes:jpg,png,gif|max:5000000000',
-                'pjcnib'  => 'required|mimes:jpg,png,gif|max:50000000000',
-                'pjpasseport'  => 'required|mimes:jpg,png,gif|max:5000000000',
-                'pjcarteconsulaire'  => 'required|mimes:jpg,png,gif|max:5000000000',
-                'pjcartepresse'  => 'required|mimes:jpg,png,gif|max:5000000000'
+                'photo'  => 'required|mimes:jpg,png,gif|max:2048',
+                'cv'  => 'required|mimes:jpg,png,pdf|max:2048',
+                'visamedia'  => 'required|mimes:jpg,png,pdf|max:2048',
+                'pjcnib'  => 'required|mimes:jpg,png,pdf|max:2048',
+                //'pjpasseport'  => 'required|mimes:jpg,png,pdf|max:2048',
+                //'pjcarteconsulaire'  => 'required|mimes:jpg,png,pdf|max:2048',
+                'pjcartepresse'  => 'required|mimes:jpg,png,pdf|max:2048'
             ]);
 
             if ($validator->fails()) {
 
-                return view('correspondant.ajout_correspondant_suite')
+                return view('correspondant.ajout_correspondant_suite',compact("maxid"))
                     ->withErrors($validator);
             }
 
@@ -130,20 +117,24 @@ class PiecesJointesController extends Controller
             $this->correspondant->update($request->only($this->correspondant->getModel()->fillable), $request->idcorrespondant);
             $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
             // GENERATION DU RECIPISSE
-            $this->etat->recipissecorrespondant();
+            $this->etat->recipissecorrespondant($request);
+
+            //SELECTION DU FICHIER RECIPISSE EN QUESTION
+
             //ENVOI MAIL
-            $this->mail->SendMail();
-            return view("correspondant.message_correspondant");
+            $this->mail->SendMailCorrespondant();
+           return view("correspondant.message_correspondant");
+           //echo 'ici';
         }
         if (session('type') == 'demandeur') {
             //  echo "j'arrive dans demandeur walayi";
 
             $validator = Validator::make($request->all(), [
-                'lettrerecommendation' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
-                'photo' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
-                'pjcnib' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
-                'pjcartepresse' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
-                'pjcnibperprev' => 'required|mimes:png,jpg,jpeg,pdf|max:1024',
+                'lettrerecommendation' => 'required|mimes:png,jpg,jpeg,pdf|max:2048',
+                'photo' => 'required|mimes:png,jpg,jpeg,pdf|max:2048',
+                'pjcnib' => 'required|mimes:png,jpg,jpeg,pdf|max:2048',
+                'pjcartepresse' => 'required|mimes:png,jpg,jpeg,pdf|max:2048',
+                'pjcnibperprev' => 'required|mimes:png,jpg,jpeg,pdf|max:2048',
             ]);
 
             if ($validator->fails()) {
@@ -151,7 +142,7 @@ class PiecesJointesController extends Controller
                     ->withErrors($validator);
             }
 
-
+  
             Session::put("idcorrespondant", null);
             Session::put("pj", "demandeur");
             $request->actif = "true";
@@ -160,16 +151,18 @@ class PiecesJointesController extends Controller
             $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
             // GENERATION DU RECIPISSE
             $iddemandeur = session("iddemandeur");
-            $this->etat->recipisseaccreditation($iddemandeur);
+            $this->etat->recipisseaccreditation($iddemandeur,$request);
             //ENVOI MAIL
-            $this->mail->SendMail();
+            $this->mail->SendMailDemandeur();
             return view('accreditation.message_accreditation');
         }
 
         // Creation des pieces jointes
 
         $this->piecesjointes->create($request->only($this->piecesjointes->getModel()->fillable));
+    
     }
+
 
     public function savepiecesjointes(Request $request)
     {

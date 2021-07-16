@@ -40,6 +40,47 @@
                                 @enderror
                             </div>
                         </div>
+						
+						<div class="form-group row">
+                            <label for="telephone" class="col-md-4 col-form-label text-md-right">{{ __('Telephone') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="telephone" type="text" class="form-control @error('telephone') is-invalid @enderror" name="telephone" value="{{ old('telephone') }}">
+
+                                @error('telephone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+						<div class="form-group row">
+                            <label for="telephone1" class="col-md-4 col-form-label text-md-right">{{ __('Telephone (WhatsApp)') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="telephone1" type="text" class="form-control @error('telephone1') is-invalid @enderror" name="telephone1" value="{{ old('telephone1') }}">
+
+                                @error('telephone1')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+						
+						<div class="form-group row">
+                            <label for="service" class="col-md-4 col-form-label text-md-right">{{ __('Nom du service') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="service" type="text" class="form-control @error('service') is-invalid @enderror" name="service" value="{{ old('service') }}">
+
+                                @error('service')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="identifiant" class="col-md-4 col-form-label text-md-right">{{ __("Nom d'utilisateur") }}</label>
@@ -83,8 +124,8 @@
                                 <select id='profil' class="form-control col-sm-6" name="profil">
                                     <option value="Verificateur">Verificateur</option>
                                     <option value="Coordonnateur">Coordonnateur</option>
+									<option value="Ampliateur">Ampliateur</option>
                                     <option value="Administrateur">Administrateur</option>
-                                    <option value="Ampliateur">Ampliateur</option>
                                 </select>
                             </div>
                         </div>
