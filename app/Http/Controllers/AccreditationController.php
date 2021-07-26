@@ -101,7 +101,7 @@ class AccreditationController extends Controller
      */
     public function store(SujetRequest $request)
     {
-        echo "on arrive bien dans la fonction";
+       
         Session::put("accrediregion", "Oui");
         Session::put("idregion",$request->idregion);
         $allregions = $this->region->all();

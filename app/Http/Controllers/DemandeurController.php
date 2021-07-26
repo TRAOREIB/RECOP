@@ -315,8 +315,7 @@ class DemandeurController extends Controller
                 $iddemandeur = $dem->iddemandeur;
             }
         }
-        echo $request->actif;
-        echo $iddemandeur;
+       
 
         //  echo "le  demandeur ".$demandeur;
         //Mettre le id demandeur dans une variable session

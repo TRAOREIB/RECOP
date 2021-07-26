@@ -219,9 +219,9 @@ class EtatController extends Controller
     {
         // $iduser = Auth::id();
         $idaccreditation = $request->idaccreditation;
-        echo $idaccreditation;
+       
         $infoaccrediation = $this->vueattest->showattestationaccredi($this->vueattestation, $idaccreditation);
-        echo $infoaccrediation;
+     
          $codeqrattest = $this->qrcode->generateattest($infoaccrediation);
         //return view("etats.attestationaccreditation", compact("infoaccrediation", "codeqrattest"));
 

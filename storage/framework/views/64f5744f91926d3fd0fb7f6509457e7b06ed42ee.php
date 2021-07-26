@@ -33,6 +33,7 @@
 <div class="text-center">
 <p>M/Mme <?php echo e($accreditation->nomdemandeur); ?> <?php echo e($accreditation->prenomdemandeur); ?>,  
 Vous avez soumis votre demande d’accréditation de presse pour couvrir le(s) sujet(s) suivant(s) : </p>
+<?php break; ?>;
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 <div> 

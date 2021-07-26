@@ -23,7 +23,7 @@
 <h3>MINISTERE DE LA COMMUNICATION ET DES RELATIONS AVEC LE PARLEMENT</h3>
 <h3>***************</h3>
 <h3>ACCREDITATION DE PRESSE</h3>
-<h2>RECIPISSE N° 450</h2>
+<h2>RECIPISSE N° 320</h2>
 </div>
 
 <?php $i=0; ?>
@@ -33,6 +33,7 @@
 <div class="text-center">
 <p>M/Mme {{$accreditation->nomdemandeur}} {{$accreditation->prenomdemandeur}},  
 Vous avez soumis votre demande d’accréditation de presse pour couvrir le(s) sujet(s) suivant(s) : </p>
+@break;
 @endforeach
 
 <div> 

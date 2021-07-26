@@ -131,7 +131,7 @@ class CreationUtilisateurController extends Controller
         public function updatereset(Request $request)
         {
             $iduser=$request->id;
-        echo $iduser;
+     
          $motdepasse=bcrypt($request->password);
          Session::put('password',$motdepasse);
         $this->user->update($request->only($this->user->getModel()->fillable), $iduser);

@@ -8,7 +8,6 @@
 <br>
 
 <form class="form-horizontal was-validated col-sm-10 offset-1" role="form" method="POST" action="{{ route('demandeur.store') }}" enctype="multipart/form-data">
-    {{ method_field('POST')}}
     {{ csrf_field() }}
 
     <!-- IDENTITE DU DEMANDEUR-->

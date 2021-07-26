@@ -8,8 +8,6 @@
 <br>
 
 <form class="form-horizontal was-validated col-sm-10 offset-1" role="form" method="POST" action="<?php echo e(route('demandeur.store')); ?>" enctype="multipart/form-data">
-    <?php echo e(method_field('POST')); ?>
-
     <?php echo e(csrf_field()); ?>
 
 

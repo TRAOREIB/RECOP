@@ -140,11 +140,11 @@ class Repository implements RepositoryInterface
 
         if (!empty($data['actif'])) {
             if (!empty(session("actifcorrespondant"))) {
-                echo "//// il arrive dans correspondant dans update ////";
+              
                 $data["actif"] = 0;
             }
             if (!empty(session("actifdemandeur"))) {
-                echo "//// il arrive dans demandeur dans update ////";
+             
                 $data["actif"] = 0;
             }
         }

@@ -106,8 +106,6 @@ class PiecesJointesController extends Controller
                     ->withErrors($validator);
             }
 
-
-            echo $request->idcorrespondant;
             Session::put("idaccreditation", null);
             Session::put("iddemandeur", null);
             Session::put("idcorrespondant", $request->idcorrespondant);
@@ -168,7 +166,7 @@ class PiecesJointesController extends Controller
     {
         $iduser = Auth::id();
         if (!empty($request->file('lettrerecommendation'))) {
-            echo "dans lettre de recommendation";
+          
             $nom = $request->lettrerecommendation->getClientOriginalName();
             $nom = $iduser . date('y-m-d') . time() . $nom;
             $request->file('lettrerecommendation')->storeAs(config('documents.path'), $nom, "public");
@@ -244,15 +242,13 @@ class PiecesJointesController extends Controller
      */
     public function edit($id)
     {
-        echo "le id accreditation " . $id;
+       
         $editpjaccreditation = $this->piecesjointes->showinfopj($id);
-        echo $editpjaccreditation;
+       
         if ($editpjaccreditation == "[]") {
             //selection de l'id du demandeur
             $accreditation = $this->accreditationtest->show($id);
             $iddemandeur = $accreditation->iddemandeur;
-            echo $iddemandeur;
-            echo "on est la " . $accreditation;
             Session::put("iddemandeur", $iddemandeur);
             return view("accreditation.pj_accreditation");
         }
@@ -293,7 +289,7 @@ class PiecesJointesController extends Controller
 
     public function editpjcorrespondant(Request $request)
     {
-        echo "on y arrive ";
+      
         $maxid = Auth::id();
         Session::put("type", "correspondant");
         $idpiecesjointes = $request->idpj;
